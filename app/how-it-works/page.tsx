@@ -1,0 +1,205 @@
+import Link from "next/link";
+import { Icon } from "@/components/icons";
+import {
+  FoundationsIcon,
+  BuildIcon,
+  LaunchIcon,
+  ContentIcon,
+  RankIcon,
+} from "@/components/page-icons";
+import { Timeline } from "@/components/timeline";
+
+type Phase = {
+  week: string;
+  pct: number;
+  title: string;
+  body: string;
+  output?: string;
+  footer?: string;
+  icon: React.ReactNode;
+  tone: string;
+  featured?: boolean;
+};
+
+const phases: Phase[] = [
+  {
+    week: "Week 1",
+    pct: 8,
+    title: "Foundations",
+    body: "We audit your current website, search presence, and AI visibility. You tell us the keywords that matter. We tell you which 90% we can rank you for in 90 days, and which need longer. You sign off on the list.",
+    output: "Keyword agreement, competitor map, ranking and AI baseline.",
+    icon: <FoundationsIcon />,
+    tone: "pink",
+  },
+  {
+    week: "Weeks 2–3",
+    pct: 25,
+    title: "Site rebuild or reposition",
+    body: "We design and build your new website, or restructure your existing one if it's worth keeping. Five to twelve pages depending on scope. Mobile-first. 95+ Core Web Vitals. Branding included if you want it.",
+    footer: "You review one round. We ship.",
+    icon: <BuildIcon />,
+    tone: "peach",
+    featured: true,
+  },
+  {
+    week: "Week 4",
+    pct: 33,
+    title: "Launch + technical setup",
+    body: "Site goes live. Schema markup applied. Sitemap submitted to Google. Search Console and analytics installed. Google Business Profile rebuilt for local. LinkedIn and directory listings optimized for B2B.",
+    icon: <LaunchIcon />,
+    tone: "yellow",
+  },
+  {
+    week: "Weeks 5–8",
+    pct: 66,
+    title: "Content + signals",
+    body: "We publish four to eight content pages targeting your agreed keywords. Each is structured for both Google ranking and LLM citation. We build citations, earn backlinks, run review collection, and get you listed on the directories LLMs pull from.",
+    footer: "Weekly Loom update. Two minutes. No reports.",
+    icon: <ContentIcon />,
+    tone: "mint",
+  },
+  {
+    week: "Weeks 9–12",
+    pct: 100,
+    title: "Rank, refine, get cited",
+    body: "Rankings start moving. We watch which keywords are landing and double down. Weekly AI visibility checks across ChatGPT, Perplexity, Claude, and Google AI Overviews feed back into the content engine.",
+    footer: "By day 90, top 3 for 90% of agreed keywords and showing up in AI answers.",
+    icon: <RankIcon />,
+    tone: "lilac",
+  },
+];
+
+export default function HowItWorksPage() {
+  return (
+    <div className="page-enter">
+      <section style={{ padding: "32px 0 40px", textAlign: "center", position: "relative" }}>
+        <div className="container">
+          <h1 className="h-display" data-reveal style={{ maxWidth: 1100, margin: "0 auto" }}>
+            How <span className="it">Rankday</span> works.
+          </h1>
+          <p className="lede" data-reveal data-reveal-delay="0.1" style={{ marginTop: 28, maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
+            Most agencies hide the work behind dashboards and monthly reports. The work is actually pretty simple. Here&apos;s what happens.
+          </p>
+        </div>
+      </section>
+
+      <section style={{ padding: "24px 0 48px" }}>
+        <div className="container">
+          <Timeline phases={phases} />
+        </div>
+      </section>
+
+      <section style={{ padding: "0 0 96px" }}>
+        <div className="container">
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {phases.map((p, i) => (
+              <Phase key={i} idx={String(i + 1).padStart(2, "0")} {...p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+            <div className="card" style={{ padding: 40, minHeight: 360, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <p className="kicker">What you do</p>
+              <p style={{ fontSize: 24, color: "var(--ink)", lineHeight: 1.3, letterSpacing: "-0.015em", fontWeight: 600, margin: 0 }}>
+                Sign off on the keyword list in week 1. Approve the site in week 3. <span className="serif" style={{ color: "var(--purple)" }}>Answer two short questions a week.</span> That&apos;s it.
+              </p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginTop: 28 }}>
+                {["Week 1", "Week 3", "Weekly"].map((w, i) => (
+                  <div key={w} style={{ padding: "10px 12px", background: "var(--paper)", borderRadius: 10, border: "1px solid var(--hairline)" }}>
+                    <p style={{ fontSize: 10, color: "var(--muted)", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>
+                      0{i + 1}
+                    </p>
+                    <p style={{ fontSize: 14, color: "var(--ink)", margin: "4px 0 0", fontWeight: 700, letterSpacing: "-0.005em" }}>{w}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="card card-ink" style={{ padding: 40, minHeight: 360 }}>
+              <p className="kicker" style={{ color: "rgba(255,255,255,0.5)" }}>What we never do</p>
+              <div style={{ marginTop: 22 }}>
+                {[
+                  "Send you 40-page reports.",
+                  'Charge for "strategy calls."',
+                  "Disappear after the website launches.",
+                  "Lock you into a 12-month contract.",
+                  "Promise things we can't deliver.",
+                ].map((t) => (
+                  <div className="check" key={t} style={{ borderTopColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.92)" }}>
+                    <span className="xmark">
+                      <Icon.X />
+                    </span>
+                    <span style={{ fontSize: 16 }}>{t}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 32px 64px" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div data-reveal className="band-purple" style={{ padding: "56px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+            <h2 className="h1" style={{ color: "#fff" }}>
+              <span className="serif">Start</span> your 90 days.
+            </h2>
+            <Link href="/pricing" className="btn btn-light">
+              Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function Phase({ idx, week, title, body, output, footer, featured, tone, icon }: Phase & { idx: string }) {
+  return (
+    <div data-reveal className={`card ${featured ? `card-${tone}` : ""}`} style={{ padding: 36 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "auto 180px 1fr 240px", gap: 32, alignItems: "start" }}>
+        <div
+          style={{
+            width: 56,
+            height: 56,
+            borderRadius: 14,
+            background: featured ? "rgba(255,255,255,0.7)" : "var(--purple-tint)",
+            color: featured ? "var(--ink)" : "var(--purple)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}
+        >
+          {icon}
+        </div>
+
+        <div>
+          <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--muted-2)" }}>/ {idx}</span>
+          <p style={{ fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--purple)", marginTop: 8, fontWeight: 700 }}>
+            {week}
+          </p>
+        </div>
+
+        <div>
+          <h3 className="h3" style={{ fontSize: 26 }}>{title}</h3>
+          <p className="body" style={{ marginTop: 12, color: "var(--ink-2)" }}>{body}</p>
+          {footer && <p style={{ marginTop: 14, fontSize: 15, color: "var(--ink)", fontWeight: 700 }}>{footer}</p>}
+        </div>
+
+        <div>
+          {output && (
+            <div style={{ padding: "14px 16px", borderRadius: 14, background: "rgba(255,255,255,0.7)", display: "flex", flexDirection: "column", gap: 6 }}>
+              <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)", fontWeight: 700 }}>Output</span>
+              <span style={{ fontSize: 13, color: "var(--ink)", fontWeight: 500, lineHeight: 1.4 }}>{output}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
