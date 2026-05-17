@@ -272,32 +272,36 @@ img { display: block; max-width: 100%; }
 }
 
 .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.045em;
   color: var(--ink);
 }
-.nav-logo-mark {
-  width: 30px; height: 30px;
-  border-radius: 8px;
-  background: var(--purple);
-  display: flex; align-items: center; justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 16px;
+.nav-logo .logo-rank {
   font-family: var(--sans);
-  letter-spacing: -0.04em;
-  position: relative;
+  font-weight: 800;
 }
-.nav-logo-mark::after {
-  content: "✦";
-  position: absolute;
-  top: -6px; right: -6px;
-  font-size: 10px;
+.nav-logo .logo-day {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
   color: var(--purple);
+  margin-left: 0.02em;
+  letter-spacing: -0.01em;
+}
+.nav-logo .logo-dot {
+  font-family: var(--sans);
+  font-weight: 800;
+  color: var(--purple);
+  margin-left: 0.01em;
+}
+/* Dark surface variant — flips the rank colour to white */
+.nav-logo.dark .logo-rank { color: #fff; }
+.nav-logo.dark { color: #fff; }
+@media (max-width: 720px) {
+  .nav-logo { font-size: 22px; }
 }
 
 .nav-links {

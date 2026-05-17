@@ -43,11 +43,10 @@ export function Footer() {
 
         <div className="footer-grid r-footer-grid">
           <div>
-            <div className="nav-logo" style={{ marginBottom: 18, color: "#fff" }}>
-              <span className="nav-logo-mark" style={{ background: "#fff", color: "var(--ink)" }}>
-                R
-              </span>
-              <span>rankday.</span>
+            <div className="nav-logo dark" style={{ marginBottom: 18 }}>
+              <span className="logo-rank">rank</span>
+              <span className="logo-day">day</span>
+              <span className="logo-dot">.</span>
             </div>
             <p style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 360, color: "rgba(255,255,255,0.78)", margin: 0 }}>
               Websites, SEO, and AEO for businesses that need to be found.

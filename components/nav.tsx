@@ -51,9 +51,10 @@ export function Nav() {
     <>
       <div className="nav-wrap">
         <nav className="nav container" ref={navRef}>
-          <Link className="nav-logo" href="/">
-            <span className="nav-logo-mark">R</span>
-            <span>rankday.</span>
+          <Link className="nav-logo" href="/" aria-label="Rankday home">
+            <span className="logo-rank">rank</span>
+            <span className="logo-day">day</span>
+            <span className="logo-dot">.</span>
           </Link>
 
           <div className="nav-links">
