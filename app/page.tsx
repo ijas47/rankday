@@ -50,16 +50,27 @@ export default function HomePage() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 32, alignItems: "center", minHeight: 620 }}>
             <div>
-              <h1 className="h-display" data-reveal-text style={{ maxWidth: 780, fontSize: "clamp(36px, 5vw, 72px)" }}>
-                Top 3 on Google for 90% of your keywords. Recommended by{" "}
-                <span className="it">ChatGPT and Perplexity.</span> In 90 days. Or we keep working free.
+              <span className="eyebrow" data-reveal>Or we keep working free</span>
+
+              <h1
+                className="h-display"
+                data-reveal-text
+                style={{ maxWidth: 660, fontSize: "clamp(32px, 4vw, 56px)", marginTop: 18 }}
+              >
+                Top 3 on Google. Recommended by <span className="it">ChatGPT and Perplexity.</span> In 90 days.
               </h1>
 
-              <p className="lede" style={{ marginTop: 28, maxWidth: 580 }}>
-                Most businesses lose customers because their competitors rank above them on Google and get name-dropped by AI when buyers ask for recommendations. We rebuild your website, fix your search presence, and make sure your business is the one that comes up. <strong>90 days. One price.</strong>
+              <div data-reveal-stagger style={{ display: "flex", gap: 8, marginTop: 24, flexWrap: "wrap" }}>
+                <Pill dot="var(--purple)" label="Top 3 on Google" />
+                <Pill dot="#10a37f" label="Cited by ChatGPT, Claude, Perplexity" />
+                <Pill dot="#ff8a4c" label="90 days, one price" />
+              </div>
+
+              <p className="lede" data-reveal style={{ marginTop: 22, maxWidth: 560 }}>
+                We rebuild your website, fix your search presence, and make sure your business is the one buyers find. <strong>One price. No retainer.</strong>
               </p>
 
-              <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap" }}>
+              <div data-reveal style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
                 <Link href="/pricing" className="btn btn-primary">
                   Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
                 </Link>
@@ -331,6 +342,31 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+function Pill({ dot, label }: { dot: string; label: string }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "8px 14px",
+        background: "rgba(255,255,255,0.7)",
+        border: "1px solid var(--hairline)",
+        borderRadius: 99,
+        fontSize: 13,
+        fontWeight: 600,
+        color: "var(--ink)",
+        letterSpacing: "-0.005em",
+        backdropFilter: "blur(6px)",
+        WebkitBackdropFilter: "blur(6px)",
+      }}
+    >
+      <span style={{ width: 8, height: 8, borderRadius: 99, background: dot, flexShrink: 0 }} />
+      {label}
+    </span>
   );
 }
 
