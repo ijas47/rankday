@@ -68,11 +68,11 @@ export default function WhoItsForPage() {
 
       <section className="section" style={{ paddingTop: 32 }}>
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 40 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">A good fit.</h2>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div data-reveal-stagger className="r-2">
             {goodFit.map((f, i) => (
               <div key={f.title} className={`card card-${f.tone}`} style={{ padding: 0, minHeight: 260, display: "grid", gridTemplateColumns: "1fr auto", overflow: "hidden" }}>
                 <div style={{ padding: 32, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
@@ -114,7 +114,7 @@ export default function WhoItsForPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 14, alignItems: "stretch" }}>
+          <div data-reveal-stagger className="r-aside-rev">
             <div className="card card-ink" style={{ padding: 40 }}>
               <p className="kicker" style={{ color: "rgba(255,255,255,0.5)" }}>Not a fit</p>
               <p style={{ fontSize: 22, color: "#fff", fontWeight: 700, letterSpacing: "-0.015em", marginTop: 16, lineHeight: 1.3 }}>
@@ -140,14 +140,14 @@ export default function WhoItsForPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 40 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">Markets we serve.</h2>
             <p className="body lg" style={{ maxWidth: 540 }}>
               UAE, UK, US, Canada, Australia, Singapore, Ireland, New Zealand. Everywhere else case-by-case. <strong>Async-first by design.</strong>
             </p>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+          <div data-reveal-stagger className="r-cards-4">
             {marketTiles.map(([m, tone], i) => (
               <div
                 key={m}
@@ -166,7 +166,7 @@ export default function WhoItsForPage() {
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>
-          <div data-reveal className="band-purple" style={{ padding: "56px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+          <div data-reveal className="band-purple r-band">
             <h2 className="h1" style={{ color: "#fff" }}>
               <span className="serif">Start</span> your 90 days.
             </h2>

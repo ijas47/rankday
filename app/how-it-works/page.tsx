@@ -92,7 +92,7 @@ export default function HowItWorksPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div data-reveal-stagger className="r-2">
             <div className="card" style={{ padding: 40, minHeight: 360, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <p className="kicker">What you do</p>
               <p style={{ fontSize: 24, color: "var(--ink)", lineHeight: 1.3, letterSpacing: "-0.015em", fontWeight: 600, margin: 0 }}>
@@ -135,7 +135,7 @@ export default function HowItWorksPage() {
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>
-          <div data-reveal className="band-purple" style={{ padding: "56px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+          <div data-reveal className="band-purple r-band">
             <h2 className="h1" style={{ color: "#fff" }}>
               <span className="serif">Start</span> your 90 days.
             </h2>
@@ -152,7 +152,7 @@ export default function HowItWorksPage() {
 function Phase({ idx, week, title, body, output, footer, featured, tone, icon }: Phase & { idx: string }) {
   return (
     <div data-reveal className={`card ${featured ? `card-${tone}` : ""}`} style={{ padding: 36 }}>
-      <div style={{ display: "grid", gridTemplateColumns: "auto 180px 1fr 240px", gap: 32, alignItems: "start" }}>
+      <div className="r-phase">
         <div
           style={{
             width: 56,

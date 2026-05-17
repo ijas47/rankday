@@ -48,7 +48,7 @@ export default function HomePage() {
       {/* HERO */}
       <section style={{ padding: "32px 0 64px", position: "relative" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 32, alignItems: "center", minHeight: 620 }}>
+          <div className="r-hero">
             <div>
               <span className="eyebrow" data-reveal>Or we keep working free</span>
 
@@ -86,16 +86,13 @@ export default function HomePage() {
           {/* AI engines row */}
           <div
             data-reveal
+            className="ai-row"
             style={{
               marginTop: 80,
               padding: "24px 32px",
               background: "rgba(255,255,255,0.6)",
               border: "1px solid var(--hairline)",
               borderRadius: 20,
-              display: "grid",
-              gridTemplateColumns: "auto 1fr",
-              gap: 32,
-              alignItems: "center",
             }}
           >
             <p style={{ fontSize: 13, color: "var(--muted)", margin: 0, lineHeight: 1.3, fontWeight: 600, letterSpacing: "-0.005em" }}>
@@ -103,7 +100,7 @@ export default function HomePage() {
               <br />
               <strong style={{ color: "var(--ink)", fontWeight: 700 }}>by every AI that matters.</strong>
             </p>
-            <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12, alignItems: "center" }}>
+            <div data-reveal-stagger className="r-cards-5" style={{ alignItems: "center" }}>
               {aiEngines.map((ai) => (
                 <div
                   key={ai.name}
@@ -143,14 +140,14 @@ export default function HomePage() {
       {/* WHAT YOU GET */}
       <section className="section">
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 48 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1" data-reveal-text>What you get.</h2>
             <p className="body lg" style={{ maxWidth: 600 }}>
               A website built around your actual business. Branding that matches the quality of your work. Top 3 Google rankings for the keywords your buyers are searching. Mentions in ChatGPT, Perplexity, Google AI Overviews, and Claude when someone asks for businesses like yours.
             </p>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14 }}>
+          <div data-reveal-stagger className="r-cards-4">
             <GetCard tone="pink" title="Website" body="Built around your actual business." icon={<WebsiteIcon />} />
             <GetCard tone="peach" title="Branding" body="Matches the quality of your work." icon={<BrandingIcon />} />
             <GetCard tone="yellow" title="Top 3 on Google" body="For the keywords your buyers search." icon={<SearchIcon />} />
@@ -177,8 +174,8 @@ export default function HomePage() {
       {/* HOW WE DO IT */}
       <section className="section">
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 56, alignItems: "start" }}>
-            <div data-reveal style={{ position: "sticky", top: 100 }}>
+          <div className="r-aside">
+            <div data-reveal className="sticky-aside">
               <h2 className="h1">How we do it.</h2>
               <Link href="/how-it-works" className="btn btn-light" style={{ marginTop: 28 }}>
                 See the 90-day plan <span className="btn-icon"><Icon.Arrow /></span>
@@ -186,7 +183,7 @@ export default function HomePage() {
             </div>
 
             <div>
-              <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 14 }}>
+              <div data-reveal-stagger className="r-cards-2">
                 <ProcessCard icon={<WebsiteIcon />} title="Rebuild the site" tone="lilac" />
                 <ProcessCard icon={<SearchIcon />} title="Write content Google ranks" tone="pink" />
                 <ProcessCard icon={<AIIcon />} title="Structure for LLM citation" tone="peach" />
@@ -204,14 +201,14 @@ export default function HomePage() {
       {/* WHO THIS IS FOR */}
       <section className="section">
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 48 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">Who this is for.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
               Any business with a website and something to sell. Local service businesses, B2B SaaS, agencies, consultancies, e-commerce, professional services, clinics, law firms, real estate, hospitality.
             </p>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10 }}>
+          <div data-reveal-stagger className="r-cards-5-tight">
             {audience.map((t) => (
               <div key={t} className="card" style={{ padding: "14px 18px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
                 <span style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.005em" }}>{t}</span>
@@ -262,6 +259,7 @@ export default function HomePage() {
             </p>
 
             <div
+              className="r-guarantee-card"
               style={{
                 marginTop: 32,
                 padding: 28,
@@ -269,10 +267,6 @@ export default function HomePage() {
                 borderRadius: 18,
                 border: "1px solid rgba(255,255,255,0.15)",
                 maxWidth: 920,
-                display: "grid",
-                gridTemplateColumns: "auto 1fr auto",
-                gap: 28,
-                alignItems: "center",
               }}
             >
               <div
@@ -318,14 +312,14 @@ export default function HomePage() {
       {/* MARKETS */}
       <section className="section">
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 48 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">Markets.</h2>
             <p className="body lg" style={{ maxWidth: 540 }}>
               UAE · UK · US · Canada · Australia · Singapore · Ireland · New Zealand. Most English-speaking markets.
             </p>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+          <div data-reveal-stagger className="r-cards-4">
             {markets.map(([m, tone], i) => (
               <div
                 key={m}

@@ -67,8 +67,8 @@ export default function AboutPage() {
 
       <section style={{ padding: "32px 0 64px" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 56, alignItems: "center" }}>
-            <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, height: 520, position: "relative" }}>
+          <div className="r-about">
+            <div data-reveal className="r-arches">
               <div className="arch arch-image" style={{ position: "relative" }}>
                 <div
                   style={{
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
       <section style={{ padding: "0 0 64px" }}>
         <div className="container">
-          <div ref={statsRef} className="card" style={{ padding: "40px 48px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
+          <div ref={statsRef} className="card r-stats">
             {stats.map((s, i) => (
               <div key={s.label} style={{ padding: "0 28px", borderLeft: i > 0 ? "1px solid var(--hairline)" : "none" }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
@@ -130,11 +130,11 @@ export default function AboutPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 40 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">How we work.</h2>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div data-reveal-stagger className="r-2">
             <div className="card card-pink" style={{ padding: 40, minHeight: 220 }}>
               <p className="kicker">Our team</p>
               <p style={{ fontSize: 21, color: "var(--ink)", lineHeight: 1.4, letterSpacing: "-0.015em", margin: "16px 0 0", fontWeight: 600 }}>
@@ -153,11 +153,11 @@ export default function AboutPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 40 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">What we believe.</h2>
           </div>
 
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
+          <div data-reveal-stagger className="r-cards-5">
             {beliefs.map(([b, tone], i) => (
               <div
                 key={b}
@@ -176,7 +176,7 @@ export default function AboutPage() {
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>
-          <div data-reveal className="band-purple" style={{ padding: "56px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+          <div data-reveal className="band-purple r-band">
             <h2 className="h1" style={{ color: "#fff" }}>
               <span className="serif">Start</span> your 90 days.
             </h2>

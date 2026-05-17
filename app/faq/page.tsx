@@ -78,8 +78,8 @@ export default function FAQPage() {
 
       <section style={{ padding: "32px 0 64px" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2.4fr", gap: 32, alignItems: "start" }}>
-            <div style={{ position: "sticky", top: 100 }}>
+          <div className="r-faq">
+            <div className="sticky-aside">
               <div data-reveal className="card card-lilac" style={{ padding: 28 }}>
                 <p style={{ fontSize: 17, color: "var(--ink)", margin: 0, lineHeight: 1.45, fontWeight: 600, letterSpacing: "-0.005em" }}>
                   Got a different one? <span className="serif" style={{ color: "var(--purple)" }}>Send us a WhatsApp.</span>

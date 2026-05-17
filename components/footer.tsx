@@ -5,19 +5,11 @@ export function Footer() {
   return (
     <footer className="footer" id="footer">
       <div className="container">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.4fr 1fr",
-            gap: 56,
-            alignItems: "end",
-            marginBottom: 72,
-          }}
-        >
+        <div className="r-footer-cta">
           <div>
             <h2
               style={{
-                fontSize: "clamp(40px, 6vw, 84px)",
+                fontSize: "clamp(36px, 6vw, 84px)",
                 lineHeight: 1.02,
                 letterSpacing: "-0.03em",
                 fontWeight: 700,
@@ -30,7 +22,7 @@ export function Footer() {
             </h2>
           </div>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
+          <div className="footer-cta-buttons" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
             <Link href="/pricing" className="btn btn-primary">
               Start your 90 days{" "}
               <span className="btn-icon">
@@ -49,7 +41,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="footer-grid">
+        <div className="footer-grid r-footer-grid">
           <div>
             <div className="nav-logo" style={{ marginBottom: 18, color: "#fff" }}>
               <span className="nav-logo-mark" style={{ background: "#fff", color: "var(--ink)" }}>

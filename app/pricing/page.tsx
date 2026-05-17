@@ -43,7 +43,7 @@ export default function PricingPage() {
 
       <section style={{ padding: "32px 0 64px" }}>
         <div className="container">
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div data-reveal-stagger className="r-2">
             {/* Standard */}
             <div className="card card-lilac" style={{ padding: 48, display: "flex", flexDirection: "column", gap: 28 }}>
               <div>
@@ -128,7 +128,7 @@ export default function PricingPage() {
 
       <section className="section" style={{ paddingTop: 32 }}>
         <div className="container">
-          <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 40 }}>
+          <div data-reveal className="r-header">
             <h2 className="h1">Local pricing.</h2>
             <p className="body lg" style={{ maxWidth: 540 }}>
               Same scope. Local invoicing. All prices below are for the full 90 days of work. Other markets billed in USD.
@@ -136,7 +136,7 @@ export default function PricingPage() {
           </div>
 
           <div data-reveal className="card" style={{ padding: 0, overflow: "hidden", maxWidth: 880, margin: "0 auto" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: 0, background: "var(--ink)", color: "#fff", padding: "16px 28px" }}>
+            <div className="r-pricing-table" style={{ background: "var(--ink)", color: "#fff", padding: "16px 28px" }}>
               <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>Market</div>
               <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>Standard</div>
               <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>Growth</div>
@@ -145,10 +145,8 @@ export default function PricingPage() {
             {localPricing.map(([market, std, gro], i) => (
               <div
                 key={market}
+                className="r-pricing-table"
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "1.4fr 1fr 1fr",
-                  gap: 0,
                   padding: "22px 28px",
                   borderTop: i === 0 ? "none" : "1px solid var(--hairline)",
                   alignItems: "center",
@@ -169,7 +167,7 @@ export default function PricingPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div data-reveal-stagger style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div data-reveal-stagger className="r-2">
             <div className="card" style={{ padding: 40 }}>
               <p className="kicker">After day 90</p>
               <p style={{ fontSize: 24, color: "var(--ink)", marginTop: 18, lineHeight: 1.3, letterSpacing: "-0.015em", fontWeight: 700 }}>
@@ -179,7 +177,7 @@ export default function PricingPage() {
                 If you want us to keep producing content, protecting your rankings, and expanding your AI visibility, we offer month-to-month maintenance:
               </p>
 
-              <div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+              <div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }} className="maintenance-grid">
                 <div style={{ padding: "16px 18px", background: "var(--paper)", borderRadius: 14, border: "1px solid var(--hairline)" }}>
                   <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: 0, fontWeight: 600 }}>Standard</p>
                   <p style={{ fontSize: 22, fontWeight: 700, color: "var(--ink)", margin: "8px 0 0", letterSpacing: "-0.02em" }}>
@@ -225,7 +223,7 @@ export default function PricingPage() {
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>
-          <div data-reveal className="band-purple" style={{ padding: "56px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+          <div data-reveal className="band-purple r-band">
             <h2 className="h1" style={{ color: "#fff" }}>
               <span className="serif">Start</span> your 90 days.
             </h2>
