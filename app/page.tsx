@@ -55,19 +55,19 @@ export default function HomePage() {
               <h1
                 className="h-display"
                 data-reveal-text
-                style={{ maxWidth: 660, fontSize: "clamp(32px, 4vw, 56px)", marginTop: 18 }}
+                style={{ maxWidth: 680, fontSize: "clamp(32px, 4vw, 56px)", marginTop: 18 }}
               >
-                Top 3 on Google. Recommended by <span className="it">ChatGPT and Perplexity.</span> In 90 days.
+                A new website. Ranked on Google. Cited by <span className="it">AI</span>. In 90 days. One price.
               </h1>
 
               <div data-reveal-stagger style={{ display: "flex", gap: 8, marginTop: 24, flexWrap: "wrap" }}>
-                <Pill dot="var(--purple)" label="Top 3 on Google" />
-                <Pill dot="#10a37f" label="Cited by ChatGPT, Claude, Perplexity" />
-                <Pill dot="#ff8a4c" label="90 days, one price" />
+                <Pill dot="var(--purple)" label="5 to 12 page website + branding" />
+                <Pill dot="#10a37f" label="Top 3 on Google for 90% of keywords" />
+                <Pill dot="#ff8a4c" label="Cited by ChatGPT, Claude, Perplexity" />
               </div>
 
               <p className="lede" data-reveal style={{ marginTop: 22, maxWidth: 560 }}>
-                We rebuild your website, fix your search presence, and make sure your business is the one buyers find. <strong>One price. No retainer.</strong>
+                We rebuild your website, rank it on Google, and get you cited by AI. All three in 90 days. <strong>One fixed price. No retainer.</strong>
               </p>
 
               <div data-reveal style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
