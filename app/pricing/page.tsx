@@ -54,7 +54,10 @@ export default function PricingPage() {
                   </p>
                   <span style={{ fontSize: 16, color: "var(--muted)", fontWeight: 600 }}>USD</span>
                 </div>
-                <p className="body" style={{ marginTop: 22, color: "var(--ink-2)" }}>
+                <p style={{ margin: "10px 0 0", fontSize: 14, color: "var(--purple)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                  For 90 days of work. One price.
+                </p>
+                <p className="body" style={{ marginTop: 18, color: "var(--ink-2)" }}>
                   For local service businesses and small operators. Up to 7-page website, up to 15 target keywords, local SEO and AEO.
                 </p>
               </div>
@@ -87,7 +90,10 @@ export default function PricingPage() {
                   </p>
                   <span style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>USD</span>
                 </div>
-                <p className="body" style={{ marginTop: 22, color: "rgba(255,255,255,0.85)" }}>
+                <p style={{ margin: "10px 0 0", fontSize: 14, color: "#fff", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                  For 90 days of work. One price.
+                </p>
+                <p className="body" style={{ marginTop: 18, color: "rgba(255,255,255,0.85)" }}>
                   For B2B, SaaS, e-commerce, professional services, or anyone competing in higher-intent categories. Up to 12-page website, up to 30 target keywords, full SEO and AEO including comparison content and third-party placement.
                 </p>
               </div>
@@ -125,7 +131,7 @@ export default function PricingPage() {
           <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 40 }}>
             <h2 className="h1">Local pricing.</h2>
             <p className="body lg" style={{ maxWidth: 540 }}>
-              Same scope. Local invoicing. Other markets billed in USD.
+              Same scope. Local invoicing. All prices below are for the full 90 days of work. Other markets billed in USD.
             </p>
           </div>
 
