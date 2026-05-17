@@ -20,53 +20,19 @@ if (typeof window !== "undefined") {
  *   data-parallax="0.4"     subtle scroll-based parallax
  */
 
-function splitWordsRecursive(parent: Element) {
-  const fragments: Node[] = [];
-  Array.from(parent.childNodes).forEach((child) => {
-    if (child.nodeType === Node.TEXT_NODE) {
-      const text = child.textContent ?? "";
-      const parts = text.split(/(\s+)/);
-      parts.forEach((part) => {
-        if (part === "") return;
-        if (/^\s+$/.test(part)) {
-          fragments.push(document.createTextNode(part));
-        } else {
-          const mask = document.createElement("span");
-          mask.className = "word-mask";
-          mask.style.display = "inline-block";
-          mask.style.overflow = "hidden";
-          mask.style.verticalAlign = "bottom";
-          mask.style.paddingBottom = "0.15em";
-
-          const inner = document.createElement("span");
-          inner.className = "word-reveal";
-          inner.style.display = "inline-block";
-          inner.style.willChange = "transform, opacity";
-          inner.textContent = part;
-
-          mask.appendChild(inner);
-          fragments.push(mask);
-        }
-      });
-    } else if (child.nodeType === Node.ELEMENT_NODE) {
-      const el = child as Element;
-      splitWordsRecursive(el);
-      fragments.push(el);
-    } else {
-      fragments.push(child);
-    }
-  });
-  while (parent.firstChild) parent.removeChild(parent.firstChild);
-  fragments.forEach((f) => parent.appendChild(f));
-}
-
 export function ScrollReveal() {
   const pathname = usePathname();
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
-      gsap.set("[data-reveal], [data-reveal-stagger] > *, .word-reveal", { opacity: 1, y: 0, clearProps: "all" });
+      gsap.set("[data-reveal], [data-reveal-stagger] > *, [data-reveal-text]", {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        clearProps: "all",
+      });
       return;
     }
 
@@ -105,24 +71,29 @@ export function ScrollReveal() {
         );
       });
 
+      // Headline reveal. Single-element entrance with a slight scale + blur clear.
       gsap.utils.toArray<HTMLElement>("[data-reveal-text]").forEach((el) => {
-        if (el.dataset.revealSplit !== "true") {
-          el.dataset.revealSplit = "true";
-          splitWordsRecursive(el);
-        }
-        const words = el.querySelectorAll<HTMLElement>(".word-reveal");
-        gsap.fromTo(
-          words,
-          { yPercent: 130, opacity: 0 },
-          {
-            yPercent: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: "power3.out",
-            stagger: 0.04,
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight * 0.95;
+
+        const from = { y: 40, opacity: 0, scale: 0.96, filter: "blur(6px)" };
+        const to = {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 1.1,
+          ease: "power3.out",
+        };
+
+        if (inView) {
+          gsap.fromTo(el, from, { ...to, delay: 0.1 });
+        } else {
+          gsap.fromTo(el, from, {
+            ...to,
             scrollTrigger: { trigger: el, start: "top 88%", once: true },
-          }
-        );
+          });
+        }
       });
 
       gsap.utils.toArray<HTMLElement>("[data-float]").forEach((el, i) => {

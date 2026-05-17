@@ -710,9 +710,13 @@ img { display: block; max-width: 100%; }
 .reveal { opacity: 0; transform: translateY(28px); will-change: transform, opacity; }
 .reveal-stagger > * { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
 
-/* Word-stagger reveal. Each word is wrapped in a .word-mask span (overflow hidden)
-   with an inner .word-reveal that slides up from below. */
-.word-reveal { opacity: 0; transform: translateY(130%); will-change: transform, opacity; }
+/* Headline entrance state. Slight blur + lift, cleared by GSAP. */
+[data-reveal-text] {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  filter: blur(6px);
+  will-change: transform, opacity, filter;
+}
 
 /* Animated gradient on the scroll progress bar */
 @keyframes progressShine {
