@@ -24,7 +24,7 @@ type Phase = {
 const phases: Phase[] = [
   {
     week: "Week 1",
-    pct: 8,
+    pct: 5,
     title: "Foundations",
     body: "We audit your current website, search presence, and AI visibility. You tell us the keywords that matter. We tell you which 90% we can rank you for in 90 days, and which need longer. You sign off on the list.",
     output: "Keyword agreement, competitor map, ranking and AI baseline.",
@@ -32,26 +32,26 @@ const phases: Phase[] = [
     tone: "pink",
   },
   {
-    week: "Weeks 2–3",
-    pct: 25,
+    week: "Week 1",
+    pct: 12,
     title: "Site rebuild or reposition",
-    body: "We design and build your new website, or restructure your existing one if it's worth keeping. Five to twelve pages depending on scope. Mobile-first. 95+ Core Web Vitals. Branding included if you want it.",
-    footer: "You review one round. We ship.",
+    body: "We design and ship your new website, or restructure your existing one if it's worth keeping. Five to twelve pages depending on scope. Mobile-first. 95+ Core Web Vitals. Branding included if you want it. Modern tooling lets us compress what most agencies stretch into a month into the same week the foundations work happens.",
+    footer: "You review one round. We ship by end of week 1.",
     icon: <BuildIcon />,
     tone: "peach",
     featured: true,
   },
   {
-    week: "Week 4",
-    pct: 33,
+    week: "Week 2",
+    pct: 17,
     title: "Launch + technical setup",
     body: "Site goes live. Schema markup applied. Sitemap submitted to Google. Search Console and analytics installed. Google Business Profile rebuilt for local. LinkedIn and directory listings optimized for B2B.",
     icon: <LaunchIcon />,
     tone: "yellow",
   },
   {
-    week: "Weeks 5–8",
-    pct: 66,
+    week: "Weeks 3–7",
+    pct: 58,
     title: "Content + signals",
     body: "We publish four to eight content pages targeting your agreed keywords. Each is structured for both Google ranking and LLM citation. We build citations, earn backlinks, run review collection, and get you listed on the directories LLMs pull from.",
     footer: "Weekly Loom update. Two minutes. No reports.",
@@ -59,7 +59,7 @@ const phases: Phase[] = [
     tone: "mint",
   },
   {
-    week: "Weeks 9–12",
+    week: "Weeks 8–12",
     pct: 100,
     title: "Rank, refine, get cited",
     body: "Rankings start moving. We watch which keywords are landing and double down. Weekly AI visibility checks across ChatGPT, Perplexity, Claude, and Google AI Overviews feed back into the content engine.",
@@ -105,10 +105,10 @@ export default function HowItWorksPage() {
             <div className="card" style={{ padding: 40, minHeight: 360, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <p className="kicker">What you do</p>
               <p style={{ fontSize: 24, color: "var(--ink)", lineHeight: 1.3, letterSpacing: "-0.015em", fontWeight: 600, margin: 0 }}>
-                Sign off on the keyword list in week 1. Approve the site in week 3. <span className="serif" style={{ color: "var(--purple)" }}>Answer two short questions a week.</span> That&apos;s it.
+                Sign off on the keyword list and approve the site in week 1. <span className="serif" style={{ color: "var(--purple)" }}>Answer two short questions a week.</span> That&apos;s it.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginTop: 28 }}>
-                {["Week 1", "Week 3", "Weekly"].map((w, i) => (
+                {["Day 3", "Day 7", "Weekly"].map((w, i) => (
                   <div key={w} style={{ padding: "10px 12px", background: "var(--paper)", borderRadius: 10, border: "1px solid var(--hairline)" }}>
                     <p style={{ fontSize: 10, color: "var(--muted)", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>
                       0{i + 1}
