@@ -2,11 +2,11 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 const standardIncludes = [
-  "5–7 page custom website",
+  "5 to 7 page custom website",
   "Branding (logo, colors, type system)",
   "Hosting and domain setup for year one",
   "Google Business Profile rebuild (for local businesses)",
-  "4–6 SEO content pages",
+  "4 to 6 SEO content pages",
   "30+ citations and backlinks",
   "Review collection system",
   "AEO setup: schema, structured answers, LLM-ready content",

@@ -1,5 +1,5 @@
 /* ====================================================================
-   Rankday — pastel + purple theme
+   Rankday. Pastel + purple theme.
    ==================================================================== */
 
 :root {
@@ -106,13 +106,7 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
   color: var(--purple);
 }
-.kicker::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--purple);
-  opacity: 0.5;
-}
+/* removed decorative line that used to sit before kicker text */
 
 .h-display {
   font-family: var(--sans);
@@ -705,7 +699,7 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
 }
 
-/* GSAP fade-in primitive — initial hidden state for any element flagged .reveal */
+/* GSAP fade-in primitive. Initial hidden state for any element flagged .reveal */
 .reveal { opacity: 0; transform: translateY(28px); will-change: transform, opacity; }
 .reveal-stagger > * { opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
 

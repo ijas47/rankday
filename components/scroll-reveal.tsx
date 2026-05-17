@@ -11,11 +11,11 @@ if (typeof window !== "undefined") {
 
 /**
  * Mounts once. On every route change it re-scans the DOM for elements with:
- *   data-reveal             — fade + rise once when entering viewport
- *   data-reveal-stagger     — same, but staggers direct children
- *   data-reveal-y="40"      — override rise distance
- *   data-reveal-delay="0.1" — override start delay (seconds)
- *   data-float              — gentle perpetual y-float (used on hero badges/sparkles)
+ *   data-reveal            :fade + rise once when entering viewport
+ *   data-reveal-stagger    :same, but staggers direct children
+ *   data-reveal-y="40"     :override rise distance
+ *   data-reveal-delay="0.1":override start delay (seconds)
+ *   data-float             :gentle perpetual y-float (used on hero badges/sparkles)
  *
  * Animation is intentionally restrained: short durations, soft easing, no big motion
  * arcs. Nothing rotates wildly, nothing bounces. The page should feel quiet, not staged.

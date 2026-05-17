@@ -25,7 +25,7 @@ const phases: Phase[] = [
     week: "Week 1",
     pct: 12,
     title: "Foundations + site rebuild",
-    body: "We audit your current website, search presence, and AI visibility. You tell us the keywords that matter and we agree on the list. In parallel, we design and ship your new site — five to twelve pages depending on scope, mobile-first, 95+ Core Web Vitals, branding included. Modern tooling lets us do in one week what most agencies stretch into a month.",
+    body: "We audit your current website, search presence, and AI visibility. You tell us the keywords that matter and we agree on the list. In parallel, we design and ship your new site. Five to twelve pages depending on scope. Mobile-first. 95+ Core Web Vitals. Branding included. Modern tooling lets us do in one week what most agencies stretch into a month.",
     output: "Keyword agreement, competitor map, baseline, and a shipped site.",
     footer: "You sign off the keywords and review the site once. We ship by end of week 1.",
     icon: <BuildIcon />,
@@ -41,7 +41,7 @@ const phases: Phase[] = [
     tone: "yellow",
   },
   {
-    week: "Weeks 2–7",
+    week: "Weeks 2 to 7",
     pct: 58,
     title: "Content + signals",
     body: "We publish four to eight content pages targeting your agreed keywords. Each is structured for both Google ranking and LLM citation. We build citations, earn backlinks, run review collection, and get you listed on the directories LLMs pull from.",
@@ -50,7 +50,7 @@ const phases: Phase[] = [
     tone: "mint",
   },
   {
-    week: "Weeks 8–12",
+    week: "Weeks 8 to 12",
     pct: 100,
     title: "Rank, refine, get cited",
     body: "Rankings start moving. We watch which keywords are landing and double down. Weekly AI visibility checks across ChatGPT, Perplexity, Claude, and Google AI Overviews feed back into the content engine.",
