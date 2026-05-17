@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import {
-  FoundationsIcon,
   BuildIcon,
   LaunchIcon,
   ContentIcon,
@@ -24,33 +23,25 @@ type Phase = {
 const phases: Phase[] = [
   {
     week: "Week 1",
-    pct: 5,
-    title: "Foundations",
-    body: "We audit your current website, search presence, and AI visibility. You tell us the keywords that matter. We tell you which 90% we can rank you for in 90 days, and which need longer. You sign off on the list.",
-    output: "Keyword agreement, competitor map, ranking and AI baseline.",
-    icon: <FoundationsIcon />,
-    tone: "pink",
-  },
-  {
-    week: "Week 1",
     pct: 12,
-    title: "Site rebuild or reposition",
-    body: "We design and ship your new website, or restructure your existing one if it's worth keeping. Five to twelve pages depending on scope. Mobile-first. 95+ Core Web Vitals. Branding included if you want it. Modern tooling lets us compress what most agencies stretch into a month into the same week the foundations work happens.",
-    footer: "You review one round. We ship by end of week 1.",
+    title: "Foundations + site rebuild",
+    body: "We audit your current website, search presence, and AI visibility. You tell us the keywords that matter and we agree on the list. In parallel, we design and ship your new site — five to twelve pages depending on scope, mobile-first, 95+ Core Web Vitals, branding included. Modern tooling lets us do in one week what most agencies stretch into a month.",
+    output: "Keyword agreement, competitor map, baseline, and a shipped site.",
+    footer: "You sign off the keywords and review the site once. We ship by end of week 1.",
     icon: <BuildIcon />,
     tone: "peach",
     featured: true,
   },
   {
     week: "Week 2",
-    pct: 17,
+    pct: 25,
     title: "Launch + technical setup",
     body: "Site goes live. Schema markup applied. Sitemap submitted to Google. Search Console and analytics installed. Google Business Profile rebuilt for local. LinkedIn and directory listings optimized for B2B.",
     icon: <LaunchIcon />,
     tone: "yellow",
   },
   {
-    week: "Weeks 3–7",
+    week: "Weeks 2–7",
     pct: 58,
     title: "Content + signals",
     body: "We publish four to eight content pages targeting your agreed keywords. Each is structured for both Google ranking and LLM citation. We build citations, earn backlinks, run review collection, and get you listed on the directories LLMs pull from.",

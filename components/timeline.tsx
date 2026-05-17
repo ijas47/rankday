@@ -51,7 +51,7 @@ export function Timeline({ phases }: { phases: Phase[] }) {
         padding: "36px 40px 28px",
       }}
     >
-      <div style={{ position: "relative", height: 56, marginBottom: 20 }}>
+      <div style={{ position: "relative", height: 56 }}>
         <div
           style={{
             position: "absolute",
@@ -76,43 +76,66 @@ export function Timeline({ phases }: { phases: Phase[] }) {
           }}
         />
 
-        {phases.map((p, i) => (
-          <div
-            key={i}
-            className="tl-node"
-            style={{
-              position: "absolute",
-              left: i === 0 ? 4 : i === phases.length - 1 ? "calc(100% - 24px)" : `calc(${p.pct}% - 12px)`,
-              top: 14,
-              width: 28,
-              height: 28,
-              borderRadius: 99,
-              background: "#fff",
-              border: "3px solid var(--purple)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 11,
-              fontWeight: 700,
-              color: "var(--purple)",
-              fontFamily: "var(--mono)",
-              zIndex: 2,
-            }}
-          >
-            {i + 1}
-          </div>
-        ))}
+        {phases.map((p, i) => {
+          const isFirst = i === 0;
+          const isLast = i === phases.length - 1;
+          const left = isFirst ? "4px" : isLast ? "calc(100% - 24px)" : `calc(${p.pct}% - 12px)`;
+          return (
+            <div
+              key={i}
+              className="tl-node"
+              style={{
+                position: "absolute",
+                left,
+                top: 14,
+                width: 28,
+                height: 28,
+                borderRadius: 99,
+                background: "#fff",
+                border: "3px solid var(--purple)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 11,
+                fontWeight: 700,
+                color: "var(--purple)",
+                fontFamily: "var(--mono)",
+                zIndex: 2,
+              }}
+            >
+              {i + 1}
+            </div>
+          );
+        })}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: `repeat(${phases.length}, 1fr)`, gap: 0 }}>
-        {phases.map((p, i) => (
-          <div key={i} style={{ textAlign: i === 0 ? "left" : i === phases.length - 1 ? "right" : "center" }}>
-            <p style={{ fontSize: 11, color: "var(--purple)", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700 }}>
-              {p.week}
-            </p>
-            <p style={{ fontSize: 14, color: "var(--ink)", margin: "4px 0 0", fontWeight: 700, letterSpacing: "-0.005em" }}>{p.title}</p>
-          </div>
-        ))}
+      {/* Labels: each label is absolutely positioned so it lines up with its own marker. */}
+      <div style={{ position: "relative", height: 56, marginTop: 12 }}>
+        {phases.map((p, i) => {
+          const isFirst = i === 0;
+          const isLast = i === phases.length - 1;
+          const left = isFirst ? "4px" : isLast ? "calc(100% - 24px)" : `calc(${p.pct}% - 12px)`;
+          const transform = isFirst ? "translateX(0)" : isLast ? "translateX(-100%) translateX(28px)" : "translateX(-50%) translateX(14px)";
+          const textAlign = isFirst ? ("left" as const) : isLast ? ("right" as const) : ("center" as const);
+          return (
+            <div
+              key={i}
+              style={{
+                position: "absolute",
+                top: 0,
+                left,
+                transform,
+                width: 160,
+                textAlign,
+              }}
+            >
+              <p style={{ fontSize: 11, color: "var(--purple)", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 700 }}>
+                {p.week}
+              </p>
+              <p style={{ fontSize: 14, color: "var(--ink)", margin: "4px 0 0", fontWeight: 700, letterSpacing: "-0.005em", lineHeight: 1.25 }}>{p.title}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
