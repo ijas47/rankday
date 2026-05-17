@@ -57,7 +57,7 @@ export default function WhoItsForPage() {
     <div className="page-enter">
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
-          <h1 className="h-display" data-reveal style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <h1 className="h-display" data-reveal-text style={{ maxWidth: 1100, margin: "0 auto" }}>
             Built for businesses that need to <span className="it">be found.</span>
           </h1>
           <p className="lede" data-reveal data-reveal-delay="0.1" style={{ marginTop: 28, maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>

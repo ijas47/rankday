@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { HeroVisual } from "@/components/hero-visual";
+import { Marquee } from "@/components/marquee";
 import {
   WebsiteIcon,
   BrandingIcon,
@@ -48,8 +49,8 @@ export default function HomePage() {
       <section style={{ padding: "32px 0 64px", position: "relative" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "1.05fr 1fr", gap: 32, alignItems: "center", minHeight: 620 }}>
-            <div data-reveal>
-              <h1 className="h-display" style={{ maxWidth: 780, fontSize: "clamp(36px, 5vw, 72px)" }}>
+            <div>
+              <h1 className="h-display" data-reveal-text style={{ maxWidth: 780, fontSize: "clamp(36px, 5vw, 72px)" }}>
                 Top 3 on Google for 90% of your keywords. Recommended by{" "}
                 <span className="it">ChatGPT and Perplexity.</span> In 90 days. Or we keep working free.
               </h1>
@@ -115,11 +116,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Marquee strip */}
+      <Marquee
+        items={[
+          "90 days",
+          "One price",
+          "Top 3 on Google",
+          "Cited by ChatGPT",
+          "Done by day 90",
+          "Or we keep working free",
+        ]}
+        speed={50}
+      />
+
       {/* WHAT YOU GET */}
       <section className="section">
         <div className="container">
           <div data-reveal style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 56, alignItems: "end", marginBottom: 48 }}>
-            <h2 className="h1">What you get.</h2>
+            <h2 className="h1" data-reveal-text>What you get.</h2>
             <p className="body lg" style={{ maxWidth: 600 }}>
               A website built around your actual business. Branding that matches the quality of your work. Top 3 Google rankings for the keywords your buyers are searching. Mentions in ChatGPT, Perplexity, Google AI Overviews, and Claude when someone asks for businesses like yours.
             </p>

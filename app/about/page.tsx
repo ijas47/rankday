@@ -59,7 +59,7 @@ export default function AboutPage() {
     <div className="page-enter">
       <section style={{ padding: "32px 0 40px", textAlign: "center" }}>
         <div className="container">
-          <h1 className="h-display" data-reveal style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <h1 className="h-display" data-reveal-text style={{ maxWidth: 1100, margin: "0 auto" }}>
             About <span className="it">Rankday.</span>
           </h1>
         </div>

@@ -7,13 +7,20 @@ import { Icon } from "./icons";
 
 export function HeroVisual() {
   const root = useRef<HTMLDivElement | null>(null);
+  const callsRef = useRef<HTMLSpanElement | null>(null);
+  const pctRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
     if (!root.current) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
 
     const ctx = gsap.context(() => {
+      if (reduce) {
+        if (callsRef.current) callsRef.current.textContent = "4,532";
+        if (pctRef.current) pctRef.current.textContent = "+218%";
+        return;
+      }
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from(".hv-blob", { scale: 0.85, opacity: 0, duration: 1.1 })
         .from(".hv-arch", { y: 36, opacity: 0, duration: 0.9 }, "-=0.7")
@@ -24,7 +31,29 @@ export function HeroVisual() {
         .from(".sparkle", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.08, ease: "back.out(2)" }, "-=0.5")
         .from(".hv-curve", { opacity: 0, scale: 0.85, transformOrigin: "50% 50%", duration: 0.6 }, "-=0.4");
 
-      // perpetual gentle float on badges
+      // Number tickers
+      const calls = { v: 0 };
+      gsap.to(calls, {
+        v: 4532,
+        duration: 1.8,
+        ease: "power3.out",
+        delay: 1.0,
+        onUpdate: () => {
+          if (callsRef.current) callsRef.current.textContent = Math.round(calls.v).toLocaleString();
+        },
+      });
+      const pct = { v: 0 };
+      gsap.to(pct, {
+        v: 218,
+        duration: 1.6,
+        ease: "power3.out",
+        delay: 1.1,
+        onUpdate: () => {
+          if (pctRef.current) pctRef.current.textContent = `+${Math.round(pct.v)}%`;
+        },
+      });
+
+      // Perpetual gentle float on badges
       gsap.to(".float-badge", {
         y: "+=6",
         duration: 3.4,
@@ -33,7 +62,7 @@ export function HeroVisual() {
         repeat: -1,
         stagger: 0.3,
       });
-      // sparkle twinkle (opacity pulse)
+      // Sparkle twinkle
       gsap.to(".sparkle", {
         opacity: 0.55,
         duration: 1.6,
@@ -42,6 +71,61 @@ export function HeroVisual() {
         repeat: -1,
         stagger: 0.2,
       });
+
+      // Slow drift on the SERP arch (subtle, perpetual)
+      gsap.to(".hv-arch", {
+        y: "+=12",
+        duration: 5,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // Mouse parallax. Sparkles, badges, and the curve drift slightly with cursor.
+      const sparkles = gsap.utils.toArray<HTMLElement>(".sparkle");
+      const badges = gsap.utils.toArray<HTMLElement>(".float-badge");
+      const curve = root.current!.querySelector(".hv-curve") as HTMLElement | null;
+
+      const quickSparkles = sparkles.map((el) => ({
+        x: gsap.quickTo(el, "x", { duration: 0.8, ease: "power3.out" }),
+        y: gsap.quickTo(el, "y", { duration: 0.8, ease: "power3.out" }),
+      }));
+      const quickBadges = badges.map((el) => ({
+        x: gsap.quickTo(el, "x", { duration: 1.0, ease: "power3.out" }),
+        y: gsap.quickTo(el, "y", { duration: 1.0, ease: "power3.out" }),
+      }));
+      const quickCurve = curve
+        ? {
+            x: gsap.quickTo(curve, "x", { duration: 1.2, ease: "power3.out" }),
+            y: gsap.quickTo(curve, "y", { duration: 1.2, ease: "power3.out" }),
+          }
+        : null;
+
+      const onMove = (e: MouseEvent) => {
+        if (!root.current) return;
+        const r = root.current.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dx = (e.clientX - cx) / r.width;
+        const dy = (e.clientY - cy) / r.height;
+        sparkles.forEach((_, i) => {
+          const amp = 18 + (i % 3) * 4;
+          quickSparkles[i].x(dx * amp);
+          quickSparkles[i].y(dy * amp);
+        });
+        badges.forEach((_, i) => {
+          const amp = 8 + (i % 2) * 4;
+          quickBadges[i].x(dx * amp);
+          quickBadges[i].y(dy * amp);
+        });
+        if (quickCurve) {
+          quickCurve.x(dx * 14);
+          quickCurve.y(dy * 14);
+        }
+      };
+
+      window.addEventListener("mousemove", onMove);
+      return () => window.removeEventListener("mousemove", onMove);
     }, root);
 
     return () => ctx.revert();
@@ -131,8 +215,12 @@ export function HeroVisual() {
           Calls this month
         </div>
         <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginTop: 4 }}>
-          <span style={{ fontSize: 22, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>4,532</span>
-          <span style={{ fontSize: 12, fontWeight: 600, color: "#1a9d4b" }}>+218%</span>
+          <span ref={callsRef} style={{ fontSize: 22, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>
+            0
+          </span>
+          <span ref={pctRef} style={{ fontSize: 12, fontWeight: 600, color: "#1a9d4b" }}>
+            +0%
+          </span>
         </div>
         <svg width="120" height="28" viewBox="0 0 120 28" style={{ marginTop: 6, display: "block" }}>
           <path d="M0 22 L20 18 L40 20 L60 14 L80 10 L100 6 L120 4" stroke="var(--purple)" strokeWidth="2" fill="none" strokeLinecap="round" />

@@ -3,6 +3,7 @@ import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 export const metadata: Metadata = {
   title: "Rankday. 90 days. One price.",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <ScrollProgress />
         <div className="shell">
           <Nav />
           <main>{children}</main>

@@ -70,7 +70,7 @@ export default function FAQPage() {
     <div className="page-enter">
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
-          <h1 className="h-display" data-reveal style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <h1 className="h-display" data-reveal-text style={{ maxWidth: 1100, margin: "0 auto" }}>
             Questions buyers <span className="it">actually</span> ask.
           </h1>
         </div>
