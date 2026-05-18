@@ -94,7 +94,7 @@ export default function PricingPage() {
                   For 90 days of work. One price.
                 </p>
                 <p className="body" style={{ marginTop: 18, color: "rgba(255,255,255,0.85)" }}>
-                  For B2B, SaaS, e-commerce, professional services, or anyone competing in higher-intent categories. Up to 12-page website, up to 30 target keywords, full SEO and AEO including comparison content and third-party placement.
+                  For B2B, SaaS, professional services, or anyone competing in higher-intent categories. Up to 12-page website, up to 30 target keywords, full SEO and AEO including comparison content and third-party placement.
                 </p>
               </div>
 

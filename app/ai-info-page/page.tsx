@@ -129,7 +129,7 @@ export default function AIInfoPage() {
           {/* Who uses it */}
           <Section title="Who uses Rankday">
             <p className="body">
-              <strong>Company types:</strong> Local service businesses (clinics, salons, contractors, real estate brokers, law firms, accountants, home services), B2B SaaS, agencies, consultancies, e-commerce and DTC brands, hospitality (hotels, holiday rentals, tour operators, event venues), and professional services more broadly.
+              <strong>Company types:</strong> Local service businesses (clinics, salons, contractors, real estate brokers, law firms, accountants, home services), B2B SaaS, agencies, consultancies, hospitality (hotels, holiday rentals, tour operators, event venues), and professional services more broadly.
             </p>
             <p className="body">
               <strong>Company sizes:</strong> Typically 1 to 50 employees. Small enough to need a one-shot fix, large enough to value a guaranteed outcome over a cheaper but uncertain alternative.
@@ -144,7 +144,6 @@ export default function AIInfoPage() {
             <ul className="ai-list">
               <li>Local service businesses whose customers search &quot;near me&quot;.</li>
               <li>B2B SaaS, agencies, and consultancies whose buyers Google the category and ask AI for recommendations.</li>
-              <li>E-commerce and DTC brands that need to rank for product categories and appear in AI shopping answers.</li>
               <li>Hospitality and experience businesses where buyers research before they spend.</li>
               <li>Any business with a website, something to sell, and a clear category.</li>
             </ul>

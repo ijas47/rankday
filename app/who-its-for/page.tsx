@@ -3,7 +3,6 @@ import { Icon } from "@/components/icons";
 import {
   LocalIllust,
   B2BIllust,
-  EcomIllust,
   HospIllust,
 } from "@/components/page-icons";
 
@@ -19,12 +18,6 @@ const goodFit = [
     body: "SaaS companies, agencies, consultancies, B2B service providers. Anyone whose buyers Google your category and ask ChatGPT for recommendations before booking a demo.",
     tone: "lilac",
     illust: <B2BIllust />,
-  },
-  {
-    title: "E-commerce and DTC",
-    body: "Brands selling online who need to rank for product categories and appear in AI shopping answers.",
-    tone: "peach",
-    illust: <EcomIllust />,
   },
   {
     title: "Hospitality and experiences",

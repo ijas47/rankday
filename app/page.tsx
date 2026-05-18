@@ -23,7 +23,6 @@ const audience = [
   "B2B SaaS",
   "Agencies",
   "Consultancies",
-  "E-commerce",
   "Professional services",
   "Clinics",
   "Law firms",
@@ -50,7 +49,7 @@ export default function HomePage() {
         <div className="container">
           <div className="r-hero">
             <div>
-              <span className="eyebrow" data-reveal>Or we keep working free</span>
+              <span className="eyebrow" data-reveal>Or we keep working free*</span>
 
               <h1
                 className="h-display"
@@ -204,7 +203,7 @@ export default function HomePage() {
           <div data-reveal className="r-header">
             <h2 className="h1">Who this is for.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
-              Any business with a website and something to sell. Local service businesses, B2B SaaS, agencies, consultancies, e-commerce, professional services, clinics, law firms, real estate, hospitality.
+              Any business with a website and something to sell. Local service businesses, B2B SaaS, agencies, consultancies, professional services, clinics, law firms, real estate, hospitality.
             </p>
           </div>
 
@@ -305,6 +304,10 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
+
+            <p style={{ marginTop: 20, fontSize: 12, color: "rgba(255,255,255,0.45)", letterSpacing: "0.01em" }}>
+              * Conditions apply. Keyword scope is agreed and fixed in writing before work starts.
+            </p>
           </div>
         </div>
       </section>
