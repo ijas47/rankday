@@ -262,24 +262,6 @@ export function HeroVisual() {
         <path d="M 70 20 L 64 14 M 70 20 L 64 26" stroke="var(--purple)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
       </svg>
 
-      <div className="hv-pills">
-        <a
-          className="pill-link"
-          href="#footer"
-          onClick={(e) => {
-            e.preventDefault();
-            document.getElementById("footer")?.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          Contact
-        </a>
-        <Link className="pill-link solid" href="/pricing">
-          Get started{" "}
-          <span style={{ display: "inline-flex", marginLeft: 4 }}>
-            <Icon.Arrow style={{ width: 12, height: 12 }} />
-          </span>
-        </Link>
-      </div>
     </div>
   );
 }

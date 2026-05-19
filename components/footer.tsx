@@ -29,7 +29,7 @@ export function Footer() {
                 <Icon.Arrow />
               </span>
             </Link>
-            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
               <Icon.WhatsApp /> WhatsApp
             </a>
             <button className="btn btn-light">

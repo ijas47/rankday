@@ -327,6 +327,8 @@ img { display: block; max-width: 100%; }
 .nav-links a.active { color: var(--purple); font-weight: 600; }
 
 .nav-right { display: flex; align-items: center; gap: 10px; }
+.btn-whatsapp { background: #25D366 !important; color: #fff !important; border-color: #25D366 !important; }
+.btn-whatsapp:hover { background: #1ebe5d !important; border-color: #1ebe5d !important; }
 
 @media (max-width: 1024px) {
   .nav-links { display: none; }
@@ -410,6 +412,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 1024px) {
   .nav-burger { display: inline-flex; }
+  .nav-right { margin-left: auto; }
 }
 @media (max-width: 720px) {
   .nav-cta { display: none; }
