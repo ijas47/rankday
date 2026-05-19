@@ -33,9 +33,6 @@ export function Footer() {
               <Icon.WhatsApp /> WhatsApp
             </a>
             <button className="btn btn-light">
-              <Icon.Mail /> Email
-            </button>
-            <button className="btn btn-light">
               <Icon.Phone /> Book a call
             </button>
           </div>
