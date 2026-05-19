@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = {
+  title: "SEO Pricing. Flat Rate, No Contracts.",
+  description:
+    "Standard from $4,900 USD. Growth from $7,900 USD. One price covers website rebuild, Google top-3 rankings, and AI citations. 90 days of work, paid in two installments.",
+};
 
 const standardIncludes = [
   "5 to 7 page custom website",

@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { HeroVisual } from "@/components/hero-visual";
 import { Marquee } from "@/components/marquee";
+
+export const metadata: Metadata = {
+  title: "SEO Agency. Top 3 Google Rankings + AI Citations in 90 Days.",
+  description:
+    "Rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. One fixed price. 90-day guarantee. UAE, UK, US, and more.",
+};
 import {
   WebsiteIcon,
   BrandingIcon,

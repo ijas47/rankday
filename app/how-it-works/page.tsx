@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = {
+  title: "How It Works. The 90-Day SEO and AEO Process.",
+  description:
+    "Week-by-week breakdown of how Rankday delivers a new website, Google top-3 rankings, and AI citations in 90 days. No contracts, no 40-page reports, no surprises.",
+};
 import {
   BuildIcon,
   LaunchIcon,

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = {
+  title: "Who Rankday Works For. SEO for Local Business and B2B.",
+  description:
+    "Rankday works for local service businesses, B2B SaaS, agencies, and professional services. Serving UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand.",
+};
 import {
   LocalIllust,
   B2BIllust,
