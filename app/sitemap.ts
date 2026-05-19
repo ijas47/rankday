@@ -11,5 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/who-its-for`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/what-is-aeo`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/get-cited-by-chatgpt`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/seo-agency-dubai`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/seo-agency-uk`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/seo-agency-us`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/seo-for-saas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-law-firms`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-clinics`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

@@ -1,0 +1,126 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = {
+  title: "SEO for SaaS Companies. Rank for the Keywords Your Trial Users Search.",
+  description:
+    "SaaS SEO requires category, comparison, and feature-level content. Rankday builds and ranks it in 90 days, plus gets you cited by ChatGPT and Perplexity when buyers ask for tools in your category.",
+};
+
+const saasKeywordTypes = [
+  { title: "Category keywords", example: '"best project management tool for agencies"', body: "High volume, high competition. These need content depth and domain authority to crack. We build toward them from week 1.", tone: "pink" },
+  { title: "Comparison keywords", example: '"[your tool] vs [competitor]"', body: "High buyer intent. Users searching comparisons are close to a decision. Dedicated comparison pages rank fast and convert well.", tone: "peach" },
+  { title: "Feature keywords", example: '"time tracking software with invoicing"', body: "Long-tail, specific intent. Lower competition. Easier to rank. Often the highest-converting traffic on a SaaS site.", tone: "yellow" },
+  { title: "Alternative keywords", example: '"[competitor] alternative"', body: "Buyers looking to switch. They have buying intent already. An alternatives page that ranks for these captures them mid-decision.", tone: "mint" },
+  { title: "Integration keywords", example: '"CRM that integrates with Slack"', body: "Specific, commercial intent. Usually low competition. These pages work well for both ranking and AI citation.", tone: "lilac" },
+];
+
+export default function SEOForSaaSPage() {
+  return (
+    <div className="page-enter">
+      <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
+        <div className="container">
+          <span className="eyebrow">SaaS and B2B Software</span>
+          <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
+            SEO for <span className="it">SaaS</span> companies. Rank for the keywords your buyers search before they sign up.
+          </h1>
+          <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
+            SaaS buyers research before they trial. They search category terms, comparison queries, and feature keywords. Rankday builds the pages that rank for those searches and gets your tool cited by ChatGPT and Perplexity. In 90 days.
+          </p>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+            <Link href="/pricing" className="btn btn-primary">
+              See pricing <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+            <Link href="/how-it-works" className="btn btn-light">
+              How it works <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="card card-ink" style={{ padding: "48px 56px" }}>
+            <p style={{ fontSize: "clamp(18px, 2.2vw, 28px)", color: "#fff", fontWeight: 700, lineHeight: 1.35, letterSpacing: "-0.015em", maxWidth: 800 }}>
+              When someone asks ChatGPT "what's the best CRM for a 10-person sales team," it names specific tools. The tools it names are not necessarily the most popular. They are the ones structured to be cited.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">The five keyword types every SaaS site needs to rank for.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              Most SaaS sites rank for their brand name and not much else. These are the pages that drive trial signups from organic search.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-cards-5">
+            {saasKeywordTypes.map((k) => (
+              <div key={k.title} className={`card card-${k.tone}`} style={{ padding: 28, minHeight: 220, display: "flex", flexDirection: "column", gap: 12 }}>
+                <h3 style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", margin: 0 }}>{k.title}</h3>
+                <p style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--purple)", margin: 0, lineHeight: 1.4 }}>{k.example}</p>
+                <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5, margin: 0 }}>{k.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="r-aside">
+            <div data-reveal className="sticky-aside">
+              <h2 className="h1">What Rankday builds for SaaS companies.</h2>
+              <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>
+                Growth plan from $7,900 <span className="btn-icon"><Icon.Arrow /></span>
+              </Link>
+            </div>
+
+            <div data-reveal>
+              <p className="body lg" style={{ color: "var(--ink-2)" }}>
+                Most SaaS companies have a marketing site that ranks for their brand name and nothing else. Organic traffic is flat. Paid acquisition is the only lever. Rankday changes that.
+              </p>
+
+              <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 16 }}>
+                {[
+                  { title: "Site rebuild around your ICP", body: "Your site rewritten and restructured for the buyers who search your category. Clear positioning, clear CTAs, fast load times." },
+                  { title: "Comparison and alternative pages", body: "Dedicated pages for your top comparison and alternative queries. These are among the highest-converting pages a SaaS site can have." },
+                  { title: "Feature and use-case pages", body: "Long-tail pages targeting specific feature keywords. Lower competition, faster to rank, high purchase intent." },
+                  { title: "AEO for category queries", body: "Schema, structured content, and directory placement so ChatGPT and Perplexity cite you when buyers ask for tools in your category." },
+                  { title: "LinkedIn and G2 optimization", body: "Your LinkedIn company page and G2 profile optimized for the keywords buyers search on those platforms." },
+                ].map((item, i) => (
+                  <div key={item.title} className="card" style={{ padding: 28, display: "flex", gap: 20, alignItems: "flex-start" }}>
+                    <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--purple)", fontWeight: 700, flexShrink: 0, paddingTop: 2 }}>
+                      /{String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{item.title}</h3>
+                      <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "8px 0 0" }}>{item.body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 32px 64px" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div data-reveal className="band-purple r-band">
+            <h2 className="h1" style={{ color: "#fff" }}>
+              Rank your SaaS in <span className="serif">90 days.</span>
+            </h2>
+            <Link href="/pricing" className="btn btn-light">
+              Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,137 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = {
+  title: "SEO for Clinics. Show Up When Patients Search.",
+  description:
+    "Patients search by treatment and location before they book. Rankday ranks your clinic for those searches and gets you cited by ChatGPT and Google AI. Fixed price. 90-day guarantee.",
+};
+
+const clinicTypes = [
+  { type: "Dental clinics", keywords: '"dentist Dubai", "dental implants near me", "best orthodontist [city]"', tone: "pink" },
+  { type: "Aesthetic clinics", keywords: '"botox clinic Dubai", "laser hair removal [city]", "aesthetic doctor near me"', tone: "peach" },
+  { type: "Private GP clinics", keywords: '"private GP Dubai", "same day GP appointment [city]"', tone: "yellow" },
+  { type: "Physiotherapy", keywords: '"physio near me", "sports injury clinic [city]", "physiotherapist Dubai"', tone: "mint" },
+  { type: "Specialist clinics", keywords: '"dermatologist Dubai", "cardiologist near me", "ENT specialist [city]"', tone: "lilac" },
+];
+
+export default function SEOForClinicsPage() {
+  return (
+    <div className="page-enter">
+      <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
+        <div className="container">
+          <span className="eyebrow">Clinics and Healthcare</span>
+          <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
+            SEO for <span className="it">clinics.</span> Show up when patients search for your treatment.
+          </h1>
+          <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
+            Patients search by treatment, location, and urgency before they book. They also ask ChatGPT and Google AI which clinic to trust. Rankday gets you into both. Fixed price. 90 days.
+          </p>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+            <Link href="/pricing" className="btn btn-primary">
+              See pricing <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+            <Link href="/how-it-works" className="btn btn-light">
+              How it works <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal-stagger className="r-2">
+            <div className="card card-pink" style={{ padding: 40 }}>
+              <p className="kicker">How patients search</p>
+              <p style={{ fontSize: 22, color: "var(--ink)", fontWeight: 700, lineHeight: 1.3, letterSpacing: "-0.015em", marginTop: 16 }}>
+                A patient looking for a dentist does not search your clinic name. They search "dentist near Business Bay" or "dental implants Dubai price."
+              </p>
+              <p className="body" style={{ marginTop: 18, color: "var(--ink-2)" }}>
+                These are treatment-plus-location searches. They have direct booking intent. If your clinic is not in the top 3 for them, those patients book elsewhere. We rank you for the searches that bring in patients, not just traffic.
+              </p>
+            </div>
+
+            <div className="card card-mint" style={{ padding: 40 }}>
+              <p className="kicker">How AI changes the equation</p>
+              <p style={{ fontSize: 22, color: "var(--ink)", fontWeight: 700, lineHeight: 1.3, letterSpacing: "-0.015em", marginTop: 16 }}>
+                "What's the best dental clinic in Dubai for implants?" is the kind of question people now ask ChatGPT before they search Google.
+              </p>
+              <p className="body" style={{ marginTop: 18, color: "var(--ink-2)" }}>
+                The clinics named in that answer get the inquiry. They are not there by accident. They have structured content, schema markup, and consistent presence on the platforms LLMs pull from. We build that for you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Clinic types and the keywords that matter.</h2>
+          </div>
+
+          <div data-reveal-stagger style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {clinicTypes.map((c) => (
+              <div key={c.type} className={`card card-${c.tone}`} style={{ padding: "22px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.01em", minWidth: 180 }}>{c.type}</span>
+                <span style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--ink-2)", lineHeight: 1.4, flex: 1 }}>{c.keywords}</span>
+                <span className="check-mark" style={{ width: 22, height: 22, flexShrink: 0 }}>
+                  <Icon.Check />
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="r-aside">
+            <div data-reveal className="sticky-aside">
+              <h2 className="h1">What Rankday builds for clinics.</h2>
+              <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>
+                Standard from $4,900 <span className="btn-icon"><Icon.Arrow /></span>
+              </Link>
+            </div>
+
+            <div data-reveal>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                {[
+                  { title: "Treatment pages that rank", body: "A dedicated page per treatment or service, targeting the search terms patients actually use. Not generic clinic overviews. Specific, optimized pages that answer patient questions and rank for treatment-plus-location queries." },
+                  { title: "Google Business Profile rebuild", body: "Your GBP is often the first thing a patient sees. We rebuild it completely: categories, services, photos, Q&A, and a review collection system that drives consistent patient reviews." },
+                  { title: "Local citation network", body: "Consistent clinic name, address, phone number, and category across 30+ health directories, maps platforms, and review sites. Consistency is a ranking signal for both Google and AI engines." },
+                  { title: "Review collection system", body: "Reviews are the biggest trust signal for healthcare. We set up a system that makes it easy for satisfied patients to leave a review. More reviews, better rankings, stronger AI citation signals." },
+                  { title: "AEO for healthcare queries", body: "Medical schema markup, structured Q&A content, and placement on the health directories and review platforms LLMs cite when answering healthcare questions." },
+                ].map((item, i) => (
+                  <div key={item.title} className="card" style={{ padding: 28, display: "flex", gap: 20, alignItems: "flex-start" }}>
+                    <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--purple)", fontWeight: 700, flexShrink: 0, paddingTop: 2 }}>
+                      /{String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{item.title}</h3>
+                      <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "8px 0 0" }}>{item.body}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 32px 64px" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div data-reveal className="band-purple r-band">
+            <h2 className="h1" style={{ color: "#fff" }}>
+              Fill your appointment book in <span className="serif">90 days.</span>
+            </h2>
+            <Link href="/pricing" className="btn btn-light">
+              Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
