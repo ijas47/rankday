@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Clinics. Show Up When Patients Search.",
+  title: "Website + SEO for Clinics. Top 3 in 90 Days.",
   description:
-    "Patients search by treatment and location before they book. Rankday ranks your clinic for those searches and gets you cited by ChatGPT and Google AI. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for clinics. Treatment pages, Google Business Profile, review collection. One fixed price. 90-day guarantee.",
 };
 
 const clinicTypes = [
@@ -23,12 +24,15 @@ export default function SEOForClinicsPage() {
         <div className="container">
           <span className="eyebrow">Clinics and Healthcare</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">clinics.</span> Show up when patients search for your treatment.
+            A new website + top-3 Google rankings for <span className="it">clinics.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Patients search by treatment, location, and urgency before they book. They also ask ChatGPT and Google AI which clinic to trust. Rankday gets you into both. Fixed price. 90 days.
+            We rebuild your clinic website, rank it on Google for the treatments you offer, and get you cited by ChatGPT and Google AI when patients ask for a clinic in your area. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">
               See pricing <span className="btn-icon"><Icon.Arrow /></span>
             </Link>

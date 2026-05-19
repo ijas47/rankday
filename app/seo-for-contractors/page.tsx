@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Contractors and Construction Companies.",
+  title: "Website + SEO for Contractors. Top 3 in 90 Days.",
   description:
-    "Construction clients research contractors before they shortlist. Rankday ranks your contracting business for the searches that matter and gets you cited by AI search. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for contractors and construction companies. Residential and commercial. One fixed price. 90-day guarantee.",
 };
 
 const keywords = [
@@ -22,12 +23,15 @@ export default function SEOForContractorsPage() {
         <div className="container">
           <span className="eyebrow">Construction and Contracting</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">contractors.</span> Win projects before your competitors get on the shortlist.
+            A new website + top-3 Google rankings for <span className="it">contractors.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Construction clients research before they shortlist. They search by project type, specialisation, and location. Rankday gets your contracting business into those searches and into the AI answers buyers trust. In 90 days.
+            We rebuild your contracting website, rank it on Google for the project types you want to win, and get you cited by AI search. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">See pricing <span className="btn-icon"><Icon.Arrow /></span></Link>
             <Link href="/how-it-works" className="btn btn-light">How it works <span className="btn-icon"><Icon.Arrow /></span></Link>
           </div>

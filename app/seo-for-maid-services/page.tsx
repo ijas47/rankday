@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Maid Services and Cleaning Companies.",
+  title: "Website + SEO for Maid Services and Cleaning Companies.",
   description:
-    "Cleaning customers search by service type and location before they book. Rankday ranks your maid or cleaning company for those searches. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for cleaning and maid services. Regular, deep clean, specialist. One fixed price. 90-day guarantee.",
 };
 
 const keywords = [
@@ -22,12 +23,15 @@ export default function SEOForMaidServicesPage() {
         <div className="container">
           <span className="eyebrow">Maid and Cleaning Services</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">maid services.</span> Rank for the bookings before your competitors do.
+            A new website + top-3 Google rankings for <span className="it">maid services.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Cleaning customers search by service type and area before they book. They also ask Google AI and ChatGPT for recommendations. Rankday gets your cleaning company into those searches and AI answers. In 90 days.
+            We rebuild your cleaning company website, rank it on Google for the bookings you want, and get you cited by AI search. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">See pricing <span className="btn-icon"><Icon.Arrow /></span></Link>
             <Link href="/how-it-works" className="btn btn-light">How it works <span className="btn-icon"><Icon.Arrow /></span></Link>
           </div>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Interior Designers. Rank for the Projects You Want.",
+  title: "Website + SEO for Interior Designers. Top 3 in 90 Days.",
   description:
-    "Interior design clients research extensively before they reach out. Rankday ranks your design studio for the searches that bring in residential and commercial projects. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for interior design studios. Residential, commercial, hospitality. One fixed price. 90-day guarantee.",
 };
 
 const keywords = [
@@ -22,12 +23,15 @@ export default function SEOForInteriorDesignersPage() {
         <div className="container">
           <span className="eyebrow">Interior Design</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">interior designers.</span> Rank for the projects you actually want.
+            A new website + top-3 Google rankings for <span className="it">interior designers.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Interior design clients research extensively before they reach out. They search by style, space type, and location. They also ask ChatGPT and Pinterest AI for recommendations. Rankday gets your studio into both.
+            We rebuild your design studio website, rank it on Google for the projects you want, and get you cited by ChatGPT and AI search. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">See pricing <span className="btn-icon"><Icon.Arrow /></span></Link>
             <Link href="/how-it-works" className="btn btn-light">How it works <span className="btn-icon"><Icon.Arrow /></span></Link>
           </div>

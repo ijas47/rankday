@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO Agency US. Top 3 Google Rankings in 90 Days.",
+  title: "Website + SEO Agency US. Top 3 in 90 Days. From $4,900.",
   description:
-    "Rankday works with US businesses to rank on Google and get cited by ChatGPT and Perplexity. Fixed price from $4,900 USD. 90-day guarantee. No retainer.",
+    "A new website, top-3 Google rankings, and AI citations for US businesses. $4,900 USD standard. Async delivery. 90-day guarantee. Fixed-price alternative to retainer agencies.",
 };
 
 const usCategories = [
@@ -23,12 +24,15 @@ export default function SEOAgencyUSPage() {
         <div className="container">
           <span className="eyebrow">United States</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO agency <span className="it">US.</span> Top 3 on Google in 90 days.
+            A new website + top-3 Google rankings for <span className="it">US</span> businesses. In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Rankday works with US businesses to rank on Google and get cited by ChatGPT, Perplexity, and Google AI Overviews. One fixed price. 90 days. No retainer. Guarantee in writing.
+            We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Google AI. All three. In 90 days. One fixed price. USD invoice. Fixed-price alternative to the retainer-based agencies running 12-month contracts.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </Link>

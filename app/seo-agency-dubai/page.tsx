@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO Agency Dubai. Top 3 Google Rankings in 90 Days.",
+  title: "Website + SEO Agency Dubai. Top 3 in 90 Days. AED 18,000.",
   description:
-    "Rankday is a Dubai-based SEO agency that rebuilds your website, ranks it on Google, and gets you cited by ChatGPT and Perplexity. Fixed price. 90-day guarantee. AED 18,000 standard.",
+    "A new website, top-3 Google rankings, and AI citations for Dubai and UAE businesses. AED 18,000 standard. Arabic available at no extra cost. 90-day guarantee.",
 };
 
 const dubaiCategories = [
@@ -23,12 +24,15 @@ export default function SEOAgencyDubaiPage() {
         <div className="container">
           <span className="eyebrow">Dubai and UAE</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO agency <span className="it">Dubai.</span> Top 3 on Google in 90 days.
+            A new website + top-3 Google rankings for <span className="it">Dubai</span> businesses. In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Rankday works with Dubai and UAE businesses to rebuild their website, rank on Google, and get cited by ChatGPT and Perplexity. One fixed price. One 90-day engagement. No retainer.
+            We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Google AI. All three. In 90 days. One fixed price. Local UAE invoicing in AED. Arabic available at no extra cost.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </Link>

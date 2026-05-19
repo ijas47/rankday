@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Facilities Management Companies.",
+  title: "Website + SEO for Facilities Management Companies.",
   description:
-    "FM contracts are won before the first call. Rankday ranks your facilities management company for the searches that matter and gets you cited by AI search. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for facilities management companies. Hard, soft, and integrated FM. One fixed price. 90-day guarantee.",
 };
 
 const keywords = [
@@ -22,12 +23,15 @@ export default function SEOForFacilitiesManagementPage() {
         <div className="container">
           <span className="eyebrow">Facilities Management</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">facilities management</span> companies. Win contracts before the tender stage.
+            A new website + top-3 Google rankings for <span className="it">facilities management</span> companies. In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            FM procurement starts with research. Property managers, developers, and asset owners search for FM companies before they issue RFPs. Rankday gets your business in front of those decision-makers when they are looking.
+            We rebuild your FM company website, rank it on Google for the service lines and sectors you target, and get you cited by AI when procurement teams research. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">See pricing <span className="btn-icon"><Icon.Arrow /></span></Link>
             <Link href="/how-it-works" className="btn btn-light">How it works <span className="btn-icon"><Icon.Arrow /></span></Link>
           </div>

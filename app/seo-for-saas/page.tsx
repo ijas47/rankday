@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for SaaS Companies. Rank for the Keywords Your Trial Users Search.",
+  title: "Website + SEO for SaaS Companies. Top 3 in 90 Days.",
   description:
-    "SaaS SEO requires category, comparison, and feature-level content. Rankday builds and ranks it in 90 days, plus gets you cited by ChatGPT and Perplexity when buyers ask for tools in your category.",
+    "A new marketing site, top-3 Google rankings, and AI citations for B2B SaaS. Category, comparison, alternative, and feature pages that rank and convert. One fixed price.",
 };
 
 const saasKeywordTypes = [
@@ -23,12 +24,15 @@ export default function SEOForSaaSPage() {
         <div className="container">
           <span className="eyebrow">SaaS and B2B Software</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">SaaS</span> companies. Rank for the keywords your buyers search before they sign up.
+            A new marketing site + top-3 Google rankings for <span className="it">SaaS companies.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            SaaS buyers research before they trial. They search category terms, comparison queries, and feature keywords. Rankday builds the pages that rank for those searches and gets your tool cited by ChatGPT and Perplexity. In 90 days.
+            We rebuild your SaaS marketing site, rank it on Google for category and comparison keywords, and get your tool cited by ChatGPT and Perplexity. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">
               See pricing <span className="btn-icon"><Icon.Arrow /></span>
             </Link>

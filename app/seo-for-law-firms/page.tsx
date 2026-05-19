@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Law Firms. Rank for the Searches Your Clients Run First.",
+  title: "Website + SEO for Law Firms. Top 3 in 90 Days.",
   description:
-    "Legal clients search by practice area and location before they call. Rankday ranks your law firm for those searches and gets you cited by ChatGPT and AI search. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for law firms. Practice area pages, local SEO, E-E-A-T signals. One fixed price. 90-day guarantee.",
 };
 
 const practiceAreas = [
@@ -23,12 +24,15 @@ export default function SEOForLawFirmsPage() {
         <div className="container">
           <span className="eyebrow">Law Firms and Legal Services</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">law firms.</span> Rank for the searches your clients run before they call.
+            A new website + top-3 Google rankings for <span className="it">law firms.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Legal clients search by practice area and location before they contact anyone. If your firm is not in the top 3 for those searches, and not cited by ChatGPT when someone asks for a lawyer in your area, you are losing clients before the conversation starts.
+            We rebuild your law firm website, rank it on Google for the practice areas you serve, and get you cited by ChatGPT when someone asks for a lawyer in your area. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">
               See pricing <span className="btn-icon"><Icon.Arrow /></span>
             </Link>

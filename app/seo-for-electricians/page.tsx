@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = {
-  title: "SEO for Electricians. Rank for Every Job Type You Want.",
+  title: "Website + SEO for Electricians. Top 3 Rankings in 90 Days.",
   description:
-    "Electrical customers search by job type and location. Rankday ranks your electrical business for those searches and gets you cited by AI search. Fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for electrical businesses. Residential and commercial. One fixed price. 90-day guarantee.",
 };
 
 const keywords = [
@@ -22,12 +23,15 @@ export default function SEOForElectriciansPage() {
         <div className="container">
           <span className="eyebrow">Home Services</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO for <span className="it">electricians.</span> Rank for every job type you want to win.
+            A new website + top-3 Google rankings for <span className="it">electricians.</span> In 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Electrical customers search by job type and location. Residential faults, commercial fit-outs, EV charger installs. If you are not in the top 3 for the searches that matter to your business, you are losing jobs every day.
+            We rebuild your electrical business website, rank it on Google for every job type you want, and get you cited by AI search. All three. In 90 days. One fixed price.
           </p>
-          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
+          <div data-reveal style={{ marginTop: 28 }}>
+            <BundlePills />
+          </div>
+          <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
             <Link href="/pricing" className="btn btn-primary">See pricing <span className="btn-icon"><Icon.Arrow /></span></Link>
             <Link href="/how-it-works" className="btn btn-light">How it works <span className="btn-icon"><Icon.Arrow /></span></Link>
           </div>
