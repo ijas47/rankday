@@ -29,9 +29,9 @@ export function Footer() {
                 <Icon.Arrow />
               </span>
             </Link>
-            <button className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               <Icon.WhatsApp /> WhatsApp
-            </button>
+            </a>
             <button className="btn btn-light">
               <Icon.Mail /> Email
             </button>
@@ -86,8 +86,8 @@ export function Footer() {
 
           <div>
             <h5>Contact</h5>
-            <a className="footer-link">WhatsApp</a>
-            <a className="footer-link">hi@rankday.com</a>
+            <a className="footer-link" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a className="footer-link" href="mailto:sales@rank-day.com">sales@rank-day.com</a>
             <a className="footer-link">Book a call</a>
           </div>
         </div>
