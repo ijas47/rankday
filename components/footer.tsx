@@ -87,7 +87,7 @@ export function Footer() {
           <div>
             <h5>Contact</h5>
             <a className="footer-link">WhatsApp</a>
-            <a className="footer-link">hi@rankday.com</a>
+            <a className="footer-link" href="mailto:sales@rank-day.com">sales@rank-day.com</a>
             <a className="footer-link">Book a call</a>
           </div>
         </div>
