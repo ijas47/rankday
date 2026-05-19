@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/who-its-for`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/industries`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/locations`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/what-is-aeo`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/get-cited-by-chatgpt`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/seo-agency-dubai`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },

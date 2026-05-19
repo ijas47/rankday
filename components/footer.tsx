@@ -61,6 +61,35 @@ export function Footer() {
             <Link className="footer-link" href="/who-its-for">Who it&apos;s for</Link>
             <Link className="footer-link" href="/faq">FAQ</Link>
             <Link className="footer-link" href="/about">About</Link>
+            <Link className="footer-link" href="/what-is-aeo">What is AEO</Link>
+            <Link className="footer-link" href="/get-cited-by-chatgpt">Get cited by ChatGPT</Link>
+          </div>
+
+          <div>
+            <h5>Industries</h5>
+            <Link className="footer-link" href="/seo-for-saas">SEO for SaaS</Link>
+            <Link className="footer-link" href="/seo-for-law-firms">SEO for law firms</Link>
+            <Link className="footer-link" href="/seo-for-clinics">SEO for clinics</Link>
+            <Link className="footer-link" href="/seo-for-plumbers">SEO for plumbers</Link>
+            <Link className="footer-link" href="/seo-for-electricians">SEO for electricians</Link>
+            <Link className="footer-link" href="/seo-for-contractors">SEO for contractors</Link>
+            <Link className="footer-link" href="/seo-for-interior-designers">SEO for interior designers</Link>
+            <Link className="footer-link" href="/seo-for-fit-out-companies">SEO for fit out companies</Link>
+            <Link className="footer-link" href="/seo-for-facilities-management">SEO for FM companies</Link>
+            <Link className="footer-link" href="/seo-for-maid-services">SEO for maid services</Link>
+            <Link className="footer-link" href="/industries" style={{ fontWeight: 700 }}>All industries</Link>
+          </div>
+
+          <div>
+            <h5>Locations</h5>
+            <Link className="footer-link" href="/seo-agency-dubai">SEO agency Dubai</Link>
+            <Link className="footer-link" href="/seo-agency-uk">SEO agency UK</Link>
+            <Link className="footer-link" href="/seo-agency-us">SEO agency US</Link>
+            <Link className="footer-link" href="/locations" style={{ fontWeight: 700 }}>All locations</Link>
+
+            <h5 style={{ marginTop: 24 }}>Contact</h5>
+            <a className="footer-link" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a className="footer-link" href="mailto:sales@rank-day.com">sales@rank-day.com</a>
             <Link className="footer-link" href="/ai-info-page">
               AI info page
               <span
@@ -79,13 +108,6 @@ export function Footer() {
                 For LLMs
               </span>
             </Link>
-          </div>
-
-          <div>
-            <h5>Contact</h5>
-            <a className="footer-link" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a className="footer-link" href="mailto:sales@rank-day.com">sales@rank-day.com</a>
-            <a className="footer-link">Book a call</a>
           </div>
         </div>
 
