@@ -85,9 +85,9 @@ export default function FAQPage() {
                   Got a different one? <span className="serif" style={{ color: "var(--purple)" }}>Send us a WhatsApp.</span>
                 </p>
                 <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap" }}>
-                  <button className="btn btn-primary btn-sm">
+                  <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
                     <Icon.WhatsApp /> WhatsApp
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -119,12 +119,12 @@ export default function FAQPage() {
               WhatsApp, email, or book a 15-minute call. Whichever is easiest. We respond within a few hours during business days.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
-              <button className="btn btn-primary">
+              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                 WhatsApp{" "}
                 <span className="btn-icon">
                   <Icon.WhatsApp />
                 </span>
-              </button>
+              </a>
               <button className="btn btn-light">
                 <Icon.Mail /> Email
               </button>
