@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { FAQClient, faqs } from "./faq-client";
+import { FAQClient } from "./faq-client";
+import { faqs } from "./faq-data";
 
 export const metadata: Metadata = {
   title: "SEO and AEO FAQ. Common Questions Answered.",
