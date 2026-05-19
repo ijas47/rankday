@@ -19,5 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/seo-for-saas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/seo-for-law-firms`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/seo-for-clinics`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-plumbers`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-electricians`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-contractors`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-interior-designers`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-fit-out-companies`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-facilities-management`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/seo-for-maid-services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }
