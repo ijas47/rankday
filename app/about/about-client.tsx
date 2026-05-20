@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -67,8 +68,15 @@ export function AboutClient() {
       <section style={{ padding: "32px 0 64px" }}>
         <div className="container">
           <div className="r-about">
-            <div data-reveal className="r-arches">
-              <div className="arch arch-image" style={{ position: "relative" }}>
+            <div data-reveal style={{ height: 520 }}>
+              <div className="arch" style={{ height: "100%", position: "relative" }}>
+                <Image
+                  src="/ijas.jpg"
+                  alt="Ijas Abdulla – Founder of Rankday"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center top" }}
+                  priority
+                />
                 <div
                   style={{
                     position: "absolute",
@@ -87,7 +95,6 @@ export function AboutClient() {
                   <p style={{ fontSize: 14, color: "var(--ink)", margin: "3px 0 0", fontWeight: 700, letterSpacing: "-0.005em" }}>Ijas Abdulla</p>
                 </div>
               </div>
-              <div className="arch arch-image cool" style={{ marginTop: 56 }} data-parallax="0.4" />
             </div>
 
             <div data-reveal data-reveal-delay="0.1">
