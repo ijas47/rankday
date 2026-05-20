@@ -69,11 +69,12 @@ export function AboutClient() {
         <div className="container">
           <div className="r-about">
             <div data-reveal style={{ height: 520 }}>
-              <div className="arch" style={{ height: "100%", position: "relative" }}>
+              <div style={{ height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, background: "#1a2a26" }}>
                 <Image
                   src="/ijas.jpg"
                   alt="Ijas Abdulla – Founder of Rankday"
                   fill
+                  sizes="(max-width: 900px) 100vw, 40vw"
                   style={{ objectFit: "cover", objectPosition: "center top" }}
                   priority
                 />
@@ -89,6 +90,7 @@ export function AboutClient() {
                     backdropFilter: "blur(10px)",
                     borderRadius: 12,
                     whiteSpace: "nowrap",
+                    zIndex: 1,
                   }}
                 >
                   <p style={{ fontSize: 10, color: "var(--muted)", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>Founder</p>
