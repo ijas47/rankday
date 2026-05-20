@@ -82,6 +82,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('config', 'G-Z9ZNM6G5N4');
         `}
       </Script>
+      <Script id="ms-clarity-init" strategy="afterInteractive">
+        {`
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "wu87tvych7");
+        `}
+      </Script>
       <body>
         <ScrollProgress />
         <div className="shell">
