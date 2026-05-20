@@ -14,6 +14,29 @@ export const metadata: Metadata = {
   description:
     "Rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. Fixed price. 90 days. Top-3 guarantee.",
   metadataBase: new URL("https://www.rank-day.com"),
+  openGraph: {
+    type: "website",
+    siteName: "Rankday",
+    title: "Rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
+    description:
+      "Rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. Fixed price. 90 days. Top-3 guarantee.",
+    url: "https://www.rank-day.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Rankday — Top 3 on Google. Cited by AI. In 90 days.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
+    description:
+      "A new website, top-3 Google rankings, and AI citations. One fixed price. 90-day guarantee.",
+    images: ["/og-image.png"],
+  },
 };
 
 const orgSchema = {
