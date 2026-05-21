@@ -73,7 +73,7 @@ export default function HomePage() {
               </div>
 
               <p className="lede" data-reveal style={{ marginTop: 22, maxWidth: 560 }}>
-                We rebuild your website, rank it on Google, and get you cited by AI. All three in 90 days. <strong>One fixed price. No retainer.</strong>
+                <strong>Rankday</strong> rebuilds your website, ranks it on Google, and gets you cited by AI. All three in 90 days. <strong>One fixed price. No retainer.</strong>
               </p>
 
               <div data-reveal style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>

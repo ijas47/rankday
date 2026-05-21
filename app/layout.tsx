@@ -43,6 +43,8 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Rankday",
+  alternateName: ["rank-day", "rank day", "rank-day.com", "Rankday Agency"],
+  legalName: "Rankday",
   url: "https://www.rank-day.com",
   description:
     "90-day SEO and AI citation agency. We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Claude.",
@@ -53,6 +55,19 @@ const orgSchema = {
   areaServed: ["AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
   serviceType: ["Search Engine Optimization", "Answer Engine Optimization", "Web Design"],
   priceRange: "$$",
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Rankday",
+  alternateName: ["rank-day", "rank day", "rank-day.com"],
+  url: "https://www.rank-day.com",
+  description: "Rankday is a 90-day SEO and AI citation agency at rank-day.com.",
+  publisher: {
+    "@type": "Organization",
+    name: "Rankday",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -68,6 +83,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <Script
