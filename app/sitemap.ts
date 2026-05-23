@@ -45,5 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/how-to-optimise-for-google-ai-overviews`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/blog/seo-for-new-domains-first-90-days`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/blog/eeat-explained-why-google-trusts-sites`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/technical-seo-checklist`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/how-to-write-meta-titles-and-descriptions`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/mobile-first-indexing-explained`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/internal-linking-strategy`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/why-did-my-google-ranking-drop`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/seo-for-ecommerce-stores`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/ai-search-optimisation-for-b2b-saas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/common-seo-myths-debunked`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }
