@@ -28,5 +28,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/seo-for-fit-out-companies`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/seo-for-facilities-management`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/seo-for-maid-services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/blog/seo-vs-aeo-vs-geo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/how-long-does-seo-take`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/how-much-does-seo-cost`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/how-to-choose-an-seo-agency`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/what-is-geo-generative-engine-optimization`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/will-ai-replace-google-search`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/why-isnt-my-website-ranking-on-google`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/do-i-need-a-new-website-for-seo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }

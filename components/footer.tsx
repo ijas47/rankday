@@ -63,6 +63,7 @@ export function Footer() {
             <Link className="footer-link" href="/about">About</Link>
             <Link className="footer-link" href="/what-is-aeo">What is AEO</Link>
             <Link className="footer-link" href="/get-cited-by-chatgpt">Get cited by ChatGPT</Link>
+            <Link className="footer-link" href="/blog" style={{ fontWeight: 700 }}>Blog</Link>
           </div>
 
           <div>
