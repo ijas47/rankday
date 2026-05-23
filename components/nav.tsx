@@ -105,11 +105,13 @@ export function Nav() {
                 <span style={{ display: "inline-flex", color: "var(--purple)" }}>
                   <Icon.Arrow style={{ width: 18, height: 18 }} />
                 </span>
-              </a>
+              </Link>
             );
           })}
-          <Link
-            href="/pricing"
+          <a
+            href="https://calendly.com/ijas-rank-day/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-primary"
             style={{ marginTop: 16, width: "100%", justifyContent: "space-between" }}
             onClick={() => setMenuOpen(false)}
@@ -118,7 +120,7 @@ export function Nav() {
             <span className="btn-icon">
               <Icon.Arrow />
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </>

@@ -38,7 +38,7 @@ export default function SEOAgencyDubaiPage() {
             </a>
             <Link href="/how-it-works" className="btn btn-light">
               How it works <span className="btn-icon"><Icon.Arrow /></span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
