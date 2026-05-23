@@ -109,8 +109,8 @@ export function Timeline({ phases }: { phases: Phase[] }) {
         })}
       </div>
 
-      {/* Labels: each label is absolutely positioned so it lines up with its own marker. */}
-      <div style={{ position: "relative", height: 56, marginTop: 12 }}>
+      {/* Labels: absolutely positioned on desktop, flex row on mobile */}
+      <div className="tl-labels" style={{ position: "relative", height: 56, marginTop: 12 }}>
         {phases.map((p, i) => {
           const isFirst = i === 0;
           const isLast = i === phases.length - 1;
@@ -120,6 +120,7 @@ export function Timeline({ phases }: { phases: Phase[] }) {
           return (
             <div
               key={i}
+              className="tl-label"
               style={{
                 position: "absolute",
                 top: 0,

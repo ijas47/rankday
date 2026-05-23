@@ -872,6 +872,28 @@ img { display: block; max-width: 100%; }
   .footer { padding: 56px 0 24px; margin: 40px 12px 0; border-radius: 24px 24px 0 0; }
   .nav { gap: 12px; padding: 10px 10px 10px 18px; }
   .section { padding: 56px 0; }
+
+  /* Timeline: switch from absolute positioning to a flex row so labels don't overlap */
+  .tl-labels {
+    position: static !important;
+    height: auto !important;
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin-top: 16px !important;
+  }
+  .tl-label {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    flex: 1;
+    min-width: 0;
+    text-align: center !important;
+  }
+  .tl-label:first-child { text-align: left !important; }
+  .tl-label:last-child { text-align: right !important; }
+  .tl-label p:first-child { font-size: 9px !important; }
+  .tl-label p:last-child { font-size: 12px !important; }
 }
 
 /* Small phones */
