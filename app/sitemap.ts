@@ -37,5 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/will-ai-replace-google-search`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/blog/why-isnt-my-website-ranking-on-google`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/blog/do-i-need-a-new-website-for-seo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/what-is-local-seo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/keyword-research-for-small-business`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/what-are-backlinks-and-how-to-get-them`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/schema-markup-for-beginners`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/google-business-profile-setup-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/how-to-optimise-for-google-ai-overviews`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/seo-for-new-domains-first-90-days`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/blog/eeat-explained-why-google-trusts-sites`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }
