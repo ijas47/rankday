@@ -89,7 +89,7 @@ export function Footer() {
             <Link className="footer-link" href="/locations" style={{ fontWeight: 700 }}>All locations</Link>
 
             <h5 style={{ marginTop: 24 }}>Contact</h5>
-            <a className="footer-link" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">WhatsApp</Link>
+            <a className="footer-link" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a className="footer-link" href="mailto:sales@rank-day.com">sales@rank-day.com</a>
             <Link className="footer-link" href="/ai-info-page">
               AI info page
@@ -115,7 +115,7 @@ export function Footer() {
         <div className="footer-bottom">
           <div>© Rankday 2026</div>
           <div style={{ display: "flex", gap: 24 }}>
-            <a className="footer-link" style={{ padding: 0 }}>Privacy</Link>
+            <a className="footer-link" style={{ padding: 0 }}>Privacy</a>
             <a className="footer-link" style={{ padding: 0 }}>Terms</a>
           </div>
         </div>

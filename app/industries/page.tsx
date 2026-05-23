@@ -71,7 +71,7 @@ export default function IndustriesPage() {
               <div style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
                 <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
                   <Icon.WhatsApp /> WhatsApp
-                </Link>
+                </a>
                 <a href="mailto:sales@rank-day.com" className="btn btn-light">
                   Email us
                 </a>
