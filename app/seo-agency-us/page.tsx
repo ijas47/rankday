@@ -33,12 +33,12 @@ export default function SEOAgencyUSPage() {
             <BundlePills />
           </div>
           <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
-            <Link href="/pricing" className="btn btn-primary">
+            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-            </Link>
+            </a>
             <Link href="/how-it-works" className="btn btn-light">
               How it works <span className="btn-icon"><Icon.Arrow /></span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -141,9 +141,9 @@ export default function SEOAgencyUSPage() {
             <h2 className="h1" style={{ color: "#fff" }}>
               Rank in the <span className="serif">US in 90 days.</span>
             </h2>
-            <Link href="/pricing" className="btn btn-light">
+            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

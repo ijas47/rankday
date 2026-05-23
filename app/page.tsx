@@ -77,12 +77,12 @@ export default function HomePage() {
               </p>
 
               <div data-reveal style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
-                <Link href="/pricing" className="btn btn-primary">
+                <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-                </Link>
+                </a>
                 <Link href="/how-it-works" className="btn btn-light">
                   How it works <span className="btn-icon"><Icon.Arrow /></span>
-                </Link>
+                </a>
               </div>
             </div>
 

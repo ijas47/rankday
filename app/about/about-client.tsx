@@ -188,9 +188,9 @@ export function AboutClient() {
             <h2 className="h1" style={{ color: "#fff" }}>
               <span className="serif">Start</span> your 90 days.
             </h2>
-            <Link href="/pricing" className="btn btn-light">
+            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

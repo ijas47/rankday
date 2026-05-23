@@ -67,9 +67,9 @@ export function FAQClient() {
                   <Icon.WhatsApp />
                 </span>
               </a>
-              <button className="btn btn-light">
-                <Icon.Phone /> Book a call
-              </button>
+              <a className="btn btn-light" href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer">
+              <Icon.Phone /> Book a call
+            </a>
             </div>
           </div>
         </div>

@@ -69,12 +69,12 @@ export function Nav() {
           </div>
 
           <div className="nav-right">
-            <Link href="/pricing" className="btn btn-primary btn-sm nav-cta">
+            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm nav-cta">
               Start your 90 days
               <span className="btn-icon">
                 <Icon.Arrow />
               </span>
-            </Link>
+            </a>
             <button
               className="nav-burger"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -105,7 +105,7 @@ export function Nav() {
                 <span style={{ display: "inline-flex", color: "var(--purple)" }}>
                   <Icon.Arrow style={{ width: 18, height: 18 }} />
                 </span>
-              </Link>
+              </a>
             );
           })}
           <Link
