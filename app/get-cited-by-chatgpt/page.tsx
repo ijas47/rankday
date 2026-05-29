@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, faqPageSchema, type FaqItem } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import { FaqSection } from "@/components/faq-section";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
@@ -16,6 +18,33 @@ const signals = [
   { num: "03", title: "Directory and review platform presence", body: "ChatGPT and Perplexity are trained heavily on G2, Clutch, Yelp, Trustpilot, TripAdvisor, Healthgrades, and dozens of category-specific directories. A business missing from these platforms is less citable than a business present on 30 of them." },
   { num: "04", title: "Consistent brand signals", body: "Your business name, address, phone number, and category must be identical across every platform it appears on. Inconsistency is a trust signal failure. LLMs weight consistency heavily when deciding which business to name." },
   { num: "05", title: "Third-party editorial mentions", body: "A mention in an industry publication, a comparison site, or a credible blog carries more weight than a self-published claim. LLMs weight sources they were trained to trust. Getting placed in those sources is the work." },
+];
+
+const faqs: FaqItem[] = [
+  {
+    q: "How do AI engines like ChatGPT decide which businesses to cite?",
+    a: "They generate answers from a model trained on structured, consistent, and credible information. The businesses that get named are the ones present across directories, review platforms, and publications, with clear content and consistent brand details everywhere they appear.",
+  },
+  {
+    q: "Why isn't my business showing up in ChatGPT answers?",
+    a: "Usually because of a thin citation footprint: vague website content, no schema markup, little directory presence, or inconsistent business details across platforms. AI engines cite sources they were trained to trust, and a business they have barely seen is hard to trust.",
+  },
+  {
+    q: "Does ChatGPT search the live web?",
+    a: "Not by default. Most answers are generated from training data rather than real-time search. That is why being present in the sources the model was trained on matters more than ranking a single page on Google.",
+  },
+  {
+    q: "How long until my business appears in AI answers?",
+    a: "Most businesses start appearing within 4 to 12 weeks of structured AEO work. It depends on how competitive your category is and how many of the five citation signals are already in place.",
+  },
+  {
+    q: "What is the single biggest factor in getting cited?",
+    a: "Presence across the directories and review platforms LLMs are trained on, combined with consistent business details everywhere you appear. A business listed in 30 relevant places is far more citable than one listed in 3.",
+  },
+  {
+    q: "Can I get cited by ChatGPT without paying for ads?",
+    a: "Yes. AI citations are earned through content structure, schema, directory presence, and third-party mentions, not paid placement. There is no ad slot inside an AI-generated answer.",
+  },
 ];
 
 export default function GetCitedByChatGPTPage() {
@@ -116,6 +145,13 @@ export default function GetCitedByChatGPTPage() {
           </div>
         </div>
       </section>
+
+      <JsonLd data={faqPageSchema(faqs)} />
+      <FaqSection
+        heading="AI citation questions, answered."
+        intro="What businesses ask most about getting cited by ChatGPT and other AI engines."
+        items={faqs}
+      />
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>

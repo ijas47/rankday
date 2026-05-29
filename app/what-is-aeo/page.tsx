@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, faqPageSchema, type FaqItem } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import { FaqSection } from "@/components/faq-section";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
@@ -44,6 +46,33 @@ const differences = [
   { label: "Signals", seo: "Backlinks, keywords, Core Web Vitals", aeo: "Schema, directories, brand consistency" },
   { label: "Timeline", seo: "3 to 12 months to rank", aeo: "4 to 12 weeks to appear in AI answers" },
   { label: "Measurement", seo: "SERP position, organic clicks", aeo: "Citation rate across AI platforms" },
+];
+
+const faqs: FaqItem[] = [
+  {
+    q: "What does AEO stand for?",
+    a: "AEO stands for Answer Engine Optimization. It is the practice of structuring your content and business signals so AI engines like ChatGPT, Perplexity, Claude, and Google AI Overviews cite your business when answering buyer questions.",
+  },
+  {
+    q: "Is AEO different from SEO?",
+    a: "Yes. SEO aims to rank your pages on Google's results page. AEO aims to get your business named inside AI-generated answers. They share foundations like clean content and schema markup, but the signals and the way you measure success differ. Most businesses now need both.",
+  },
+  {
+    q: "How long does AEO take to work?",
+    a: "Most businesses start appearing in AI answers within 4 to 12 weeks of structured AEO work, which is faster than traditional SEO. The exact timeline depends on how competitive your category is and how many citation signals you already have in place.",
+  },
+  {
+    q: "Can I do AEO without doing SEO?",
+    a: "Not effectively. AEO relies on the same structured, credible content and schema that SEO depends on. A site with no authority or structure gives AI engines nothing to cite. Rankday does both in the same 90-day engagement.",
+  },
+  {
+    q: "How do I know if I have an AEO problem?",
+    a: "Open ChatGPT or Perplexity and ask for the best businesses in your category and city. If your competitors appear and you do not, you have an AEO gap that is costing you buyers today.",
+  },
+  {
+    q: "Is AEO included with Rankday or is it an add-on?",
+    a: "AEO is built into every Rankday engagement at no extra cost. It is the actual work done alongside SEO in the same 90 days, not a separate report or an upsell.",
+  },
 ];
 
 export default function WhatIsAEOPage() {
@@ -184,6 +213,13 @@ export default function WhatIsAEOPage() {
           </div>
         </div>
       </section>
+
+      <JsonLd data={faqPageSchema(faqs)} />
+      <FaqSection
+        heading="AEO questions, answered."
+        intro="The questions buyers ask most about Answer Engine Optimization."
+        items={faqs}
+      />
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>
