@@ -56,12 +56,34 @@ export function AeoClient() {
     e.preventDefault();
     if (!report) return;
     setSubmitting(true);
+    // Web3Forms' free plan only accepts submissions from the browser, so we send
+    // it client-side. If no public key is configured, fall back to the server
+    // route (which can log or forward to a server-side webhook).
+    const web3Key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     try {
-      await fetch("/api/aeo-lead", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email, url: report.url, score: report.score, isOwnSite }),
-      });
+      if (web3Key) {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify({
+            access_key: web3Key,
+            subject: `New AEO Score lead: ${email} (${report.score}/100)`,
+            from_name: "Rankday AEO Score tool",
+            email,
+            replyto: email,
+            message: `Email: ${email}\nScanned: ${report.url}\nScore: ${report.score}/100\nClient site: ${isOwnSite ? "no (own site)" : "yes"}`,
+            scanned_url: report.url,
+            score: report.score,
+            is_own_site: isOwnSite,
+          }),
+        });
+      } else {
+        await fetch("/api/aeo-lead", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email, url: report.url, score: report.score, isOwnSite }),
+        });
+      }
       setUnlocked(true);
     } catch {
       // Unlock anyway — don't punish the user for a backend hiccup.
