@@ -76,3 +76,4 @@ Contact: WhatsApp +971 56 598 1209. Email sales@rank-day.com.
 ## Optional
 
 - [AI info page](https://www.rank-day.com/ai-info-page): Structured reference page for AI assistants.
+- [Full content](https://www.rank-day.com/llms-full.txt): Full text of every page on the site, concatenated for AI ingestion.
