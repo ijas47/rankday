@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO Agency UK. Top 3 in 90 Days. From £3,900.",
   description:
     "A new website, top-3 Google rankings, and AI citations for UK businesses. £3,900 standard. GBP invoice. Async delivery. 90-day guarantee.",
-};
+  path: "/seo-agency-uk",
+});
 
 const ukCategories = [
   { title: "Professional services", body: "Solicitors, accountants, financial advisors, consultancies. Buyers research credentials before they call. We rank you for practice-area and location keywords.", tone: "pink" },
@@ -17,9 +20,18 @@ const ukCategories = [
   { title: "Hospitality", body: "Hotels, restaurants, venues, experiences. UK diners and travellers research before they book. We get your business into those searches.", tone: "lilac" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO Agency UK",
+  description: "A new website, top-3 Google rankings, and AI citations for UK businesses. £3,900 standard. GBP invoice. Async delivery. 90-day guarantee.",
+  path: "/seo-agency-uk",
+  areaServed: ["United Kingdom"],
+  offer: { price: "3900", currency: "GBP" },
+});
+
 export default function SEOAgencyUKPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">United Kingdom</span>

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO for Facilities Management Companies.",
   description:
     "A new website, top-3 Google rankings, and AI citations for facilities management companies. Hard, soft, and integrated FM. One fixed price. 90-day guarantee.",
-};
+  path: "/seo-for-facilities-management",
+});
 
 const keywords = [
   { intent: "Integrated FM", examples: '"facilities management company Dubai", "integrated FM services UAE", "total FM contractor"', tone: "pink" },
@@ -16,9 +19,18 @@ const keywords = [
   { intent: "Sector", examples: '"FM company for commercial property UAE", "FM services for hospitals Dubai", "facilities management retail"', tone: "mint" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO for Facilities Management",
+  description: "A new website, top-3 Google rankings, and AI citations for facilities management companies. Hard, soft, and integrated FM. One fixed price. 90-day guarantee.",
+  path: "/seo-for-facilities-management",
+  areaServed: ["United Arab Emirates","United Kingdom","United States","Canada","Australia","Singapore","Ireland","New Zealand"],
+  offer: { price: "4900", currency: "USD" },
+});
+
 export default function SEOForFacilitiesManagementPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Facilities Management</span>

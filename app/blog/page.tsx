@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { posts } from "./posts";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Blog. SEO, AEO, GEO, and Website Insights from Rankday.",
   description:
     "Practical, honest writing on SEO, Answer Engine Optimization, Generative Engine Optimization, and the website rebuild work that actually moves rankings. From Rankday, the 90-day SEO and AI citation agency.",
-};
+  path: "/blog",
+});
 
 const categoryColors: Record<string, string> = {
   SEO: "pink",

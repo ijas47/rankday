@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO for SaaS Companies. Top 3 in 90 Days.",
   description:
     "A new marketing site, top-3 Google rankings, and AI citations for B2B SaaS. Category, comparison, alternative, and feature pages that rank and convert. One fixed price.",
-};
+  path: "/seo-for-saas",
+});
 
 const saasKeywordTypes = [
   { title: "Category keywords", example: '"best project management tool for agencies"', body: "High volume, high competition. These need content depth and domain authority to crack. We build toward them from week 1.", tone: "pink" },
@@ -17,9 +20,18 @@ const saasKeywordTypes = [
   { title: "Integration keywords", example: '"CRM that integrates with Slack"', body: "Specific, commercial intent. Usually low competition. These pages work well for both ranking and AI citation.", tone: "lilac" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO for B2B SaaS",
+  description: "A new marketing site, top-3 Google rankings, and AI citations for B2B SaaS. Category, comparison, alternative, and feature pages that rank and convert. One fixed price.",
+  path: "/seo-for-saas",
+  areaServed: ["United Arab Emirates","United Kingdom","United States","Canada","Australia","Singapore","Ireland","New Zealand"],
+  offer: { price: "4900", currency: "USD" },
+});
+
 export default function SEOForSaaSPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">SaaS and B2B Software</span>

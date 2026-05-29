@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Rankday AI info page — structured facts for AI assistants",
   description:
     "Structured information about Rankday for ChatGPT, Claude, Perplexity, Google AI Overviews, and Gemini. What Rankday is, who it's for, pricing, and how it compares.",
   robots: { index: true, follow: true },
-};
+  path: "/ai-info-page",
+});
 
 const lastUpdated = "2026-05-17";
 

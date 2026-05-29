@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Industries We Work With. SEO for Every Category We Serve.",
   description:
     "Rankday delivers SEO and AEO for SaaS, law firms, clinics, contractors, interior designers, fit out companies, facilities management, and home services. Pick your industry.",
-};
+  path: "/industries",
+});
 
 const industries = [
   { slug: "seo-for-saas", title: "SaaS and B2B software", body: "Rank for category, comparison, alternative, feature, and integration keywords. Get cited by ChatGPT when buyers ask for tools in your category.", tone: "pink" },
