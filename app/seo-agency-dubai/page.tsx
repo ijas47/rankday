@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO Agency Dubai. Top 3 in 90 Days. AED 18,000.",
   description:
     "A new website, top-3 Google rankings, and AI citations for Dubai and UAE businesses. AED 18,000 standard. Arabic available at no extra cost. 90-day guarantee.",
-};
+  path: "/seo-agency-dubai",
+});
 
 const dubaiCategories = [
   { title: "Clinics and healthcare", body: "Dental, aesthetic, GP, specialist clinics. Patients search by treatment and location. We rank you for both.", tone: "pink" },
@@ -17,9 +20,18 @@ const dubaiCategories = [
   { title: "B2B and SaaS", body: "Agencies, software companies, service providers targeting the GCC market. We rank you for the category keywords your buyers search.", tone: "lilac" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO Agency Dubai",
+  description: "A new website, top-3 Google rankings, and AI citations for Dubai and UAE businesses. AED 18,000 standard. Arabic available at no extra cost. 90-day guarantee.",
+  path: "/seo-agency-dubai",
+  areaServed: ["Dubai","United Arab Emirates"],
+  offer: { price: "18000", currency: "AED" },
+});
+
 export default function SEOAgencyDubaiPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Dubai and UAE</span>

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "What is Answer Engine Optimization (AEO)?",
   description:
     "AEO is the practice of making your business citable by ChatGPT, Perplexity, Claude, and Google AI. Learn how it works and why it matters more than traditional SEO alone.",
-};
+  path: "/what-is-aeo",
+});
 
 const factors = [
   {

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { FAQClient } from "./faq-client";
 import { faqs } from "./faq-data";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "SEO and AEO FAQ. Common Questions Answered.",
   description:
     "Questions about 90-day SEO, AI citation strategy, AEO, guarantees, pricing, and how Rankday works. Honest answers, no sales spin.",
-};
+  path: "/faq",
+});
 
 const faqSchema = {
   "@context": "https://schema.org",

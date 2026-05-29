@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO for Maid Services and Cleaning Companies.",
   description:
     "A new website, top-3 Google rankings, and AI citations for cleaning and maid services. Regular, deep clean, specialist. One fixed price. 90-day guarantee.",
-};
+  path: "/seo-for-maid-services",
+});
 
 const keywords = [
   { intent: "Regular cleaning", examples: '"maid service Dubai", "regular cleaning Dubai", "weekly cleaning service UAE"', tone: "pink" },
@@ -16,9 +19,18 @@ const keywords = [
   { intent: "Location", examples: '"maid service JBR", "cleaning company Downtown Dubai", "maid [area or building]"', tone: "mint" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO for Maid Services",
+  description: "A new website, top-3 Google rankings, and AI citations for cleaning and maid services. Regular, deep clean, specialist. One fixed price. 90-day guarantee.",
+  path: "/seo-for-maid-services",
+  areaServed: ["United Arab Emirates","United Kingdom","United States","Canada","Australia","Singapore","Ireland","New Zealand"],
+  offer: { price: "4900", currency: "USD" },
+});
+
 export default function SEOForMaidServicesPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Maid and Cleaning Services</span>

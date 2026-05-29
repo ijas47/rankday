@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO for Plumbers. Top 3 Rankings in 90 Days.",
   description:
     "A new website, top-3 Google rankings, and AI citations for plumbing businesses. Rankday rebuilds, ranks, and gets you cited. One fixed price. 90-day guarantee.",
-};
+  path: "/seo-for-plumbers",
+});
 
 const keywords = [
   { intent: "Emergency", examples: '"emergency plumber Dubai", "plumber near me open now", "burst pipe repair [city]"', tone: "pink" },
@@ -16,9 +19,18 @@ const keywords = [
   { intent: "Location", examples: '"plumber JLT", "plumber Jumeirah", "plumber [neighbourhood]"', tone: "mint" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO for Plumbers",
+  description: "A new website, top-3 Google rankings, and AI citations for plumbing businesses. Rankday rebuilds, ranks, and gets you cited. One fixed price. 90-day guarantee.",
+  path: "/seo-for-plumbers",
+  areaServed: ["United Arab Emirates","United Kingdom","United States","Canada","Australia","Singapore","Ireland","New Zealand"],
+  offer: { price: "4900", currency: "USD" },
+});
+
 export default function SEOForPlumbersPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Home Services</span>

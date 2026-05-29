@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO Agency US. Top 3 in 90 Days. From $4,900.",
   description:
     "A new website, top-3 Google rankings, and AI citations for US businesses. $4,900 USD standard. Async delivery. 90-day guarantee. Fixed-price alternative to retainer agencies.",
-};
+  path: "/seo-agency-us",
+});
 
 const usCategories = [
   { title: "Professional services", body: "Law firms, CPA firms, financial advisors, consultancies. US buyers research credentials before they engage. We rank you for practice-area and city-level keywords.", tone: "pink" },
@@ -17,9 +20,18 @@ const usCategories = [
   { title: "Hospitality", body: "Hotels, restaurants, experience companies. American travellers research before they book. We get your business into those searches.", tone: "lilac" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO Agency USA",
+  description: "A new website, top-3 Google rankings, and AI citations for US businesses. $4,900 USD standard. Async delivery. 90-day guarantee. Fixed-price alternative to retainer agencies.",
+  path: "/seo-agency-us",
+  areaServed: ["United States"],
+  offer: { price: "4900", currency: "USD" },
+});
+
 export default function SEOAgencyUSPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">United States</span>

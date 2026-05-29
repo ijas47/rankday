@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta, serviceSchema } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Website + SEO for Clinics. Top 3 in 90 Days.",
   description:
     "A new website, top-3 Google rankings, and AI citations for clinics. Treatment pages, Google Business Profile, review collection. One fixed price. 90-day guarantee.",
-};
+  path: "/seo-for-clinics",
+});
 
 const clinicTypes = [
   { type: "Dental clinics", keywords: '"dentist Dubai", "dental implants near me", "best orthodontist [city]"', tone: "pink" },
@@ -17,9 +20,18 @@ const clinicTypes = [
   { type: "Specialist clinics", keywords: '"dermatologist Dubai", "cardiologist near me", "ENT specialist [city]"', tone: "lilac" },
 ];
 
+const serviceLd = serviceSchema({
+  name: "SEO for Clinics",
+  description: "A new website, top-3 Google rankings, and AI citations for clinics. Treatment pages, Google Business Profile, review collection. One fixed price. 90-day guarantee.",
+  path: "/seo-for-clinics",
+  areaServed: ["United Arab Emirates","United Kingdom","United States","Canada","Australia","Singapore","Ireland","New Zealand"],
+  offer: { price: "4900", currency: "USD" },
+});
+
 export default function SEOForClinicsPage() {
   return (
     <div className="page-enter">
+      <JsonLd data={serviceLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Clinics and Healthcare</span>

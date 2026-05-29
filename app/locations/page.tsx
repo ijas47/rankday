@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Locations Served. SEO Agency Across UAE, UK, US, and More.",
   description:
     "Rankday delivers SEO and AEO across UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Local invoicing and pricing where available.",
-};
+  path: "/locations",
+});
 
 const primaryLocations = [
   { slug: "seo-agency-dubai", market: "UAE", title: "SEO agency Dubai", price: "From AED 18,000", body: "Local UAE invoice. Arabic and English at no extra cost. Google Business Profile rebuild included.", tone: "pink" },

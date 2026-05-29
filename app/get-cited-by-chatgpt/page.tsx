@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "How to Get Your Business Cited by ChatGPT and AI Search",
   description:
     "ChatGPT, Perplexity, and Claude cite specific businesses when buyers ask for recommendations. Here is how to become one of those businesses.",
-};
+  path: "/get-cited-by-chatgpt",
+});
 
 const signals = [
   { num: "01", title: "Clear, direct content", body: "LLMs favor pages that answer questions directly. A dental clinic page that says 'We are a dental clinic in Dubai offering implants, cleanings, and orthodontics' is more citable than one that says 'We are passionate about smiles.' Direct answers get cited. Vague copy does not." },

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { BlogPostLayout, P, H2, H3, UL, LI, Strong, Callout, A } from "@/components/blog-post-layout";
 import { getPost } from "../posts";
 
 const meta = getPost("how-long-does-seo-take")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: meta.title,
   description: meta.description,
-};
+  path: `/blog/${meta.slug}`,
+});
 
 export default function Post() {
   return (
