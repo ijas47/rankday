@@ -43,6 +43,25 @@ export function pageMeta({ title, description, path, robots }: PageMetaInput): M
   };
 }
 
+export type FaqItem = { q: string; a: string };
+
+/**
+ * FAQPage structured data. The answers must match the visible text rendered by
+ * <FaqSection /> on the same page — never ship FAQ schema without the matching
+ * on-page Q&A.
+ */
+export function faqPageSchema(items: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
 type ServiceSchemaInput = {
   /** e.g. "SEO Agency Dubai" or "SEO for Plumbers" */
   name: string;
