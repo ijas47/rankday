@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/tools/aeo-score", label: "Free AEO Check" },
   { href: "/industries", label: "Industries" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
