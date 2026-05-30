@@ -86,7 +86,7 @@ export function AeoClient() {
       }
       setUnlocked(true);
     } catch {
-      // Unlock anyway — don't punish the user for a backend hiccup.
+      // Unlock anyway; don't punish the user for a backend hiccup.
       setUnlocked(true);
     } finally {
       setSubmitting(false);
@@ -157,7 +157,7 @@ export function AeoClient() {
               <div style={{ flex: "1 1 240px" }}>
                 <p className="kicker">AEO Score for {report.domain}</p>
                 <p style={{ fontSize: 24, fontWeight: 800, color: "var(--ink)", margin: "6px 0 0", letterSpacing: "-0.02em" }}>
-                  Grade {report.grade} — {gradeBlurb(report.grade)}
+                  Grade {report.grade}: {gradeBlurb(report.grade)}
                 </p>
               </div>
             </div>
@@ -193,7 +193,7 @@ export function AeoClient() {
               {lockedFixes.length > 0 && !unlocked ? (
                 <div className="card card-ink" style={{ padding: 32, marginTop: 16 }}>
                   <p style={{ color: "#fff", fontSize: 18, fontWeight: 700, margin: 0 }}>
-                    Get the full list — {lockedFixes.length} more fix{lockedFixes.length === 1 ? "" : "es"}, ranked by impact.
+                    Get the full list: {lockedFixes.length} more fix{lockedFixes.length === 1 ? "" : "es"}, ranked by impact.
                   </p>
                   <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 14, margin: "8px 0 0" }}>
                     We'll email your complete report and the badge you can embed. No spam.
@@ -302,7 +302,7 @@ function gradeBlurb(grade: string): string {
     {
       A: "AI search can find and cite you.",
       B: "Solid, with a few gaps to close.",
-      C: "Partly visible — real gaps remain.",
+      C: "Partly visible, real gaps remain.",
       D: "AI engines are mostly missing you.",
       F: "Largely invisible to AI search.",
     }[grade] || ""

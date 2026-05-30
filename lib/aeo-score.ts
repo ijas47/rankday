@@ -1,4 +1,4 @@
-// AEO Score engine — fetches a URL and scores how visible it is to AI search
+// AEO Score engine: fetches a URL and scores how visible it is to AI search
 // engines (ChatGPT, Perplexity, Claude, Google AI). Deterministic, server-side,
 // no third-party API calls. Heuristic by design: it grades the signals that
 // drive AI citation, not a guarantee of citation.
@@ -233,7 +233,7 @@ export async function scoreUrl(input: string): Promise<AeoReport | { error: stri
       passed: has("FAQPage"),
       weight: 10,
       detail: has("FAQPage") ? "FAQPage schema found" : "No FAQPage schema",
-      fix: "Add a visible FAQ section with FAQPage JSON-LD — it's the most-cited format in AI answers.",
+      fix: "Add a visible FAQ section with FAQPage JSON-LD. It's the most-cited format in AI answers.",
       severity: "high",
     },
     {
@@ -287,7 +287,7 @@ export async function scoreUrl(input: string): Promise<AeoReport | { error: stri
       passed: !!title && title.length >= 10,
       weight: 4,
       detail: title ? `Title: "${title.slice(0, 60)}"` : "No title tag",
-      fix: "Add a descriptive 50–60 character title tag.",
+      fix: "Add a descriptive 50-60 character title tag.",
       severity: "medium",
     },
     {
@@ -297,7 +297,7 @@ export async function scoreUrl(input: string): Promise<AeoReport | { error: stri
       passed: !!metaDesc && metaDesc.length >= 50,
       weight: 4,
       detail: metaDesc ? "Meta description found" : "No meta description",
-      fix: "Add a 150–160 character meta description.",
+      fix: "Add a 150-160 character meta description.",
       severity: "low",
     },
     {
@@ -307,7 +307,7 @@ export async function scoreUrl(input: string): Promise<AeoReport | { error: stri
       passed: words >= 300,
       weight: 4,
       detail: `~${words} words on the page`,
-      fix: "Add substantive, factual content — thin pages rarely get cited.",
+      fix: "Add substantive, factual content. Thin pages rarely get cited.",
       severity: "medium",
     },
 
@@ -349,7 +349,7 @@ export async function scoreUrl(input: string): Promise<AeoReport | { error: stri
       passed: !!title && title.length >= 20 && title.length <= 65,
       weight: 4,
       detail: title ? `Title is ${title.length} chars` : "No title",
-      fix: "Keep titles roughly 20–65 characters so they aren't truncated.",
+      fix: "Keep titles roughly 20-65 characters so they aren't truncated.",
       severity: "low",
     },
   ];
