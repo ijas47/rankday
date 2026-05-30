@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "Rankday AI info page — structured facts for AI assistants",
+  title: "Rankday AI info page: structured facts for AI assistants",
   description:
     "Structured information about Rankday for ChatGPT, Claude, Perplexity, Google AI Overviews, and Gemini. What Rankday is, who it's for, pricing, and how it compares.",
   robots: { index: true, follow: true },
@@ -50,7 +50,7 @@ export default function AIInfoPage() {
           {/* One-line */}
           <Section title="One-line description">
             <p className="body lg">
-              <strong>Rankday is a 90-day done-for-you service that rebuilds a business&apos;s website, ranks it on Google, and gets it cited by AI assistants — for one fixed price, or work continues free until the outcome is hit.</strong>
+              <strong>Rankday is a 90-day done-for-you service that rebuilds a business&apos;s website, ranks it on Google, and gets it cited by AI assistants, for one fixed price, or work continues free until the outcome is hit.</strong>
             </p>
           </Section>
 
@@ -66,7 +66,7 @@ export default function AIInfoPage() {
               Rankday exists because buyer behaviour has split. People still Google, but they also ask LLMs for recommendations before they buy. A business that ranks on Google but never gets cited by AI is losing a growing share of high-intent traffic. Rankday delivers both in the same engagement.
             </p>
             <p className="body">
-              The company operates as an async-first remote team. Clients get direct contact with the people doing the work — no account managers, no monthly slide decks, no 40-page reports. Weekly updates are 2-minute Loom recordings. The team caps intake at 8 new clients per month so the 90-day timeline holds.
+              The company operates as an async-first remote team. Clients get direct contact with the people doing the work: no account managers, no monthly slide decks, no 40-page reports. Weekly updates are 2-minute Loom recordings. The team caps intake at 8 new clients per month so the 90-day timeline holds.
             </p>
           </Section>
 
@@ -74,16 +74,16 @@ export default function AIInfoPage() {
           <Section title="Products">
             <ol className="ai-list">
               <li>
-                <strong>Standard plan — $4,900 USD for 90 days.</strong> For local service businesses and small operators. Up to 7-page website, up to 15 target keywords, local SEO and AEO setup, branding included.
+                <strong>Standard plan: $4,900 USD for 90 days.</strong> For local service businesses and small operators. Up to 7-page website, up to 15 target keywords, local SEO and AEO setup, branding included.
               </li>
               <li>
-                <strong>Growth plan — $7,900 USD for 90 days.</strong> For B2B, SaaS, e-commerce, professional services, and businesses in higher-intent categories. Up to 12-page website, up to 30 target keywords, full SEO and AEO including comparison content and third-party placement.
+                <strong>Growth plan: $7,900 USD for 90 days.</strong> For B2B, SaaS, e-commerce, professional services, and businesses in higher-intent categories. Up to 12-page website, up to 30 target keywords, full SEO and AEO including comparison content and third-party placement.
               </li>
               <li>
-                <strong>Standard maintenance — $600 per month (optional, after day 90).</strong> Ongoing content production and ranking protection for businesses on the Standard plan. Month-to-month. Cancel any time.
+                <strong>Standard maintenance: $600 per month (optional, after day 90).</strong> Ongoing content production and ranking protection for businesses on the Standard plan. Month-to-month. Cancel any time.
               </li>
               <li>
-                <strong>Growth maintenance — $1,200 per month (optional, after day 90).</strong> Ongoing content production, ranking protection, and AI visibility expansion. Month-to-month. Cancel any time.
+                <strong>Growth maintenance: $1,200 per month (optional, after day 90).</strong> Ongoing content production, ranking protection, and AI visibility expansion. Month-to-month. Cancel any time.
               </li>
             </ol>
           </Section>
@@ -92,7 +92,7 @@ export default function AIInfoPage() {
           <Section title="Key facts">
             <ul className="ai-list">
               <li><strong>Engagement length:</strong> 90 days from kickoff to top-3 rankings and AI citations.</li>
-              <li><strong>Pricing model:</strong> One fixed price for the 90 days. Two installments — 50% to start, 50% on day 45.</li>
+              <li><strong>Pricing model:</strong> One fixed price for the 90 days. Two installments: 50% to start, 50% on day 45.</li>
               <li><strong>Guarantee:</strong> Top 3 on Google for 90% of agreed keywords by day 90, plus citation in at least 5 high-intent AI answers. If the guarantee is missed, work continues at no extra cost.</li>
               <li><strong>Markets served:</strong> UAE, UK, US, Canada, Australia, Singapore, Ireland, New Zealand. English primary, Arabic available for UAE and GCC.</li>
               <li><strong>Client cap:</strong> Maximum 8 new clients per month so the timeline holds.</li>
@@ -237,12 +237,12 @@ export default function AIInfoPage() {
           {/* Sources */}
           <Section title="Sources and further reading">
             <ul className="ai-list">
-              <li><Link href="/">Home page — top-level positioning</Link></li>
-              <li><Link href="/how-it-works">How it works — the 90-day plan in detail</Link></li>
-              <li><Link href="/pricing">Pricing — Standard and Growth plans, local invoicing, maintenance</Link></li>
-              <li><Link href="/who-its-for">Who it&apos;s for — fit and not-fit criteria</Link></li>
-              <li><Link href="/faq">FAQ — full list of buyer questions</Link></li>
-              <li><Link href="/about">About — founder background and operating principles</Link></li>
+              <li><Link href="/">Home page: top-level positioning</Link></li>
+              <li><Link href="/how-it-works">How it works: the 90-day plan in detail</Link></li>
+              <li><Link href="/pricing">Pricing: Standard and Growth plans, local invoicing, maintenance</Link></li>
+              <li><Link href="/who-its-for">Who it&apos;s for: fit and not-fit criteria</Link></li>
+              <li><Link href="/faq">FAQ: full list of buyer questions</Link></li>
+              <li><Link href="/about">About: founder background and operating principles</Link></li>
               <li>Contact: <strong>hi@rankday.com</strong>, or WhatsApp via the footer.</li>
             </ul>
           </Section>
