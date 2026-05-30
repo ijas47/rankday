@@ -55,7 +55,7 @@ const markets: Array<[string, string]> = [
 const homeFaqs: FaqItem[] = [
   {
     q: "What does Rankday actually deliver in 90 days?",
-    a: "A rebuilt website, top-3 Google rankings for your agreed keywords, and citations in AI search (ChatGPT, Perplexity, Claude, Google AI) — all for one fixed price, with a top-3 guarantee on 90% of agreed keywords or we keep working free.",
+    a: "A rebuilt website, top-3 Google rankings for your agreed keywords, and citations in AI search (ChatGPT, Perplexity, Claude, Google AI), all for one fixed price, with a top-3 guarantee on 90% of agreed keywords or we keep working free.",
   },
   {
     q: "How much does it cost?",
@@ -67,7 +67,7 @@ const homeFaqs: FaqItem[] = [
   },
   {
     q: "Which markets do you work in?",
-    a: "The UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand — most English-speaking markets. Arabic-language SEO is available in the UAE and GCC at no extra cost.",
+    a: "The UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand, most English-speaking markets. Arabic-language SEO is available in the UAE and GCC at no extra cost.",
   },
   {
     q: "How much of my time does it take?",
@@ -78,7 +78,7 @@ const homeFaqs: FaqItem[] = [
 const homeServiceLd = serviceSchema({
   name: "90-Day SEO & AEO Engagement",
   description:
-    "Rankday rebuilds your website, ranks it in the Google top 3, and gets you cited by AI search engines — in a fixed 90-day engagement with a top-3 ranking guarantee.",
+    "Rankday rebuilds your website, ranks it in the Google top 3, and gets you cited by AI search engines, in a fixed 90-day engagement with a top-3 ranking guarantee.",
   path: "/",
   areaServed: [
     "United Arab Emirates",
