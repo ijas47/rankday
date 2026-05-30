@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, faqPageSchema, serviceSchema, type FaqItem } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import { FaqSection } from "@/components/faq-section";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { HeroVisual } from "@/components/hero-visual";
@@ -49,6 +51,47 @@ const markets: Array<[string, string]> = [
   ["Ireland", "peach"],
   ["New Zealand", "mint"],
 ];
+
+const homeFaqs: FaqItem[] = [
+  {
+    q: "What does Rankday actually deliver in 90 days?",
+    a: "A rebuilt website, top-3 Google rankings for your agreed keywords, and citations in AI search (ChatGPT, Perplexity, Claude, Google AI) — all for one fixed price, with a top-3 guarantee on 90% of agreed keywords or we keep working free.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "One fixed price per 90-day engagement: Standard is $4,900 USD and Growth is $7,900 USD (with local pricing in AED and GBP). No retainers and no long contracts.",
+  },
+  {
+    q: "What's the guarantee?",
+    a: "If you're not in the top 3 on Google for 90% of your agreed keywords by day 90, we keep working at no extra cost until you are. Keyword scope is agreed and fixed in writing before work starts.",
+  },
+  {
+    q: "Which markets do you work in?",
+    a: "The UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand — most English-speaking markets. Arabic-language SEO is available in the UAE and GCC at no extra cost.",
+  },
+  {
+    q: "How much of my time does it take?",
+    a: "Almost none. You approve the keyword list and the site in week 1, then answer two short questions a week. We handle everything else.",
+  },
+];
+
+const homeServiceLd = serviceSchema({
+  name: "90-Day SEO & AEO Engagement",
+  description:
+    "Rankday rebuilds your website, ranks it in the Google top 3, and gets you cited by AI search engines — in a fixed 90-day engagement with a top-3 ranking guarantee.",
+  path: "/",
+  areaServed: [
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States",
+    "Canada",
+    "Australia",
+    "Singapore",
+    "Ireland",
+    "New Zealand",
+  ],
+  offer: { price: "4900", currency: "USD" },
+});
 
 export default function HomePage() {
   return (
@@ -347,6 +390,14 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <JsonLd data={homeServiceLd} />
+      <JsonLd data={faqPageSchema(homeFaqs)} />
+      <FaqSection
+        heading="Common questions."
+        intro="The questions businesses ask before they start."
+        items={homeFaqs}
+      />
     </div>
   );
 }
