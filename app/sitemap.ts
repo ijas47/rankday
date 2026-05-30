@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { posts } from "./blog/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.rank-day.com";
@@ -30,29 +31,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/seo-for-maid-services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/tools/aeo-score`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/blog/seo-vs-aeo-vs-geo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/how-long-does-seo-take`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/how-much-does-seo-cost`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/how-to-choose-an-seo-agency`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/what-is-geo-generative-engine-optimization`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/will-ai-replace-google-search`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/why-isnt-my-website-ranking-on-google`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/do-i-need-a-new-website-for-seo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/what-is-local-seo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/keyword-research-for-small-business`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/what-are-backlinks-and-how-to-get-them`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/schema-markup-for-beginners`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/google-business-profile-setup-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/how-to-optimise-for-google-ai-overviews`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/seo-for-new-domains-first-90-days`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/eeat-explained-why-google-trusts-sites`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/technical-seo-checklist`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/how-to-write-meta-titles-and-descriptions`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/mobile-first-indexing-explained`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/internal-linking-strategy`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/why-did-my-google-ranking-drop`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/seo-for-ecommerce-stores`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/ai-search-optimisation-for-b2b-saas`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/blog/common-seo-myths-debunked`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...posts.map((post) => ({
+      url: `${base}/blog/${post.slug}`,
+      lastModified: post.updatedAt ? new Date(`${post.updatedAt}T00:00:00`) : new Date(`${post.publishedAt}T00:00:00`),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 }
