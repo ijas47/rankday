@@ -23,6 +23,12 @@ const industries = [
   { slug: "seo-for-maid-services", title: "Maid and cleaning services", body: "Regular, deep clean, specialist cleaning. Rank for the bookings before your competitors do.", tone: "lilac" },
 ];
 
+const industryGuides = [
+  { href: "/blog/seo-for-healthcare-providers", title: "SEO for healthcare providers", body: "How clinics build patient trust, local visibility, and AI-ready service pages.", tone: "pink" },
+  { href: "/blog/seo-for-real-estate-companies", title: "SEO for real estate companies", body: "How brokers, developers, and property firms turn location searches into enquiries.", tone: "peach" },
+  { href: "/blog/digital-marketing-tips-for-small-businesses", title: "Digital marketing tips for small businesses", body: "The practical search-first order for businesses that cannot waste budget.", tone: "mint" },
+];
+
 export default function IndustriesPage() {
   return (
     <div className="page-enter">
@@ -49,6 +55,32 @@ export default function IndustriesPage() {
                 </div>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
                   See how we work in this industry
+                  <Icon.Arrow />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Industry SEO guides.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              Start here if you want to understand how search works in high-intent categories before choosing a 90-day sprint.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-3">
+            {industryGuides.map((guide) => (
+              <Link key={guide.href} href={guide.href} className={`card card-${guide.tone}`} style={{ padding: 28, minHeight: 190, textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 18 }}>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{guide.title}</h3>
+                  <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "12px 0 0" }}>{guide.body}</p>
+                </div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
+                  Read the guide
                   <Icon.Arrow />
                 </span>
               </Link>

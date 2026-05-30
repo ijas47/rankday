@@ -20,6 +20,12 @@ const dubaiCategories = [
   { title: "B2B and SaaS", body: "Agencies, software companies, service providers targeting the GCC market. We rank you for the category keywords your buyers search.", tone: "lilac" },
 ];
 
+const dubaiGuides = [
+  { href: "/blog/how-to-choose-a-digital-marketing-agency", title: "How to choose a digital marketing agency", body: "A due diligence process for choosing an agency without getting trapped in weak retainers.", tone: "pink" },
+  { href: "/blog/seo-for-real-estate-companies", title: "SEO for real estate companies", body: "How Dubai real estate firms can turn area, property type, and investment searches into enquiries.", tone: "peach" },
+  { href: "/blog/digital-marketing-tips-for-small-businesses", title: "Digital marketing tips for small businesses", body: "The practical search-first order for smaller Dubai businesses with limited budget.", tone: "mint" },
+];
+
 const serviceLd = serviceSchema({
   name: "SEO Agency Dubai",
   description: "A new website, top-3 Google rankings, and AI citations for Dubai and UAE businesses. AED 18,000 standard. Arabic available at no extra cost. 90-day guarantee.",
@@ -106,6 +112,32 @@ export default function SEOAgencyDubaiPage() {
                 <h3 style={{ fontSize: 16, fontWeight: 700, color: "var(--ink)", margin: 0 }}>{c.title}</h3>
                 <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: 0 }}>{c.body}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Dubai SEO guides.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              Practical reading for UAE businesses comparing agencies, channels, and local search opportunities.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-3">
+            {dubaiGuides.map((guide) => (
+              <Link key={guide.href} href={guide.href} className={`card card-${guide.tone}`} style={{ padding: 28, minHeight: 190, textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 18 }}>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{guide.title}</h3>
+                  <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "12px 0 0" }}>{guide.body}</p>
+                </div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
+                  Read the guide
+                  <Icon.Arrow />
+                </span>
+              </Link>
             ))}
           </div>
         </div>

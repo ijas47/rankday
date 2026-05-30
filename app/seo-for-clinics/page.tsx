@@ -20,6 +20,11 @@ const clinicTypes = [
   { type: "Specialist clinics", keywords: '"dermatologist Dubai", "cardiologist near me", "ENT specialist [city]"', tone: "lilac" },
 ];
 
+const clinicGuides = [
+  { href: "/blog/seo-for-healthcare-providers", title: "SEO for healthcare providers", body: "The full clinic SEO playbook: service pages, doctor credibility, local search, reviews, schema, and AI citation readiness.", tone: "pink" },
+  { href: "/blog/what-is-seo-in-digital-marketing", title: "What is SEO in digital marketing?", body: "A business owner's guide to how SEO works, what moves rankings, and what should happen in the first 90 days.", tone: "mint" },
+];
+
 const serviceLd = serviceSchema({
   name: "SEO for Clinics",
   description: "A new website, top-3 Google rankings, and AI citations for clinics. Treatment pages, Google Business Profile, review collection. One fixed price. 90-day guarantee.",
@@ -77,6 +82,32 @@ export default function SEOForClinicsPage() {
                 The clinics named in that answer get the inquiry. They are not there by accident. They have structured content, schema markup, and consistent presence on the platforms LLMs pull from. We build that for you.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Clinic SEO reading.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              Use these guides to understand how healthcare search visibility works before we build the pages.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-2">
+            {clinicGuides.map((guide) => (
+              <Link key={guide.href} href={guide.href} className={`card card-${guide.tone}`} style={{ padding: 32, minHeight: 200, textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 18 }}>
+                <div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.015em" }}>{guide.title}</h3>
+                  <p style={{ fontSize: 15, color: "var(--ink-2)", lineHeight: 1.5, margin: "12px 0 0" }}>{guide.body}</p>
+                </div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
+                  Read the guide
+                  <Icon.Arrow />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

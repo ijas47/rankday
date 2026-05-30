@@ -69,6 +69,12 @@ const phases: Phase[] = [
   },
 ];
 
+const processGuides = [
+  { href: "/blog/what-is-seo-in-digital-marketing", title: "What is SEO in digital marketing?", body: "The plain-English guide to what SEO does, what moves rankings, and why the first 90 days need structure.", tone: "pink" },
+  { href: "/blog/seo-content-writing-guide", title: "SEO content writing guide", body: "How to write pages that answer buyer intent, rank on Google, and support AI citation visibility.", tone: "peach" },
+  { href: "/blog/how-to-choose-a-digital-marketing-agency", title: "How to choose a digital marketing agency", body: "The agency due diligence checklist for avoiding vague retainers and demanding measurable outcomes.", tone: "mint" },
+];
+
 export default function HowItWorksPage() {
   return (
     <div className="page-enter">
@@ -86,6 +92,32 @@ export default function HowItWorksPage() {
       <section style={{ padding: "24px 0 48px" }}>
         <div className="container">
           <Timeline phases={phases} />
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Read the strategy behind the sprint.</h2>
+            <p className="body lg" style={{ maxWidth: 620 }}>
+              These guides explain the SEO, content, and agency selection decisions behind the Rankday process.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-3">
+            {processGuides.map((guide) => (
+              <Link key={guide.href} href={guide.href} className={`card card-${guide.tone}`} style={{ padding: 28, minHeight: 190, textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 18 }}>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{guide.title}</h3>
+                  <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "12px 0 0" }}>{guide.body}</p>
+                </div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
+                  Read the guide
+                  <Icon.Arrow />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
