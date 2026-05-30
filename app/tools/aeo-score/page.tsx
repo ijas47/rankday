@@ -51,7 +51,7 @@ export default function AeoScorePage() {
             style={{ marginTop: 24, maxWidth: 660, marginLeft: "auto", marginRight: "auto" }}
           >
             Paste your URL. In a few seconds, see how ready your site is to be cited by ChatGPT,
-            Perplexity, Claude, and Google AI — and exactly what to fix.
+            Perplexity, Claude, and Google AI, plus exactly what to fix.
           </p>
         </div>
       </section>
