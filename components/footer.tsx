@@ -76,6 +76,24 @@ export function Footer() {
                 Free
               </span>
             </Link>
+            <Link className="footer-link" href="/tools/llms-txt" style={{ fontWeight: 700 }}>
+              llms.txt Generator
+              <span
+                style={{
+                  marginLeft: 8,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  background: "rgba(124,92,255,0.25)",
+                  color: "#fff",
+                  padding: "2px 6px",
+                  borderRadius: 99,
+                }}
+              >
+                Free
+              </span>
+            </Link>
             <Link className="footer-link" href="/who-its-for">Who it&apos;s for</Link>
             <Link className="footer-link" href="/faq">FAQ</Link>
             <Link className="footer-link" href="/about">About</Link>
