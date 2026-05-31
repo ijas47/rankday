@@ -9,7 +9,7 @@ export const faqs = [
   },
   {
     q: "What if I'm not ranking for 90% by day 90?",
-    a: "We keep working at no extra cost until you are. The guarantee applies to the keyword list agreed and fixed in writing before work starts — not an open-ended wishlist added later. This is why we scope carefully in week 1 and don't accept keywords we can't deliver.",
+    a: "We keep working at no extra cost until you are. The guarantee applies to the keyword list agreed and fixed in writing before work starts - not an open-ended wishlist added later. This is why we scope carefully in week 1 and don't accept keywords we can't deliver.",
   },
   {
     q: "What is AEO and why does it matter?",

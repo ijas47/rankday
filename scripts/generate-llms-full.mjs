@@ -83,9 +83,9 @@ const pages = walk(APP_DIR)
   .sort((a, b) => rank(a.path) - rank(b.path) || a.path.localeCompare(b.path));
 
 const header = [
-  "# Rankday — full content",
+  "# rankday - full content",
   "",
-  "> Full text of every page on rank-day.com, for AI ingestion. Rankday is a 90-day SEO and AI citation agency: we rebuild a business's website, rank it on Google, and get it cited by ChatGPT, Perplexity, Claude, and Google AI. One fixed price, top-3 ranking guarantee on 90% of agreed keywords, no retainer.",
+  "> Full text of every page on rank-day.com, for AI ingestion. rankday is a 90-day SEO and AI citation agency: we rebuild a business's website, rank it on Google, and get it cited by ChatGPT, Perplexity, Claude, and Google AI. One fixed price, top-3 ranking guarantee on 90% of agreed keywords, no retainer.",
   "",
   "Contact: WhatsApp +971 56 598 1209. Email sales@rank-day.com.",
   "",

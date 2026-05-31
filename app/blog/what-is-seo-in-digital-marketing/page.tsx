@@ -84,12 +84,12 @@ export default function Post() {
         The question is not "did traffic go up?" The better question is "are more qualified buyers finding the right page and taking the next step?"
       </P>
 
-      <H2>Where Rankday fits</H2>
+      <H2>Where rankday fits</H2>
       <P>
-        Rankday is built for businesses that do not want an open-ended retainer. We rebuild the site, target the agreed keywords, optimise for Google and AI citations, and work toward top 3 rankings in 90 days.
+        rankday is built for businesses that do not want an open-ended retainer. We rebuild the site, target the agreed keywords, optimise for Google and AI citations, and work toward top 3 rankings in 90 days.
       </P>
       <P>
-        If your current site is not ranking, start with <A href="/blog/why-isnt-my-website-ranking-on-google">this ranking diagnostic</A>, then look at <A href="/pricing">the 90-day Rankday sprint</A>.
+        If your current site is not ranking, start with <A href="/blog/why-isnt-my-website-ranking-on-google">this ranking diagnostic</A>, then look at <A href="/pricing">the 90-day rankday sprint</A>.
       </P>
     </BlogPostLayout>
   );

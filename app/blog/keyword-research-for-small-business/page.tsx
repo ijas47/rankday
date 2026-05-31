@@ -170,9 +170,9 @@ export default function Post() {
         That gives you two pieces of information: your AEO competitors, and the kinds of attributes the AI mentions (price, location, specialty, reviews, etc.). Optimise your content to surface those attributes prominently.
       </P>
 
-      <H2>What Rankday does differently</H2>
+      <H2>What rankday does differently</H2>
       <P>
-        At Rankday we run keyword research in week 1 of every engagement. The output is a scoped, written list of 15 to 30 priority keywords (depending on plan) that we both agree on. The list is fixed in writing before any other work starts.
+        At rankday we run keyword research in week 1 of every engagement. The output is a scoped, written list of 15 to 30 priority keywords (depending on plan) that we both agree on. The list is fixed in writing before any other work starts.
       </P>
       <P>
         Then we deliver against that list. Top 3 rankings on 90% of agreed keywords by day 90, or we keep working at no extra cost. <A href="/how-it-works">See the full 90-day breakdown.</A>

@@ -91,9 +91,9 @@ export default function Post() {
         <LI><Strong>Weeks 9 to 12:</Strong> improve ranking pages, add FAQ schema, build citations, and strengthen review generation.</LI>
       </UL>
 
-      <H2>Where Rankday fits</H2>
+      <H2>Where rankday fits</H2>
       <P>
-        Rankday builds fast, search-ready websites for clinics and healthcare providers, then optimises them for Google rankings and AI visibility. Start with <A href="/seo-for-clinics">SEO for clinics</A> if healthcare is your market.
+        rankday builds fast, search-ready websites for clinics and healthcare providers, then optimises them for Google rankings and AI visibility. Start with <A href="/seo-for-clinics">SEO for clinics</A> if healthcare is your market.
       </P>
     </BlogPostLayout>
   );

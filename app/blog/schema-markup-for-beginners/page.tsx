@@ -159,7 +159,7 @@ export default function Post() {
         Schema goes in the &lt;head&gt; via custom code per page. Webflow's CMS Collection variables can populate the JSON-LD dynamically.
       </P>
 
-      <H3>If you use Next.js (like Rankday)</H3>
+      <H3>If you use Next.js (like rankday)</H3>
       <P>
         Inject JSON-LD via a &lt;script type="application/ld+json"&gt; tag in the layout or page component. Use template strings or JSON.stringify to keep the schema typed and maintainable.
       </P>
@@ -194,9 +194,9 @@ export default function Post() {
         Quick start. If your site has zero schema today and you want to deploy the highest-impact 3 schemas, do them in this order: Organization (or LocalBusiness for local businesses), then FAQPage on your FAQ page, then Article on each blog post. That covers 80% of the value.
       </Callout>
 
-      <H2>What Rankday does with schema</H2>
+      <H2>What rankday does with schema</H2>
       <P>
-        Every Rankday-built site includes the full schema stack from day one:
+        Every rankday-built site includes the full schema stack from day one:
       </P>
       <UL>
         <LI>Organization or LocalBusiness on the homepage and layout</LI>

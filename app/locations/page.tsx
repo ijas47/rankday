@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 export const metadata: Metadata = pageMeta({
   title: "Locations Served. SEO Agency Across UAE, UK, US, and More.",
   description:
-    "Rankday delivers SEO and AEO across UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Local invoicing and pricing where available.",
+    "rankday delivers SEO and AEO across UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Local invoicing and pricing where available.",
   path: "/locations",
 });
 
@@ -34,7 +34,7 @@ export default function LocationsPage() {
             SEO agency across <span className="it">eight markets.</span> Local invoicing where available.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Rankday is async-first by design. We work across time zones without issue. Local invoicing is available in UAE, UK, and US. All other markets billed in USD.
+            rankday is async-first by design. We work across time zones without issue. Local invoicing is available in UAE, UK, and US. All other markets billed in USD.
           </p>
         </div>
       </section>

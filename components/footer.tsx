@@ -58,6 +58,7 @@ export function Footer() {
             <Link className="footer-link" href="/">Home</Link>
             <Link className="footer-link" href="/how-it-works">How it works</Link>
             <Link className="footer-link" href="/pricing">Pricing</Link>
+            <Link className="footer-link" href="/partners">Partners</Link>
             <Link className="footer-link" href="/tools/aeo-score" style={{ fontWeight: 700 }}>
               Free AEO Check
               <span
@@ -131,7 +132,7 @@ export function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <div>© Rankday 2026</div>
+          <div>© rankday 2026</div>
           <div style={{ display: "flex", gap: 24 }}>
             <a className="footer-link" style={{ padding: 0 }}>Privacy</a>
             <a className="footer-link" style={{ padding: 0 }}>Terms</a>

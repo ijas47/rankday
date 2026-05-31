@@ -70,7 +70,7 @@ export default function SEOForFacilitiesManagementPage() {
         <div className="container">
           <div className="r-aside">
             <div data-reveal className="sticky-aside">
-              <h2 className="h1">What Rankday builds for FM companies.</h2>
+              <h2 className="h1">What rankday builds for FM companies.</h2>
               <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>Growth from $7,900 <span className="btn-icon"><Icon.Arrow /></span></Link>
             </div>
             <div data-reveal>

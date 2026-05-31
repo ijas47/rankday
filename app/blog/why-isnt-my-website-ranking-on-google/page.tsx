@@ -155,7 +155,7 @@ export default function Post() {
         Some of this work is straightforward. Some requires deeper expertise: schema markup, content strategy, backlink outreach, technical site rebuilds.
       </P>
       <P>
-        Rankday does a complete 90-day audit and rebuild for businesses whose current setup is not delivering. Standard $4,900. Top 3 ranking guarantee on agreed keywords by day 90, or we keep working at no extra cost. <A href="/pricing">See the full pricing</A> or <A href="/how-it-works">how the 90 days work.</A>
+        rankday does a complete 90-day audit and rebuild for businesses whose current setup is not delivering. Standard $4,900. Top 3 ranking guarantee on agreed keywords by day 90, or we keep working at no extra cost. <A href="/pricing">See the full pricing</A> or <A href="/how-it-works">how the 90 days work.</A>
       </P>
     </BlogPostLayout>
   );

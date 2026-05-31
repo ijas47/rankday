@@ -101,12 +101,12 @@ export default function Post() {
         Publish two buyer-question posts and start asking recent customers for reviews.
       </P>
 
-      <H2>Where Rankday fits</H2>
+      <H2>Where rankday fits</H2>
       <P>
-        Rankday is built for small businesses that want search visibility without managing an agency for a year. We rebuild the site, publish the right pages, optimise for Google and AI citations, and work toward top 3 rankings in 90 days.
+        rankday is built for small businesses that want search visibility without managing an agency for a year. We rebuild the site, publish the right pages, optimise for Google and AI citations, and work toward top 3 rankings in 90 days.
       </P>
       <P>
-        Start with <A href="/who-its-for">who Rankday is for</A> or read <A href="/blog/keyword-research-for-small-business">the small business keyword research method</A>.
+        Start with <A href="/who-its-for">who rankday is for</A> or read <A href="/blog/keyword-research-for-small-business">the small business keyword research method</A>.
       </P>
     </BlogPostLayout>
   );

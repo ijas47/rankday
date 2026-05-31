@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 export const metadata: Metadata = pageMeta({
   title: "How It Works. The 90-Day SEO and AEO Process.",
   description:
-    "Week-by-week breakdown of how Rankday delivers a new website, Google top-3 rankings, and AI citations in 90 days. No contracts, no 40-page reports, no surprises.",
+    "Week-by-week breakdown of how rankday delivers a new website, Google top-3 rankings, and AI citations in 90 days. No contracts, no 40-page reports, no surprises.",
   path: "/how-it-works",
 });
 import {
@@ -81,7 +81,7 @@ export default function HowItWorksPage() {
       <section style={{ padding: "32px 0 40px", textAlign: "center", position: "relative" }}>
         <div className="container">
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 1100, margin: "0 auto" }}>
-            How <span className="it">Rankday</span> works.
+            How <span className="it">rankday</span> works.
           </h1>
           <p className="lede" data-reveal data-reveal-delay="0.1" style={{ marginTop: 28, maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
             Most agencies hide the work behind dashboards and monthly reports. The work is actually pretty simple. Here&apos;s what happens.
@@ -100,7 +100,7 @@ export default function HowItWorksPage() {
           <div data-reveal className="r-header">
             <h2 className="h1">Read the strategy behind the sprint.</h2>
             <p className="body lg" style={{ maxWidth: 620 }}>
-              These guides explain the SEO, content, and agency selection decisions behind the Rankday process.
+              These guides explain the SEO, content, and agency selection decisions behind the rankday process.
             </p>
           </div>
 

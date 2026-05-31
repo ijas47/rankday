@@ -151,7 +151,7 @@ export default function Post() {
         The correct calculation is: what is the cost of NOT ranking for 12 months? For most businesses, that exceeds the cost of a rebuild many times over.
       </P>
 
-      <H2>How Rankday handles this question</H2>
+      <H2>How rankday handles this question</H2>
       <P>
         In week 1 of every engagement, we audit the existing site against these 6 factors. We tell you straight: rebuild or patch.
       </P>

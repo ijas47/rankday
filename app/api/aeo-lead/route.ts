@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       console.log("[aeo-lead]", JSON.stringify(lead));
     }
   } catch {
-    // Don't fail the user's request if the destination is down — we still unlock.
+    // Don't fail the user's request if the destination is down - we still unlock.
   }
 
   return NextResponse.json({ ok: true });

@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 export const metadata: Metadata = pageMeta({
   title: "Industries We Work With. SEO for Every Category We Serve.",
   description:
-    "Rankday delivers SEO and AEO for SaaS, law firms, clinics, contractors, interior designers, fit out companies, facilities management, and home services. Pick your industry.",
+    "rankday delivers SEO and AEO for SaaS, law firms, clinics, contractors, interior designers, fit out companies, facilities management, and home services. Pick your industry.",
   path: "/industries",
 });
 
@@ -39,7 +39,7 @@ export default function IndustriesPage() {
             SEO and AEO for every <span className="it">industry</span> we serve.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Pick your industry. Each page covers the keywords that bring in clients, the pages we build, and what Rankday delivers in 90 days for businesses in that category.
+            Pick your industry. Each page covers the keywords that bring in clients, the pages we build, and what rankday delivers in 90 days for businesses in that category.
           </p>
         </div>
       </section>

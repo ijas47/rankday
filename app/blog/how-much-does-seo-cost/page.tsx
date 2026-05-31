@@ -83,14 +83,14 @@ export default function Post() {
         A small but growing category. The price is fixed, the timeline is fixed, the outcome is agreed in writing. If the outcome is not met, the agency keeps working at no extra cost or refunds part of the fee.
       </P>
       <P>
-        Rankday operates this model. Standard $4,900 USD, Growth $7,900 USD, for a 90-day engagement that delivers a new website, top 3 rankings on 90% of agreed keywords, and citations in AI tools like ChatGPT and Perplexity. If the rankings are not delivered by day 90, work continues at no extra cost.
+        rankday operates this model. Standard $4,900 USD, Growth $7,900 USD, for a 90-day engagement that delivers a new website, top 3 rankings on 90% of agreed keywords, and citations in AI tools like ChatGPT and Perplexity. If the rankings are not delivered by day 90, work continues at no extra cost.
       </P>
       <P>
-        The math is interesting. A standard Rankday engagement at $4,900 is equivalent to one month of a $5,000-per-month retainer. But you get a new website (worth $5,000 to $20,000 elsewhere), full SEO work, and AEO work. After 90 days you own everything and you have no ongoing commitment.
+        The math is interesting. A standard rankday engagement at $4,900 is equivalent to one month of a $5,000-per-month retainer. But you get a new website (worth $5,000 to $20,000 elsewhere), full SEO work, and AEO work. After 90 days you own everything and you have no ongoing commitment.
       </P>
 
       <Callout tone="lilac">
-        Quick comparison. At a $1,500-per-month SEO retainer, 12 months costs $18,000. After 12 months you may or may not be ranking. At Rankday's standard plan, 90 days costs $4,900. By day 90 you are ranking for 90% of your agreed keywords or work continues free.
+        Quick comparison. At a $1,500-per-month SEO retainer, 12 months costs $18,000. After 12 months you may or may not be ranking. At rankday's standard plan, 90 days costs $4,900. By day 90 you are ranking for 90% of your agreed keywords or work continues free.
       </Callout>
 
       <H2>Hourly consulting</H2>
@@ -109,7 +109,7 @@ export default function Post() {
         Reality check: this model sounds great in pitch decks. In practice, the keywords that get targeted are usually low-competition long-tails that were going to rank anyway, and the contract terms often have buried clauses about "minimum monthly fees" or "setup costs" that look more like a retainer once you read them carefully.
       </P>
       <P>
-        It can work. But it requires careful contract review. The honest version of pay-per-rank is a fixed-price model with a written guarantee, which is what Rankday does.
+        It can work. But it requires careful contract review. The honest version of pay-per-rank is a fixed-price model with a written guarantee, which is what rankday does.
       </P>
 
       <H2>What you should actually pay</H2>
@@ -140,7 +140,7 @@ export default function Post() {
         The price you should pay depends on what the outcome is worth to you and how the work is structured. The default monthly retainer model usually overcharges relative to the result. Fixed-price outcome-based pricing matches cost to result better.
       </P>
       <P>
-        Rankday's pricing is published openly: Standard $4,900 USD, Growth $7,900 USD, both for 90 days of work that includes website, SEO, and AEO. Local pricing in AED and GBP. The deliverables and the guarantee are in writing before anything starts. <A href="/pricing">See the full pricing breakdown.</A>
+        rankday's pricing is published openly: Standard $4,900 USD, Growth $7,900 USD, both for 90 days of work that includes website, SEO, and AEO. Local pricing in AED and GBP. The deliverables and the guarantee are in writing before anything starts. <A href="/pricing">See the full pricing breakdown.</A>
       </P>
     </BlogPostLayout>
   );

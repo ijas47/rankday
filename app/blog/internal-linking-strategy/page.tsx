@@ -145,9 +145,9 @@ export default function Post() {
         <LI>Add value for the reader (not just SEO-driven)</LI>
       </UL>
 
-      <H2>Example: how Rankday's site is internally linked</H2>
+      <H2>Example: how rankday's site is internally linked</H2>
       <P>
-        The Rankday site follows a hub-and-spoke model:
+        The rankday site follows a hub-and-spoke model:
       </P>
       <UL>
         <LI><Strong>Homepage</Strong> links to How It Works, Pricing, Industries, Locations, Blog, FAQ, About</LI>
@@ -174,9 +174,9 @@ export default function Post() {
         For AEO specifically, internal links between related content help AI engines understand topical relationships. A site where "what is AEO," "how to get cited by ChatGPT," and "what is GEO" all link to each other signals topical coherence that AI engines reward.
       </P>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
-        Internal linking is built into the architecture of every Rankday site from day one. We design the hub-and-spoke structure during the planning phase, ensure every page has inbound and outbound links by launch, and add contextual links across the content as it goes live.
+        Internal linking is built into the architecture of every rankday site from day one. We design the hub-and-spoke structure during the planning phase, ensure every page has inbound and outbound links by launch, and add contextual links across the content as it goes live.
       </P>
       <P>
         The result: no orphan pages, clear hub structure for Google to understand, authority flowing from homepage to priority pages, and topical clusters that compound. <A href="/how-it-works">See how the 90-day plan handles the build.</A>
