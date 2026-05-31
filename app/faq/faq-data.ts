@@ -53,6 +53,6 @@ export const faqs = [
   },
   {
     q: "How do I get started?",
-    a: "WhatsApp, email, or book a 15-minute call. Whichever is easiest. We respond within a few hours during business days.",
+    a: "WhatsApp or email. Whichever is easiest. We respond within a few hours during business days.",
   },
 ];

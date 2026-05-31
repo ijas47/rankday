@@ -86,9 +86,9 @@ export function BlogPostLayout({
             <h2 className="h1" style={{ color: "#fff" }}>
               Ready to <span className="serif">rank?</span>
             </h2>
-            <Link href="/pricing" className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

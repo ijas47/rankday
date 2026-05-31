@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const COOKIE_NAME = "rd_ref";
 const COOKIE_DAYS = 90;
-const CALENDLY_HOST = "calendly.com";
+const WHATSAPP_HOST = "wa.me";
 
 function writeCookie(code: string) {
   const maxAge = COOKIE_DAYS * 24 * 60 * 60;
@@ -37,13 +37,16 @@ export function ReferralAttribution() {
     if (!stored) return;
 
     const applyToLinks = () => {
-      document.querySelectorAll<HTMLAnchorElement>(`a[href*="${CALENDLY_HOST}"]`).forEach((anchor) => {
+      document.querySelectorAll<HTMLAnchorElement>(`a[href*="${WHATSAPP_HOST}"]`).forEach((anchor) => {
         try {
           const url = new URL(anchor.href);
-          url.searchParams.set("rd_ref", stored);
-          url.searchParams.set("utm_source", "referral");
-          url.searchParams.set("utm_medium", "partner");
-          url.searchParams.set("utm_campaign", `partner_${stored}`);
+          const existing = url.searchParams.get("text");
+          const referralText = `Referral code: ${stored}`;
+          if (existing && !existing.includes(referralText)) {
+            url.searchParams.set("text", `${existing} ${referralText}`);
+          } else if (!existing) {
+            url.searchParams.set("text", `Hi, I want to start my 90 days with rankday. ${referralText}`);
+          }
           anchor.href = url.toString();
         } catch {
           // Leave malformed links unchanged.

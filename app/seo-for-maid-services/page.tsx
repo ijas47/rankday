@@ -100,7 +100,7 @@ export default function SEOForMaidServicesPage() {
         <div className="container" style={{ padding: 0 }}>
           <div data-reveal className="band-purple r-band">
             <h2 className="h1" style={{ color: "#fff" }}>Rank your cleaning company in <span className="serif">90 days.</span></h2>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">Start your 90 days <span className="btn-icon"><Icon.Arrow /></span></a>
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">Start your 90 days <span className="btn-icon"><Icon.Arrow /></span></a>
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { AeoReport, Check } from "@/lib/aeo-score";
 
-const CALENDLY = "https://calendly.com/ijas-rank-day/30min";
+const WHATSAPP_URL = "https://wa.me/971565981209";
 const GRADE_COLOR: Record<string, string> = {
   A: "#16a34a",
   B: "#65a30d",
@@ -238,7 +238,7 @@ export function AeoClient() {
                   <>That's exactly what we fix <span className="serif">in 90 days.</span></>
                 )}
               </h2>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="btn btn-light">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-light">
                 Start your 90 days
               </a>
             </div>

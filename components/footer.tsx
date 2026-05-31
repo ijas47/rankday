@@ -23,7 +23,7 @@ export function Footer() {
           </div>
 
           <div className="footer-cta-buttons" style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Start your 90 days{" "}
               <span className="btn-icon">
                 <Icon.Arrow />
@@ -32,8 +32,8 @@ export function Footer() {
             <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
               <Icon.WhatsApp /> WhatsApp
             </a>
-            <a className="btn btn-light" href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer">
-              <Icon.Phone /> Book a call
+            <a className="btn btn-light" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">
+              <Icon.WhatsApp /> WhatsApp
             </a>
           </div>
         </div>

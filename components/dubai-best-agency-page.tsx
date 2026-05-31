@@ -81,7 +81,7 @@ export function DubaiBestAgencyPage({
             <BundlePills />
           </div>
           <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </a>
             <Link href="/seo-agency-dubai" className="btn btn-light">
@@ -226,7 +226,7 @@ export function DubaiBestAgencyPage({
             <h2 className="h1" style={{ color: "#fff" }}>
               Want to be found in <span className="serif">Dubai?</span>
             </h2>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </a>
           </div>

@@ -173,7 +173,7 @@ export default function SEOForClinicsPage() {
             <h2 className="h1" style={{ color: "#fff" }}>
               Fill your appointment book in <span className="serif">90 days.</span>
             </h2>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </a>
           </div>

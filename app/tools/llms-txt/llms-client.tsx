@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-const CALENDLY = "https://calendly.com/ijas-rank-day/30min";
-
 type Result = {
   url: string;
   domain: string;

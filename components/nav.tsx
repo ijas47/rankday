@@ -71,7 +71,7 @@ export function Nav() {
           </div>
 
           <div className="nav-right">
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm nav-cta">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm nav-cta">
               Start your 90 days
               <span className="btn-icon">
                 <Icon.Arrow />
@@ -111,7 +111,7 @@ export function Nav() {
             );
           })}
           <a
-            href="https://calendly.com/ijas-rank-day/30min"
+            href="https://wa.me/971565981209"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"

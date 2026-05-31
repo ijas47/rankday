@@ -58,7 +58,7 @@ export function FAQClient() {
               How do I get <span className="it">started?</span>
             </h2>
             <p className="body lg" style={{ marginTop: 20, maxWidth: 600, marginLeft: "auto", marginRight: "auto", color: "var(--ink-2)" }}>
-              WhatsApp, email, or book a 15-minute call. Whichever is easiest. We respond within a few hours during business days.
+              WhatsApp or email. Whichever is easiest. We respond within a few hours during business days.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
               <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
@@ -67,9 +67,9 @@ export function FAQClient() {
                   <Icon.WhatsApp />
                 </span>
               </a>
-              <a className="btn btn-light" href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer">
-              <Icon.Phone /> Book a call
-            </a>
+              <a className="btn btn-light" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">
+                <Icon.WhatsApp /> WhatsApp
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
-import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
@@ -82,9 +81,9 @@ export default function PricingPage() {
                 ))}
               </div>
 
-              <Link href="/pricing" className="btn btn-primary" style={{ alignSelf: "flex-start" }}>
+              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ alignSelf: "flex-start" }}>
                 Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-              </Link>
+              </a>
             </div>
 
             {/* Growth */}
@@ -123,9 +122,9 @@ export default function PricingPage() {
                 </div>
               </div>
 
-              <button className="btn btn-light" style={{ alignSelf: "flex-start" }}>
+              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light" style={{ alignSelf: "flex-start" }}>
                 Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -236,9 +235,9 @@ export default function PricingPage() {
             <h2 className="h1" style={{ color: "#fff" }}>
               <span className="serif">Start</span> your 90 days.
             </h2>
-            <button className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
-            </button>
+            </a>
           </div>
         </div>
       </section>

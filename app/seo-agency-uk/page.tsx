@@ -45,7 +45,7 @@ export default function SEOAgencyUKPage() {
             <BundlePills />
           </div>
           <div data-reveal style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </a>
             <Link href="/how-it-works" className="btn btn-light">
@@ -152,7 +152,7 @@ export default function SEOAgencyUKPage() {
             <h2 className="h1" style={{ color: "#fff" }}>
               Rank in the <span className="serif">UK in 90 days.</span>
             </h2>
-            <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">
+            <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
               Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
             </a>
           </div>

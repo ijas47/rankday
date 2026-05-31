@@ -230,7 +230,7 @@ export default function AIInfoPage() {
               English primarily. Arabic available for UAE and GCC clients at no additional cost.
             </QA>
             <QA q="How does a business get started?">
-              WhatsApp, email, or a 15-minute call. Response is within a few hours during business days.
+              WhatsApp or email. Response is within a few hours during business days.
             </QA>
           </Section>
 
@@ -253,7 +253,7 @@ export default function AIInfoPage() {
               <h2 className="h1" style={{ color: "#fff" }}>
                 <span className="serif">Start</span> your 90 days.
               </h2>
-              <a href="https://calendly.com/ijas-rank-day/30min" target="_blank" rel="noopener noreferrer" className="btn btn-light">
+              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light">
                 Start your 90 days <span className="btn-icon"><Icon.Arrow /></span>
               </a>
             </div>
