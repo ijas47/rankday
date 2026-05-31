@@ -16,6 +16,13 @@ const primaryLocations = [
   { slug: "seo-agency-us", market: "US", title: "SEO agency US", price: "From $4,900", body: "USD invoice. Async across all US time zones. SEO and AEO bundled into one 90-day engagement.", tone: "mint" },
 ];
 
+const dubaiServicePages = [
+  { slug: "best-seo-agency-dubai", title: "Best SEO agency Dubai", body: "Commercial SEO page for Dubai buyers comparing agencies, retainers, guarantees, and ranking outcomes.", tone: "pink" },
+  { slug: "best-web-design-agency-dubai", title: "Best web design agency Dubai", body: "Search-ready web design page for Dubai businesses that need a site built to rank and convert.", tone: "peach" },
+  { slug: "best-aeo-agency-dubai", title: "Best AEO agency Dubai", body: "AI answer visibility page for businesses that want to be understood and cited by AI systems.", tone: "mint" },
+  { slug: "best-geo-agency-dubai", title: "Best GEO agency Dubai", body: "Generative engine visibility page for ChatGPT, Perplexity, Claude, Gemini, Copilot, and Google AI.", tone: "lilac" },
+];
+
 const otherMarkets = [
   ["Canada", "lilac"],
   ["Australia", "pink"],
@@ -36,6 +43,32 @@ export default function LocationsPage() {
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
             rankday is async-first by design. We work across time zones without issue. Local invoicing is available in UAE, UK, and US. All other markets billed in USD.
           </p>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Dubai service pages.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              Separate pages for high-intent Dubai searches. These are service pages, not blog posts.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-cards-4">
+            {dubaiServicePages.map((service) => (
+              <Link key={service.slug} href={`/${service.slug}`} className={`card card-${service.tone}`} style={{ padding: 28, minHeight: 210, display: "flex", flexDirection: "column", justifyContent: "space-between", textDecoration: "none", gap: 18 }}>
+                <div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{service.title}</h3>
+                  <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "14px 0 0" }}>{service.body}</p>
+                </div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
+                  Open page
+                  <Icon.Arrow />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

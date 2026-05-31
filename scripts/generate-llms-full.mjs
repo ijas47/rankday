@@ -63,7 +63,9 @@ function pathFromFile(file) {
 const order = [
   "/", "/pricing", "/how-it-works", "/who-its-for", "/faq", "/about",
   "/what-is-aeo", "/get-cited-by-chatgpt",
-  "/locations", "/seo-agency-dubai", "/seo-agency-uk", "/seo-agency-us",
+  "/locations", "/seo-agency-dubai", "/best-seo-agency-dubai",
+  "/best-web-design-agency-dubai", "/best-aeo-agency-dubai",
+  "/best-geo-agency-dubai", "/seo-agency-uk", "/seo-agency-us",
   "/industries", "/seo-for-saas", "/seo-for-law-firms", "/seo-for-clinics",
   "/seo-for-plumbers", "/seo-for-electricians", "/seo-for-contractors",
   "/seo-for-interior-designers", "/seo-for-fit-out-companies",

@@ -121,6 +121,10 @@ export function Footer() {
           <div>
             <h5>Locations</h5>
             <Link className="footer-link" href="/seo-agency-dubai">SEO agency Dubai</Link>
+            <Link className="footer-link" href="/best-seo-agency-dubai">Best SEO agency Dubai</Link>
+            <Link className="footer-link" href="/best-web-design-agency-dubai">Best web design agency Dubai</Link>
+            <Link className="footer-link" href="/best-aeo-agency-dubai">Best AEO agency Dubai</Link>
+            <Link className="footer-link" href="/best-geo-agency-dubai">Best GEO agency Dubai</Link>
             <Link className="footer-link" href="/seo-agency-uk">SEO agency UK</Link>
             <Link className="footer-link" href="/seo-agency-us">SEO agency US</Link>
             <Link className="footer-link" href="/locations" style={{ fontWeight: 700 }}>All locations</Link>
