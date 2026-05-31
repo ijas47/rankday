@@ -1,0 +1,80 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { pageMeta } from "@/lib/seo";
+import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = pageMeta({
+  title: "Free Tools. Check Your AI Search Visibility.",
+  description:
+    "Free tools from rankday: score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), and generate an llms.txt in seconds. No signup.",
+  path: "/tools",
+});
+
+const tools = [
+  {
+    href: "/tools/aeo-score",
+    name: "AEO Score",
+    desc: "Score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), from 0 to 100, with the exact fixes ranked by impact.",
+    tone: "pink",
+    cta: "Check your score",
+  },
+  {
+    href: "/tools/llms-txt",
+    name: "llms.txt Generator",
+    desc: "Generate a ready-to-use llms.txt for any site in seconds. Copy, download, upload. It helps AI systems understand and cite your content.",
+    tone: "mint",
+    cta: "Generate yours",
+  },
+];
+
+export default function ToolsPage() {
+  return (
+    <div className="page-enter">
+      <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
+        <div className="container">
+          <span className="eyebrow">Free tools</span>
+          <h1
+            className="h-display"
+            data-reveal-text
+            style={{ maxWidth: 880, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}
+          >
+            Free tools from <span className="it">rankday</span>
+          </h1>
+          <p
+            className="lede"
+            data-reveal
+            style={{ marginTop: 24, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}
+          >
+            See how findable you are to AI search, and fix it. No signup, no catch.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal-stagger className="r-2">
+            {tools.map((t) => (
+              <Link
+                key={t.href}
+                href={t.href}
+                className={`card card-${t.tone}`}
+                style={{ padding: 40, display: "flex", flexDirection: "column", gap: 16, textDecoration: "none" }}
+              >
+                <h2 style={{ fontSize: 28, fontWeight: 800, color: "var(--ink)", letterSpacing: "-0.02em", margin: 0 }}>
+                  {t.name}
+                </h2>
+                <p style={{ fontSize: 16, color: "var(--ink-2)", lineHeight: 1.5, margin: 0 }}>{t.desc}</p>
+                <span className="btn btn-primary btn-sm" style={{ alignSelf: "flex-start", marginTop: 8 }}>
+                  {t.cta}
+                  <span className="btn-icon">
+                    <Icon.Arrow />
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
