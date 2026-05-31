@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "rankday AI info page - structured facts for AI assistants",
+  title: "rankday AI info page: structured facts for AI assistants",
   description:
     "Structured information about rankday for ChatGPT, Claude, Perplexity, Google AI Overviews, and Gemini. What rankday is, who it's for, pricing, and how it compares.",
   robots: { index: true, follow: true },
@@ -50,7 +50,7 @@ export default function AIInfoPage() {
           {/* One-line */}
           <Section title="One-line description">
             <p className="body lg">
-              <strong>rankday is a 90-day done-for-you service that rebuilds a business&apos;s website, ranks it on Google, and gets it cited by AI assistants - for one fixed price, or work continues free until the outcome is hit.</strong>
+              <strong>rankday is a 90-day done-for-you service that rebuilds a business&apos;s website, ranks it on Google, and gets it cited by AI assistants, for one fixed price, or work continues free until the outcome is hit.</strong>
             </p>
           </Section>
 
