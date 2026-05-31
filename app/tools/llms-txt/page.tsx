@@ -7,7 +7,7 @@ import { LlmsClient } from "./llms-client";
 export const metadata: Metadata = pageMeta({
   title: "Free llms.txt Generator. Build Yours in Seconds.",
   description:
-    "Generate an llms.txt for any website, free. Paste a URL and get a ready-to-use llms.txt that helps ChatGPT, Perplexity, Claude, and other AI systems understand your site. By Rankday.",
+    "Generate an llms.txt for any website, free. Paste a URL and get a ready-to-use llms.txt that helps ChatGPT, Perplexity, Claude, and other AI systems understand your site. By rankday.",
   path: "/tools/llms-txt",
 });
 

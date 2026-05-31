@@ -90,7 +90,7 @@ export function serviceSchema({ name, description, path, areaServed, offer }: Se
     areaServed: areaServed.map((a) => ({ "@type": "AdministrativeArea", name: a })),
     provider: {
       "@type": "ProfessionalService",
-      name: "Rankday",
+      name: "rankday",
       url: SITE_URL,
     },
     ...(offer

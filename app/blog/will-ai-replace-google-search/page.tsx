@@ -56,7 +56,7 @@ export default function Post() {
 
       <H3>Brand and navigational queries</H3>
       <P>
-        "Rankday pricing." "Notion login." Users who already know what they want and just need to get there still type the brand name into Google. AI does not replace this.
+        "rankday pricing." "Notion login." Users who already know what they want and just need to get there still type the brand name into Google. AI does not replace this.
       </P>
 
       <H3>News and very current information</H3>
@@ -150,7 +150,7 @@ export default function Post() {
         For most businesses, the practical answer is: keep doing SEO, but layer AEO and GEO on top. Doing only SEO in 2026 means missing the channels where many of your buyers now start their research.
       </P>
       <P>
-        Rankday does all three in one engagement. Website, Google rankings, AI citations. <A href="/pricing">See the 90-day plan.</A>
+        rankday does all three in one engagement. Website, Google rankings, AI citations. <A href="/pricing">See the 90-day plan.</A>
       </P>
     </BlogPostLayout>
   );

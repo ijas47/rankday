@@ -149,7 +149,7 @@ export default function Post() {
         The window for being one of the first in your category to be cited by generative engines is roughly 12 to 18 months. The same window that closed for SEO around 2012, when early movers locked in the rankings that still drive most of their organic traffic today.
       </P>
       <P>
-        Rankday includes GEO in every engagement. Schema, structured content, directory placement, and editorial outreach are all part of the standard 90-day playbook. <A href="/get-cited-by-chatgpt">See how we get businesses cited by AI engines.</A>
+        rankday includes GEO in every engagement. Schema, structured content, directory placement, and editorial outreach are all part of the standard 90-day playbook. <A href="/get-cited-by-chatgpt">See how we get businesses cited by AI engines.</A>
       </P>
     </BlogPostLayout>
   );

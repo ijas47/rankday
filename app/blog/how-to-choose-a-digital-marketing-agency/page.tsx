@@ -91,12 +91,12 @@ export default function Post() {
         <LI><Strong>Fit:</Strong> have they solved your exact type of problem before?</LI>
       </UL>
 
-      <H2>Where Rankday fits</H2>
+      <H2>Where rankday fits</H2>
       <P>
-        Rankday is not a full-service digital marketing agency. It is a focused SEO and AEO sprint for businesses that need a better website, Google rankings, and AI citations in 90 days without a retainer.
+        rankday is not a full-service digital marketing agency. It is a focused SEO and AEO sprint for businesses that need a better website, Google rankings, and AI citations in 90 days without a retainer.
       </P>
       <P>
-        If search visibility is the bottleneck, start with <A href="/pricing">Rankday pricing</A> or read <A href="/blog/how-to-choose-an-seo-agency">the SEO-specific agency checklist</A>.
+        If search visibility is the bottleneck, start with <A href="/pricing">rankday pricing</A> or read <A href="/blog/how-to-choose-an-seo-agency">the SEO-specific agency checklist</A>.
       </P>
     </BlogPostLayout>
   );

@@ -119,7 +119,7 @@ export default function SEOAgencyUKPage() {
                 UK SEO agencies typically sell monthly retainers. A £1,500 per month retainer runs to £18,000 a year. At that rate, most agencies have still not delivered top-3 rankings 12 months in.
               </p>
               <p className="body lg" style={{ marginTop: 18, color: "var(--ink-2)" }}>
-                Rankday charges a single fixed fee, delivers in 90 days, and guarantees the result in writing. If you are not in the top 3 for 90% of agreed keywords by day 90, we keep working at no extra cost.
+                rankday charges a single fixed fee, delivers in 90 days, and guarantees the result in writing. If you are not in the top 3 for 90% of agreed keywords by day 90, we keep working at no extra cost.
               </p>
               <p className="body lg" style={{ marginTop: 18, color: "var(--ink-2)" }}>
                 Delivery is async by default. We work across UK time zones without issue. You answer two short questions a week. We handle everything else.

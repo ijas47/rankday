@@ -184,7 +184,7 @@ export default function Post() {
         <LI>8. Test AI visibility weekly and iterate</LI>
       </UL>
 
-      <H2>What Rankday does for SaaS</H2>
+      <H2>What rankday does for SaaS</H2>
       <P>
         Our Growth plan ($7,900) is built for B2B SaaS. It includes comparison content, use-case landing pages, SoftwareApplication schema, LinkedIn optimisation, third-party placement, and bi-weekly AI visibility audits.
       </P>

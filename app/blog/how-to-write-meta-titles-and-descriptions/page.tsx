@@ -45,10 +45,10 @@ export default function Post() {
         Google weights the first words of the title more heavily. Put your target keyword in the first half.
       </P>
       <P>
-        Bad: "Discover Rankday: The leading SEO agency in Dubai" (keyword too late)
+        Bad: "Discover rankday: The leading SEO agency in Dubai" (keyword too late)
       </P>
       <P>
-        Good: "SEO Agency Dubai. Top 3 Rankings in 90 Days. | Rankday" (keyword first)
+        Good: "SEO Agency Dubai. Top 3 Rankings in 90 Days. | rankday" (keyword first)
       </P>
 
       <H3>3. One unique title per page</H3>
@@ -183,9 +183,9 @@ export default function Post() {
         Optimise for both: clear, specific, keyword-led for Google, and informative enough that AI engines can correctly categorise the page.
       </P>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
-        Every Rankday-built site has unique, keyword-optimised, intent-matched meta titles and descriptions on every page. We write them as part of the launch, not as an afterthought. Each page also includes Open Graph and Twitter Card metadata for social sharing previews.
+        Every rankday-built site has unique, keyword-optimised, intent-matched meta titles and descriptions on every page. We write them as part of the launch, not as an afterthought. Each page also includes Open Graph and Twitter Card metadata for social sharing previews.
       </P>
       <P>
         Want examples? Browse any page on rank-day.com and view the source. Each one demonstrates the patterns above. <A href="/pricing">See the pricing</A> or <A href="/how-it-works">the 90-day breakdown.</A>

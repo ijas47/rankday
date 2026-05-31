@@ -194,7 +194,7 @@ export default function Post() {
         E-commerce SEO is more technical than service SEO because of scale. A 1000-product store has 1000 product pages, dozens of categories, and potentially millions of faceted URLs. Get the structure right or the entire site collapses under crawl budget waste.
       </Callout>
 
-      <H2>What Rankday does for e-commerce</H2>
+      <H2>What rankday does for e-commerce</H2>
       <P>
         Our 90-day model is designed primarily for service businesses, but the principles apply to e-commerce. For small-to-medium stores (under 500 SKUs), we can deliver:
       </P>

@@ -60,7 +60,7 @@ export function AboutClient() {
       <section style={{ padding: "32px 0 40px", textAlign: "center" }}>
         <div className="container">
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 1100, margin: "0 auto" }}>
-            About <span className="it">Rankday.</span>
+            About <span className="it">rankday.</span>
           </h1>
         </div>
       </section>
@@ -72,7 +72,7 @@ export function AboutClient() {
               <div style={{ height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, background: "#1a2a26" }}>
                 <Image
                   src="/ijas.jpg"
-                  alt="Ijas Abdulla – Founder of Rankday"
+                  alt="Ijas Abdulla – Founder of rankday"
                   fill
                   sizes="(max-width: 900px) 100vw, 40vw"
                   style={{ objectFit: "cover", objectPosition: "center top" }}
@@ -101,13 +101,13 @@ export function AboutClient() {
 
             <div data-reveal data-reveal-delay="0.1">
               <p className="body lg" style={{ color: "var(--ink-2)" }}>
-                Rankday was started by <strong>Ijas Abdulla</strong> after 16 years of building go-to-market machines for B2B companies across adtech, proptech, SaaS, and AI.
+                rankday was started by <strong>Ijas Abdulla</strong> after 16 years of building go-to-market machines for B2B companies across adtech, proptech, SaaS, and AI.
               </p>
               <p className="body lg" style={{ marginTop: 22, color: "var(--ink-2)" }}>
                 The pattern was always the same: great businesses with terrible online presence, paying agencies that took six months to deliver what should take three.
               </p>
               <p style={{ marginTop: 28, fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.35, color: "var(--ink)", letterSpacing: "-0.015em", fontWeight: 700 }}>
-                The game has changed. Buyers don&apos;t just Google anymore. They ask <span className="serif" style={{ color: "var(--purple)" }}>ChatGPT, Perplexity, and Claude.</span> Rankday exists to make sure your business gets cited by both.
+                The game has changed. Buyers don&apos;t just Google anymore. They ask <span className="serif" style={{ color: "var(--purple)" }}>ChatGPT, Perplexity, and Claude.</span> rankday exists to make sure your business gets cited by both.
               </p>
             </div>
           </div>

@@ -158,7 +158,7 @@ export default function SEOAgencyDubaiPage() {
                 A search for "best orthodontist Dubai" or "top digital marketing agency UAE" now returns AI-generated answers before organic results. The businesses named in those answers get the call. The ones below them often do not.
               </p>
               <p className="body lg" style={{ marginTop: 18, color: "var(--ink-2)" }}>
-                English and Arabic both matter in this market. Rankday handles both languages in the UAE and GCC at no extra cost.
+                English and Arabic both matter in this market. rankday handles both languages in the UAE and GCC at no extra cost.
               </p>
 
               <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 10 }}>

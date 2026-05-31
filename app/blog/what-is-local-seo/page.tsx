@@ -166,9 +166,9 @@ export default function Post() {
         For AI engines to recommend your local business, they need consistent NAP signals across the directories they were trained on, structured content explaining what you do and where, and ideally third-party mentions in local publications. The work overlaps with traditional local SEO almost entirely. The difference is that the citation and consistency work matters more for AI than the on-page work does.
       </P>
 
-      <H2>Where Rankday handles local SEO</H2>
+      <H2>Where rankday handles local SEO</H2>
       <P>
-        Every Rankday engagement for a local business includes a Google Business Profile rebuild, citation network setup (30+ relevant directories), review collection system, and LocalBusiness schema markup. For multi-location businesses, we build dedicated location pages targeting each city or neighbourhood you serve. <A href="/seo-agency-dubai">See how we handle Dubai local SEO</A> or <A href="/pricing">see the full pricing.</A>
+        Every rankday engagement for a local business includes a Google Business Profile rebuild, citation network setup (30+ relevant directories), review collection system, and LocalBusiness schema markup. For multi-location businesses, we build dedicated location pages targeting each city or neighbourhood you serve. <A href="/seo-agency-dubai">See how we handle Dubai local SEO</A> or <A href="/pricing">see the full pricing.</A>
       </P>
     </BlogPostLayout>
   );

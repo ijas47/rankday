@@ -178,7 +178,7 @@ export default function Post() {
         <LI><Strong>Build other channels.</Strong> Direct traffic, email, social, AI search citations all reduce dependence on any single algorithm.</LI>
       </UL>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
         We monitor Search Console weekly for every active client. Sudden drops trigger an immediate diagnostic before any reactive changes. The 90-day playbook also builds resilience: clean technical foundation, real content, diverse backlinks, AI citation work. Sites with this foundation drop less often and recover faster.
       </P>

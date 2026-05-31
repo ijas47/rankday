@@ -63,15 +63,15 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Can I do AEO without doing SEO?",
-    a: "Not effectively. AEO relies on the same structured, credible content and schema that SEO depends on. A site with no authority or structure gives AI engines nothing to cite. Rankday does both in the same 90-day engagement.",
+    a: "Not effectively. AEO relies on the same structured, credible content and schema that SEO depends on. A site with no authority or structure gives AI engines nothing to cite. rankday does both in the same 90-day engagement.",
   },
   {
     q: "How do I know if I have an AEO problem?",
     a: "Open ChatGPT or Perplexity and ask for the best businesses in your category and city. If your competitors appear and you do not, you have an AEO gap that is costing you buyers today.",
   },
   {
-    q: "Is AEO included with Rankday or is it an add-on?",
-    a: "AEO is built into every Rankday engagement at no extra cost. It is the actual work done alongside SEO in the same 90 days, not a separate report or an upsell.",
+    q: "Is AEO included with rankday or is it an add-on?",
+    a: "AEO is built into every rankday engagement at no extra cost. It is the actual work done alongside SEO in the same 90 days, not a separate report or an upsell.",
   },
 ];
 
@@ -181,7 +181,7 @@ export default function WhatIsAEOPage() {
         <div className="container">
           <div className="r-aside">
             <div data-reveal className="sticky-aside">
-              <h2 className="h1">How Rankday does AEO.</h2>
+              <h2 className="h1">How rankday does AEO.</h2>
               <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>
                 See pricing <span className="btn-icon"><Icon.Arrow /></span>
               </Link>
@@ -189,7 +189,7 @@ export default function WhatIsAEOPage() {
 
             <div data-reveal>
               <p className="body lg" style={{ color: "var(--ink-2)" }}>
-                AEO is built into every Rankday engagement. It is not an add-on. It is not a report. It is the actual work done alongside SEO in the same 90 days.
+                AEO is built into every rankday engagement. It is not an add-on. It is not a report. It is the actual work done alongside SEO in the same 90 days.
               </p>
 
               <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 20 }}>

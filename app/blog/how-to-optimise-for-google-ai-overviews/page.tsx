@@ -175,7 +175,7 @@ export default function Post() {
         <LI>Diversify traffic sources so no single channel determines the business outcome</LI>
       </UL>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
         Every page we publish is optimised for both traditional Google rankings and AI Overview inclusion. Schema markup, question-shaped structure, concrete data, author attribution, and freshness signals are all applied by default. We also track AI Overview citations weekly during the engagement, so you know whether your content is being pulled. <A href="/get-cited-by-chatgpt">See our full approach to AI citation.</A>
       </P>

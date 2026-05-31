@@ -68,7 +68,7 @@ export function AeoClient() {
           body: JSON.stringify({
             access_key: web3Key,
             subject: `New AEO Score lead: ${email} (${report.score}/100)`,
-            from_name: "Rankday AEO Score tool",
+            from_name: "rankday AEO Score tool",
             email,
             replyto: email,
             message: `Email: ${email}\nScanned: ${report.url}\nScore: ${report.score}/100\nClient site: ${isOwnSite ? "no (own site)" : "yes"}`,
@@ -266,7 +266,7 @@ function FixRow({ check }: { check: Check }) {
 function BadgeEmbed({ report }: { report: AeoReport }) {
   const base = "https://www.rank-day.com";
   const badgeUrl = `${base}/api/badge?domain=${encodeURIComponent(report.domain)}&score=${report.score}&grade=${report.grade}`;
-  const snippet = `<a href="${base}/tools/aeo-score">\n  <img src="${badgeUrl}" alt="AEO Score ${report.score}/100 by Rankday" width="220" height="56" />\n</a>`;
+  const snippet = `<a href="${base}/tools/aeo-score">\n  <img src="${badgeUrl}" alt="AEO Score ${report.score}/100 by rankday" width="220" height="56" />\n</a>`;
   return (
     <div className="card" style={{ padding: 28, marginTop: 16 }}>
       <p className="kicker">Show off your score</p>

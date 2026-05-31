@@ -117,7 +117,7 @@ export default function Post() {
         If you already have a working website with some Google rankings, the priority shifts. AEO and GEO will compound faster than additional SEO investment because most of your competitors are not doing them yet. The window for being one of the first businesses cited by ChatGPT in your category is open for another 12 to 18 months. After that, it closes the way Google SEO closed in 2012.
       </P>
       <P>
-        At Rankday we do all three in 90 days for a fixed price. Website rebuild, Google rankings, AI citation. The discipline is integrated because the work is integrated. <A href="/pricing">See the 90-day plan and pricing.</A>
+        At rankday we do all three in 90 days for a fixed price. Website rebuild, Google rankings, AI citation. The discipline is integrated because the work is integrated. <A href="/pricing">See the 90-day plan and pricing.</A>
       </P>
     </BlogPostLayout>
   );
