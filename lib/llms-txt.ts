@@ -11,7 +11,7 @@ export type LlmsResult = {
   llmsTxt: string;
 };
 
-const UA = "Mozilla/5.0 (compatible; RankdayLLMSBot/1.0; +https://www.rank-day.com/tools/llms-txt)";
+const UA = "Mozilla/5.0 (compatible; rankdayLLMSBot/1.0; +https://www.rank-day.com/tools/llms-txt)";
 const TIMEOUT_MS = 12000;
 const MAX_PAGES = 40; // keep the llms.txt curated, not a dump
 const CRAWL_FETCH_CONCURRENCY = 6;

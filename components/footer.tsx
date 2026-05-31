@@ -149,7 +149,7 @@ export function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <div>© Rankday 2026</div>
+          <div>© rankday 2026</div>
           <div style={{ display: "flex", gap: 24 }}>
             <a className="footer-link" style={{ padding: 0 }}>Privacy</a>
             <a className="footer-link" style={{ padding: 0 }}>Terms</a>

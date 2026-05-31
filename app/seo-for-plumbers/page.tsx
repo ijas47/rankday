@@ -8,7 +8,7 @@ import { BundlePills } from "@/components/bundle-pills";
 export const metadata: Metadata = pageMeta({
   title: "Website + SEO for Plumbers. Top 3 Rankings in 90 Days.",
   description:
-    "A new website, top-3 Google rankings, and AI citations for plumbing businesses. Rankday rebuilds, ranks, and gets you cited. One fixed price. 90-day guarantee.",
+    "A new website, top-3 Google rankings, and AI citations for plumbing businesses. rankday rebuilds, ranks, and gets you cited. One fixed price. 90-day guarantee.",
   path: "/seo-for-plumbers",
 });
 
@@ -21,7 +21,7 @@ const keywords = [
 
 const serviceLd = serviceSchema({
   name: "SEO for Plumbers",
-  description: "A new website, top-3 Google rankings, and AI citations for plumbing businesses. Rankday rebuilds, ranks, and gets you cited. One fixed price. 90-day guarantee.",
+  description: "A new website, top-3 Google rankings, and AI citations for plumbing businesses. rankday rebuilds, ranks, and gets you cited. One fixed price. 90-day guarantee.",
   path: "/seo-for-plumbers",
   areaServed: ["United Arab Emirates","United Kingdom","United States","Canada","Australia","Singapore","Ireland","New Zealand"],
   offer: { price: "4900", currency: "USD" },
@@ -71,7 +71,7 @@ export default function SEOForPlumbersPage() {
         <div className="container">
           <div className="r-aside">
             <div data-reveal className="sticky-aside">
-              <h2 className="h1">What Rankday builds for plumbers.</h2>
+              <h2 className="h1">What rankday builds for plumbers.</h2>
               <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>Standard from $4,900 <span className="btn-icon"><Icon.Arrow /></span></Link>
             </div>
             <div data-reveal>

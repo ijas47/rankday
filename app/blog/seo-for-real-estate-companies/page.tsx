@@ -82,9 +82,9 @@ export default function Post() {
         <LI><Strong>Weeks 11 to 12:</Strong> improve pages based on ranking data, build citations, and strengthen Google Business Profile activity.</LI>
       </UL>
 
-      <H2>Where Rankday fits</H2>
+      <H2>Where rankday fits</H2>
       <P>
-        Rankday builds search-ready websites and SEO systems for service businesses, including real estate companies. If you need a site that ranks for buyer-intent property searches and is structured for AI citations, see <A href="/industries">the industries Rankday serves</A>.
+        rankday builds search-ready websites and SEO systems for service businesses, including real estate companies. If you need a site that ranks for buyer-intent property searches and is structured for AI citations, see <A href="/industries">the industries rankday serves</A>.
       </P>
     </BlogPostLayout>
   );

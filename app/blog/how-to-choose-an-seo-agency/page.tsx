@@ -36,7 +36,7 @@ export default function Post() {
         Most agencies will not give you a written guarantee. The few that do usually limit it to "if we don't make progress in 6 months, we'll work for free for one month." That is not a real guarantee.
       </P>
       <P>
-        A real guarantee specifies: which keywords, what position, by what date, and what happens if the target is missed. Rankday's version: top 3 on 90% of agreed keywords by day 90, or work continues at no extra cost.
+        A real guarantee specifies: which keywords, what position, by what date, and what happens if the target is missed. rankday's version: top 3 on 90% of agreed keywords by day 90, or work continues at no extra cost.
       </P>
 
       <H3>3. How is the engagement structured, week by week?</H3>
@@ -150,9 +150,9 @@ export default function Post() {
         "Pick the one whose answers stood up to scrutiny and whose contract is structured to protect both sides.",
       ]} />
 
-      <H2>What Rankday's answers look like</H2>
+      <H2>What rankday's answers look like</H2>
       <P>
-        Since this is the Rankday blog, here is how we answer the same 12 questions.
+        Since this is the rankday blog, here is how we answer the same 12 questions.
       </P>
       <UL>
         <LI><Strong>Keywords and timeline:</Strong> agreed in week 1 with you, fixed in writing, top 3 by day 90.</LI>

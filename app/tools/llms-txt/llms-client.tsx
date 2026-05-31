@@ -78,7 +78,7 @@ export function LlmsClient() {
           body: JSON.stringify({
             access_key: web3Key,
             subject: `llms.txt tool lead: ${email}`,
-            from_name: "Rankday llms.txt tool",
+            from_name: "rankday llms.txt tool",
             email,
             message: `Email: ${email}\nGenerated for: ${result?.url || ""}\nSource: llms-txt-tool`,
             scanned_url: result?.url || "",

@@ -61,7 +61,7 @@ export default function Post() {
         AI assistants need clean source material. Use short definitions, direct lists, named entities, clear comparisons, and visible proof. Avoid vague claims like "we help businesses grow" when you can say what you do, for whom, in what timeframe.
       </P>
       <P>
-        For Rankday, that means pages should repeatedly make the same facts clear: fixed-price 90-day SEO sprint, website rebuild included, Google rankings, AI citations, and no retainer.
+        For rankday, that means pages should repeatedly make the same facts clear: fixed-price 90-day SEO sprint, website rebuild included, Google rankings, AI citations, and no retainer.
       </P>
 
       <Callout tone="mint">
@@ -93,7 +93,7 @@ export default function Post() {
         Start with content closest to money: service pages, location pages, comparison pages, pricing explainers, and problem-aware guides. After that, build supporting posts that answer buyer questions.
       </P>
       <P>
-        If you want the whole system built for you, Rankday handles the site structure, content, technical SEO, and AI citation work in one 90-day sprint. See <A href="/how-it-works">how the sprint works</A>.
+        If you want the whole system built for you, rankday handles the site structure, content, technical SEO, and AI citation work in one 90-day sprint. See <A href="/how-it-works">how the sprint works</A>.
       </P>
     </BlogPostLayout>
   );

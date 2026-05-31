@@ -143,9 +143,9 @@ export default function Post() {
         AEO and GEO inherit the mobile-first reality. A site that renders poorly on mobile gets cited less by AI engines for similar reasons it ranks lower on Google.
       </P>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
-        Every Rankday-built site is designed mobile-first from the start. We test on real phones, target Core Web Vitals scores of 90+ on mobile, and ensure that mobile is the canonical experience, not a degraded version of the desktop site.
+        Every rankday-built site is designed mobile-first from the start. We test on real phones, target Core Web Vitals scores of 90+ on mobile, and ensure that mobile is the canonical experience, not a degraded version of the desktop site.
       </P>
       <P>
         This is foundational. A site that fails mobile-first cannot rank consistently, no matter how good the content or backlinks are. <A href="/how-it-works">See the 90-day breakdown</A> for the full technical scope.

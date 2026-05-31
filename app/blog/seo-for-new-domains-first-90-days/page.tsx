@@ -174,9 +174,9 @@ export default function Post() {
         Realistic expectations. For a new domain in the first 90 days: expect to start ranking for long-tail terms in weeks 6 to 10. Expect top 3 on 60 to 90% of agreed long-tail keywords by day 90. Expect head terms to take 6 to 18 months regardless of effort.
       </Callout>
 
-      <H2>The Rankday model for new domains</H2>
+      <H2>The rankday model for new domains</H2>
       <P>
-        Most of Rankday's clients are on new or recently launched domains. The 90-day playbook is built specifically for that scenario:
+        Most of rankday's clients are on new or recently launched domains. The 90-day playbook is built specifically for that scenario:
       </P>
       <UL>
         <LI>Realistic keyword scoping (long-tail commercial intent, not head terms)</LI>

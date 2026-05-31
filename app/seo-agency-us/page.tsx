@@ -111,7 +111,7 @@ export default function SEOAgencyUSPage() {
         <div className="container">
           <div className="r-aside">
             <div data-reveal className="sticky-aside">
-              <h2 className="h1">What makes Rankday different from US SEO agencies.</h2>
+              <h2 className="h1">What makes rankday different from US SEO agencies.</h2>
             </div>
 
             <div data-reveal>
@@ -119,7 +119,7 @@ export default function SEOAgencyUSPage() {
                 Most US SEO agencies sell 12-month retainers at $2,000 to $5,000 per month. At month 6, they are still setting up. At month 12, rankings are inconsistent and the contract auto-renews.
               </p>
               <p className="body lg" style={{ marginTop: 18, color: "var(--ink-2)" }}>
-                Rankday charges a single fixed fee and delivers in 90 days. The keyword list is agreed in week 1 and fixed in writing. If you are not in the top 3 for 90% of them by day 90, we keep working at no extra cost.
+                rankday charges a single fixed fee and delivers in 90 days. The keyword list is agreed in week 1 and fixed in writing. If you are not in the top 3 for 90% of them by day 90, we keep working at no extra cost.
               </p>
               <p className="body lg" style={{ marginTop: 18, color: "var(--ink-2)" }}>
                 We also do what most US agencies are not doing yet: AEO. Getting your business cited by ChatGPT and Perplexity alongside Google rankings. Both in the same 90 days. One price.

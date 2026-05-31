@@ -5,9 +5,9 @@ import { Icon } from "@/components/icons";
 import { posts } from "./posts";
 
 export const metadata: Metadata = pageMeta({
-  title: "Blog. SEO, AEO, GEO, and Website Insights from Rankday.",
+  title: "Blog. SEO, AEO, GEO, and Website Insights from rankday.",
   description:
-    "Practical, honest writing on SEO, Answer Engine Optimization, Generative Engine Optimization, and the website rebuild work that actually moves rankings. From Rankday, the 90-day SEO and AI citation agency.",
+    "Practical, honest writing on SEO, Answer Engine Optimization, Generative Engine Optimization, and the website rebuild work that actually moves rankings. From rankday, the 90-day SEO and AI citation agency.",
   path: "/blog",
 });
 
@@ -28,12 +28,12 @@ export default function BlogIndexPage() {
     <div className="page-enter">
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
-          <span className="eyebrow">Rankday Blog</span>
+          <span className="eyebrow">rankday Blog</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
             How to <span className="it">actually</span> rank on Google and get cited by AI.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            Honest writing on SEO, AEO, and the website work that drives rankings. The playbook Rankday uses with every client, written down.
+            Honest writing on SEO, AEO, and the website work that drives rankings. The playbook rankday uses with every client, written down.
           </p>
         </div>
       </section>

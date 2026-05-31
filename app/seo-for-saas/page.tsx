@@ -90,7 +90,7 @@ export default function SEOForSaaSPage() {
         <div className="container">
           <div className="r-aside">
             <div data-reveal className="sticky-aside">
-              <h2 className="h1">What Rankday builds for SaaS companies.</h2>
+              <h2 className="h1">What rankday builds for SaaS companies.</h2>
               <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>
                 Growth plan from $7,900 <span className="btn-icon"><Icon.Arrow /></span>
               </Link>
@@ -98,7 +98,7 @@ export default function SEOForSaaSPage() {
 
             <div data-reveal>
               <p className="body lg" style={{ color: "var(--ink-2)" }}>
-                Most SaaS companies have a marketing site that ranks for their brand name and nothing else. Organic traffic is flat. Paid acquisition is the only lever. Rankday changes that.
+                Most SaaS companies have a marketing site that ranks for their brand name and nothing else. Organic traffic is flat. Paid acquisition is the only lever. rankday changes that.
               </p>
 
               <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 16 }}>
