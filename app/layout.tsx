@@ -5,34 +5,35 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { ReferralAttribution } from "@/components/referral-attribution";
 
 export const metadata: Metadata = {
   title: {
-    default: "Rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
-    template: "%s | Rankday",
+    default: "rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
+    template: "%s | rankday",
   },
   description:
-    "Rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. Fixed price. 90 days. Top-3 guarantee.",
+    "rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. Fixed price. 90 days. Top-3 guarantee.",
   metadataBase: new URL("https://www.rank-day.com"),
   openGraph: {
     type: "website",
-    siteName: "Rankday",
-    title: "Rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
+    siteName: "rankday",
+    title: "rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
     description:
-      "Rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. Fixed price. 90 days. Top-3 guarantee.",
+      "rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. Fixed price. 90 days. Top-3 guarantee.",
     url: "https://www.rank-day.com",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rankday — Top 3 on Google. Cited by AI. In 90 days.",
+        alt: "rankday. Top 3 on Google. Cited by AI. In 90 days.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
+    title: "rankday | SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
     description:
       "A new website, top-3 Google rankings, and AI citations. One fixed price. 90-day guarantee.",
     images: ["/og-image.png"],
@@ -42,9 +43,9 @@ export const metadata: Metadata = {
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Rankday",
-  alternateName: ["rank-day", "rank day", "rank-day.com", "Rankday Agency"],
-  legalName: "Rankday",
+  name: "rankday",
+  alternateName: ["rank-day", "rank day", "rank-day.com", "rankday agency"],
+  legalName: "rankday",
   url: "https://www.rank-day.com",
   description:
     "90-day SEO and AI citation agency. We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Claude.",
@@ -60,13 +61,13 @@ const orgSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Rankday",
+  name: "rankday",
   alternateName: ["rank-day", "rank day", "rank-day.com"],
   url: "https://www.rank-day.com",
-  description: "Rankday is a 90-day SEO and AI citation agency at rank-day.com.",
+  description: "rankday is a 90-day SEO and AI citation agency at rank-day.com.",
   publisher: {
     "@type": "Organization",
-    name: "Rankday",
+    name: "rankday",
   },
 };
 
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </Script>
       <body>
         <ScrollProgress />
+        <ReferralAttribution />
         <div className="shell">
           <Nav />
           <main>{children}</main>

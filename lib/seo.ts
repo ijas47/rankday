@@ -47,7 +47,7 @@ export type FaqItem = { q: string; a: string };
 
 /**
  * FAQPage structured data. The answers must match the visible text rendered by
- * <FaqSection /> on the same page — never ship FAQ schema without the matching
+ * <FaqSection /> on the same page - never ship FAQ schema without the matching
  * on-page Q&A.
  */
 export function faqPageSchema(items: FaqItem[]) {
@@ -90,7 +90,7 @@ export function serviceSchema({ name, description, path, areaServed, offer }: Se
     areaServed: areaServed.map((a) => ({ "@type": "AdministrativeArea", name: a })),
     provider: {
       "@type": "ProfessionalService",
-      name: "Rankday",
+      name: "rankday",
       url: SITE_URL,
     },
     ...(offer

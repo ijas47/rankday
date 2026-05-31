@@ -32,7 +32,7 @@ export default function Post() {
         For AI engines, backlinks function as a proxy for credibility. A business mentioned (and linked) in industry publications, comparison sites, and editorial content gets pulled into AI answers more often than one mentioned only on its own website.
       </P>
       <P>
-        For brand searches, backlinks help Google understand entity identity. Multiple sites linking to rank-day.com using the anchor text "Rankday" teach Google that those two strings refer to the same entity.
+        For brand searches, backlinks help Google understand entity identity. Multiple sites linking to rank-day.com using the anchor text "rankday" teach Google that those two strings refer to the same entity.
       </P>
 
       <H2>What makes a good backlink</H2>
@@ -60,7 +60,7 @@ export default function Post() {
         The anchor text (the clickable text of the link) matters. Natural backlink profiles include a mix of:
       </P>
       <UL>
-        <LI>Branded anchors ("Rankday", "rank-day.com")</LI>
+        <LI>Branded anchors ("rankday", "rank-day.com")</LI>
         <LI>Descriptive anchors ("SEO agency in Dubai", "90-day SEO service")</LI>
         <LI>Generic anchors ("click here", "this article", "learn more")</LI>
         <LI>URL anchors ("https://www.rank-day.com")</LI>
@@ -190,9 +190,9 @@ export default function Post() {
         <LI>Month 6+: compound growth as your content gets discovered and linked</LI>
       </UL>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
-        Every Rankday engagement includes 30+ citations and backlinks built during the 90 days. We focus on relevant directories, editorial outreach, and resource page inclusions. No PBNs, no paid link schemes, no spam.
+        Every rankday engagement includes 30+ citations and backlinks built during the 90 days. We focus on relevant directories, editorial outreach, and resource page inclusions. No PBNs, no paid link schemes, no spam.
       </P>
       <P>
         The work continues to compound after the 90 days because the links are real placements on credible sites, not rented spots on a link farm. <A href="/how-it-works">See the full 90-day breakdown.</A>

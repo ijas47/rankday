@@ -88,7 +88,7 @@ export default function Post() {
         <LI>Top 3 for primary keywords: month 4 to 6</LI>
       </UL>
       <P>
-        With Rankday's playbook, this scenario can hit top 3 by day 90 on most of the agreed keyword list. That is the entire point of the 90-day model. Concentrated execution on a scoped list of achievable keywords.
+        With rankday's playbook, this scenario can hit top 3 by day 90 on most of the agreed keyword list. That is the entire point of the 90-day model. Concentrated execution on a scoped list of achievable keywords.
       </P>
 
       <H3>Scenario B: established domain, B2B SaaS, mid-competition</H3>
@@ -117,7 +117,7 @@ export default function Post() {
 
       <H2>The 90-day model: when it works, when it doesn't</H2>
       <P>
-        Rankday's model is built around a 90-day timeline. It works in specific conditions:
+        rankday's model is built around a 90-day timeline. It works in specific conditions:
       </P>
       <UL>
         <LI>The keyword list is scoped to terms that are realistically rankable in 90 days based on competition</LI>
@@ -143,7 +143,7 @@ export default function Post() {
         An agency that cannot answer these without hedging is selling time, not results.
       </P>
       <P>
-        Rankday's answer: top 3 rankings on 90% of your agreed keywords by day 90, or we keep working at no extra cost. The keyword list is agreed in week 1 and fixed in writing. <A href="/how-it-works">See the full 90-day breakdown.</A>
+        rankday's answer: top 3 rankings on 90% of your agreed keywords by day 90, or we keep working at no extra cost. The keyword list is agreed in week 1 and fixed in writing. <A href="/how-it-works">See the full 90-day breakdown.</A>
       </P>
     </BlogPostLayout>
   );

@@ -80,7 +80,7 @@ export default function SEOForFitOutCompaniesPage() {
         <div className="container">
           <div className="r-aside">
             <div data-reveal className="sticky-aside">
-              <h2 className="h1">What Rankday builds for fit out companies.</h2>
+              <h2 className="h1">What rankday builds for fit out companies.</h2>
               <Link href="/pricing" className="btn btn-primary" style={{ marginTop: 28 }}>See pricing <span className="btn-icon"><Icon.Arrow /></span></Link>
             </div>
             <div data-reveal>

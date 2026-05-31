@@ -6,7 +6,7 @@ import { faqs } from "./faq-data";
 export const metadata: Metadata = pageMeta({
   title: "SEO and AEO FAQ. Common Questions Answered.",
   description:
-    "Questions about 90-day SEO, AI citation strategy, AEO, guarantees, pricing, and how Rankday works. Honest answers, no sales spin.",
+    "Questions about 90-day SEO, AI citation strategy, AEO, guarantees, pricing, and how rankday works. Honest answers, no sales spin.",
   path: "/faq",
 });
 

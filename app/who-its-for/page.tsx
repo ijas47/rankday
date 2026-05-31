@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "Who Rankday Works For. SEO for Local Business and B2B.",
+  title: "Who rankday Works For. SEO for Local Business and B2B.",
   description:
-    "Rankday works for local service businesses, B2B SaaS, agencies, and professional services. Serving UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand.",
+    "rankday works for local service businesses, B2B SaaS, agencies, and professional services. Serving UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand.",
   path: "/who-its-for",
 });
 import {
@@ -63,7 +63,7 @@ export default function WhoItsForPage() {
             Built for businesses that need to <span className="it">be found.</span>
           </h1>
           <p className="lede" data-reveal data-reveal-delay="0.1" style={{ marginTop: 28, maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
-            Rankday works for any business with a website, something to sell, and buyers who search before they decide.
+            rankday works for any business with a website, something to sell, and buyers who search before they decide.
           </p>
         </div>
       </section>

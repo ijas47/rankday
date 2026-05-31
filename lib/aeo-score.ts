@@ -35,7 +35,7 @@ export type AeoReport = {
 };
 
 const UA =
-  "Mozilla/5.0 (compatible; RankdayAEOBot/1.0; +https://www.rank-day.com/tools/aeo-score)";
+  "Mozilla/5.0 (compatible; rankdayAEOBot/1.0; +https://www.rank-day.com/tools/aeo-score)";
 const TIMEOUT_MS = 12000;
 
 export function normalizeUrl(input: string): URL | null {

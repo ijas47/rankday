@@ -7,7 +7,7 @@ import { AeoClient } from "./aeo-client";
 export const metadata: Metadata = pageMeta({
   title: "Free AEO Score. Is Your Site Visible to AI Search?",
   description:
-    "Check how visible your website is to ChatGPT, Perplexity, Claude, and Google AI. Free instant AEO score with the exact fixes that get you cited. By Rankday.",
+    "Check how visible your website is to ChatGPT, Perplexity, Claude, and Google AI. Free instant AEO score with the exact fixes that get you cited. By rankday.",
   path: "/tools/aeo-score",
 });
 
@@ -26,7 +26,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Does a high score guarantee AI citations?",
-    a: "No. The score grades the signals that make a site citable by AI engines, but citation also depends on your authority, reviews, and presence across the web. A strong score removes the technical barriers; building authority is the rest of the work Rankday does in 90 days.",
+    a: "No. The score grades the signals that make a site citable by AI engines, but citation also depends on your authority, reviews, and presence across the web. A strong score removes the technical barriers; building authority is the rest of the work rankday does in 90 days.",
   },
 ];
 

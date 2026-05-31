@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/partners", label: "Partners" },
   { href: "/tools", label: "Free Tools" },
   { href: "/industries", label: "Industries" },
   { href: "/blog", label: "Blog" },
@@ -52,7 +53,7 @@ export function Nav() {
     <>
       <div className="nav-wrap">
         <nav className="nav container" ref={navRef}>
-          <Link className="nav-logo" href="/" aria-label="Rankday home">
+          <Link className="nav-logo" href="/" aria-label="rankday home">
             <span className="logo-rank">rank</span>
             <span className="logo-day">day</span>
             <span className="logo-dot">.</span>

@@ -10,7 +10,7 @@ import { Marquee } from "@/components/marquee";
 export const metadata: Metadata = pageMeta({
   title: "SEO Agency. Top 3 Google Rankings + AI Citations in 90 Days.",
   description:
-    "Rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. One fixed price. 90-day guarantee. UAE, UK, US, and more.",
+    "rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. One fixed price. 90-day guarantee. UAE, UK, US, and more.",
   path: "/",
 });
 import {
@@ -54,8 +54,8 @@ const markets: Array<[string, string]> = [
 
 const homeFaqs: FaqItem[] = [
   {
-    q: "What does Rankday actually deliver in 90 days?",
-    a: "A rebuilt website, top-3 Google rankings for your agreed keywords, and citations in AI search (ChatGPT, Perplexity, Claude, Google AI), all for one fixed price, with a top-3 guarantee on 90% of agreed keywords or we keep working free.",
+    q: "What does rankday actually deliver in 90 days?",
+    a: "A rebuilt website, top-3 Google rankings for your agreed keywords, and citations in AI search (ChatGPT, Perplexity, Claude, Google AI) - all for one fixed price, with a top-3 guarantee on 90% of agreed keywords or we keep working free.",
   },
   {
     q: "How much does it cost?",
@@ -67,7 +67,7 @@ const homeFaqs: FaqItem[] = [
   },
   {
     q: "Which markets do you work in?",
-    a: "The UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand, most English-speaking markets. Arabic-language SEO is available in the UAE and GCC at no extra cost.",
+    a: "The UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand - most English-speaking markets. Arabic-language SEO is available in the UAE and GCC at no extra cost.",
   },
   {
     q: "How much of my time does it take?",
@@ -78,7 +78,7 @@ const homeFaqs: FaqItem[] = [
 const homeServiceLd = serviceSchema({
   name: "90-Day SEO & AEO Engagement",
   description:
-    "Rankday rebuilds your website, ranks it in the Google top 3, and gets you cited by AI search engines, in a fixed 90-day engagement with a top-3 ranking guarantee.",
+    "rankday rebuilds your website, ranks it in the Google top 3, and gets you cited by AI search engines - in a fixed 90-day engagement with a top-3 ranking guarantee.",
   path: "/",
   areaServed: [
     "United Arab Emirates",
@@ -118,7 +118,7 @@ export default function HomePage() {
               </div>
 
               <p className="lede" data-reveal style={{ marginTop: 22, maxWidth: 560 }}>
-                <strong>Rankday</strong> rebuilds your website, ranks it on Google, and gets you cited by AI. All three in 90 days. <strong>One fixed price. No retainer.</strong>
+                <strong>rankday</strong> rebuilds your website, ranks it on Google, and gets you cited by AI. All three in 90 days. <strong>One fixed price. No retainer.</strong>
               </p>
 
               <div data-reveal style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>

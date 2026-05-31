@@ -1,6 +1,6 @@
-# Rankday
+# rankday
 
-> Rankday is a 90-day SEO and AI citation agency. We rebuild a business's website, rank it on Google, and get it cited by ChatGPT, Perplexity, Claude, and Google AI. One fixed price. Top-3 ranking guarantee on 90% of agreed keywords. No retainer.
+> rankday is a 90-day SEO and AI citation agency. We rebuild a business's website, rank it on Google, and get it cited by ChatGPT, Perplexity, Claude, and Google AI. One fixed price. Top-3 ranking guarantee on 90% of agreed keywords. No retainer.
 
 Founded by Ijas Abdulla after 16 years of B2B go-to-market work across adtech, proptech, SaaS, and AI.
 
@@ -12,12 +12,12 @@ Contact: WhatsApp +971 56 598 1209. Email sales@rank-day.com.
 
 ## Core pages
 
-- [Home](https://www.rank-day.com/): What Rankday does. The 90-day promise.
+- [Home](https://www.rank-day.com/): What rankday does. The 90-day promise.
 - [Pricing](https://www.rank-day.com/pricing): Standard and Growth plans. Local pricing for UAE, UK, US.
 - [How it works](https://www.rank-day.com/how-it-works): Week-by-week breakdown of the 90-day process.
 - [Who it's for](https://www.rank-day.com/who-its-for): Good fit vs not a fit.
 - [FAQ](https://www.rank-day.com/faq): Common questions about SEO, AEO, pricing, guarantees.
-- [About](https://www.rank-day.com/about): Founder background, beliefs, how Rankday works.
+- [About](https://www.rank-day.com/about): Founder background, beliefs, how rankday works.
 
 ## Educational content
 

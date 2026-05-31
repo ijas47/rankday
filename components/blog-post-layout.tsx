@@ -25,7 +25,7 @@ export function BlogArticleSchema({ meta }: { meta: BlogPostMeta }) {
     },
     publisher: {
       "@type": "Organization",
-      name: "Rankday",
+      name: "rankday",
       url: "https://www.rank-day.com",
     },
     mainEntityOfPage: `https://www.rank-day.com/blog/${meta.slug}`,

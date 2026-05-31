@@ -125,7 +125,7 @@ export default function Post() {
         <LI>Person schema markup for their author page</LI>
       </UL>
       <P>
-        At Rankday, all blog posts are bylined to Ijas Abdulla with his 16 years of B2B go-to-market background visible. That is intentional and important.
+        At rankday, all blog posts are bylined to Ijas Abdulla with his 16 years of B2B go-to-market background visible. That is intentional and important.
       </P>
 
       <H3>2. Detailed about page</H3>
@@ -202,9 +202,9 @@ export default function Post() {
         <LI><Strong>AI content without human review.</Strong> Mass-produced AI content with no expertise signals tanks both rankings and trust.</LI>
       </UL>
 
-      <H2>How Rankday builds E-E-A-T</H2>
+      <H2>How rankday builds E-E-A-T</H2>
       <P>
-        Every Rankday-built site includes:
+        Every rankday-built site includes:
       </P>
       <UL>
         <LI>Named author bylines (you, plus any team members)</LI>

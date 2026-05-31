@@ -77,7 +77,7 @@ export default function GetCitedByChatGPTPage() {
           <div data-reveal className="r-header">
             <h2 className="h1">The five signals that drive AI citations.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
-              These are the factors Rankday works on in every 90-day engagement. Not theory. The actual work.
+              These are the factors rankday works on in every 90-day engagement. Not theory. The actual work.
             </p>
           </div>
 

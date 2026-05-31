@@ -172,7 +172,7 @@ export default function Post() {
         Everything else is noise. Focus on these. Ignore the myths.
       </P>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
         We focus exclusively on the actual ranking factors. No keyword density obsession, no daily blog churn, no chasing social shares. Just the foundational work that actually compounds: technical SEO, content that satisfies intent, real authority signals, and AI citation work.
       </P>

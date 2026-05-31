@@ -170,9 +170,9 @@ export default function Post() {
         <LI><Strong>Ahrefs / Semrush</Strong> (paid): comprehensive technical audits, broken links, redirect chains.</LI>
       </UL>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
-        Technical SEO is the first work we do in every Rankday engagement. The full 21-point checklist is applied in week 1, before any content goes live. Schema markup, Core Web Vitals optimisation, clean URL structure, canonical setup, and mobile-first rendering are non-negotiable foundations. <A href="/how-it-works">See the 90-day breakdown.</A>
+        Technical SEO is the first work we do in every rankday engagement. The full 21-point checklist is applied in week 1, before any content goes live. Schema markup, Core Web Vitals optimisation, clean URL structure, canonical setup, and mobile-first rendering are non-negotiable foundations. <A href="/how-it-works">See the 90-day breakdown.</A>
       </P>
     </BlogPostLayout>
   );

@@ -11,7 +11,7 @@ export type LlmsResult = {
   llmsTxt: string;
 };
 
-const UA = "Mozilla/5.0 (compatible; RankdayLLMSBot/1.0; +https://www.rank-day.com/tools/llms-txt)";
+const UA = "Mozilla/5.0 (compatible; rankdayLLMSBot/1.0; +https://www.rank-day.com/tools/llms-txt)";
 const TIMEOUT_MS = 12000;
 const MAX_PAGES = 40; // keep the llms.txt curated, not a dump
 const CRAWL_FETCH_CONCURRENCY = 6;
@@ -74,7 +74,7 @@ function getDescription(html: string): string {
 // Strip a trailing " | Brand" / " - Brand" from a page title for cleaner link text.
 function cleanTitle(title: string, siteName: string): string {
   let t = title;
-  for (const sep of [" | ", " - ", " – ", " :: ", " · "]) {
+  for (const sep of [" | ", " - ", " :: ", " · "]) {
     if (t.includes(sep)) t = t.split(sep)[0].trim();
   }
   if (siteName && t.toLowerCase() === siteName.toLowerCase()) return t;
@@ -86,7 +86,7 @@ function deriveSiteName(homeHtml: string, domain: string): string {
   if (og) return decode(og);
   const title = getTitle(homeHtml);
   if (title) {
-    for (const sep of [" | ", " - ", " – ", " :: ", " · "]) {
+    for (const sep of [" | ", " - ", " :: ", " · "]) {
       if (title.includes(sep)) {
         const parts = title.split(sep);
         // brand is usually the shorter trailing part

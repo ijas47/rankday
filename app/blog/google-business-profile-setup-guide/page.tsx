@@ -42,7 +42,7 @@ export default function Post() {
 
       <H3>Business name</H3>
       <P>
-        Use the exact legal name of your business. Do not append keywords. "Rankday SEO Agency Dubai" is a Google policy violation. "Rankday" is correct.
+        Use the exact legal name of your business. Do not append keywords. "rankday SEO Agency Dubai" is a Google policy violation. "rankday" is correct.
       </P>
       <P>
         The exception: if your legal name actually includes a descriptor ("Acme Dental Clinic"), keep it as registered. Do not invent a new format.
@@ -201,9 +201,9 @@ export default function Post() {
         The 30-minute weekly habit. Every Monday: respond to any new reviews, publish one post, upload one new photo, check insights. That alone keeps your profile in the top tier of activity signals for your category.
       </Callout>
 
-      <H2>What Rankday does</H2>
+      <H2>What rankday does</H2>
       <P>
-        Every Rankday engagement for a local business includes a complete Google Business Profile rebuild. We claim or create the listing, optimise every field, build the review collection system, set up the first 30 days of posts, and apply LocalBusiness schema on your website that matches the profile exactly.
+        Every rankday engagement for a local business includes a complete Google Business Profile rebuild. We claim or create the listing, optimise every field, build the review collection system, set up the first 30 days of posts, and apply LocalBusiness schema on your website that matches the profile exactly.
       </P>
       <P>
         After 90 days you have a fully optimised profile and a system to keep it active. <A href="/seo-agency-dubai">See how we handle local SEO for Dubai businesses</A> or <A href="/pricing">see the full pricing.</A>
