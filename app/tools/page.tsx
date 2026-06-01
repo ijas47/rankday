@@ -12,6 +12,13 @@ export const metadata: Metadata = pageMeta({
 
 const tools = [
   {
+    href: "/tools/store-seo-audit",
+    name: "Store SEO Audit",
+    desc: "Audit any ecommerce store across technical SEO, product schema, content, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard.",
+    tone: "peach",
+    cta: "Audit a store",
+  },
+  {
     href: "/tools/aeo-score",
     name: "AEO Score",
     desc: "Score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), from 0 to 100, with the exact fixes ranked by impact.",
@@ -45,7 +52,7 @@ export default function ToolsPage() {
             data-reveal
             style={{ marginTop: 24, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}
           >
-            See how findable you are to AI search, and fix it. No signup, no catch.
+            See how findable you are to Google and AI search, then fix what matters. No signup, no catch.
           </p>
         </div>
       </section>
