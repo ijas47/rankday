@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { AeoReport, Check } from "@/lib/aeo-score";
+import { trackLead } from "@/lib/track";
 
 const WHATSAPP_URL = "https://wa.me/971565981209";
 const GRADE_COLOR: Record<string, string> = {
@@ -84,6 +85,7 @@ export function AeoClient() {
           body: JSON.stringify({ email, url: report.url, score: report.score, isOwnSite }),
         });
       }
+      trackLead("aeo-score");
       setUnlocked(true);
     } catch {
       // Unlock anyway; don't punish the user for a backend hiccup.
