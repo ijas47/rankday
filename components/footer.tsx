@@ -32,9 +32,6 @@ export function Footer() {
             <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
               <Icon.WhatsApp /> WhatsApp
             </a>
-            <a className="btn btn-light" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">
-              <Icon.WhatsApp /> WhatsApp
-            </a>
           </div>
         </div>
 
