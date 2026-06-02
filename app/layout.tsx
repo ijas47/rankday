@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ReferralAttribution } from "@/components/referral-attribution";
+import { MetaPixel } from "@/components/meta-pixel";
 
 export const metadata: Metadata = {
   title: {
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('config', 'G-Z9ZNM6G5N4');
         `}
       </Script>
+      <MetaPixel />
       <Script id="ms-clarity-init" strategy="afterInteractive">
         {`
           (function(c,l,a,r,i,t,y){

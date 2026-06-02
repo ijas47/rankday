@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackLead } from "@/lib/track";
 
 type Result = {
   url: string;
@@ -90,6 +91,7 @@ export function LlmsClient() {
           body: JSON.stringify({ email, url: result?.url, isOwnSite: true }),
         });
       }
+      trackLead("llms-txt");
       setSent(true);
     } catch {
       setSent(true);
