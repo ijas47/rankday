@@ -12,6 +12,13 @@ export const metadata: Metadata = pageMeta({
 
 const tools = [
   {
+    href: "/tools/website-seo-audit",
+    name: "Website SEO Audit",
+    desc: "Audit any business website across technical SEO, entity schema, content quality, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard.",
+    tone: "mint",
+    cta: "Audit a website",
+  },
+  {
     href: "/tools/store-seo-audit",
     name: "Store SEO Audit",
     desc: "Audit any ecommerce store across technical SEO, product schema, content, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard.",

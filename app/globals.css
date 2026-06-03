@@ -30,9 +30,9 @@
   --hairline: #ebe5fa;
   --hairline-2: #d8d0eb;
 
-  --sans: "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
-  --serif: "Instrument Serif", "Times New Roman", serif;
-  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: var(--font-plus-jakarta), "Inter", -apple-system, sans-serif;
+  --serif: var(--font-instrument-serif), "Times New Roman", serif;
+  --mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --r-card: 22px;
   --r-card-lg: 28px;

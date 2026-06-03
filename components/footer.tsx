@@ -56,6 +56,24 @@ export function Footer() {
             <Link className="footer-link" href="/how-it-works">How it works</Link>
             <Link className="footer-link" href="/pricing">Pricing</Link>
             <Link className="footer-link" href="/partners">Partners</Link>
+            <Link className="footer-link" href="/tools/website-seo-audit" style={{ fontWeight: 700 }}>
+              Website SEO Audit
+              <span
+                style={{
+                  marginLeft: 8,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  background: "rgba(124,92,255,0.25)",
+                  color: "#fff",
+                  padding: "2px 6px",
+                  borderRadius: 99,
+                }}
+              >
+                Free
+              </span>
+            </Link>
             <Link className="footer-link" href="/tools/store-seo-audit" style={{ fontWeight: 700 }}>
               Store SEO Audit
               <span

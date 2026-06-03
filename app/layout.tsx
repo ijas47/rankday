@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Instrument_Serif, Plus_Jakarta_Sans, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -7,6 +8,28 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ReferralAttribution } from "@/components/referral-attribution";
 import { MetaPixel } from "@/components/meta-pixel";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-instrument-serif",
+});
+
+const mono = Roboto_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -54,6 +77,7 @@ export const metadata: Metadata = {
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://www.rank-day.com/#organization",
   name: "rankday",
   alternateName: ["rank-day", "rank day", "rank-day.com", "rankday agency"],
   legalName: "rankday",
@@ -63,7 +87,9 @@ const orgSchema = {
   founder: {
     "@type": "Person",
     name: "Ijas Abdulla",
+    sameAs: ["https://x.com/ijas47"],
   },
+  sameAs: ["https://x.com/ijas47"],
   areaServed: ["AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
   serviceType: ["Search Engine Optimization", "Answer Engine Optimization", "Web Design"],
   priceRange: "$$",
@@ -78,20 +104,28 @@ const websiteSchema = {
   description: "rankday is a 90-day SEO and AI citation agency at rank-day.com.",
   publisher: {
     "@type": "Organization",
+    "@id": "https://www.rank-day.com/#organization",
     name: "rankday",
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.rank-day.com/",
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${plusJakarta.variable} ${instrumentSerif.variable} ${mono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
@@ -99,6 +133,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </head>
       <Script
