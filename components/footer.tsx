@@ -164,6 +164,9 @@ export function Footer() {
 
             <h5 style={{ marginTop: 24 }}>Contact</h5>
             <a className="footer-link" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a className="footer-link" href="https://www.instagram.com/ranl_day/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <Icon.Instagram /> Instagram
+            </a>
             <a className="footer-link" href="mailto:sales@rank-day.com">sales@rank-day.com</a>
             <Link className="footer-link" href="/ai-info-page">
               AI info page

@@ -87,9 +87,9 @@ const orgSchema = {
   founder: {
     "@type": "Person",
     name: "Ijas Abdulla",
-    sameAs: ["https://x.com/ijas47"],
+    sameAs: ["https://x.com/ijas47", "https://www.instagram.com/ranl_day/"],
   },
-  sameAs: ["https://x.com/ijas47"],
+  sameAs: ["https://x.com/ijas47", "https://www.instagram.com/ranl_day/"],
   areaServed: ["AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
   serviceType: ["Search Engine Optimization", "Answer Engine Optimization", "Web Design"],
   priceRange: "$$",
