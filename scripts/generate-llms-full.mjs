@@ -62,7 +62,7 @@ function pathFromFile(file) {
 // Ordering: home, then core, educational, locations, industries, then blog, then the rest.
 const order = [
   "/", "/pricing", "/how-it-works", "/who-its-for", "/faq", "/about",
-  "/what-is-aeo", "/get-cited-by-chatgpt",
+  "/what-is-aeo", "/get-cited-by-chatgpt", "/ai-visibility-tracker",
   "/locations", "/seo-agency-dubai", "/best-seo-agency-dubai",
   "/best-web-design-agency-dubai", "/best-aeo-agency-dubai",
   "/best-geo-agency-dubai", "/seo-agency-uk", "/seo-agency-us",

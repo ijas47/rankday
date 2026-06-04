@@ -4,7 +4,7 @@
 
 Contact: WhatsApp +971 56 598 1209. Email sales@rank-day.com.
 
-Generated from the production build. 63 pages.
+Generated from the production build. 68 pages.
 
 ## SEO Agency. Top 3 Google Rankings + AI Citations in 90 Days.
 URL: https://www.rank-day.com/
@@ -59,6 +59,13 @@ Answer Engine Optimization What is AEO , and why does it matter more than SEO al
 URL: https://www.rank-day.com/get-cited-by-chatgpt
 
 AI Citation Strategy How to get your business cited by ChatGPT , Perplexity, and Claude. When someone asks ChatGPT "what's the best accountant in Manchester" or "which SEO agency guarantees rankings," it names specific businesses. Here is what determines whether yours is one of them. LLMs do not search the web in real time. They generate answers from a model trained on structured, consistent, credible information. Getting cited means being present in the sources that model was trained on. The five signals that drive AI citations. These are the factors rankday works on in every 90-day engagement. Not theory. The actual work. / 01 Clear, direct content LLMs favor pages that answer questions directly. A dental clinic page that says 'We are a dental clinic in Dubai offering implants, cleanings, and orthodontics' is more citable than one that says 'We are passionate about smiles.' Direct answers get cited. Vague copy does not. / 02 Schema markup JSON-LD structured data is the machine-readable layer that tells AI crawlers exactly what your business does. Without it, an LLM has to guess from your prose. With Organization, LocalBusiness, and Service schema applied, it knows. / 03 Directory and review platform presence ChatGPT and Perplexity are trained heavily on G2, Clutch, Yelp, Trustpilot, TripAdvisor, Healthgrades, and dozens of category-specific directories. A business missing from these platforms is less citable than a business present on 30 of them. / 04 Consistent brand signals Your business name, address, phone number, and category must be identical across every platform it appears on. Inconsistency is a trust signal failure. LLMs weight consistency heavily when deciding which business to name. / 05 Third-party editorial mentions A mention in an industry publication, a comparison site, or a credible blog carries more weight than a self-published claim. LLMs weight sources they were trained to trust. Getting placed in those sources is the work. How long it takes Most businesses start appearing in AI answers within 4 to 12 weeks of structured AEO work. The timeline depends on how competitive your category is and how many of the five signals are already in place. A business with no directory presence and no schema starts from zero. A business with 20 directory listings and clean schema moves faster. What you can check right now Open ChatGPT or Perplexity. Ask for the best businesses in your category and city. If your business does not appear, you have an AEO gap. If your competitors appear and you do not, the gap is costing you clients today. The businesses named in that answer did not get there by accident. Which AI engines matter most. ChatGPT 200M+ weekly users. Strongest for local business and B2B queries. Perplexity Pulls from live web. High weight on directories and publications. Claude Anthropic's model. Strong for professional services and B2B. Google AI AI Overviews appear above organic results. Pulling from indexed content. Gemini Google's standalone LLM. Growing fast in mobile search. AI citation questions, answered. What businesses ask most about getting cited by ChatGPT and other AI engines. How do AI engines like ChatGPT decide which businesses to cite? They generate answers from a model trained on structured, consistent, and credible information. The businesses that get named are the ones present across directories, review platforms, and publications, with clear content and consistent brand details everywhere they appear. Why isn't my business showing up in ChatGPT answers? Usually because of a thin citation footprint: vague website content, no schema markup, little directory presence, or inconsistent business details across platforms. AI engines cite sources they were trained to trust, and a business they have barely seen is hard to trust. Does ChatGPT search the live web? Not by default. Most answers are generated from training data rather than real-time search. That is why being present in the sources the model was trained on matters more than ranking a single page on Google. How long until my business appears in AI answers? Most businesses start appearing within 4 to 12 weeks of structured AEO work. It depends on how competitive your category is and how many of the five citation signals are already in place. What is the single biggest factor in getting cited? Presence across the directories and review platforms LLMs are trained on, combined with consistent business details everywhere you appear. A business listed in 30 relevant places is far more citable than one listed in 3. Can I get cited by ChatGPT without paying for ads? Yes. AI citations are earned through content structure, schema, directory presence, and third-party mentions, not paid placement. There is no ad slot inside an AI-generated answer. We track your citations weekly. Start your 90 days
+
+---
+
+## AI Visibility Tracker for ChatGPT, Perplexity, and Gemini. | rankday
+URL: https://www.rank-day.com/ai-visibility-tracker
+
+AI visibility tracker Know when AI recommends you. rankday tracks your prompts, competitors, citations, sentiment, and source gaps across ChatGPT-style answers, Perplexity, and Gemini. Start your 90 days Client login Weekly report Visibility 64% Avg position #2 Sentiment 78/100 Top sources 12 Competitor is winning 3 buyer prompts Your domain is missing from cited sources Publish a comparison page for AI visibility Prompt tracking Track buyer questions every week across OpenAI, Perplexity, and Gemini. Competitor share of voice See who AI assistants mention, how often they appear, and whether they outrank you in the answer. Source monitoring Find the cited domains and pages that AI engines use when forming recommendations. Sentiment scoring Measure whether your brand is described positively, neutrally, or with weak context. Action queue Turn missing mentions, weak citations, and competitor wins into pages and proof assets to publish. Client reporting Show weekly movement during the 90-day rankday sprint without another reporting tool. Tracking is useful. Fixing the gaps is where rankday earns the result. The tracker is included for rankday clients so the weekly visibility data turns into pages, schema, citations, and proof assets. Track my AI visibility
 
 ---
 
@@ -419,6 +426,20 @@ URL: https://www.rank-day.com/blog/will-ai-replace-google-search
 
 ---
 
+## AI Visibility Dashboard | rankday | rankday
+URL: https://www.rank-day.com/dashboard/ai-visibility
+
+rankday client dashboard AI visibility tracking. Sign in with your client access and open the project link rankday shared with you. Open dashboard
+
+---
+
+## AI Visibility Admin | rankday | rankday
+URL: https://www.rank-day.com/dashboard/ai-visibility/admin
+
+rankday admin Create an AI visibility project. rank-day rank day Competitor One, competitor-one.com, Competitor One Competitor Two, competitor-two.com, Competitor Two What are the best SEO agencies for AI search visibility in Dubai? Which agencies help businesses get cited by ChatGPT and Perplexity? Best AEO agency for a local service business Create project
+
+---
+
 ## rankday referral partner program. Earn $500 per client. | rankday
 URL: https://www.rank-day.com/partners
 
@@ -429,7 +450,7 @@ Referral partners Earn $500 when you refer a rankday client. Introduce businesse
 ## Free Tools. Check Your AI Search Visibility. | rankday
 URL: https://www.rank-day.com/tools
 
-Free tools Free tools from rankday See how findable you are to AI search, and fix it. No signup, no catch. AEO Score Score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), from 0 to 100, with the exact fixes ranked by impact. Check your score llms.txt Generator Generate a ready-to-use llms.txt for any site in seconds. Copy, download, upload. It helps AI systems understand and cite your content. Generate yours
+Free tools Free tools from rankday See how findable you are to Google and AI search, then fix what matters. No signup, no catch. Website SEO Audit Audit any business website across technical SEO, entity schema, content quality, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard. Audit a website Store SEO Audit Audit any ecommerce store across technical SEO, product schema, content, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard. Audit a store AEO Score Score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), from 0 to 100, with the exact fixes ranked by impact. Check your score llms.txt Generator Generate a ready-to-use llms.txt for any site in seconds. Copy, download, upload. It helps AI systems understand and cite your content. Generate yours AI Visibility Tracker Track prompts, competitors, sources, sentiment, and share of voice across OpenAI, Perplexity, and Gemini for rankday clients. See the tracker
 
 ---
 
@@ -444,3 +465,17 @@ Free tool How visible is your site to AI search? Paste your URL. In a few second
 URL: https://www.rank-day.com/tools/llms-txt
 
 Free tool Free llms.txt generator Paste your URL. Get a ready-to-use llms.txt that helps ChatGPT, Perplexity, Claude, and other AI systems understand your site. Copy it, upload it, done. Generate llms.txt About llms.txt What the file is and how to use it. What is an llms.txt file? llms.txt is a plain-text file you place at the root of your website (yoursite.com/llms.txt) that summarizes what your site is about and lists your key pages. It helps AI systems like ChatGPT, Perplexity, and Claude understand your content quickly, the way robots.txt and sitemap.xml help search engines. How does this generator work? Paste your URL. The tool reads your sitemap (or crawls your homepage if there is no sitemap), pulls the title and description of each page, groups them into sections, and writes a ready-to-use llms.txt. You copy or download it and upload it to your site root. Where do I put the llms.txt file? At the root of your domain, so it is reachable at yoursite.com/llms.txt. On most hosts you upload it to your public or root folder. On frameworks like Next.js, put it in your public folder. Is it free? Yes. Generate, copy, and download your llms.txt at no cost, no signup required.
+
+---
+
+## Free Ecommerce SEO Audit. Technical, Schema, CWV, AI Search. | rankday
+URL: https://www.rank-day.com/tools/store-seo-audit
+
+Free ecommerce SEO audit Audit any store for Google, AI search, and shoppers. Paste a store URL. In minutes, get a 0-100 dashboard across technical SEO, product schema, content, performance risk signals, image SEO, and AI-search readiness. Run free audit Crawls a small sample of public pages. No login, no Search Console access, no credit card. About the store SEO audit. What the audit checks, how to use it, and what the score means. What does the ecommerce SEO audit check? It checks public crawl signals across technical SEO, structured data, category and product-page content, performance risk signals, image SEO, internal linking, llms.txt, robots rules, and AI-search readiness. The result is a 0-100 score with prioritized fixes and sampled-page evidence. Is this the same as Ahrefs? No. A free public crawl cannot see backlinks, ranking history, Search Console, paid keyword data, or competitor databases. This audit is built for fast diagnostics: crawlability, schema, content, performance risk signals, and AI-search readiness in one dashboard. Can agencies use this for client prospecting? Yes. It was designed for DTC brands, ecommerce teams, and creative agencies that need a repeatable audit they can run before a sales call or strategy workshop. Does it guarantee AI shopping visibility? No. It scores the signals that make stores easier for AI systems to crawl, understand, cite, and recommend. Real visibility also depends on authority, reviews, brand demand, and third-party mentions.
+
+---
+
+## Free Website SEO Audit. Technical, Schema, CWV, AI Search. | rankday
+URL: https://www.rank-day.com/tools/website-seo-audit
+
+Free website SEO audit Audit any website for Google, AI search, and leads. Paste a business website URL. In minutes, get a 0-100 dashboard across technical SEO, entity schema, content, performance risk signals, image SEO, and AI-search readiness. Run free audit Crawls a small sample of public pages. No login, no Search Console access, no credit card. About the website SEO audit. What the audit checks, how to use it, and what the score means. What does the website SEO audit check? It checks public crawl signals across technical SEO, entity and service schema, page content, metadata, headings, image SEO, internal linking, performance risk signals, llms.txt, robots rules, and AI-search readiness. The result is a 0-100 score with prioritized fixes and sampled-page evidence. Is this the same as Ahrefs? No. A free public crawl cannot see backlinks, ranking history, Search Console, paid keyword data, or competitor databases. This audit is built for fast diagnostics: crawlability, schema, on-page content, performance risk signals, and AI-search readiness in one dashboard. Can agencies use this for client prospecting? Yes. It was designed for SEO agencies, web design agencies, consultants, and business owners who need a repeatable audit before a sales call or website strategy workshop. Does it guarantee AI search visibility? No. It scores the signals that make websites easier for AI systems to crawl, understand, cite, and recommend. Real visibility also depends on authority, reviews, brand demand, content depth, and third-party mentions.

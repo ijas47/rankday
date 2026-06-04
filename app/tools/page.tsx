@@ -39,6 +39,13 @@ const tools = [
     tone: "mint",
     cta: "Generate yours",
   },
+  {
+    href: "/ai-visibility-tracker",
+    name: "AI Visibility Tracker",
+    desc: "Track prompts, competitors, sources, sentiment, and share of voice across OpenAI, Perplexity, and Gemini for rankday clients.",
+    tone: "peach",
+    cta: "See the tracker",
+  },
 ];
 
 export default function ToolsPage() {
