@@ -14,11 +14,11 @@ export const metadata: Metadata = pageMeta({
 const faqs: FaqItem[] = [
   {
     q: "What does the ecommerce SEO audit check?",
-    a: "It checks technical SEO, product structured data, category and product-page content, Core Web Vitals signals, and AI-search readiness. The result is a 0-100 score with prioritized fixes.",
+    a: "It checks public crawl signals across technical SEO, structured data, category and product-page content, performance risk signals, image SEO, internal linking, llms.txt, robots rules, and AI-search readiness. The result is a 0-100 score with prioritized fixes and sampled-page evidence.",
   },
   {
     q: "Is this the same as Ahrefs?",
-    a: "No single free tool replaces every Ahrefs database feature. This audit is built for fast client-ready diagnostics: crawlability, schema, content, performance signals, and AI-search readiness in one dashboard.",
+    a: "No. A free public crawl cannot see backlinks, ranking history, Search Console, paid keyword data, or competitor databases. This audit is built for fast diagnostics: crawlability, schema, content, performance risk signals, and AI-search readiness in one dashboard.",
   },
   {
     q: "Can agencies use this for client prospecting?",
@@ -51,7 +51,7 @@ export default function StoreSeoAuditPage() {
             style={{ marginTop: 24, maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}
           >
             Paste a store URL. In minutes, get a 0-100 dashboard across technical SEO, product
-            schema, content, Core Web Vitals signals, and AI-search readiness.
+            schema, content, performance risk signals, image SEO, and AI-search readiness.
           </p>
         </div>
       </section>

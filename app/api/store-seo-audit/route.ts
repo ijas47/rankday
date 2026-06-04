@@ -37,7 +37,7 @@ export async function POST(req: Request) {
   const url = (body.url || "").trim();
   if (!url) return NextResponse.json({ error: "Enter a store URL to audit." }, { status: 400 });
 
-  const maxPages = Math.max(8, Math.min(Number(body.maxPages || 14), 18));
+  const maxPages = Math.max(10, Math.min(Number(body.maxPages || 20), 24));
   const key = `${url.toLowerCase()}|${maxPages}`;
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_TTL) {

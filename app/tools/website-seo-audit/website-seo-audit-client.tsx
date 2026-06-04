@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { WebsiteAuditFinding, WebsiteAuditReport, WebsiteAuditSection } from "@/lib/website-seo-audit";
+import type { WebsiteAuditCheck, WebsiteAuditFinding, WebsiteAuditReport, WebsiteAuditSection } from "@/lib/website-seo-audit";
 
 const WHATSAPP_URL = "https://wa.me/971565981209";
 const SECTION_COLORS: Record<string, string> = {
@@ -19,14 +19,14 @@ export function WebsiteSeoAuditClient() {
   const [report, setReport] = useState<WebsiteAuditReport | null>(null);
   const [email, setEmail] = useState("");
   const [isClientSite, setIsClientSite] = useState(true);
-  const [unlocked, setUnlocked] = useState(false);
+  const [requested, setRequested] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   async function runAudit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setReport(null);
-    setUnlocked(false);
+    setRequested(false);
     if (!url.trim()) {
       setError("Enter a website URL to audit.");
       return;
@@ -37,7 +37,7 @@ export function WebsiteSeoAuditClient() {
       const res = await fetch("/api/website-seo-audit", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ url, maxPages: 14 }),
+        body: JSON.stringify({ url, maxPages: 20 }),
       });
       const data = await res.json();
       if (!res.ok) setError(data.error || "Could not run the audit. Try another URL.");
@@ -49,7 +49,7 @@ export function WebsiteSeoAuditClient() {
     }
   }
 
-  async function unlock(e: React.FormEvent) {
+  async function requestReview(e: React.FormEvent) {
     e.preventDefault();
     if (!report) return;
     setSubmitting(true);
@@ -78,9 +78,9 @@ export function WebsiteSeoAuditClient() {
           body: JSON.stringify({ email, url: report.url, score: report.score, isClientSite }),
         });
       }
-      setUnlocked(true);
+      setRequested(true);
     } catch {
-      setUnlocked(true);
+      setRequested(true);
     } finally {
       setSubmitting(false);
     }
@@ -90,8 +90,16 @@ export function WebsiteSeoAuditClient() {
     () => (report ? report.findings.filter((finding) => finding.severity === "critical" || finding.severity === "high") : []),
     [report],
   );
-  const visibleFindings = report ? (unlocked ? report.findings : report.findings.slice(0, 4)) : [];
-  const lockedCount = report ? Math.max(report.findings.length - visibleFindings.length, 0) : 0;
+  const groupedFindings = useMemo(
+    () =>
+      report
+        ? report.sections.map((section) => ({
+            section,
+            findings: report.findings.filter((finding) => finding.section === section.label),
+          }))
+        : [],
+    [report],
+  );
 
   return (
     <section className="section" style={{ paddingTop: 8 }}>
@@ -169,29 +177,41 @@ export function WebsiteSeoAuditClient() {
               ))}
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 16, marginTop: 16 }}>
-              <div className="card" style={{ padding: 28 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: 16, marginTop: 16 }}>
+              <div className="card" style={{ padding: 28, minWidth: 0 }}>
                 <p className="kicker">Priority fixes</p>
                 <h2 className="h1" style={{ fontSize: 28, marginTop: 8 }}>
                   What to fix first.
                 </h2>
                 <div style={{ marginTop: 12 }}>
-                  {visibleFindings.length ? (
-                    visibleFindings.map((finding, index) => <FindingRow key={`${finding.title}-${index}`} finding={finding} />)
+                  {report.findings.length ? (
+                    report.findings.map((finding, index) => <FindingRow key={`${finding.title}-${index}`} finding={finding} />)
                   ) : (
                     <p style={{ color: "var(--muted)" }}>No major issues found in the crawl sample.</p>
                   )}
                 </div>
+              </div>
 
-                {lockedCount > 0 && !unlocked ? (
-                  <div className="card card-pink" style={{ padding: 24, marginTop: 18 }}>
+              <aside style={{ minWidth: 0 }}>
+                <ScopeCard report={report} />
+
+                <div className="card card-pink" style={{ padding: 24, marginTop: 16 }}>
+                  {requested ? (
+                    <>
+                      <p style={{ fontSize: 18, fontWeight: 800, color: "var(--ink)", margin: 0 }}>Request received.</p>
+                      <p style={{ color: "var(--ink-2)", fontSize: 14, margin: "8px 0 0", lineHeight: 1.5 }}>
+                        rankday has the URL, score, and contact email for a manual follow-up.
+                      </p>
+                    </>
+                  ) : (
+                    <>
                     <p style={{ fontSize: 18, fontWeight: 800, color: "var(--ink)", margin: 0 }}>
-                      Unlock {lockedCount} more fix{lockedCount === 1 ? "" : "es"} and the client-ready report summary.
+                        Want a manual review of this audit?
                     </p>
                     <p style={{ color: "var(--ink-2)", fontSize: 14, margin: "8px 0 0" }}>
-                      Send it to your inbox. Use it before a discovery call or a website rebuild pitch.
+                        The free crawl is visible here. Send the URL to rankday if you want a human to check the blind spots.
                     </p>
-                    <form onSubmit={unlock} style={{ marginTop: 18, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                      <form onSubmit={requestReview} style={{ marginTop: 18, display: "flex", gap: 10, flexWrap: "wrap" }}>
                       <input
                         type="email"
                         required
@@ -202,32 +222,15 @@ export function WebsiteSeoAuditClient() {
                         style={{ flex: "1 1 240px", minWidth: 0, padding: "14px 16px", borderRadius: 10, border: "1px solid var(--hairline)" }}
                       />
                       <button type="submit" className="btn btn-primary btn-sm" disabled={submitting}>
-                        {submitting ? "Unlocking..." : "Unlock report"}
+                          {submitting ? "Sending..." : "Request review"}
                       </button>
                     </form>
                     <label style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, color: "var(--muted)", fontSize: 13 }}>
                       <input type="checkbox" checked={isClientSite} onChange={(e) => setIsClientSite(e.target.checked)} />
                       This is a client or prospect site
                     </label>
-                  </div>
-                ) : null}
-              </div>
-
-              <aside>
-                <div className="card" style={{ padding: 24 }}>
-                  <p className="kicker">Sampled pages</p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 14 }}>
-                    {report.pages.slice(0, 8).map((page) => (
-                      <div key={page.url} style={{ borderTop: "1px solid var(--hairline)", paddingTop: 12 }}>
-                        <p style={{ fontSize: 13, fontWeight: 800, color: "var(--ink)", margin: 0, overflowWrap: "anywhere" }}>
-                          {page.title || page.url}
-                        </p>
-                        <p style={{ fontSize: 12, color: "var(--muted)", margin: "4px 0 0", overflowWrap: "anywhere" }}>
-                          {page.status} · {page.wordCount} words · {page.schemaTypes.slice(0, 3).join(", ") || "no schema"}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                    </>
+                  )}
                 </div>
 
                 <div data-reveal className="band-purple r-band" style={{ marginTop: 16, padding: 28 }}>
@@ -243,6 +246,14 @@ export function WebsiteSeoAuditClient() {
                 </div>
               </aside>
             </div>
+
+            <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 16 }}>
+              {groupedFindings.map(({ section, findings }) => (
+                <SectionDetail key={section.id} section={section} findings={findings} />
+              ))}
+            </div>
+
+            <SampledPages pages={report.pages} />
           </div>
         ) : null}
       </div>
@@ -295,6 +306,151 @@ function SectionTile({ section }: { section: WebsiteAuditSection }) {
       <div style={{ marginTop: 12, height: 8, borderRadius: 99, background: "var(--hairline)", overflow: "hidden" }}>
         <div style={{ width: `${section.score}%`, height: "100%", background: color }} />
       </div>
+    </div>
+  );
+}
+
+function ScopeCard({ report }: { report: WebsiteAuditReport }) {
+  return (
+    <div className="card" style={{ padding: 24 }}>
+      <p className="kicker">Audit scope</p>
+      <h2 className="h1" style={{ fontSize: 24, marginTop: 8 }}>
+        What this tool verified.
+      </h2>
+      <ListBlock items={report.summary.verifiedFromCrawl} />
+      <p className="kicker" style={{ marginTop: 18 }}>
+        Needs external data
+      </p>
+      <ListBlock items={report.summary.needsExternalData} muted />
+    </div>
+  );
+}
+
+function SectionDetail({ section, findings }: { section: WebsiteAuditSection; findings: (WebsiteAuditFinding & { section: string })[] }) {
+  return (
+    <div className="card" style={{ padding: 24, minWidth: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
+        <div>
+          <p className="kicker">{section.label}</p>
+          <h2 className="h1" style={{ fontSize: 24, marginTop: 8 }}>
+            {section.score}/100
+          </h2>
+        </div>
+        <span
+          style={{
+            width: 54,
+            height: 54,
+            borderRadius: "50%",
+            display: "grid",
+            placeItems: "center",
+            background: SECTION_COLORS[section.id] || "var(--purple)",
+            color: "#fff",
+            fontWeight: 900,
+          }}
+        >
+          {section.checks.filter((item) => item.status === "pass").length}
+        </span>
+      </div>
+      <div style={{ marginTop: 14 }}>
+        {section.checks.map((item) => (
+          <CheckRow key={`${section.id}-${item.label}`} check={item} />
+        ))}
+      </div>
+      {findings.length ? (
+        <div style={{ marginTop: 14, borderTop: "1px solid var(--hairline)", paddingTop: 14 }}>
+          <p style={{ margin: 0, color: "var(--ink)", fontSize: 13, fontWeight: 800 }}>Section issues</p>
+          {findings.slice(0, 4).map((finding) => (
+            <p key={finding.title} style={{ margin: "8px 0 0", color: "var(--muted)", fontSize: 13, lineHeight: 1.45 }}>
+              <strong style={{ color: "var(--ink)" }}>{finding.severity}:</strong> {finding.title}
+            </p>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function CheckRow({ check }: { check: WebsiteAuditCheck }) {
+  const color =
+    check.status === "pass" ? "#16a34a" : check.status === "fail" ? "#dc2626" : check.status === "warning" ? "#d97706" : "#64748b";
+  const label = check.status === "needs-data" ? "needs data" : check.status;
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "92px minmax(0, 1fr)", gap: 10, padding: "10px 0", borderTop: "1px solid var(--hairline)" }}>
+      <span
+        style={{
+          alignSelf: "start",
+          borderRadius: 99,
+          background: color,
+          color: "#fff",
+          fontSize: 10,
+          fontWeight: 900,
+          textTransform: "uppercase",
+          textAlign: "center",
+          padding: "5px 7px",
+        }}
+      >
+        {label}
+      </span>
+      <div style={{ minWidth: 0 }}>
+        <p style={{ margin: 0, color: "var(--ink)", fontSize: 13, fontWeight: 800 }}>{check.label}</p>
+        <p style={{ margin: "3px 0 0", color: "var(--muted)", fontSize: 13, lineHeight: 1.45 }}>{check.detail}</p>
+      </div>
+    </div>
+  );
+}
+
+function SampledPages({ pages }: { pages: WebsiteAuditReport["pages"] }) {
+  return (
+    <div className="card" style={{ padding: 24, marginTop: 16, overflowX: "auto" }}>
+      <p className="kicker">Sampled pages</p>
+      <div style={{ minWidth: 760, marginTop: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 80px 110px 90px 120px 1.2fr", gap: 12, color: "var(--muted)", fontSize: 12, fontWeight: 800 }}>
+          <span>Page</span>
+          <span>Status</span>
+          <span>Words</span>
+          <span>H1s</span>
+          <span>Images</span>
+          <span>Schema</span>
+        </div>
+        {pages.map((page) => (
+          <div
+            key={page.url}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 80px 110px 90px 120px 1.2fr",
+              gap: 12,
+              alignItems: "start",
+              borderTop: "1px solid var(--hairline)",
+              padding: "12px 0",
+              fontSize: 13,
+            }}
+          >
+            <div style={{ minWidth: 0 }}>
+              <p style={{ fontWeight: 800, color: "var(--ink)", margin: 0, overflowWrap: "anywhere" }}>{page.title || page.url}</p>
+              <p style={{ color: "var(--muted)", margin: "3px 0 0", overflowWrap: "anywhere" }}>{page.url}</p>
+            </div>
+            <span style={{ color: page.status >= 200 && page.status < 300 ? "#16a34a" : "#dc2626", fontWeight: 800 }}>{page.status}</span>
+            <span>{page.wordCount}</span>
+            <span>{page.h1Count}</span>
+            <span>
+              {page.imagesMissingAlt}/{page.images} missing alt
+            </span>
+            <span style={{ overflowWrap: "anywhere" }}>{page.schemaTypes.slice(0, 4).join(", ") || "none"}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ListBlock({ items, muted = false }: { items: string[]; muted?: boolean }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
+      {items.map((item) => (
+        <p key={item} style={{ margin: 0, color: muted ? "var(--muted)" : "var(--ink-2)", fontSize: 14, lineHeight: 1.5 }}>
+          {item}
+        </p>
+      ))}
     </div>
   );
 }
