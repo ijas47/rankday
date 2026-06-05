@@ -10,7 +10,7 @@ import { Marquee } from "@/components/marquee";
 export const metadata: Metadata = pageMeta({
   title: "SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
   description:
-    "rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. One fixed price. 90-day guarantee. UAE, UK, US, and more.",
+    "rankday rebuilds your site, ranks it top-3 on Google, and gets you cited by ChatGPT, Perplexity & Claude. One fixed price, 90-day guarantee.",
   path: "/",
 });
 import {
