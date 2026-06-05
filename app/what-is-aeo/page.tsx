@@ -191,6 +191,13 @@ export default function WhatIsAEOPage() {
               <p className="body lg" style={{ color: "var(--ink-2)" }}>
                 AEO is built into every rankday engagement. It is not an add-on. It is not a report. It is the actual work done alongside SEO in the same 90 days.
               </p>
+              <p className="body" style={{ color: "var(--ink-2)", marginTop: 16 }}>
+                Want to see where you stand first? Learn{" "}
+                <Link href="/get-cited-by-chatgpt" style={{ color: "var(--purple)", fontWeight: 600 }}>how to get cited by ChatGPT</Link>{" "}
+                or run a free{" "}
+                <Link href="/tools/aeo-score" style={{ color: "var(--purple)", fontWeight: 600 }}>AEO Score</Link>{" "}
+                on your site.
+              </p>
 
               <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 20 }}>
                 {[

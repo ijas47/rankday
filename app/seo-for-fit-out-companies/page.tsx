@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { pageMeta, serviceSchema } from "@/lib/seo";
+import { pageMeta, serviceSchema, faqPageSchema, type FaqItem } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
+import { FaqSection } from "@/components/faq-section";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
@@ -27,18 +28,42 @@ const serviceLd = serviceSchema({
   offer: { price: "4900", currency: "USD" },
 });
 
+const faqs: FaqItem[] = [
+  {
+    q: "Do you do SEO for commercial fit out companies?",
+    a: "Yes. Commercial fit out is our core focus — office, retail, hospitality, healthcare and industrial. We target the commercial fit out searches your buyers actually run, build sector pages for each vertical you work in, and rank them in the regions you want to win work.",
+  },
+  {
+    q: "We're an office fitout company — can you get us ranking for office fit out searches?",
+    a: "That is exactly what we do. Office fitout SEO is one of our most common briefs. We rebuild your site, target queries like \"office fit out Dubai\" and \"office interior fit out\", and back them with the content and authority needed to reach the top 3 — with the same 90-day guarantee.",
+  },
+  {
+    q: "How much does SEO for a fit out company cost?",
+    a: "One fixed price that covers the new website, the SEO campaign, and the AI-citation work — no retainers that creep upward and no per-keyword billing. See the pricing page for the current figure.",
+  },
+  {
+    q: "How long until our fit out company ranks on Google?",
+    a: "90 days. We guarantee top-3 rankings for 90% of the agreed keywords by day 90. If we miss it, we keep working at no extra cost until we get there.",
+  },
+  {
+    q: "Do you build the website too, or just the SEO?",
+    a: "Both. We rebuild your fit out company website and rank it — the two are inseparable. A fast, well-structured site is what lets the rankings and the AI citations happen, so it is included in the one fixed price.",
+  },
+];
+
 export default function SEOForFitOutCompaniesPage() {
   return (
     <div className="page-enter">
       <JsonLd data={serviceLd} />
+      <JsonLd data={faqPageSchema(faqs)} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Fit Out and Interiors</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            A new website + top-3 Google rankings for <span className="it">fit out companies.</span> In 90 days.
+            SEO for <span className="it">fit out companies.</span> A new website + top-3 Google rankings in 90 days.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            We rebuild your fit out company website, rank it on Google for the sectors you want to win, and get you cited by AI search. All three. In 90 days. One fixed price.
+            We rebuild your fit out company website, rank it on Google for the office, retail, hospitality and commercial fit out searches you want to win, and get you cited by AI search. All three. In 90 days. One fixed price.
           </p>
           <div data-reveal style={{ marginTop: 28 }}>
             <BundlePills />
@@ -105,6 +130,11 @@ export default function SEOForFitOutCompaniesPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection
+        heading="SEO for fit out companies: common questions."
+        items={faqs}
+      />
 
       <section style={{ padding: "0 32px 64px" }}>
         <div className="container" style={{ padding: 0 }}>
