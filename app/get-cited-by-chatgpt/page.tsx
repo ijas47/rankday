@@ -116,6 +116,11 @@ export default function GetCitedByChatGPTPage() {
               <p className="body" style={{ marginTop: 18, color: "var(--ink-2)" }}>
                 If your business does not appear, you have an AEO gap. If your competitors appear and you do not, the gap is costing you clients today. The businesses named in that answer did not get there by accident.
               </p>
+              <p className="body" style={{ marginTop: 14, color: "var(--ink-2)" }}>
+                Want the fast version? Run your site through our free{" "}
+                <Link href="/tools/aeo-score" style={{ color: "var(--purple)", fontWeight: 600 }}>AEO Score</Link>{" "}
+                tool and see how citable you are right now.
+              </p>
             </div>
           </div>
         </div>
