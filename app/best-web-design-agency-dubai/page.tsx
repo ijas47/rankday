@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/seo";
 const path = "/best-web-design-agency-dubai";
 
 export const metadata: Metadata = pageMeta({
-  title: "Best Web Design Agency in Dubai. Built to Rank in 90 Days.",
+  title: "Best Web Design Agency in Dubai. Ranks in 90 Days.",
   description:
     "Looking for the best web design agency in Dubai? rankday builds search-ready websites with SEO, AEO, analytics, and conversion structure included.",
   path,

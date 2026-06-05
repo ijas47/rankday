@@ -5,7 +5,7 @@ import { FaqSection } from "@/components/faq-section";
 import { WebsiteSeoAuditClient } from "./website-seo-audit-client";
 
 export const metadata: Metadata = pageMeta({
-  title: "Free Website SEO Audit. Technical, Schema, CWV, AI Search.",
+  title: "Free Website SEO Audit. Technical, Schema, AI Search.",
   description:
     "Run a free website SEO audit across technical SEO, entity schema, content quality, Core Web Vitals signals, and AI-search readiness. Built by rankday.",
   path: "/tools/website-seo-audit",

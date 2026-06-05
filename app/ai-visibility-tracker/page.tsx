@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/json-ld";
 import { pageMeta, serviceSchema } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "AI Visibility Tracker for ChatGPT, Perplexity, and Gemini.",
+  title: "AI Visibility Tracker for ChatGPT, Perplexity & Gemini.",
   description:
     "Track how often your brand appears in AI answers, which competitors get mentioned, what sources are cited, and what to fix next. Built into rankday client work.",
   path: "/ai-visibility-tracker",

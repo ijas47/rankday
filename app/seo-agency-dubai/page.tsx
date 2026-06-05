@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = pageMeta({
-  title: "Website + SEO Agency Dubai. Top 3 in 90 Days. AED 18,000.",
+  title: "SEO Agency Dubai. Website + Top 3 in 90 Days. AED 18,000.",
   description:
     "A new website, top-3 Google rankings, and AI citations for Dubai and UAE businesses. AED 18,000 standard. Arabic available at no extra cost. 90-day guarantee.",
   path: "/seo-agency-dubai",

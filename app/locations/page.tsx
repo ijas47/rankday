@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "Locations Served. SEO Agency Across UAE, UK, US, and More.",
+  title: "Locations Served. SEO Across UAE, UK, US & More.",
   description:
     "rankday delivers SEO and AEO across UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Local invoicing and pricing where available.",
   path: "/locations",
