@@ -152,7 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}
       </Script>
       <MetaPixel />
-      <Script id="ms-clarity-init" strategy="afterInteractive">
+      <Script id="ms-clarity-init" strategy="lazyOnload">
         {`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
