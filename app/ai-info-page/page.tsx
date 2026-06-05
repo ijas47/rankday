@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "rankday AI info page: structured facts for AI assistants",
+  title: "rankday AI info: structured facts for AI assistants",
   description:
     "Structured information about rankday for ChatGPT, Claude, Perplexity, Google AI Overviews, and Gemini. What rankday is, who it's for, pricing, and how it compares.",
   robots: { index: true, follow: true },

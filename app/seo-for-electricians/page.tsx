@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = pageMeta({
-  title: "Website + SEO for Electricians. Top 3 Rankings in 90 Days.",
+  title: "Website + SEO for Electricians. Top 3 in 90 Days.",
   description:
     "A new website, top-3 Google rankings, and AI citations for electrical businesses. Residential and commercial. One fixed price. 90-day guarantee.",
   path: "/seo-for-electricians",

@@ -5,7 +5,7 @@ import { FaqSection } from "@/components/faq-section";
 import { StoreSeoAuditClient } from "./store-seo-audit-client";
 
 export const metadata: Metadata = pageMeta({
-  title: "Free Ecommerce SEO Audit. Technical, Schema, CWV, AI Search.",
+  title: "Free Ecommerce SEO Audit. Technical, Schema, AI Search.",
   description:
     "Run a free ecommerce SEO audit across technical SEO, product schema, content, Core Web Vitals signals, and AI-search readiness. Built by rankday.",
   path: "/tools/store-seo-audit",

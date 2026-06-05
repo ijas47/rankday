@@ -8,7 +8,7 @@ import { HeroVisual } from "@/components/hero-visual";
 import { Marquee } from "@/components/marquee";
 
 export const metadata: Metadata = pageMeta({
-  title: "SEO Agency. Top 3 Google Rankings + AI Citations in 90 Days.",
+  title: "SEO Agency. Top 3 Rankings + AI Citations in 90 Days.",
   description:
     "rankday rebuilds your website, ranks it on Google, and gets your business cited by ChatGPT, Perplexity, and Claude. One fixed price. 90-day guarantee. UAE, UK, US, and more.",
   path: "/",
