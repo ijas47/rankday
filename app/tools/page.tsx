@@ -26,6 +26,13 @@ const tools = [
     cta: "Audit a store",
   },
   {
+    href: "/tools/seo-spider",
+    name: "SEO Spider",
+    desc: "Crawl your whole site like Screaming Frog. Get response codes, duplicate and missing titles, meta, canonicals, redirects, and crawl depth in one filterable report.",
+    tone: "peach",
+    cta: "Crawl a site",
+  },
+  {
     href: "/tools/aeo-score",
     name: "AEO Score",
     desc: "Score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), from 0 to 100, with the exact fixes ranked by impact.",
