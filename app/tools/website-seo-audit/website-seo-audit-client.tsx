@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { WebsiteAuditCheck, WebsiteAuditFinding, WebsiteAuditReport, WebsiteAuditSection } from "@/lib/website-seo-audit";
+import type { SiteAuditReport, WebsiteAuditFinding, WebsiteAuditSection } from "@/lib/website-seo-audit";
+import type { CrawledUrl, SpiderSeverity } from "@/lib/seo-spider";
 
 const WHATSAPP_URL = "https://wa.me/971565981209";
+
 const SECTION_COLORS: Record<string, string> = {
   technical: "#4a2bf0",
   schema: "#16a34a",
@@ -12,11 +14,32 @@ const SECTION_COLORS: Record<string, string> = {
   ai: "#db2777",
 };
 
+const SEVERITY_COLORS: Record<SpiderSeverity, string> = {
+  critical: "#dc2626",
+  high: "#ea580c",
+  medium: "#d97706",
+  low: "#64748b",
+};
+
+const CODE_COLORS: Record<string, string> = {
+  "2xx": "#16a34a",
+  "3xx": "#d97706",
+  "4xx": "#dc2626",
+  "5xx": "#991b1b",
+  other: "#64748b",
+};
+
+type SortKey = "url" | "status" | "title" | "descLength" | "wordCount" | "depth" | "inlinks";
+
 export function WebsiteSeoAuditClient() {
   const [url, setUrl] = useState("rank-day.com");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [report, setReport] = useState<WebsiteAuditReport | null>(null);
+  const [report, setReport] = useState<SiteAuditReport | null>(null);
+  const [activeIssue, setActiveIssue] = useState<string | null>(null);
+  const [filterText, setFilterText] = useState("");
+  const [sortKey, setSortKey] = useState<SortKey>("depth");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [email, setEmail] = useState("");
   const [isClientSite, setIsClientSite] = useState(true);
   const [requested, setRequested] = useState(false);
@@ -27,21 +50,22 @@ export function WebsiteSeoAuditClient() {
     setError("");
     setReport(null);
     setRequested(false);
+    setActiveIssue(null);
+    setFilterText("");
     if (!url.trim()) {
       setError("Enter a website URL to audit.");
       return;
     }
-
     setLoading(true);
     try {
       const res = await fetch("/api/website-seo-audit", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ url, maxPages: 20 }),
+        body: JSON.stringify({ url, maxPages: 75 }),
       });
       const data = await res.json();
       if (!res.ok) setError(data.error || "Could not run the audit. Try another URL.");
-      else setReport(data as WebsiteAuditReport);
+      else setReport(data as SiteAuditReport);
     } catch {
       setError("Could not run the audit. Check the URL and try again.");
     } finally {
@@ -65,7 +89,7 @@ export function WebsiteSeoAuditClient() {
             from_name: "rankday Website SEO Audit",
             email,
             replyto: email,
-            message: `Email: ${email}\nScanned: ${report.url}\nScore: ${report.score}/100\nClient site: ${isClientSite ? "yes" : "no"}`,
+            message: `Email: ${email}\nScanned: ${report.url}\nScore: ${report.score}/100\nPages crawled: ${report.stats.crawled}\nClient site: ${isClientSite ? "yes" : "no"}`,
             scanned_url: report.url,
             score: report.score,
             is_client_site: isClientSite,
@@ -87,23 +111,44 @@ export function WebsiteSeoAuditClient() {
   }
 
   const highImpact = useMemo(
-    () => (report ? report.findings.filter((finding) => finding.severity === "critical" || finding.severity === "high") : []),
-    [report],
-  );
-  const groupedFindings = useMemo(
-    () =>
-      report
-        ? report.sections.map((section) => ({
-            section,
-            findings: report.findings.filter((finding) => finding.section === section.label),
-          }))
-        : [],
+    () => (report ? report.findings.filter((f) => f.severity === "critical" || f.severity === "high") : []),
     [report],
   );
 
+  const activeIssueGroup = useMemo(
+    () => (report && activeIssue ? report.issues.find((issue) => issue.id === activeIssue) || null : null),
+    [report, activeIssue],
+  );
+
+  const rows = useMemo(() => {
+    if (!report) return [];
+    const issueSet = activeIssueGroup ? new Set(activeIssueGroup.urls) : null;
+    const text = filterText.trim().toLowerCase();
+    const filtered = report.urls.filter((row) => {
+      if (issueSet && !issueSet.has(row.url)) return false;
+      if (text && !row.url.toLowerCase().includes(text) && !row.title.toLowerCase().includes(text)) return false;
+      return true;
+    });
+    const dir = sortDir === "asc" ? 1 : -1;
+    return [...filtered].sort((a, b) => {
+      const av = sortValue(a, sortKey);
+      const bv = sortValue(b, sortKey);
+      if (typeof av === "number" && typeof bv === "number") return (av - bv) * dir;
+      return String(av).localeCompare(String(bv)) * dir;
+    });
+  }, [report, activeIssueGroup, filterText, sortKey, sortDir]);
+
+  function toggleSort(key: SortKey) {
+    if (key === sortKey) setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    else {
+      setSortKey(key);
+      setSortDir(key === "url" || key === "title" ? "asc" : "desc");
+    }
+  }
+
   return (
     <section className="section" style={{ paddingTop: 8 }}>
-      <div className="container" style={{ maxWidth: 1120 }}>
+      <div className="container" style={{ maxWidth: 1180 }}>
         <form
           onSubmit={runAudit}
           data-reveal
@@ -128,20 +173,19 @@ export function WebsiteSeoAuditClient() {
             }}
           />
           <button type="submit" className="btn btn-primary" disabled={loading} style={{ flexShrink: 0 }}>
-            {loading ? "Auditing..." : "Run free audit"}
+            {loading ? "Crawling..." : "Run free audit"}
           </button>
         </form>
 
         <p style={{ margin: "12px 0 0", textAlign: "center", color: "var(--muted)", fontSize: 13 }}>
-          Crawls a small sample of public pages. No login, no Search Console access, no credit card.
+          Crawls up to 75 internal pages by following links and the sitemap. No login, no credit card.
         </p>
 
-        {error ? (
-          <p style={{ marginTop: 16, textAlign: "center", color: "#dc2626", fontWeight: 700 }}>{error}</p>
-        ) : null}
+        {error ? <p style={{ marginTop: 16, textAlign: "center", color: "#dc2626", fontWeight: 700 }}>{error}</p> : null}
 
         {report ? (
           <div style={{ marginTop: 34 }}>
+            {/* ---------- Overview: scorecard ---------- */}
             <div
               className="card card-ink"
               style={{
@@ -161,12 +205,17 @@ export function WebsiteSeoAuditClient() {
                   {report.rating}: {scoreLine(report.score)}
                 </h2>
                 <p style={{ color: "rgba(255,255,255,0.74)", fontSize: 16, lineHeight: 1.6, margin: "12px 0 0" }}>
-                  {report.stats.pagesAnalyzed} pages sampled, {report.stats.sitemapUrls} sitemap URLs discovered,
-                  and {report.findings.length} prioritized issues found.
+                  Crawled {report.stats.crawled} pages
+                  {report.stats.notCrawled > 0 ? ` (${report.stats.notCrawled} more discovered)` : ""},{" "}
+                  {report.findings.length} prioritized fixes and {report.issues.length} crawl issue type
+                  {report.issues.length === 1 ? "" : "s"} found.
                 </p>
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 18 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 18 }}>
                   <span style={pillStyle}>{highImpact.length} high-impact issue{highImpact.length === 1 ? "" : "s"}</span>
                   <span style={pillStyle}>AI-search ready: {report.sections.find((s) => s.id === "ai")?.score || 0}/100</span>
+                  <button type="button" onClick={() => downloadReport(report)} className="btn btn-light btn-sm">
+                    Download HTML report
+                  </button>
                 </div>
               </div>
             </div>
@@ -185,17 +234,15 @@ export function WebsiteSeoAuditClient() {
                 </h2>
                 <div style={{ marginTop: 12 }}>
                   {report.findings.length ? (
-                    report.findings.map((finding, index) => <FindingRow key={`${finding.title}-${index}`} finding={finding} />)
+                    report.findings.slice(0, 8).map((finding, index) => <FindingRow key={`${finding.title}-${index}`} finding={finding} />)
                   ) : (
-                    <p style={{ color: "var(--muted)" }}>No major issues found in the crawl sample.</p>
+                    <p style={{ color: "var(--muted)" }}>No major issues found in the crawl.</p>
                   )}
                 </div>
               </div>
 
               <aside style={{ minWidth: 0 }}>
-                <ScopeCard report={report} />
-
-                <div className="card card-pink" style={{ padding: 24, marginTop: 16 }}>
+                <div className="card card-pink" style={{ padding: 24 }}>
                   {requested ? (
                     <>
                       <p style={{ fontSize: 18, fontWeight: 800, color: "var(--ink)", margin: 0 }}>Request received.</p>
@@ -205,30 +252,28 @@ export function WebsiteSeoAuditClient() {
                     </>
                   ) : (
                     <>
-                    <p style={{ fontSize: 18, fontWeight: 800, color: "var(--ink)", margin: 0 }}>
-                        Want a manual review of this audit?
-                    </p>
-                    <p style={{ color: "var(--ink-2)", fontSize: 14, margin: "8px 0 0" }}>
+                      <p style={{ fontSize: 18, fontWeight: 800, color: "var(--ink)", margin: 0 }}>Want a manual review of this audit?</p>
+                      <p style={{ color: "var(--ink-2)", fontSize: 14, margin: "8px 0 0" }}>
                         The free crawl is visible here. Send the URL to rankday if you want a human to check the blind spots.
-                    </p>
+                      </p>
                       <form onSubmit={requestReview} style={{ marginTop: 18, display: "flex", gap: 10, flexWrap: "wrap" }}>
-                      <input
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@company.com"
-                        aria-label="Your email"
-                        style={{ flex: "1 1 240px", minWidth: 0, padding: "14px 16px", borderRadius: 10, border: "1px solid var(--hairline)" }}
-                      />
-                      <button type="submit" className="btn btn-primary btn-sm" disabled={submitting}>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@company.com"
+                          aria-label="Your email"
+                          style={{ flex: "1 1 240px", minWidth: 0, padding: "14px 16px", borderRadius: 10, border: "1px solid var(--hairline)" }}
+                        />
+                        <button type="submit" className="btn btn-primary btn-sm" disabled={submitting}>
                           {submitting ? "Sending..." : "Request review"}
-                      </button>
-                    </form>
-                    <label style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, color: "var(--muted)", fontSize: 13 }}>
-                      <input type="checkbox" checked={isClientSite} onChange={(e) => setIsClientSite(e.target.checked)} />
-                      This is a client or prospect site
-                    </label>
+                        </button>
+                      </form>
+                      <label style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, color: "var(--muted)", fontSize: 13 }}>
+                        <input type="checkbox" checked={isClientSite} onChange={(e) => setIsClientSite(e.target.checked)} />
+                        This is a client or prospect site
+                      </label>
                     </>
                   )}
                 </div>
@@ -247,13 +292,155 @@ export function WebsiteSeoAuditClient() {
               </aside>
             </div>
 
-            <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 16 }}>
-              {groupedFindings.map(({ section, findings }) => (
-                <SectionDetail key={section.id} section={section} findings={findings} />
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 16, marginTop: 16 }}>
+              {report.sections.map((section) => (
+                <SectionDetail key={section.id} section={section} />
               ))}
             </div>
 
-            <SampledPages pages={report.pages} />
+            {/* ---------- Crawl Detail ---------- */}
+            <div className="card card-ink" style={{ padding: "clamp(20px, 3vw, 32px)", marginTop: 28 }}>
+              <p className="kicker" style={{ color: "rgba(255,255,255,0.62)" }}>
+                Crawl detail
+              </p>
+              <h2 className="h1" style={{ color: "#fff", fontSize: 30, marginTop: 8 }}>
+                Every page we crawled.
+              </h2>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 16 }}>
+                {(["2xx", "3xx", "4xx", "5xx"] as const).map((code) => (
+                  <span key={code} style={codePill(CODE_COLORS[code])}>
+                    {report.stats.responseCodes[code]} {code}
+                  </span>
+                ))}
+                <span style={codePill("rgba(255,255,255,0.5)")}>avg {report.stats.avgResponseMs} ms</span>
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12, marginTop: 14 }}>
+              <StatTile label="URLs crawled" value={String(report.stats.crawled)} />
+              <StatTile label="Indexable" value={`${report.stats.indexable}/${report.stats.crawled}`} />
+              <StatTile label="Broken (4xx/5xx)" value={String(report.stats.responseCodes["4xx"] + report.stats.responseCodes["5xx"])} />
+              <StatTile label="Redirects (3xx)" value={String(report.stats.responseCodes["3xx"])} />
+              <StatTile label="Internal links" value={String(report.stats.internalLinks)} />
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 16, marginTop: 16 }}>
+              <div className="card" style={{ padding: 24, minWidth: 0 }}>
+                <p className="kicker">Crawl issues</p>
+                <h2 className="h1" style={{ fontSize: 24, marginTop: 8 }}>
+                  Filter the table.
+                </h2>
+                <p style={{ color: "var(--muted)", fontSize: 13, margin: "6px 0 12px" }}>Select an issue to filter the URL table.</p>
+                <button type="button" onClick={() => setActiveIssue(null)} style={issueRowStyle(!activeIssue)}>
+                  <span style={{ fontWeight: 800, color: "var(--ink)" }}>All crawled URLs</span>
+                  <span style={{ color: "var(--muted)", fontWeight: 800 }}>{report.stats.crawled}</span>
+                </button>
+                {report.issues.length ? (
+                  report.issues.map((issue) => (
+                    <button
+                      key={issue.id}
+                      type="button"
+                      onClick={() => setActiveIssue(issue.id === activeIssue ? null : issue.id)}
+                      style={issueRowStyle(issue.id === activeIssue)}
+                    >
+                      <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                        <span style={{ width: 9, height: 9, borderRadius: 99, background: SEVERITY_COLORS[issue.severity], flexShrink: 0 }} />
+                        <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                          <span style={{ color: "var(--muted)", fontSize: 11, fontWeight: 800, textTransform: "uppercase" }}>{issue.category}</span>
+                          <br />
+                          <span style={{ fontWeight: 700, color: "var(--ink)" }}>{issue.label}</span>
+                        </span>
+                      </span>
+                      <span style={{ color: SEVERITY_COLORS[issue.severity], fontWeight: 900 }}>{issue.count}</span>
+                    </button>
+                  ))
+                ) : (
+                  <p style={{ color: "var(--muted)" }}>No crawl issues detected.</p>
+                )}
+              </div>
+
+              <div className="card" style={{ padding: 24, minWidth: 0 }}>
+                {activeIssueGroup ? (
+                  <>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        borderRadius: 99,
+                        padding: "5px 9px",
+                        background: SEVERITY_COLORS[activeIssueGroup.severity],
+                        color: "#fff",
+                        fontSize: 11,
+                        fontWeight: 800,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {activeIssueGroup.severity}
+                    </span>
+                    <h2 className="h1" style={{ fontSize: 22, marginTop: 12 }}>
+                      {activeIssueGroup.label}
+                    </h2>
+                    <p style={{ color: "var(--muted)", fontSize: 14, lineHeight: 1.5, marginTop: 8 }}>{activeIssueGroup.detail}</p>
+                    <p style={{ color: "var(--ink-2)", fontSize: 14, lineHeight: 1.5, marginTop: 8 }}>
+                      <strong style={{ color: "var(--ink)" }}>Fix:</strong> {activeIssueGroup.fix}
+                    </p>
+                    <p style={{ color: "var(--muted)", fontSize: 13, marginTop: 8 }}>
+                      Affects {activeIssueGroup.count} URL{activeIssueGroup.count === 1 ? "" : "s"} — shown in the table below.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="kicker">How to read this</p>
+                    <h2 className="h1" style={{ fontSize: 22, marginTop: 8 }}>
+                      The full crawl grid.
+                    </h2>
+                    <p style={{ color: "var(--muted)", fontSize: 14, lineHeight: 1.5, marginTop: 8 }}>
+                      Sort any column, search by URL or title, or click an issue on the left to filter. Status, indexability,
+                      title and meta lengths, word count, crawl depth, and internal inlinks are shown per URL.
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="card" style={{ padding: 24, marginTop: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                <h2 className="h1" style={{ fontSize: 22 }}>
+                  {activeIssueGroup ? activeIssueGroup.label : "Every crawled URL"}
+                </h2>
+                <input
+                  type="text"
+                  value={filterText}
+                  onChange={(e) => setFilterText(e.target.value)}
+                  placeholder="Filter by URL or title"
+                  aria-label="Filter URLs"
+                  style={{ flex: "0 1 280px", padding: "10px 14px", borderRadius: 10, border: "1px solid var(--hairline)", fontSize: 14 }}
+                />
+              </div>
+              <div style={{ overflowX: "auto", marginTop: 14 }}>
+                <table style={{ width: "100%", minWidth: 940, borderCollapse: "collapse", fontSize: 13 }}>
+                  <thead>
+                    <tr>
+                      <Th label="URL" k="url" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} align="left" />
+                      <Th label="Status" k="status" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
+                      <th style={thStyle("left")}>Indexability</th>
+                      <Th label="Title" k="title" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} align="left" />
+                      <Th label="Meta" k="descLength" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
+                      <Th label="Words" k="wordCount" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
+                      <Th label="Depth" k="depth" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
+                      <Th label="Inlinks" k="inlinks" sortKey={sortKey} sortDir={sortDir} onSort={toggleSort} />
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((row) => (
+                      <GridRow key={row.url} row={row} />
+                    ))}
+                  </tbody>
+                </table>
+                {rows.length === 0 ? (
+                  <p style={{ color: "var(--muted)", marginTop: 14, textAlign: "center" }}>No URLs match this filter.</p>
+                ) : null}
+              </div>
+            </div>
           </div>
         ) : null}
       </div>
@@ -261,36 +448,69 @@ export function WebsiteSeoAuditClient() {
   );
 }
 
-function ScoreDial({ score, rating }: { score: number; rating: string }) {
+function GridRow({ row }: { row: CrawledUrl }) {
   return (
-    <div
-      style={{
-        width: 180,
-        height: 180,
-        borderRadius: "50%",
-        display: "grid",
-        placeItems: "center",
-        background: `conic-gradient(#fff ${score * 3.6}deg, rgba(255,255,255,0.14) 0deg)`,
-        margin: "0 auto",
-      }}
-    >
-      <div
-        style={{
-          width: 142,
-          height: 142,
-          borderRadius: "50%",
-          background: "var(--ink)",
-          display: "grid",
-          placeItems: "center",
-          textAlign: "center",
-          color: "#fff",
-        }}
+    <tr style={{ borderTop: "1px solid var(--hairline)" }}>
+      <td style={{ ...tdStyle, maxWidth: 320 }}>
+        <span title={row.url} style={{ display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "var(--ink)", fontWeight: 700 }}>
+          {pathFor(row.url)}
+        </span>
+      </td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>
+        <span style={{ color: statusColor(row.status), fontWeight: 800 }}>{row.status || "—"}</span>
+      </td>
+      <td style={tdStyle}>
+        <span style={{ color: row.indexable ? "#16a34a" : "#dc2626", fontWeight: 700 }}>{row.indexabilityReason}</span>
+      </td>
+      <td style={{ ...tdStyle, maxWidth: 280 }}>
+        <span title={row.title} style={{ display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {row.title || <em style={{ color: "#dc2626" }}>missing</em>}
+        </span>
+        {row.title ? <span style={{ color: "var(--muted)", fontSize: 11 }}>{row.titleLength} chars</span> : null}
+      </td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{row.metaDescription ? row.descLength : <em style={{ color: "#d97706" }}>0</em>}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{row.wordCount}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{row.depth}</td>
+      <td style={{ ...tdStyle, textAlign: "center" }}>{row.inlinks}</td>
+    </tr>
+  );
+}
+
+function Th({
+  label,
+  k,
+  sortKey,
+  sortDir,
+  onSort,
+  align = "center",
+}: {
+  label: string;
+  k: SortKey;
+  sortKey: SortKey;
+  sortDir: "asc" | "desc";
+  onSort: (k: SortKey) => void;
+  align?: "left" | "center";
+}) {
+  const active = k === sortKey;
+  return (
+    <th style={thStyle(align)}>
+      <button
+        type="button"
+        onClick={() => onSort(k)}
+        style={{ background: "none", border: "none", cursor: "pointer", font: "inherit", color: active ? "var(--ink)" : "var(--muted)", fontWeight: 800, padding: 0 }}
       >
-        <div>
-          <strong style={{ display: "block", fontSize: 46, lineHeight: 1 }}>{score}</strong>
-          <span style={{ color: "rgba(255,255,255,0.66)", fontSize: 13 }}>{rating}</span>
-        </div>
-      </div>
+        {label}
+        {active ? (sortDir === "asc" ? " ↑" : " ↓") : ""}
+      </button>
+    </th>
+  );
+}
+
+function StatTile({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="card" style={{ padding: 18 }}>
+      <p style={{ margin: 0, fontSize: 12, fontWeight: 800, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</p>
+      <strong style={{ display: "block", marginTop: 10, fontSize: 28, color: "var(--ink)" }}>{value}</strong>
     </div>
   );
 }
@@ -310,23 +530,7 @@ function SectionTile({ section }: { section: WebsiteAuditSection }) {
   );
 }
 
-function ScopeCard({ report }: { report: WebsiteAuditReport }) {
-  return (
-    <div className="card" style={{ padding: 24 }}>
-      <p className="kicker">Audit scope</p>
-      <h2 className="h1" style={{ fontSize: 24, marginTop: 8 }}>
-        What this tool verified.
-      </h2>
-      <ListBlock items={report.summary.verifiedFromCrawl} />
-      <p className="kicker" style={{ marginTop: 18 }}>
-        Needs external data
-      </p>
-      <ListBlock items={report.summary.needsExternalData} muted />
-    </div>
-  );
-}
-
-function SectionDetail({ section, findings }: { section: WebsiteAuditSection; findings: (WebsiteAuditFinding & { section: string })[] }) {
+function SectionDetail({ section }: { section: WebsiteAuditSection }) {
   return (
     <div className="card" style={{ padding: 24, minWidth: 0 }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
@@ -352,111 +556,42 @@ function SectionDetail({ section, findings }: { section: WebsiteAuditSection; fi
         </span>
       </div>
       <div style={{ marginTop: 14 }}>
-        {section.checks.map((item) => (
-          <CheckRow key={`${section.id}-${item.label}`} check={item} />
-        ))}
-      </div>
-      {findings.length ? (
-        <div style={{ marginTop: 14, borderTop: "1px solid var(--hairline)", paddingTop: 14 }}>
-          <p style={{ margin: 0, color: "var(--ink)", fontSize: 13, fontWeight: 800 }}>Section issues</p>
-          {findings.slice(0, 4).map((finding) => (
-            <p key={finding.title} style={{ margin: "8px 0 0", color: "var(--muted)", fontSize: 13, lineHeight: 1.45 }}>
-              <strong style={{ color: "var(--ink)" }}>{finding.severity}:</strong> {finding.title}
-            </p>
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function CheckRow({ check }: { check: WebsiteAuditCheck }) {
-  const color =
-    check.status === "pass" ? "#16a34a" : check.status === "fail" ? "#dc2626" : check.status === "warning" ? "#d97706" : "#64748b";
-  const label = check.status === "needs-data" ? "needs data" : check.status;
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "92px minmax(0, 1fr)", gap: 10, padding: "10px 0", borderTop: "1px solid var(--hairline)" }}>
-      <span
-        style={{
-          alignSelf: "start",
-          borderRadius: 99,
-          background: color,
-          color: "#fff",
-          fontSize: 10,
-          fontWeight: 900,
-          textTransform: "uppercase",
-          textAlign: "center",
-          padding: "5px 7px",
-        }}
-      >
-        {label}
-      </span>
-      <div style={{ minWidth: 0 }}>
-        <p style={{ margin: 0, color: "var(--ink)", fontSize: 13, fontWeight: 800 }}>{check.label}</p>
-        <p style={{ margin: "3px 0 0", color: "var(--muted)", fontSize: 13, lineHeight: 1.45 }}>{check.detail}</p>
-      </div>
-    </div>
-  );
-}
-
-function SampledPages({ pages }: { pages: WebsiteAuditReport["pages"] }) {
-  return (
-    <div className="card" style={{ padding: 24, marginTop: 16, overflowX: "auto" }}>
-      <p className="kicker">Sampled pages</p>
-      <div style={{ minWidth: 760, marginTop: 14 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 80px 110px 90px 120px 1.2fr", gap: 12, color: "var(--muted)", fontSize: 12, fontWeight: 800 }}>
-          <span>Page</span>
-          <span>Status</span>
-          <span>Words</span>
-          <span>H1s</span>
-          <span>Images</span>
-          <span>Schema</span>
-        </div>
-        {pages.map((page) => (
-          <div
-            key={page.url}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "2fr 80px 110px 90px 120px 1.2fr",
-              gap: 12,
-              alignItems: "start",
-              borderTop: "1px solid var(--hairline)",
-              padding: "12px 0",
-              fontSize: 13,
-            }}
-          >
-            <div style={{ minWidth: 0 }}>
-              <p style={{ fontWeight: 800, color: "var(--ink)", margin: 0, overflowWrap: "anywhere" }}>{page.title || page.url}</p>
-              <p style={{ color: "var(--muted)", margin: "3px 0 0", overflowWrap: "anywhere" }}>{page.url}</p>
+        {section.checks.map((item) => {
+          const color =
+            item.status === "pass" ? "#16a34a" : item.status === "fail" ? "#dc2626" : item.status === "warning" ? "#d97706" : "#64748b";
+          const label = item.status === "needs-data" ? "needs data" : item.status;
+          return (
+            <div key={`${section.id}-${item.label}`} style={{ display: "grid", gridTemplateColumns: "92px minmax(0, 1fr)", gap: 10, padding: "10px 0", borderTop: "1px solid var(--hairline)" }}>
+              <span
+                style={{
+                  alignSelf: "start",
+                  borderRadius: 99,
+                  background: color,
+                  color: "#fff",
+                  fontSize: 10,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  textAlign: "center",
+                  padding: "5px 7px",
+                }}
+              >
+                {label}
+              </span>
+              <div style={{ minWidth: 0 }}>
+                <p style={{ margin: 0, color: "var(--ink)", fontSize: 13, fontWeight: 800 }}>{item.label}</p>
+                <p style={{ margin: "3px 0 0", color: "var(--muted)", fontSize: 13, lineHeight: 1.45 }}>{item.detail}</p>
+              </div>
             </div>
-            <span style={{ color: page.status >= 200 && page.status < 300 ? "#16a34a" : "#dc2626", fontWeight: 800 }}>{page.status}</span>
-            <span>{page.wordCount}</span>
-            <span>{page.h1Count}</span>
-            <span>
-              {page.imagesMissingAlt}/{page.images} missing alt
-            </span>
-            <span style={{ overflowWrap: "anywhere" }}>{page.schemaTypes.slice(0, 4).join(", ") || "none"}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
-    </div>
-  );
-}
-
-function ListBlock({ items, muted = false }: { items: string[]; muted?: boolean }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
-      {items.map((item) => (
-        <p key={item} style={{ margin: 0, color: muted ? "var(--muted)" : "var(--ink-2)", fontSize: 14, lineHeight: 1.5 }}>
-          {item}
-        </p>
-      ))}
     </div>
   );
 }
 
 function FindingRow({ finding }: { finding: WebsiteAuditFinding & { section: string } }) {
-  const color = finding.severity === "critical" || finding.severity === "high" ? "#dc2626" : finding.severity === "medium" ? "#d97706" : "#64748b";
+  const color =
+    finding.severity === "critical" || finding.severity === "high" ? "#dc2626" : finding.severity === "medium" ? "#d97706" : "#64748b";
   return (
     <div style={{ display: "grid", gridTemplateColumns: "88px minmax(0, 1fr)", gap: 14, padding: "16px 0", borderTop: "1px solid var(--hairline)" }}>
       <span
@@ -485,11 +620,70 @@ function FindingRow({ finding }: { finding: WebsiteAuditFinding & { section: str
   );
 }
 
-function scoreLine(score: number): string {
-  if (score >= 85) return "strong foundations, now chase the edge cases.";
-  if (score >= 70) return "solid website, visible growth gaps.";
-  if (score >= 55) return "real upside hiding in technical and AI-search fixes.";
-  return "the website is leaving organic demand on the table.";
+function ScoreDial({ score, rating }: { score: number; rating: string }) {
+  return (
+    <div
+      style={{
+        width: 180,
+        height: 180,
+        borderRadius: "50%",
+        display: "grid",
+        placeItems: "center",
+        background: `conic-gradient(#fff ${score * 3.6}deg, rgba(255,255,255,0.14) 0deg)`,
+        margin: "0 auto",
+      }}
+    >
+      <div style={{ width: 142, height: 142, borderRadius: "50%", background: "var(--ink)", display: "grid", placeItems: "center", textAlign: "center", color: "#fff" }}>
+        <div>
+          <strong style={{ display: "block", fontSize: 46, lineHeight: 1 }}>{score}</strong>
+          <span style={{ color: "rgba(255,255,255,0.66)", fontSize: 13 }}>{rating}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const thStyle = (align: "left" | "center"): React.CSSProperties => ({
+  textAlign: align,
+  padding: "0 10px 10px",
+  color: "var(--muted)",
+  fontSize: 12,
+  fontWeight: 800,
+  whiteSpace: "nowrap",
+});
+
+const tdStyle: React.CSSProperties = { padding: "11px 10px", color: "var(--ink-2)", verticalAlign: "top" };
+
+function issueRowStyle(active: boolean): React.CSSProperties {
+  return {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10,
+    textAlign: "left",
+    padding: "10px 12px",
+    marginTop: 8,
+    borderRadius: 10,
+    border: "1px solid var(--hairline)",
+    background: active ? "var(--purple-tint, #f1edff)" : "#fff",
+    cursor: "pointer",
+    font: "inherit",
+  };
+}
+
+function codePill(color: string): React.CSSProperties {
+  return {
+    display: "inline-flex",
+    alignItems: "center",
+    border: `1px solid ${color}`,
+    color: "#fff",
+    borderRadius: 99,
+    padding: "7px 12px",
+    fontSize: 13,
+    fontWeight: 800,
+    background: "rgba(255,255,255,0.08)",
+  };
 }
 
 const pillStyle: React.CSSProperties = {
@@ -501,3 +695,132 @@ const pillStyle: React.CSSProperties = {
   fontSize: 13,
   fontWeight: 700,
 };
+
+function statusColor(status: number): string {
+  if (status >= 200 && status < 300) return "#16a34a";
+  if (status >= 300 && status < 400) return "#d97706";
+  if (status === 0) return "#64748b";
+  return "#dc2626";
+}
+
+function scoreLine(score: number): string {
+  if (score >= 85) return "strong foundations, now chase the edge cases.";
+  if (score >= 70) return "solid website, visible growth gaps.";
+  if (score >= 55) return "real upside hiding in technical and AI-search fixes.";
+  return "the website is leaving organic demand on the table.";
+}
+
+function sortValue(row: CrawledUrl, key: SortKey): string | number {
+  switch (key) {
+    case "url":
+      return row.url;
+    case "title":
+      return row.title.toLowerCase();
+    case "status":
+      return row.status;
+    case "descLength":
+      return row.descLength;
+    case "wordCount":
+      return row.wordCount;
+    case "depth":
+      return row.depth;
+    case "inlinks":
+      return row.inlinks;
+  }
+}
+
+function pathFor(url: string): string {
+  try {
+    const u = new URL(url);
+    return u.pathname + u.search || "/";
+  } catch {
+    return url;
+  }
+}
+
+// Builds a self-contained, styled HTML file (score + sections + issues + grid) and downloads it.
+function downloadReport(report: SiteAuditReport) {
+  const html = buildReportHtml(report);
+  const blob = new Blob([html], { type: "text/html" });
+  const href = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = href;
+  a.download = `seo-audit-${report.domain}-${report.generatedAt.slice(0, 10)}.html`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(href);
+}
+
+function buildReportHtml(report: SiteAuditReport): string {
+  const codes = report.stats.responseCodes;
+  const sectionRows = report.sections
+    .map((s) => `<tr><td>${esc(s.label)}</td><td class="num">${s.score}/100</td></tr>`)
+    .join("");
+  const issueRows = report.issues
+    .map(
+      (issue) =>
+        `<tr><td><span class="dot" style="background:${SEVERITY_COLORS[issue.severity]}"></span>${esc(issue.severity)}</td><td>${esc(issue.category)}</td><td>${esc(issue.label)}</td><td class="num">${issue.count}</td><td>${esc(issue.fix)}</td></tr>`,
+    )
+    .join("");
+  const urlRows = report.urls
+    .map(
+      (row) =>
+        `<tr><td>${esc(row.url)}</td><td class="num" style="color:${statusColor(row.status)}">${row.status || "—"}</td><td>${esc(row.indexabilityReason)}</td><td>${esc(row.title) || '<em style="color:#dc2626">missing</em>'}</td><td class="num">${row.descLength}</td><td class="num">${row.wordCount}</td><td class="num">${row.depth}</td><td class="num">${row.inlinks}</td></tr>`,
+    )
+    .join("");
+
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEO audit — ${esc(report.domain)}</title>
+<style>
+  :root{color-scheme:light}
+  *{box-sizing:border-box}
+  body{font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#0f172a;margin:0;background:#f8fafc}
+  .wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
+  header{background:#0f172a;color:#fff;border-radius:16px;padding:32px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:#94a3b8;margin:0}
+  .score{font-size:54px;font-weight:800;margin:14px 0 0}
+  .chips{margin-top:14px}
+  .chip{display:inline-block;border:1px solid #334155;border-radius:99px;padding:5px 12px;margin:0 6px 6px 0;font-weight:700;font-size:13px}
+  h2{font-size:19px;margin:34px 0 12px}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:13px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+  th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#475569}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:6px;vertical-align:middle}
+  footer{color:#94a3b8;font-size:12px;margin-top:24px}
+  td:first-child{word-break:break-all}
+</style></head><body><div class="wrap">
+<header>
+  <p class="sub">Website SEO audit — rank-day.com</p>
+  <h1>${esc(report.domain)}</h1>
+  <div class="score">${report.score}<span style="font-size:18px;color:#94a3b8"> / 100 · ${esc(report.rating)}</span></div>
+  <p class="sub" style="margin-top:10px">Crawled ${report.stats.crawled} URLs${report.stats.notCrawled ? ` (${report.stats.notCrawled} more discovered)` : ""} · avg ${report.stats.avgResponseMs} ms · ${new Date(report.generatedAt).toUTCString()}</p>
+  <div class="chips">
+    <span class="chip">${codes["2xx"]} 2xx</span>
+    <span class="chip">${codes["3xx"]} 3xx</span>
+    <span class="chip">${codes["4xx"]} 4xx</span>
+    <span class="chip">${codes["5xx"]} 5xx</span>
+    <span class="chip">${report.stats.indexable} indexable</span>
+  </div>
+</header>
+<h2>Scores</h2>
+<table><thead><tr><th>Section</th><th class="num">Score</th></tr></thead><tbody>${sectionRows}</tbody></table>
+<h2>Crawl issues (${report.issues.length})</h2>
+<table><thead><tr><th>Severity</th><th>Category</th><th>Issue</th><th class="num">URLs</th><th>Recommended fix</th></tr></thead>
+<tbody>${issueRows || '<tr><td colspan="5">No issues detected.</td></tr>'}</tbody></table>
+<h2>Crawled URLs (${report.urls.length})</h2>
+<table><thead><tr><th>URL</th><th class="num">Status</th><th>Indexability</th><th>Title</th><th class="num">Meta</th><th class="num">Words</th><th class="num">Depth</th><th class="num">Inlinks</th></tr></thead>
+<tbody>${urlRows}</tbody></table>
+<footer>Generated by the rank-day.com Website SEO Audit · https://www.rank-day.com/tools/website-seo-audit</footer>
+</div></body></html>`;
+}
+
+function esc(value: string): string {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}

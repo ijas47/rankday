@@ -40,7 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/store-seo-audit`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/tools/aeo-score`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/tools/llms-txt`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/tools/seo-spider`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     ...posts.map((post) => ({
       url: `${base}/blog/${post.slug}`,

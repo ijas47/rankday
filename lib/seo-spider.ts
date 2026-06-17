@@ -1,4 +1,4 @@
-// SEO Spider — a Screaming Frog-style site crawler.
+// SEO Spider — a full-site SEO crawler.
 // Crawls a site by following internal links (BFS), records a per-URL data grid,
 // and surfaces site-wide issues (broken links, duplicate/missing titles, redirects,
 // canonical problems, crawl depth, orphan pages). Returns structured JSON that the
@@ -73,11 +73,10 @@ const UA = "Mozilla/5.0 (compatible; rankdaySeoSpider/1.0; +https://www.rank-day
 const TIMEOUT_MS = 12000;
 const CONCURRENCY = 5;
 const BUDGET_MS = 50000;
-const SEVERITY_PENALTY: Record<SpiderSeverity, number> = { critical: 20, high: 12, medium: 6, low: 2 };
 const ASSET_RE = /\.(jpg|jpeg|png|gif|webp|avif|svg|ico|pdf|zip|rar|gz|mp4|mov|webm|mp3|wav|woff2?|ttf|eot|css|js|json|xml|rss|txt)(\?|$)/i;
 const PRIVATE_RE = /\/(cdn-cgi|_next|api|cart|checkout|account|login|sign-in|signup|admin|wp-admin|wp-login)\b/i;
 
-type FetchResult = {
+export type FetchResult = {
   ok: boolean;
   status: number;
   statusText: string;
@@ -91,24 +90,42 @@ type FetchResult = {
   sizeBytes: number;
 };
 
-type ParsedPage = {
+// Superset parse shape that serves both the crawl grid and the audit agents.
+export type ParsedPage = {
   title: string;
   titleCount: number;
   description: string;
   descriptionCount: number;
   canonical: string;
-  h1: string[];
-  h2: string[];
+  headings: { level: number; text: string }[];
   links: string[];
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; hasDimensions: boolean; loading: string }[];
   schemaTypes: string[];
+  schemas: unknown[];
   wordCount: number;
+  textSample: string;
   hasViewport: boolean;
   hasNoindex: boolean;
   hasNofollow: boolean;
+  hasHreflang: boolean;
 };
 
-export async function crawlSite(input: string, maxPages = 75): Promise<SpiderReport | { error: string }> {
+export type CrawledPage = { url: string; response: FetchResult; parsed: ParsedPage };
+
+// Everything a single crawl produces, consumed by both the audit agents
+// (pages + robots/llms/sitemap context) and the crawl-detail UI (spider).
+export type RichCrawl = {
+  origin: string;
+  seedUrl: string;
+  domain: string;
+  pages: CrawledPage[];
+  robots: FetchResult;
+  llms: FetchResult;
+  sitemapUrls: string[];
+  spider: { stats: SpiderReport["stats"]; issues: IssueGroup[]; urls: CrawledUrl[] };
+};
+
+export async function crawlSiteRich(input: string, maxPages = 75): Promise<RichCrawl | { error: string }> {
   const started = Date.now();
   const normalized = normalizeUrl(input);
   if (!normalized) return { error: "Enter a valid website URL, like rank-day.com." };
@@ -121,9 +138,12 @@ export async function crawlSite(input: string, maxPages = 75): Promise<SpiderRep
   const origin = new URL(seed.finalUrl || normalized.href).origin;
   const seedUrl = seed.finalUrl || normalized.href;
 
-  // Discover sitemap URLs so sitemap-only / orphan pages are reachable and detectable.
+  // robots.txt + llms.txt feed the AI-readiness agent; sitemap finds orphan pages.
   const robots = await doFetch(`${origin}/robots.txt`, true);
-  const sitemapUrls = await discoverSitemapUrls(origin, robots.text);
+  const [llms, sitemapUrls] = await Promise.all([
+    doFetch(`${origin}/llms.txt`, true),
+    discoverSitemapUrls(origin, robots.text),
+  ]);
   const sitemapSet = new Set(sitemapUrls.map(stripHash));
 
   const cap = Math.max(10, Math.min(maxPages, 150));
@@ -133,6 +153,7 @@ export async function crawlSite(input: string, maxPages = 75): Promise<SpiderRep
   const queued = new Set<string>();
   const inlinks = new Map<string, number>();
   const records: CrawledUrl[] = [];
+  const pages: CrawledPage[] = [];
 
   const frontier: { url: string; depth: number }[] = [];
   const enqueue = (url: string, depth: number) => {
@@ -178,6 +199,8 @@ export async function crawlSite(input: string, maxPages = 75): Promise<SpiderRep
         enqueue(clean, depth + 1);
       }
 
+      pages.push({ url, response: res, parsed });
+
       const canonical = parsed.canonical;
       const { indexable, reason } = indexability(res, parsed, url, canonical);
       records.push({
@@ -193,8 +216,8 @@ export async function crawlSite(input: string, maxPages = 75): Promise<SpiderRep
         titleCount: parsed.titleCount,
         metaDescription: parsed.description,
         descLength: parsed.description.length,
-        h1: parsed.h1,
-        h2: parsed.h2,
+        h1: parsed.headings.filter((h) => h.level === 1).map((h) => h.text),
+        h2: parsed.headings.filter((h) => h.level === 2).map((h) => h.text),
         wordCount: parsed.wordCount,
         canonical,
         redirectTo: res.status >= 300 && res.status < 400 ? res.location : "",
@@ -215,39 +238,44 @@ export async function crawlSite(input: string, maxPages = 75): Promise<SpiderRep
   // Fold accumulated inlink counts back onto each record.
   for (const record of records) record.inlinks = inlinks.get(record.url) || 0;
   records.sort((a, b) => a.depth - b.depth || a.url.localeCompare(b.url));
+  // Keep the seed (homepage) first so content agents read it as pages[0].
+  pages.sort((a, b) => (a.url === seedUrl ? -1 : b.url === seedUrl ? 1 : 0));
 
   const crawlComplete = frontier.length === 0;
   const notCrawled = Math.max(0, queued.size - records.length);
   const issues = buildIssues(records, origin);
-  const health = clamp(100 - issues.reduce((sum, issue) => sum + SEVERITY_PENALTY[issue.severity], 0));
 
   return {
-    url: seedUrl,
+    origin,
+    seedUrl,
     domain: normalized.hostname.replace(/^www\./, ""),
-    generatedAt: new Date().toISOString(),
-    health,
-    rating: ratingFor(health),
-    stats: {
-      crawled: records.length,
-      notCrawled,
-      indexable: records.filter((r) => r.indexable).length,
-      nonIndexable: records.filter((r) => !r.indexable).length,
-      internalLinks: [...inlinks.values()].reduce((sum, n) => sum + n, 0),
-      responseCodes: responseCodeBuckets(records),
-      avgResponseMs: records.length
-        ? Math.round(records.reduce((sum, r) => sum + r.responseTimeMs, 0) / records.length)
-        : 0,
-      depthDistribution: depthDistribution(records),
-      crawlComplete,
-      durationMs: Date.now() - started,
+    pages,
+    robots,
+    llms,
+    sitemapUrls,
+    spider: {
+      stats: {
+        crawled: records.length,
+        notCrawled,
+        indexable: records.filter((r) => r.indexable).length,
+        nonIndexable: records.filter((r) => !r.indexable).length,
+        internalLinks: [...inlinks.values()].reduce((sum, n) => sum + n, 0),
+        responseCodes: responseCodeBuckets(records),
+        avgResponseMs: records.length
+          ? Math.round(records.reduce((sum, r) => sum + r.responseTimeMs, 0) / records.length)
+          : 0,
+        depthDistribution: depthDistribution(records),
+        crawlComplete,
+        durationMs: Date.now() - started,
+      },
+      issues,
+      urls: records,
     },
-    issues,
-    urls: records,
   };
 }
 
 // ---------------------------------------------------------------------------
-// Issue analysis (Screaming Frog-style site-wide tabs).
+// Issue analysis (site-wide issue groups).
 // ---------------------------------------------------------------------------
 
 function buildIssues(records: CrawledUrl[], origin: string): IssueGroup[] {
@@ -514,9 +542,11 @@ async function doFetch(url: string, follow: boolean): Promise<FetchResult> {
     const contentType = headers["content-type"] || "";
     const status = response.status;
     const isRedirect = status >= 300 && status < 400;
-    const isHtml = /text\/html|application\/xhtml|xml/i.test(contentType);
+    // Read text for HTML, XML (sitemaps), and plain text (robots.txt, llms.txt);
+    // skip binary assets. Empty content-type defaults to readable.
+    const isTextual = !contentType || /text\/|html|xml|json|\+xml|javascript/i.test(contentType);
     let text = "";
-    if (!isRedirect && isHtml) {
+    if (!isRedirect && isTextual) {
       text = await response.text();
     } else {
       try {
@@ -573,14 +603,18 @@ function parseHtml(html: string, pageUrl: string): ParsedPage {
       "",
     pageUrl,
   );
-  const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((m) => htmlToText(m[1]).slice(0, 200)).filter(Boolean);
-  const h2 = [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)].map((m) => htmlToText(m[1]).slice(0, 200)).filter(Boolean);
+  const headings = [...html.matchAll(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi)].map((m) => ({
+    level: Number(m[1]),
+    text: htmlToText(m[2]).slice(0, 200),
+  }));
   const links = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
     .map((m) => absolutize(decode(m[1]), pageUrl))
     .filter(Boolean);
   const images = [...html.matchAll(/<img\b[^>]*>/gi)].map((m) => ({
     src: attr(m[0], "src") || attr(m[0], "data-src"),
     alt: attr(m[0], "alt"),
+    hasDimensions: Boolean(attr(m[0], "width") && attr(m[0], "height")),
+    loading: attr(m[0], "loading"),
   }));
   const text = htmlToText(html);
   const robotsContent = firstMatch(html, /<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/i).toLowerCase();
@@ -590,15 +624,17 @@ function parseHtml(html: string, pageUrl: string): ParsedPage {
     description,
     descriptionCount: descMatches.length,
     canonical,
-    h1,
-    h2,
+    headings,
     links,
     images,
     schemaTypes: collectSchemaTypes(html),
+    schemas: extractJsonLd(html),
     wordCount: text ? text.split(/\s+/).filter(Boolean).length : 0,
+    textSample: text.slice(0, 5000),
     hasViewport: /<meta[^>]+name=["']viewport["']/i.test(html),
     hasNoindex: /noindex/.test(robotsContent),
     hasNofollow: /nofollow/.test(robotsContent),
+    hasHreflang: /<link[^>]+hreflang=["']/i.test(html),
   };
 }
 
@@ -609,16 +645,30 @@ function emptyParsed(): ParsedPage {
     description: "",
     descriptionCount: 0,
     canonical: "",
-    h1: [],
-    h2: [],
+    headings: [],
     links: [],
     images: [],
     schemaTypes: [],
+    schemas: [],
     wordCount: 0,
+    textSample: "",
     hasViewport: false,
     hasNoindex: false,
     hasNofollow: false,
+    hasHreflang: false,
   };
+}
+
+// Raw JSON-LD blocks; invalid blocks are kept as { parseError: true } so the
+// schema agent can flag them.
+function extractJsonLd(html: string): unknown[] {
+  return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map((m) => {
+    try {
+      return JSON.parse(decode(m[1].trim()));
+    } catch {
+      return { parseError: true };
+    }
+  });
 }
 
 function indexability(res: FetchResult, parsed: ParsedPage, url: string, canonical: string): { indexable: boolean; reason: string } {
@@ -839,16 +889,4 @@ function decode(value: string): string {
     .replace(/&#x27;/g, "'")
     .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
     .trim();
-}
-
-function clamp(score: number): number {
-  return Math.max(0, Math.min(100, Math.round(score)));
-}
-
-function ratingFor(score: number): SpiderReport["rating"] {
-  if (score >= 90) return "Excellent";
-  if (score >= 75) return "Good";
-  if (score >= 60) return "Fair";
-  if (score >= 40) return "Needs work";
-  return "Critical";
 }

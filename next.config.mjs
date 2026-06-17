@@ -10,6 +10,12 @@ const nextConfig = {
         destination: "https://www.rank-day.com/:path*",
         permanent: true,
       },
+      {
+        // SEO Spider was merged into the Website SEO Audit tool.
+        source: "/tools/seo-spider",
+        destination: "/tools/website-seo-audit",
+        permanent: true,
+      },
     ];
   },
 };

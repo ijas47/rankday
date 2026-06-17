@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
-import { auditWebsite } from "@/lib/website-seo-audit";
+import { auditSite } from "@/lib/website-seo-audit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const cache = new Map<string, { at: number; data: unknown }>();
 const hits = new Map<string, { count: number; windowStart: number }>();
 const CACHE_TTL = 1000 * 60 * 60 * 12;
-const RATE_LIMIT = 8;
+const RATE_LIMIT = 5;
 const RATE_WINDOW = 1000 * 60 * 10;
 
 function rateLimited(ip: string): boolean {
@@ -37,14 +38,14 @@ export async function POST(req: Request) {
   const url = (body.url || "").trim();
   if (!url) return NextResponse.json({ error: "Enter a website URL to audit." }, { status: 400 });
 
-  const maxPages = Math.max(10, Math.min(Number(body.maxPages || 20), 24));
+  const maxPages = Math.max(20, Math.min(Number(body.maxPages || 75), 150));
   const key = `${url.toLowerCase()}|${maxPages}`;
   const cached = cache.get(key);
   if (cached && Date.now() - cached.at < CACHE_TTL) {
     return NextResponse.json(cached.data);
   }
 
-  const result = await auditWebsite(url, maxPages);
+  const result = await auditSite(url, maxPages);
   if ("error" in result) {
     return NextResponse.json({ error: result.error }, { status: 422 });
   }

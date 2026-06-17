@@ -1,3 +1,6 @@
+import { crawlSiteRich } from "./seo-spider";
+import type { CrawledUrl, IssueGroup, RichCrawl } from "./seo-spider";
+
 export type WebsiteAuditSeverity = "critical" | "high" | "medium" | "low";
 
 export type WebsiteAuditFinding = {
@@ -58,8 +61,6 @@ export type WebsiteAuditReport = {
   };
 };
 
-const UA = "Mozilla/5.0 (compatible; rankdayWebsiteAudit/1.0; +https://www.rank-day.com/tools/website-seo-audit)";
-const TIMEOUT_MS = 12000;
 const AI_BOTS = ["GPTBot", "ChatGPT-User", "ClaudeBot", "PerplexityBot", "Google-Extended"];
 const SEVERITY_PENALTY: Record<WebsiteAuditSeverity, number> = {
   critical: 24,
@@ -99,35 +100,36 @@ type CrawledPage = {
   parsed: ParsedPage;
 };
 
-export async function auditWebsite(input: string, maxPages = 14): Promise<WebsiteAuditReport | { error: string }> {
-  const normalized = normalizeUrl(input);
-  if (!normalized) return { error: "Enter a valid website URL, like rank-day.com." };
+// Combined report: the five-section scorecard (Overview) plus the full crawl
+// grid and issue groups (Crawl Detail), all from a single crawl.
+export type SiteAuditReport = {
+  url: string;
+  domain: string;
+  score: number;
+  rating: WebsiteAuditReport["rating"];
+  generatedAt: string;
+  sections: WebsiteAuditSection[];
+  findings: (WebsiteAuditFinding & { section: string })[];
+  stats: RichCrawl["spider"]["stats"];
+  issues: IssueGroup[];
+  urls: CrawledUrl[];
+};
 
-  const home = await safeFetch(normalized.href);
+export async function auditSite(input: string, maxPages = 75): Promise<SiteAuditReport | { error: string }> {
+  const crawl = await crawlSiteRich(input, maxPages);
+  if ("error" in crawl) return crawl;
 
-  if (!home.ok || !home.text) {
-    return { error: `Couldn't reach ${normalized.hostname} (status ${home.status || "no response"}).` };
-  }
+  // Score the real, successful HTML pages; the crawl detail (issues/grid) covers
+  // every response code separately.
+  const contentPages = crawl.pages.filter((page) => page.response.ok && page.response.text);
+  const context: AuditContext = {
+    origin: crawl.origin,
+    pages: contentPages.length ? contentPages : crawl.pages,
+    robots: crawl.robots,
+    llms: crawl.llms,
+    sitemapUrls: crawl.sitemapUrls,
+  };
 
-  const finalHomeUrl = home.finalUrl || normalized.href;
-  const origin = new URL(finalHomeUrl).origin;
-  const [robots, llms] = await Promise.all([
-    safeFetch(`${origin}/robots.txt`),
-    safeFetch(`${origin}/llms.txt`),
-  ]);
-  const sitemapUrls = await discoverSitemapUrls(origin, robots.text);
-  const homeParsed = parseHtml(home.text, finalHomeUrl);
-  const crawlUrls = chooseCrawlUrls(finalHomeUrl, sitemapUrls, homeParsed.links, maxPages);
-  const pages = await mapLimit(crawlUrls, 5, async (url) => {
-    const response = url === finalHomeUrl ? home : await safeFetch(url);
-    return {
-      url,
-      response,
-      parsed: parseHtml(response.text, response.finalUrl || url),
-    };
-  });
-
-  const context = { origin, pages, robots, llms, sitemapUrls };
   const sections = await Promise.all([
     technicalAgent(context),
     schemaAgent(context),
@@ -137,47 +139,18 @@ export async function auditWebsite(input: string, maxPages = 14): Promise<Websit
   ]);
   const score = weightedScore(sections);
   const findings = sortFindings(sections);
-  const crawledOk = pages.filter((page) => page.response.ok).length;
 
   return {
-    url: normalized.href,
-    domain: normalized.hostname.replace(/^www\./, ""),
+    url: crawl.seedUrl,
+    domain: crawl.domain,
     score,
     rating: ratingFor(score),
+    generatedAt: new Date().toISOString(),
     sections,
     findings,
-    pages: pages.map((page) => ({
-      url: page.url,
-      status: page.response.status,
-      title: page.parsed.title,
-      description: page.parsed.description,
-      canonical: page.parsed.canonical,
-      wordCount: page.parsed.wordCount,
-      schemaTypes: page.parsed.schemaTypes,
-      h1Count: page.parsed.headings.filter((heading) => heading.level === 1).length,
-      internalLinks: page.parsed.links.filter((link) => sameOrigin(link, origin)).length,
-      images: page.parsed.images.length,
-      imagesMissingAlt: page.parsed.images.filter((image) => image.src && !image.alt).length,
-    })),
-    stats: {
-      pagesAnalyzed: pages.length,
-      sitemapUrls: sitemapUrls.length,
-      generatedAt: new Date().toISOString(),
-    },
-    summary: {
-      verifiedFromCrawl: [
-        `Fetched ${crawledOk}/${pages.length} sampled public pages plus robots.txt, llms.txt, and sitemap candidates.`,
-        "Parsed HTTP status, titles, descriptions, canonicals, headings, internal links, images, cache headers, JSON-LD, and microdata.",
-        "Checked public robots rules for major AI crawlers and validated whether /llms.txt resolves as a text resource.",
-      ],
-      needsExternalData: [
-        "Google Search Console data for indexed pages, impressions, queries, and crawl errors.",
-        "PageSpeed or CrUX field data for real LCP, INP, and CLS performance.",
-        "Backlink, brand mention, review, and competitor SERP data from external sources.",
-        "Rendered browser inspection for JavaScript-injected schema, lazy content, and hydration issues.",
-      ],
-      nextSteps: findings.slice(0, 3).map((item) => item.fix),
-    },
+    stats: crawl.spider.stats,
+    issues: crawl.spider.issues,
+    urls: crawl.spider.urls,
   };
 }
 
@@ -512,174 +485,6 @@ type AuditContext = {
   sitemapUrls: string[];
 };
 
-function normalizeUrl(input: string): URL | null {
-  let value = input.trim();
-  if (!value) return null;
-  if (!/^https?:\/\//i.test(value)) value = `https://${value}`;
-  try {
-    const url = new URL(value);
-    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
-    url.hash = "";
-    return url;
-  } catch {
-    return null;
-  }
-}
-
-async function safeFetch(url: string): Promise<FetchResult> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const response = await fetch(url, {
-      redirect: "follow",
-      signal: controller.signal,
-      headers: {
-        "user-agent": UA,
-        accept: "text/html,application/xhtml+xml,application/xml,text/xml,text/plain;q=0.9,*/*;q=0.7",
-      },
-    });
-    const text = await response.text();
-    return {
-      ok: response.ok,
-      status: response.status,
-      url,
-      finalUrl: response.url,
-      headers: Object.fromEntries(response.headers.entries()),
-      text,
-    };
-  } catch {
-    return { ok: false, status: 0, url, finalUrl: url, headers: {}, text: "" };
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-async function discoverSitemapUrls(origin: string, robotsTxt: string): Promise<string[]> {
-  const sitemapCandidates = uniqueUrls([
-    ...robotsTxt
-      .split(/\r?\n/)
-      .map((line) => line.trim())
-      .filter((line) => /^sitemap:/i.test(line))
-      .map((line) => line.replace(/^sitemap:\s*/i, "")),
-    `${origin}/sitemap.xml`,
-    `${origin}/sitemap_index.xml`,
-  ]).slice(0, 8);
-
-  const fetched = await mapLimit(sitemapCandidates, 3, safeFetch);
-  const locs = fetched.filter((result) => result.ok).flatMap((result) => extractLocs(result.text)).filter((url) => url.startsWith("http"));
-  const nested = locs.filter((url) => /sitemap/i.test(url)).slice(0, 8);
-  if (!nested.length) return uniqueUrls(locs.filter((url) => sameOrigin(url, origin)), 500);
-
-  const nestedFetched = await mapLimit(nested, 3, safeFetch);
-  const nestedLocs = nestedFetched
-    .filter((result) => result.ok)
-    .flatMap((result) => extractLocs(result.text))
-    .filter((url) => url.startsWith("http") && sameOrigin(url, origin));
-  const directLocs = locs.filter((url) => sameOrigin(url, origin) && !/sitemap/i.test(url));
-  return uniqueUrls([...directLocs, ...nestedLocs], 500);
-}
-
-function chooseCrawlUrls(homepage: string, sitemapUrls: string[], internalLinks: string[], maxPages: number): string[] {
-  const origin = new URL(homepage).origin;
-  const priorityPatterns = [
-    /\/(services?|solutions?|industries?|locations?|areas?|pricing|case-studies?|customers?|portfolio|work)\b/i,
-    /\/(about|contact|faq|process|how-it-works|testimonials|reviews)\b/i,
-    /\/blog\//i,
-    /\/resources?\//i,
-    /\/guides?\//i,
-    /\/articles?\//i,
-  ];
-  const candidates = uniqueUrls([homepage, ...sitemapUrls, ...internalLinks], 1000)
-    .filter((url) => sameOrigin(url, origin))
-    .filter((url) => !/\.(jpg|jpeg|png|gif|webp|svg|pdf|zip|mp4|mov|woff2?|css|js)(\?|$)/i.test(url))
-    .filter((url) => !/\/(cdn-cgi|_next|api|cart|checkout|account|login|sign-in|signup|admin|wp-admin)\b/i.test(new URL(url).pathname));
-
-  return candidates
-    .map((url, index) => ({
-      url,
-      index,
-      score: url === homepage ? 1000 : priorityPatterns.reduce((sum, re, i) => sum + (re.test(url) ? 80 - i * 6 : 0), 0),
-    }))
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, Math.max(1, Math.min(maxPages, 24)))
-    .map((entry) => entry.url);
-}
-
-function parseHtml(html: string, pageUrl: string): ParsedPage {
-  const title = decode(firstMatch(html, /<title[^>]*>([\s\S]*?)<\/title>/i) || "");
-  const description = decode(
-    firstMatch(html, /<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["']/i) ||
-      firstMatch(html, /<meta[^>]*content=["']([^"']*)["'][^>]*name=["']description["']/i) ||
-      "",
-  );
-  const canonical = absolutize(
-    firstMatch(html, /<link[^>]+rel=["'][^"']*canonical[^"']*["'][^>]*href=["']([^"']+)["'][^>]*>/i) ||
-      firstMatch(html, /<link[^>]+href=["']([^"']+)["'][^>]*rel=["'][^"']*canonical[^"']*["'][^>]*>/i) ||
-      "",
-    pageUrl,
-  );
-  const headings = [...html.matchAll(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
-    level: Number(match[1]),
-    text: htmlToText(match[2]).slice(0, 160),
-  }));
-  const links = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)].map((match) => absolutize(decode(match[1]), pageUrl)).filter(Boolean);
-  const images = [...html.matchAll(/<img\b[^>]*>/gi)].map((match) => {
-    const tag = match[0];
-    return {
-      src: attr(tag, "src") || attr(tag, "data-src"),
-      alt: attr(tag, "alt"),
-      hasDimensions: Boolean(attr(tag, "width") && attr(tag, "height")),
-      loading: attr(tag, "loading"),
-    };
-  });
-  const schemas = extractJsonLd(html);
-  const schemaTypes = collectSchemaTypes(schemas, html);
-  const text = htmlToText(html);
-  return {
-    title,
-    description,
-    canonical,
-    headings,
-    links,
-    images,
-    schemas,
-    schemaTypes,
-    wordCount: text ? text.split(/\s+/).filter(Boolean).length : 0,
-    textSample: text.slice(0, 5000),
-    hasViewport: /<meta[^>]+name=["']viewport["']/i.test(html),
-    hasNoindex: /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html),
-    hasHreflang: /<link[^>]+hreflang=["']/i.test(html),
-  };
-}
-
-function extractJsonLd(html: string): unknown[] {
-  return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map((match) => {
-    try {
-      return JSON.parse(decode(match[1].trim()));
-    } catch {
-      return { parseError: true };
-    }
-  });
-}
-
-function collectSchemaTypes(schemas: unknown[], html: string): string[] {
-  const out = new Set<string>();
-  const visit = (node: unknown) => {
-    if (!node || typeof node !== "object") return;
-    const obj = node as Record<string, unknown>;
-    const type = obj["@type"];
-    if (typeof type === "string") out.add(type);
-    if (Array.isArray(type)) type.forEach((item) => typeof item === "string" && out.add(item));
-    Object.values(obj).forEach((value) => {
-      if (Array.isArray(value)) value.forEach(visit);
-      else visit(value);
-    });
-  };
-  schemas.forEach(visit);
-  for (const match of html.matchAll(/itemtype=["'][^"']*schema\.org\/([^"'/\s>]+)/gi)) out.add(match[1]);
-  return [...out].sort();
-}
-
 function isBotBlocked(robotsTxt: string, botName: string): boolean {
   const groups: { agents: string[]; rules: { type: string; path: string }[] }[] = [];
   let current: { agents: string[]; rules: { type: string; path: string }[] } | null = null;
@@ -710,19 +515,6 @@ function isValidLlmsTxt(response: FetchResult): boolean {
   if (!/llms\.txt$/i.test(path)) return false;
   if (/text\/html/i.test(contentType) || /^\s*<!doctype html/i.test(response.text)) return false;
   return /text\/plain|text\/markdown|application\/octet-stream/i.test(contentType) || /^#\s+\S+/m.test(response.text);
-}
-
-async function mapLimit<T, R>(items: T[], limit: number, worker: (item: T) => Promise<R>): Promise<R[]> {
-  const results = new Array<R>(items.length);
-  let index = 0;
-  async function next() {
-    while (index < items.length) {
-      const current = index++;
-      results[current] = await worker(items[current]);
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, next));
-  return results;
 }
 
 function section(
@@ -789,10 +581,6 @@ function readableBytes(bytes: number): string {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-function extractLocs(xml: string): string[] {
-  return [...xml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map((match) => decode(match[1].trim()));
-}
-
 function uniqueUrls(urls: string[], limit = 50): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
@@ -815,46 +603,4 @@ function uniqueUrls(urls: string[], limit = 50): string[] {
 
 function sameOrigin(url: string, origin: string): boolean {
   return new URL(url).origin === origin;
-}
-
-function firstMatch(source: string, re: RegExp): string {
-  return source.match(re)?.[1]?.trim() || "";
-}
-
-function attr(tag: string, name: string): string {
-  return decode(tag.match(new RegExp(`${name}=["']([^"']*)["']`, "i"))?.[1] || "");
-}
-
-function htmlToText(html: string): string {
-  return decode(
-    html
-      .replace(/<(script|style|noscript|svg|canvas)[\s\S]*?<\/\1>/gi, " ")
-      .replace(/<br\s*\/?>/gi, " ")
-      .replace(/<\/(p|div|section|article|li|h[1-6])>/gi, " ")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim(),
-  );
-}
-
-function absolutize(raw: string, pageUrl: string): string {
-  if (!raw || raw.startsWith("mailto:") || raw.startsWith("tel:") || raw.startsWith("javascript:")) return "";
-  try {
-    return new URL(raw, pageUrl).toString();
-  } catch {
-    return "";
-  }
-}
-
-function decode(value: string): string {
-  return String(value || "")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&#x27;/g, "'")
-    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .trim();
 }

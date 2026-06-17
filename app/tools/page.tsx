@@ -14,7 +14,7 @@ const tools = [
   {
     href: "/tools/website-seo-audit",
     name: "Website SEO Audit",
-    desc: "Audit any business website across technical SEO, entity schema, content quality, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard.",
+    desc: "Crawl up to 75 pages for a 0-100 score across technical SEO, schema, content, Core Web Vitals, and AI-search readiness — plus a full crawl report of every URL and issue.",
     tone: "mint",
     cta: "Audit a website",
   },
@@ -24,13 +24,6 @@ const tools = [
     desc: "Audit any ecommerce store across technical SEO, product schema, content, Core Web Vitals signals, and AI-search readiness. Get a 0-100 dashboard.",
     tone: "peach",
     cta: "Audit a store",
-  },
-  {
-    href: "/tools/seo-spider",
-    name: "SEO Spider",
-    desc: "Crawl your whole site like Screaming Frog. Get response codes, duplicate and missing titles, meta, canonicals, redirects, and crawl depth in one filterable report.",
-    tone: "peach",
-    cta: "Crawl a site",
   },
   {
     href: "/tools/aeo-score",

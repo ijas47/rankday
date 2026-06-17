@@ -5,32 +5,32 @@ import { FaqSection } from "@/components/faq-section";
 import { WebsiteSeoAuditClient } from "./website-seo-audit-client";
 
 export const metadata: Metadata = pageMeta({
-  title: "Free Website SEO Audit. Technical, Schema, AI Search.",
+  title: "Free Website SEO Audit + Site Crawler. Score & Fix.",
   description:
-    "Run a free website SEO audit across technical SEO, entity schema, content quality, Core Web Vitals signals, and AI-search readiness. Built by rankday.",
+    "Crawl up to 75 pages and get a free 0-100 SEO audit across technical SEO, schema, content, Core Web Vitals, and AI-search readiness — plus a full crawl report of every URL, broken link, redirect, and duplicate. Built by rankday.",
   path: "/tools/website-seo-audit",
 });
 
 const faqs: FaqItem[] = [
   {
     q: "What does the website SEO audit check?",
-    a: "It checks public crawl signals across technical SEO, entity and service schema, page content, metadata, headings, image SEO, internal linking, performance risk signals, llms.txt, robots rules, and AI-search readiness. The result is a 0-100 score with prioritized fixes and sampled-page evidence.",
+    a: "It crawls your site by following internal links and the sitemap, then scores it 0-100 across technical SEO, entity and service schema, content quality, Core Web Vitals signals, and AI-search readiness. You also get a full crawl report: every URL with its status, indexability, titles, meta, headings, word count, crawl depth, and internal links, grouped into issues like broken links, redirects, duplicate titles, missing meta, and orphan pages.",
+  },
+  {
+    q: "How many pages does it crawl?",
+    a: "Up to 75 internal pages per run, which covers most small and mid-size sites and is ideal for a fast pre-sales or pre-build audit. Larger sites have more URLs than one run can cover, so the report tells you how many extra URLs were discovered but not crawled, keeping coverage honest.",
   },
   {
     q: "Is this the same as Ahrefs?",
-    a: "No. A free public crawl cannot see backlinks, ranking history, Search Console, paid keyword data, or competitor databases. This audit is built for fast diagnostics: crawlability, schema, on-page content, performance risk signals, and AI-search readiness in one dashboard.",
+    a: "No. A free public crawl cannot see backlinks, ranking history, Search Console, paid keyword data, or competitor databases. This tool is built for fast diagnostics: crawlability, schema, on-page content, technical issues across every page, and AI-search readiness in one dashboard.",
   },
   {
     q: "Can agencies use this for client prospecting?",
-    a: "Yes. It was designed for SEO agencies, web design agencies, consultants, and business owners who need a repeatable audit before a sales call or website strategy workshop.",
-  },
-  {
-    q: "Does it guarantee AI search visibility?",
-    a: "No. It scores the signals that make websites easier for AI systems to crawl, understand, cite, and recommend. Real visibility also depends on authority, reviews, brand demand, content depth, and third-party mentions.",
+    a: "Yes. It was designed for SEO agencies, web design agencies, consultants, and business owners who need a repeatable crawl and audit before a sales call or website strategy workshop. You can download a self-contained HTML report to share with a prospect or client.",
   },
 ];
 
-export default function StoreSeoAuditPage() {
+export default function WebsiteSeoAuditPage() {
   return (
     <div className="page-enter">
       <JsonLd data={faqPageSchema(faqs)} />
@@ -43,15 +43,16 @@ export default function StoreSeoAuditPage() {
             data-reveal-text
             style={{ maxWidth: 940, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}
           >
-            Audit any website for Google, <span className="it">AI search,</span> and leads.
+            Crawl, score, and fix any website for <span className="it">Google and AI search.</span>
           </h1>
           <p
             className="lede"
             data-reveal
             style={{ marginTop: 24, maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}
           >
-            Paste a business website URL. In minutes, get a 0-100 dashboard across technical SEO,
-            entity schema, content, performance risk signals, image SEO, and AI-search readiness.
+            Paste a URL. We crawl up to 75 pages and give you a 0-100 score across technical SEO,
+            schema, content, Core Web Vitals, and AI-search readiness — plus a full crawl report of
+            every URL, broken link, redirect, and duplicate.
           </p>
         </div>
       </section>
