@@ -58,6 +58,15 @@ export default function LlmsTxtPage() {
 
       <LlmsClient />
 
+      <div style={{ marginTop: 32, textAlign: "center" }}>
+        <p style={{ fontSize: 14, color: "var(--muted)", marginBottom: 8 }}>
+          Want the full service that actually gets you cited (not just the file)?
+        </p>
+        <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
+          Start your 90-day service
+        </a>
+      </div>
+
       <FaqSection
         heading="About llms.txt"
         intro="What the file is and how to use it."

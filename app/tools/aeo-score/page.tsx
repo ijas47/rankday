@@ -58,6 +58,15 @@ export default function AeoScorePage() {
 
       <AeoClient />
 
+      <div style={{ marginTop: 32, textAlign: "center" }}>
+        <p style={{ fontSize: 14, color: "var(--muted)", marginBottom: 8 }}>
+          Ready for hands-off results instead of just a score?
+        </p>
+        <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
+          Start your 90-day service
+        </a>
+      </div>
+
       <FaqSection
         heading="About the AEO Score."
         intro="What the tool checks and what the score means."
