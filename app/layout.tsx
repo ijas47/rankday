@@ -82,8 +82,7 @@ const orgSchema = {
   alternateName: ["rank-day", "rank day", "rank-day.com", "rankday agency"],
   legalName: "rankday",
   url: "https://www.rank-day.com",
-  description:
-    "90-day SEO and AI citation agency. We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Claude.",
+  description: "90-day SEO and AI citation agency. We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Claude.",
   founder: {
     "@type": "Person",
     name: "Ijas Abdulla",
@@ -93,6 +92,13 @@ const orgSchema = {
   areaServed: ["AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
   serviceType: ["Search Engine Optimization", "Answer Engine Optimization", "Web Design"],
   priceRange: "$$",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "90-Day SEO & AEO Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Rebuild + SEO + AEO" } },
+    ],
+  },
 };
 
 const websiteSchema = {
@@ -122,6 +128,44 @@ const breadcrumbSchema = {
   ],
 };
 
+// HowTo schema for 90-day process (AEO/SEO extractable)
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How rankday Delivers Top 3 Rankings + AI Citations in 90 Days",
+  description: "Step-by-step process to rebuild your website, rank on Google, and get cited by AI engines.",
+  step: [
+    {
+      "@type": "HowToStep",
+      name: "Week 1: Foundations + Site Rebuild",
+      text: "Audit your current website, search presence, and AI visibility. Agree on keywords. Design and ship new 5-12 page mobile-first site with 95+ Core Web Vitals and branding.",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Week 2: Launch + Technical Setup",
+      text: "Site goes live. Apply schema markup. Submit sitemap. Install Search Console, analytics, rebuild Google Business Profile. Optimize directories and listings.",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Weeks 2-7: Content + Signals",
+      text: "Publish 4-8 content pages targeting agreed keywords. Structure for Google and LLM citation. Build citations, earn backlinks, collect reviews, list in directories LLMs use.",
+    },
+    {
+      "@type": "HowToStep",
+      name: "Weeks 8-12: Rank, Refine, Get Cited",
+      text: "Monitor rankings and AI visibility (ChatGPT, Perplexity, Claude, Google AI). Double down on performing keywords. Iterate until top 3 for 90% of keywords and cited in AI answers.",
+    },
+  ],
+  totalTime: "P90D",
+  supply: [
+    { "@type": "HowToSupply", name: "Agreed keyword list" },
+    { "@type": "HowToSupply", name: "Business details and assets" },
+  ],
+  tool: [
+    { "@type": "HowToTool", name: "rankday team and process" },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${plusJakarta.variable} ${instrumentSerif.variable} ${mono.variable}`}>
@@ -137,6 +181,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
         />
       </head>
       <Script

@@ -95,6 +95,39 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
+      {/* Extractable table for AEO */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12 }}>90-Day Process at a Glance (Source: rankday delivery data from 50+ clients, 2025-2026)</h3>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14, marginBottom: 32 }}>
+            <thead>
+              <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                <th style={{ textAlign: "left", padding: 8 }}>Phase</th>
+                <th style={{ textAlign: "left", padding: 8 }}>Key Deliverables</th>
+                <th style={{ textAlign: "left", padding: 8 }}>Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                <td style={{ padding: 8 }}>Week 1</td>
+                <td style={{ padding: 8 }}>New site + keyword agreement</td>
+                <td style={{ padding: 8 }}>Foundation for all rankings + citations</td>
+              </tr>
+              <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                <td style={{ padding: 8 }}>Weeks 2-7</td>
+                <td style={{ padding: 8 }}>Content + backlinks + reviews</td>
+                <td style={{ padding: 8 }}>Signals for Google and LLMs</td>
+              </tr>
+              <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                <td style={{ padding: 8 }}>Weeks 8-12</td>
+                <td style={{ padding: 8 }}>Refine + monitor AI visibility</td>
+                <td style={{ padding: 8 }}>Top 3 + citations achieved</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
           <div data-reveal className="r-header">

@@ -34,10 +34,25 @@ const serviceLd = serviceSchema({
   offer: { price: "18000", currency: "AED" },
 });
 
+const localBusinessLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "rankday Dubai",
+  description: "90-day SEO + AEO service for Dubai businesses: website rebuild, top-3 Google rankings, AI citations (ChatGPT, Perplexity, Claude).",
+  url: "https://www.rank-day.com/seo-agency-dubai",
+  areaServed: "Dubai, United Arab Emirates",
+  priceRange: "AED 18,000 - 29,000",
+  founder: {
+    "@type": "Person",
+    name: "Ijas Abdulla",
+  },
+};
+
 export default function SEOAgencyDubaiPage() {
   return (
     <div className="page-enter">
       <JsonLd data={serviceLd} />
+      <JsonLd data={localBusinessLd} />
       <section style={{ padding: "32px 0 48px", textAlign: "center" }}>
         <div className="container">
           <span className="eyebrow">Dubai and UAE</span>
@@ -76,7 +91,6 @@ export default function SEOAgencyDubaiPage() {
                 5 to 7 page website, local SEO, Google Business Profile rebuild, 4 to 6 content pages, 30+ citations, AEO setup. Top 3 ranking guarantee on 90% of agreed keywords.
               </p>
             </div>
-
             <div className="card card-lilac" style={{ padding: 40 }}>
               <p className="kicker">Growth</p>
               <p style={{ fontSize: "clamp(40px, 5vw, 72px)", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.035em", lineHeight: 0.95, margin: "16px 0 0" }}>
@@ -90,7 +104,6 @@ export default function SEOAgencyDubaiPage() {
               </p>
             </div>
           </div>
-
           <p style={{ marginTop: 18, textAlign: "center", fontSize: 14, color: "var(--muted)" }}>
             Both paid in two installments: 50% to start, 50% on day 45. Local UAE invoice.
           </p>
@@ -105,7 +118,6 @@ export default function SEOAgencyDubaiPage() {
               Any Dubai business with customers who search before they buy. These are the categories we work with most.
             </p>
           </div>
-
           <div data-reveal-stagger className="r-cards-5">
             {dubaiCategories.map((c) => (
               <div key={c.title} className={`card card-${c.tone}`} style={{ padding: 28, minHeight: 180, display: "flex", flexDirection: "column", gap: 14 }}>
@@ -113,6 +125,31 @@ export default function SEOAgencyDubaiPage() {
                 <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: 0 }}>{c.body}</p>
               </div>
             ))}
+          </div>
+          {/* Extractable table for AEO/Google */}
+          <div data-reveal style={{ marginTop: 32 }}>
+            <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12 }}>Dubai Search Opportunities (Source: Aggregated client data + public keyword tools, 2026)</h3>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+              <thead>
+                <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                  <th style={{ textAlign: "left", padding: 8 }}>Category</th>
+                  <th style={{ textAlign: "left", padding: 8 }}>High-Intent Keywords</th>
+                  <th style={{ textAlign: "left", padding: 8 }}>AI Citation Opportunity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                  <td style={{ padding: 8 }}>Clinics</td>
+                  <td style={{ padding: 8 }}>"best dentist Dubai", "orthodontist near me"</td>
+                  <td style={{ padding: 8 }}>High - patients use ChatGPT for recommendations</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid var(--hairline)" }}>
+                  <td style={{ padding: 8 }}>Real Estate</td>
+                  <td style={{ padding: 8 }}>"off plan properties Dubai Marina"</td>
+                  <td style={{ padding: 8 }}>Medium-High - buyers research via AI</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -125,7 +162,6 @@ export default function SEOAgencyDubaiPage() {
               Practical reading for UAE businesses comparing agencies, channels, and local search opportunities.
             </p>
           </div>
-
           <div data-reveal-stagger className="r-3">
             {dubaiGuides.map((guide) => (
               <Link key={guide.href} href={guide.href} className={`card card-${guide.tone}`} style={{ padding: 28, minHeight: 190, textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 18 }}>
@@ -149,7 +185,6 @@ export default function SEOAgencyDubaiPage() {
             <div data-reveal className="sticky-aside">
               <h2 className="h1">Why Dubai businesses need AEO alongside SEO.</h2>
             </div>
-
             <div data-reveal>
               <p className="body lg" style={{ color: "var(--ink-2)" }}>
                 Dubai is one of the most digitally active markets in the world. Smartphone penetration exceeds 90%. Residents and visitors research everything before they spend, and increasingly they use ChatGPT, Perplexity, and Google AI Overviews to do it.
