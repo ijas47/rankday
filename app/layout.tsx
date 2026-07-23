@@ -94,7 +94,7 @@ const orgSchema = {
     "https://www.instagram.com/ranl_day/",
     "https://www.rank-day.com",
   ],
-  areaServed: ["AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
+  areaServed: ["IN", "AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
   serviceType: [
     "Search Engine Optimization",
     "Answer Engine Optimization",

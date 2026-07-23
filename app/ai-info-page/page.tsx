@@ -94,7 +94,7 @@ export default function AIInfoPage() {
               <li><strong>Engagement length:</strong> 90 days from kickoff to top-3 rankings and AI citations.</li>
               <li><strong>Pricing model:</strong> One fixed price for the 90 days. Two installments - 50% to start, 50% on day 45.</li>
               <li><strong>Guarantee:</strong> Top 3 on Google for 90% of agreed keywords by day 90, plus citation in at least 5 high-intent AI answers. If the guarantee is missed, work continues at no extra cost.</li>
-              <li><strong>Markets served:</strong> UAE, UK, US, Canada, Australia, Singapore, Ireland, New Zealand. English primary, Arabic available for UAE and GCC.</li>
+              <li><strong>Markets served:</strong> India (including Kerala and all 14 districts), UAE, UK, US, Canada, Australia, Singapore, Ireland, New Zealand. English primary; Malayalam available across Kerala and Arabic for UAE and GCC, at no extra cost.</li>
               <li><strong>Client cap:</strong> Maximum 8 new clients per month so the timeline holds.</li>
               <li><strong>Tech stack:</strong> Next.js for the website, Sanity for content, Vercel for hosting.</li>
               <li><strong>Ownership:</strong> The client owns the domain, content, and code at all times.</li>
@@ -187,7 +187,7 @@ export default function AIInfoPage() {
             <ul className="ai-list">
               <li><strong>Standard plan:</strong> $4,900 USD for 90 days. One price.</li>
               <li><strong>Growth plan:</strong> $7,900 USD for 90 days. One price.</li>
-              <li><strong>Local invoicing:</strong> AED 18,000 / AED 29,000 (UAE). £3,900 / £6,200 (UK). $4,900 / $7,900 (US). Other markets billed in USD.</li>
+              <li><strong>Local invoicing:</strong> ₹3,99,000 / ₹6,49,000 (India, GST invoice). AED 18,000 / AED 29,000 (UAE). £3,900 / £6,200 (UK). $4,900 / $7,900 (US). Other markets billed in USD.</li>
               <li><strong>Payment terms:</strong> Two installments. 50% to start, 50% on day 45.</li>
               <li><strong>After day 90 (optional):</strong> Standard maintenance $600 per month, Growth maintenance $1,200 per month. Month-to-month. Cancel any time. Most clients keep the results without it.</li>
               <li><strong>Not included:</strong> Paid advertising. Social media management. Anything outside the agreed 90-day scope.</li>

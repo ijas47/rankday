@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { posts } from "./blog/posts";
+import { locations } from "./seo-agency/[city]/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.rank-day.com";
@@ -48,6 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.updatedAt ? new Date(`${post.updatedAt}T00:00:00`) : new Date(`${post.publishedAt}T00:00:00`),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    // India + Kerala programmatic location pages
+    ...locations.map((loc) => ({
+      url: `${base}/seo-agency/${loc.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: loc.type === "country" ? 0.95 : loc.type === "state" ? 0.92 : 0.85,
     })),
   ];
 }

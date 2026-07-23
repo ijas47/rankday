@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "Locations Served. SEO Across UAE, UK, US & More.",
+  title: "Locations Served. SEO Across India, UAE, UK, US & More.",
   description:
-    "rankday delivers SEO and AEO across UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Local invoicing and pricing where available.",
+    "rankday delivers SEO and AEO across India (Kerala + every district), UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Local invoicing and pricing where available.",
   path: "/locations",
 });
 
@@ -31,6 +31,24 @@ const otherMarkets = [
   ["New Zealand", "mint"],
 ] as const;
 
+const indiaHubs = [
+  { slug: "india", title: "SEO agency India", body: "Nationwide. INR pricing (₹3,99,000 / ₹6,49,000), GST invoice, AI-search optimisation for Indian businesses.", tone: "lilac" },
+  { slug: "kerala", title: "SEO agency Kerala", body: "Statewide. Malayalam + English SEO. Top-3 Google and AI citations for high-ticket Kerala businesses.", tone: "mint" },
+  { slug: "kochi", title: "SEO agency Kochi", body: "Cochin — Kerala's most competitive market. Construction, interiors, marble, lighting, real estate.", tone: "pink" },
+  { slug: "thiruvananthapuram", title: "SEO agency Trivandrum", body: "Capital market. Premium homes, IT, government, and professional services.", tone: "peach" },
+];
+
+const keralaDistricts = [
+  "thrissur", "kozhikode", "ernakulam", "kollam", "kottayam", "alappuzha",
+  "palakkad", "malappuram", "kannur", "pathanamthitta", "idukki", "wayanad", "kasaragod",
+];
+
+const keralaTowns = [
+  "kakkanad", "aluva", "guruvayur", "munnar", "thalassery", "manjeri", "perinthalmanna", "pala", "kanhangad",
+];
+
+const titleCase = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
 export default function LocationsPage() {
   return (
     <div className="page-enter">
@@ -38,10 +56,10 @@ export default function LocationsPage() {
         <div className="container">
           <span className="eyebrow">Locations served</span>
           <h1 className="h-display" data-reveal-text style={{ maxWidth: 960, margin: "18px auto 0", fontSize: "clamp(32px, 4vw, 56px)" }}>
-            SEO agency across <span className="it">eight markets.</span> Local invoicing where available.
+            SEO agency across <span className="it">India and eight more markets.</span> Local invoicing where available.
           </h1>
           <p className="lede" data-reveal style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
-            rankday is async-first by design. We work across time zones without issue. Local invoicing is available in UAE, UK, and US. All other markets billed in USD.
+            rankday is async-first by design. We work across time zones without issue. Local invoicing is available in India (INR/GST), the UAE, UK, and US. All other markets billed in USD.
           </p>
         </div>
       </section>
@@ -87,6 +105,51 @@ export default function LocationsPage() {
                   See full details
                   <Icon.Arrow />
                 </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INDIA & KERALA */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">India & Kerala.</h2>
+            <p className="body lg" style={{ maxWidth: 620 }}>
+              Local INR pricing and GST invoicing. Malayalam and English SEO at no extra cost. Dedicated pages for every district and major town in Kerala.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-cards-4">
+            {indiaHubs.map((h) => (
+              <Link key={h.slug} href={`/seo-agency/${h.slug}`} className={`card card-${h.tone}`} style={{ padding: 28, minHeight: 210, display: "flex", flexDirection: "column", justifyContent: "space-between", textDecoration: "none", gap: 18 }}>
+                <div>
+                  <h3 style={{ fontSize: 20, fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "-0.01em" }}>{h.title}</h3>
+                  <p style={{ fontSize: 14, color: "var(--ink-2)", lineHeight: 1.5, margin: "14px 0 0" }}>{h.body}</p>
+                </div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--purple)", fontWeight: 700, fontSize: 14 }}>
+                  Open page
+                  <Icon.Arrow />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <p style={{ margin: "28px 0 12px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)" }}>Kerala districts</p>
+          <div data-reveal style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {keralaDistricts.map((slug) => (
+              <Link key={slug} href={`/seo-agency/${slug}`} className="pill" style={{ fontSize: 14, padding: "9px 15px", textDecoration: "none" }}>
+                {titleCase(slug)} →
+              </Link>
+            ))}
+          </div>
+
+          <p style={{ margin: "24px 0 12px", fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)" }}>Kerala towns</p>
+          <div data-reveal style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {keralaTowns.map((slug) => (
+              <Link key={slug} href={`/seo-agency/${slug}`} className="pill" style={{ fontSize: 14, padding: "9px 15px", textDecoration: "none" }}>
+                {titleCase(slug)} →
               </Link>
             ))}
           </div>

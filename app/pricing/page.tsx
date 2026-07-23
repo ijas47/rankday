@@ -33,6 +33,7 @@ const growthExtras = [
 ];
 
 const localPricing: Array<[string, string, string]> = [
+  ["India", "₹3,99,000", "₹6,49,000"],
   ["UAE", "AED 18,000", "AED 29,000"],
   ["UK", "£3,900", "£6,200"],
   ["US", "$4,900", "$7,900"],
