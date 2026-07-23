@@ -6,6 +6,21 @@ import type { CrawledUrl, SpiderSeverity } from "@/lib/seo-spider";
 
 const WHATSAPP_URL = "https://wa.me/971565981209";
 
+function downloadContentPack(report: SiteAuditReport) {
+  if (!report.contentPack) return;
+  const stamp = new Date().toISOString().slice(0, 10);
+  const filename = `${report.domain.replace(/[^a-z0-9.-]+/gi, "-")}-ai-content-pack-${stamp}.md`;
+  const blob = new Blob([report.contentPack], { type: "text/markdown;charset=utf-8" });
+  const href = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = href;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(href);
+}
+
 const SECTION_COLORS: Record<string, string> = {
   technical: "#4a2bf0",
   schema: "#16a34a",
@@ -204,6 +219,23 @@ export function WebsiteSeoAuditClient() {
                 <h2 className="h1" style={{ color: "#fff", marginTop: 10 }}>
                   {report.rating}: {scoreLine(report.score)}
                 </h2>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 16 }}>
+                  <button
+                    type="button"
+                    className="btn btn-light btn-sm"
+                    onClick={() => downloadContentPack(report)}
+                    disabled={!report.contentPack}
+                  >
+                    Export content pack for AI
+                  </button>
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.35)" }}>
+                    Get a human review
+                  </a>
+                </div>
+                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 12, margin: "10px 0 0", lineHeight: 1.45 }}>
+                  Downloads a Markdown dump of crawled page text + a Claude strategy prompt.
+                  {report.contentPackPages ? ` ${report.contentPackPages} pages included.` : ""} No AI API cost — feed it to Claude yourself.
+                </p>
                 <p style={{ color: "rgba(255,255,255,0.74)", fontSize: 16, lineHeight: 1.6, margin: "12px 0 0" }}>
                   Crawled {report.stats.crawled} pages
                   {report.stats.notCrawled > 0 ? ` (${report.stats.notCrawled} more discovered)` : ""},{" "}

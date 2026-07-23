@@ -28,6 +28,10 @@ const faqs: FaqItem[] = [
     q: "Can agencies use this for client prospecting?",
     a: "Yes. It was designed for SEO agencies, web design agencies, consultants, and business owners who need a repeatable crawl and audit before a sales call or website strategy workshop. You can download a self-contained HTML report to share with a prospect or client.",
   },
+  {
+    q: "What is “Export content pack for AI”?",
+    a: "After a crawl, you can download a Markdown file of page titles, headings, and body text plus a ready-made strategy prompt. Paste it into Claude or ChatGPT for site-specific SEO recommendations (the Screaming Frog → TXT → Claude workflow). The export never calls paid AI APIs — you bring the model.",
+  },
 ];
 
 export default function WebsiteSeoAuditPage() {

@@ -1,3 +1,4 @@
+import { buildAiContentPack } from "./ai-content-pack";
 import { crawlSiteRich } from "./seo-spider";
 import type { CrawledUrl, IssueGroup, RichCrawl } from "./seo-spider";
 
@@ -113,6 +114,9 @@ export type SiteAuditReport = {
   stats: RichCrawl["spider"]["stats"];
   issues: IssueGroup[];
   urls: CrawledUrl[];
+  /** Claude-ready crawl dump (page text + strategy prompt). No LLM calls. */
+  contentPack: string;
+  contentPackPages: number;
 };
 
 export async function auditSite(input: string, maxPages = 75): Promise<SiteAuditReport | { error: string }> {
@@ -139,6 +143,11 @@ export async function auditSite(input: string, maxPages = 75): Promise<SiteAudit
   ]);
   const score = weightedScore(sections);
   const findings = sortFindings(sections);
+  const contentPack = buildAiContentPack(crawl, {
+    maxPages: Math.min(40, maxPages),
+    brandHint: crawl.domain,
+  });
+  const contentPackPages = (contentPack.match(/^### PAGE:/gm) || []).length;
 
   return {
     url: crawl.seedUrl,
@@ -146,6 +155,8 @@ export async function auditSite(input: string, maxPages = 75): Promise<SiteAudit
     score,
     rating: ratingFor(score),
     generatedAt: new Date().toISOString(),
+    contentPack,
+    contentPackPages,
     sections,
     findings,
     stats: crawl.spider.stats,

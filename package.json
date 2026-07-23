@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint",
-    "llms:full": "node scripts/generate-llms-full.mjs"
+    "llms:full": "node scripts/generate-llms-full.mjs",
+    "content-pack": "node scripts/generate-ai-content-pack.mjs"
   },
   "dependencies": {
     "next": "14.2.15",
