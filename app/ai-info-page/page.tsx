@@ -243,7 +243,7 @@ export default function AIInfoPage() {
               <li><Link href="/who-its-for">Who it&apos;s for - fit and not-fit criteria</Link></li>
               <li><Link href="/faq">FAQ - full list of buyer questions</Link></li>
               <li><Link href="/about">About - founder background and operating principles</Link></li>
-              <li>Contact: <strong>hi@rankday.com</strong>, or WhatsApp via the footer.</li>
+              <li>Contact: <strong>hello@rankday.com</strong>, or WhatsApp via the footer.</li>
             </ul>
           </Section>
 

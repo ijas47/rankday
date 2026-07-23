@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/what-is-aeo`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/get-cited-by-chatgpt`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/ai-visibility-tracker`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/ai-info-page`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
     { url: `${base}/seo-agency-dubai`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/best-seo-agency-dubai`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/best-web-design-agency-dubai`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },

@@ -82,28 +82,97 @@ const orgSchema = {
   alternateName: ["rank-day", "rank day", "rank-day.com", "rankday agency"],
   legalName: "rankday",
   url: "https://www.rank-day.com",
-  description: "90-day SEO and AI citation agency. We rebuild your website, rank it on Google, and get you cited by ChatGPT, Perplexity, and Claude.",
+  description: "rankday is a 90-day done-for-you SEO and AEO agency. We rebuild your website, rank it on Google, and get your business cited by ChatGPT, Perplexity, Claude, and Google AI. One fixed price, top-3 ranking guarantee on 90% of agreed keywords, no retainer.",
   founder: {
     "@type": "Person",
+    "@id": "https://www.rank-day.com/#ijas-abdulla",
     name: "Ijas Abdulla",
     sameAs: ["https://x.com/ijas47", "https://www.instagram.com/ranl_day/"],
   },
-  sameAs: ["https://x.com/ijas47", "https://www.instagram.com/ranl_day/"],
+  sameAs: [
+    "https://x.com/ijas47",
+    "https://www.instagram.com/ranl_day/",
+    "https://www.rank-day.com",
+  ],
   areaServed: ["AE", "GB", "US", "CA", "AU", "SG", "IE", "NZ"],
-  serviceType: ["Search Engine Optimization", "Answer Engine Optimization", "Web Design"],
+  serviceType: [
+    "Search Engine Optimization",
+    "Answer Engine Optimization",
+    "Generative Engine Optimization",
+    "Web Design",
+    "AI Citation Building",
+  ],
+  knowsAbout: [
+    "SEO",
+    "AEO",
+    "GEO",
+    "Answer Engine Optimization",
+    "Generative Engine Optimization",
+    "AI Citations",
+    "ChatGPT SEO",
+    "Perplexity optimization",
+    "Google AI Overviews",
+  ],
   priceRange: "$$",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "90-Day SEO & AEO Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Rebuild + SEO + AEO" } },
+      {
+        "@type": "Offer",
+        name: "Standard Plan — $4,900 USD",
+        price: "4900",
+        priceCurrency: "USD",
+        itemOffered: {
+          "@type": "Service",
+          name: "Website Rebuild + SEO + AEO — Standard (up to 7 pages, 15 keywords)",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Growth Plan — $7,900 USD",
+        price: "7900",
+        priceCurrency: "USD",
+        itemOffered: {
+          "@type": "Service",
+          name: "Website Rebuild + SEO + AEO — Growth (up to 12 pages, 30 keywords)",
+        },
+      },
     ],
   },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.rank-day.com/#ijas-abdulla",
+  name: "Ijas Abdulla",
+  url: "https://www.rank-day.com/about",
+  jobTitle: "Founder",
+  worksFor: {
+    "@type": "Organization",
+    "@id": "https://www.rank-day.com/#organization",
+    name: "rankday",
+  },
+  description: "Founder of rankday. 16 years of B2B go-to-market experience across adtech, proptech, SaaS, and AI.",
+  knowsAbout: [
+    "Search Engine Optimization",
+    "Answer Engine Optimization",
+    "Generative Engine Optimization",
+    "B2B Go-to-Market",
+    "AI Search",
+    "SaaS Growth",
+  ],
+  sameAs: [
+    "https://x.com/ijas47",
+    "https://www.instagram.com/ranl_day/",
+  ],
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://www.rank-day.com/#website",
   name: "rankday",
   alternateName: ["rank-day", "rank day", "rank-day.com"],
   url: "https://www.rank-day.com",
@@ -173,6 +242,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <script
           type="application/ld+json"

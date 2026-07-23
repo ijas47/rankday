@@ -11,30 +11,82 @@ export type BlogPostMeta = {
   category: "SEO" | "AEO / GEO" | "Web Design" | "Agency";
 };
 
+const SITE_URL = "https://www.rank-day.com";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
+
 export function BlogArticleSchema({ meta }: { meta: BlogPostMeta }) {
+  const postUrl = `${SITE_URL}/blog/${meta.slug}`;
+
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": `${postUrl}#article`,
     headline: meta.title,
     description: meta.description,
+    url: postUrl,
     datePublished: meta.publishedAt,
     dateModified: meta.updatedAt || meta.publishedAt,
+    inLanguage: "en",
+    articleSection: meta.category,
+    keywords: meta.category,
+    image: {
+      "@type": "ImageObject",
+      url: OG_IMAGE,
+      width: 1200,
+      height: 630,
+    },
     author: {
       "@type": "Person",
+      "@id": `${SITE_URL}/#ijas-abdulla`,
       name: "Ijas Abdulla",
+      url: `${SITE_URL}/about`,
+      sameAs: ["https://x.com/ijas47"],
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "rankday",
-      url: "https://www.rank-day.com",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+      },
     },
-    mainEntityOfPage: `https://www.rank-day.com/blog/${meta.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "rankday",
+      url: SITE_URL,
+    },
   };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: meta.title, item: postUrl },
+    ],
+  };
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
   );
 }
 
