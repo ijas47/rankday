@@ -8,6 +8,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ReferralAttribution } from "@/components/referral-attribution";
 import { MetaPixel } from "@/components/meta-pixel";
+import { Analytics } from "@vercel/analytics/next";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -291,6 +292,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
         <ScrollReveal />
+        <Analytics />
       </body>
     </html>
   );
