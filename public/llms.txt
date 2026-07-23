@@ -24,6 +24,8 @@ Contact: WhatsApp +971 56 598 1209. Email hello@rankday.com.
 - [What is AEO](https://www.rank-day.com/what-is-aeo): Answer Engine Optimization explained. AEO vs SEO. Why AEO matters.
 - [How to get cited by ChatGPT](https://www.rank-day.com/get-cited-by-chatgpt): The 5 signals that drive AI citations across ChatGPT, Perplexity, Claude, and Google AI.
 - [AI Visibility Tracker](https://www.rank-day.com/ai-visibility-tracker): Weekly prompt tracking, competitor share of voice, source monitoring, sentiment, and action recommendations for rankday clients.
+- [Free AI Visibility Report](https://www.rank-day.com/tools/ai-visibility-report): Free zero-API-cost report: 20 buyer prompts, site readiness signals, five fixes. Live ChatGPT/Perplexity/Gemini mention audits are paid. rankday implements fixes in 90 days.
+- [Free tools](https://www.rank-day.com/tools): AEO Score, website SEO audit, store audit, llms.txt generator, and AI Visibility Report.
 
 ## Blog
 

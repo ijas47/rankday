@@ -256,8 +256,8 @@ export default function HomePage() {
           </div>
           <div data-reveal-stagger className="r-3">
             {[
+              { href: "/tools/ai-visibility-report", title: "Free AI Visibility Report", body: "20 buyer prompts + readiness + 5 fixes. Zero AI API cost. Live engine checks only when you pay." },
               { href: "/tools/aeo-score", title: "Free AEO Score", body: "Instant score + exact fixes to get cited by ChatGPT, Perplexity, Claude." },
-              { href: "/tools/llms-txt", title: "Free llms.txt Generator", body: "Generate the file AI engines actually read. Takes 10 seconds." },
               { href: "/tools/website-seo-audit", title: "Free Website SEO Audit", body: "Technical + schema + AI-readiness in one clean report." },
             ].map((t, i) => (
               <Link key={i} href={t.href} className="card" style={{ padding: 28, display: "flex", flexDirection: "column", gap: 12, textDecoration: "none" }}>

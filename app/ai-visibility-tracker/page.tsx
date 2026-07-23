@@ -42,7 +42,10 @@ export default function AiVisibilityTrackerPage() {
               rankday tracks your prompts, competitors, citations, sentiment, and source gaps across ChatGPT-style answers, Perplexity, and Gemini.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
-              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              <Link href="/tools/ai-visibility-report" className="btn btn-primary">
+                Free AI Visibility Report
+              </Link>
+              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 Start your 90 days
               </a>
               <Link href="/dashboard/ai-visibility" className="btn btn-ghost">

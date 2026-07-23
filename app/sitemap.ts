@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/seo-for-facilities-management`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/seo-for-maid-services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/tools`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/tools/ai-visibility-report`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
     { url: `${base}/tools/website-seo-audit`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/tools/store-seo-audit`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/tools/aeo-score`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },

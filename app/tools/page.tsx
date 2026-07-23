@@ -6,11 +6,18 @@ import { Icon } from "@/components/icons";
 export const metadata: Metadata = pageMeta({
   title: "Free Tools. Check Your AI Search Visibility.",
   description:
-    "Free tools from rankday: score how visible your site is to AI search (ChatGPT, Perplexity, Claude, Google AI), and generate an llms.txt in seconds. No signup.",
+    "Free tools from rankday: AI Visibility Report (ChatGPT, Perplexity, Gemini), AEO Score, website SEO audit, store audit, and llms.txt generator. No signup.",
   path: "/tools",
 });
 
 const tools = [
+  {
+    href: "/tools/ai-visibility-report",
+    name: "AI Visibility Report",
+    desc: "Free, zero AI API cost: 20 buyer prompts, site readiness signals, and 5 fixes. Live ChatGPT/Perplexity/Gemini mention checks only in the paid $149 audit.",
+    tone: "pink",
+    cta: "Get free report",
+  },
   {
     href: "/tools/website-seo-audit",
     name: "Website SEO Audit",
