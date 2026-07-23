@@ -173,18 +173,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STATS / E-E-A-T */}
+      {/* PROOF — keep claims defensible; no inflated aggregate stats */}
       <section className="section">
         <div className="container">
           <div data-reveal className="r-header">
-            <h2 className="h1">Results that compound.</h2>
-            <p className="body lg" style={{ maxWidth: 520 }}>Every engagement is a fixed 90 days. Data from deliveries completed 2025-2026.</p>
+            <h2 className="h1">Built around a finish line.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              One fixed price. Ninety days. Keywords agreed in writing. Top-3 on 90% of that list — or we keep working free.
+            </p>
           </div>
           <div data-reveal-stagger className="r-cards-4">
             {[
-              { num: "94%", label: "of clients hit top 3 on 90%+ keywords by day 90" },
-              { num: "+312%", label: "avg. increase in AI citation share (ChatGPT + Perplexity)" },
-              { num: "0", label: "long contracts or surprise invoices" },
+              { num: "90", label: "days per engagement — not an open retainer" },
+              { num: "1", label: "fixed price for website + SEO + AEO setup" },
+              { num: "Top 3", label: "guarantee on 90% of keywords locked before day 1" },
               { num: "16 yrs", label: "founder experience in growth & SEO (Ijas Abdulla)" },
             ].map((s, i) => (
               <div key={i} className="card" style={{ padding: 28 }}>
@@ -193,10 +195,24 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <p style={{ marginTop: 16, fontSize: 12, color: "var(--muted)" }}>Source: Internal delivery data + client-reported rankings. Your results will vary based on competition and starting point.</p>
-          <div style={{ marginTop: 20 }}>
+          <div className="card" style={{ marginTop: 20, padding: 28, display: "grid", gap: 12 }}>
+            <p className="kicker" style={{ margin: 0 }}>What clients hire us for</p>
+            <p style={{ margin: 0, fontSize: 17, color: "var(--ink)", fontWeight: 600, lineHeight: 1.45, maxWidth: 720 }}>
+              A new site that can rank, a written keyword scoreboard, and structure so AI systems can understand and cite the business — without a 12-month retainer trap.
+            </p>
+            <p style={{ margin: 0, fontSize: 14, color: "var(--muted)", lineHeight: 1.5 }}>
+              Individual results vary by competition, domain history, and how fast approvals move. See example engagements on the results page.
+            </p>
+          </div>
+          <div style={{ marginTop: 20, display: "flex", flexWrap: "wrap", gap: 10 }}>
             <Link href="/results" className="btn btn-ghost btn-sm">
               See case studies
+              <span className="btn-icon">
+                <Icon.Arrow />
+              </span>
+            </Link>
+            <Link href="/pricing" className="btn btn-primary btn-sm">
+              View pricing
               <span className="btn-icon">
                 <Icon.Arrow />
               </span>
