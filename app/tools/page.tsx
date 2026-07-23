@@ -14,7 +14,7 @@ const tools = [
   {
     href: "/tools/ai-visibility-report",
     name: "AI Visibility Report",
-    desc: "Free, zero AI API cost: 20 buyer prompts, site readiness signals, and 5 fixes. Live ChatGPT/Perplexity/Gemini mention checks only in the paid $149 audit.",
+    desc: "Get 20 buyer prompts AI assistants actually answer, a free site readiness check, and 5 fixes to improve your chances of being recommended. Optional full audit from $149.",
     tone: "pink",
     cta: "Get free report",
   },

@@ -42,6 +42,7 @@ const audience = [
 ];
 
 const markets: Array<[string, string]> = [
+  ["India", "lilac"],
   ["UAE", "pink"],
   ["UK", "peach"],
   ["US", "yellow"],
@@ -67,7 +68,7 @@ const homeFaqs: FaqItem[] = [
   },
   {
     q: "Which markets do you work in?",
-    a: "The UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand - most English-speaking markets. Arabic-language SEO is available in the UAE and GCC at no extra cost.",
+    a: "India (including Kerala and all major cities), the UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand. Malayalam-language SEO is available across Kerala, and Arabic in the UAE and GCC, both at no extra cost.",
   },
   {
     q: "How much of my time does it take?",
@@ -81,6 +82,7 @@ const homeServiceLd = serviceSchema({
     "rankday rebuilds your website, ranks it in the Google top 3, and gets you cited by AI search engines, in a fixed 90-day engagement with a top-3 ranking guarantee.",
   path: "/",
   areaServed: [
+    "India",
     "United Arab Emirates",
     "United Kingdom",
     "United States",
@@ -256,7 +258,7 @@ export default function HomePage() {
           </div>
           <div data-reveal-stagger className="r-3">
             {[
-              { href: "/tools/ai-visibility-report", title: "Free AI Visibility Report", body: "20 buyer prompts + readiness + 5 fixes. Zero AI API cost. Live engine checks only when you pay." },
+              { href: "/tools/ai-visibility-report", title: "Free AI Visibility Report", body: "20 buyer prompts AI answers, site readiness check, and 5 fixes to get recommended." },
               { href: "/tools/aeo-score", title: "Free AEO Score", body: "Instant score + exact fixes to get cited by ChatGPT, Perplexity, Claude." },
               { href: "/tools/website-seo-audit", title: "Free Website SEO Audit", body: "Technical + schema + AI-readiness in one clean report." },
             ].map((t, i) => (
