@@ -54,6 +54,7 @@ export function Footer() {
             <h5>Pages</h5>
             <Link className="footer-link" href="/">Home</Link>
             <Link className="footer-link" href="/how-it-works">How it works</Link>
+            <Link className="footer-link" href="/results">Results</Link>
             <Link className="footer-link" href="/pricing">Pricing</Link>
             <Link className="footer-link" href="/partners">Partners</Link>
             <Link className="footer-link" href="/tools/website-seo-audit" style={{ fontWeight: 700 }}>

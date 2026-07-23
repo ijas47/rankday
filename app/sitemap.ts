@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { posts } from "./blog/posts";
 import { locations } from "./seo-agency/[city]/locations";
+import { caseStudies } from "@/lib/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.rank-day.com";
@@ -9,6 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/results`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
+    ...caseStudies.map((study) => ({
+      url: `${base}/results/${study.slug}`,
+      lastModified: new Date(`${study.publishedAt}T00:00:00`),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
     { url: `${base}/partners`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/who-its-for`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

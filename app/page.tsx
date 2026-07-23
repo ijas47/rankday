@@ -194,6 +194,14 @@ export default function HomePage() {
             ))}
           </div>
           <p style={{ marginTop: 16, fontSize: 12, color: "var(--muted)" }}>Source: Internal delivery data + client-reported rankings. Your results will vary based on competition and starting point.</p>
+          <div style={{ marginTop: 20 }}>
+            <Link href="/results" className="btn btn-ghost btn-sm">
+              See case studies
+              <span className="btn-icon">
+                <Icon.Arrow />
+              </span>
+            </Link>
+          </div>
         </div>
       </section>
 

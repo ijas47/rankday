@@ -8,6 +8,7 @@ import { Icon } from "./icons";
 const links = [
   { href: "/", label: "Home" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/results", label: "Results" },
   { href: "/pricing", label: "Pricing" },
   { href: "/partners", label: "Partners" },
   { href: "/tools", label: "Free Tools" },
