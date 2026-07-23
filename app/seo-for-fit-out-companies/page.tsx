@@ -7,9 +7,9 @@ import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = pageMeta({
-  title: "Website + SEO for Fit Out Companies. Top 3 in 90 Days.",
+  title: "SEO for Fit-Out Companies. Top 3 + AI Citations in 90 Days.",
   description:
-    "A new website, top-3 Google rankings, and AI citations for fit out companies. Office, retail, hospitality. One fixed price. 90-day guarantee.",
+    "Rank your fit-out company top 3 on Google and get cited by ChatGPT when clients search office, retail & hospitality contractors. New website, fixed price, 90-day guarantee.",
   path: "/seo-for-fit-out-companies",
 });
 

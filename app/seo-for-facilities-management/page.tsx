@@ -6,9 +6,9 @@ import { Icon } from "@/components/icons";
 import { BundlePills } from "@/components/bundle-pills";
 
 export const metadata: Metadata = pageMeta({
-  title: "Website + SEO for Facilities Management Companies.",
+  title: "SEO for Facilities Management Companies. Top 3 in 90 Days.",
   description:
-    "A new website, top-3 Google rankings, and AI citations for facilities management companies. Hard, soft, and integrated FM. One fixed price. 90-day guarantee.",
+    "Rank your FM company top 3 on Google and get cited by AI when clients search integrated, hard & soft facilities management contractors. New website, fixed price, 90-day guarantee.",
   path: "/seo-for-facilities-management",
 });
 
