@@ -7,7 +7,7 @@ import { WebsiteSeoAuditClient } from "./website-seo-audit-client";
 export const metadata: Metadata = pageMeta({
   title: "Free Website SEO Audit + Site Crawler. Score & Fix.",
   description:
-    "Crawl up to 75 pages and get a free 0-100 SEO audit across technical SEO, schema, content, Core Web Vitals, and AI-search readiness — plus a full crawl report of every URL, broken link, redirect, and duplicate. Built by rankday.",
+    "Crawl up to 75 pages and get a free 0-100 SEO audit across technical SEO, schema, content, Core Web Vitals, and AI-search readiness ,  plus a full crawl report of every URL, broken link, redirect, and duplicate. Built by rankday.",
   path: "/tools/website-seo-audit",
 });
 
@@ -30,7 +30,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "What is “Export content pack for AI”?",
-    a: "After a crawl, you can download a Markdown file of page titles, headings, and body text plus a ready-made strategy prompt. Paste it into Claude or ChatGPT for site-specific SEO recommendations (the Screaming Frog → TXT → Claude workflow). The export never calls paid AI APIs — you bring the model.",
+    a: "After a crawl, you can download a Markdown file of page titles, headings, and body text plus a ready-made strategy prompt. Paste it into Claude or ChatGPT for site-specific SEO recommendations (the Screaming Frog → TXT → Claude workflow). The export never calls paid AI APIs ,  you bring the model.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function WebsiteSeoAuditPage() {
             style={{ marginTop: 24, maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}
           >
             Paste a URL. We crawl up to 75 pages and give you a 0-100 score across technical SEO,
-            schema, content, Core Web Vitals, and AI-search readiness — plus a full crawl report of
+            schema, content, Core Web Vitals, and AI-search readiness ,  plus a full crawl report of
             every URL, broken link, redirect, and duplicate.
           </p>
         </div>

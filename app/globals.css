@@ -1123,6 +1123,17 @@ button:focus:not(:focus-visible) {
   outline: none;
 }
 
+/* Tools grid cards */
+.tools-card {
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .tools-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
 /* Home hero */
 .home-hero {
   padding: 20px 0 48px;

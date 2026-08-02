@@ -23,7 +23,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: `What does the ${AUDIT_PRICE_RANGE} full audit include?`,
-    a: `rankday runs your prompt set live across ChatGPT, Perplexity, and Gemini under controlled spend (paying audits only). You get mentions, competitors, citations, sentiment signals, and a prioritized action report — typically within about 48 hours after confirmation.`,
+    a: `rankday runs your prompt set live across ChatGPT, Perplexity, and Gemini under controlled spend (paying audits only). You get mentions, competitors, citations, sentiment signals, and a prioritized action report ,  typically within about 48 hours after confirmation.`,
   },
   {
     q: "How is this different from the free AEO Score?",
@@ -31,7 +31,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Will you implement the fixes?",
-    a: "Yes. The report ends with rankday’s 90-day program: website, SEO, AEO, citations, and tracking — one price, with a top-3 ranking guarantee on agreed keywords.",
+    a: "Yes. The report ends with rankday’s 90-day program: website, SEO, AEO, citations, and tracking ,  one price, with a top-3 ranking guarantee on agreed keywords.",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function AiVisibilityReportPage() {
             style={{ marginTop: 24, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}
           >
             Free report: {FULL_PROMPT_COUNT} buyer prompts, free site readiness signals, and five fixes.
-            Live “does ChatGPT mention you?” checks stay in the paid audit — so free tools never burn model budget.
+            Live “does ChatGPT mention you?” checks stay in the paid audit ,  so free tools never burn model budget.
           </p>
         </div>
       </section>

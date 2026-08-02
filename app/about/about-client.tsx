@@ -2,14 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
+import { useInView, useReducedMotion } from "framer-motion";
 import { Icon } from "@/components/icons";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const stats: Array<{ num: string; unit: string; label: string }> = [
   { num: "16", unit: "years", label: "Of B2B go-to-market work behind the playbook" },
@@ -26,35 +21,44 @@ const beliefs: Array<[string, string]> = [
   ["If you're not ranking, we haven't finished.", "lilac"],
 ];
 
-export function AboutClient() {
-  const statsRef = useRef<HTMLDivElement | null>(null);
+function StatNum({ target }: { target: number }) {
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  const [value, setValue] = useState(reduce ? target : 0);
 
   useEffect(() => {
-    if (!statsRef.current) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const els = Array.from(statsRef.current.querySelectorAll(".stat-num")) as HTMLElement[];
+    if (!inView) return;
+    if (reduce) {
+      setValue(target);
+      return;
+    }
+    const start = performance.now();
+    const duration = 1400;
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      // ease out cubic
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(Math.round(target * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, reduce, target]);
 
-    if (reduce) return;
+  return (
+    <span
+      ref={ref}
+      className="stat-num"
+      style={{ fontSize: "clamp(40px, 4.8vw, 64px)", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.03em", lineHeight: 1, fontFamily: "var(--display)" }}
+    >
+      {value}
+    </span>
+  );
+}
 
-    const ctx = gsap.context(() => {
-      els.forEach((el) => {
-        const target = Number(el.dataset.target);
-        const obj = { v: 0 };
-        gsap.to(obj, {
-          v: target,
-          duration: 1.6,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%", once: true },
-          onUpdate: () => {
-            el.textContent = Math.round(obj.v).toString();
-          },
-        });
-      });
-    }, statsRef);
-
-    return () => ctx.revert();
-  }, []);
-
+export function AboutClient() {
   return (
     <div className="page-enter">
       <section style={{ padding: "32px 0 40px", textAlign: "center" }}>
@@ -116,17 +120,11 @@ export function AboutClient() {
 
       <section style={{ padding: "0 0 64px" }}>
         <div className="container">
-          <div ref={statsRef} className="card r-stats">
+          <div className="card r-stats">
             {stats.map((s, i) => (
               <div key={s.label} style={{ padding: "0 28px", borderLeft: i > 0 ? "1px solid var(--hairline)" : "none" }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
-                  <span
-                    className="stat-num"
-                    data-target={s.num}
-                    style={{ fontSize: "clamp(40px, 4.8vw, 64px)", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.03em", lineHeight: 1 }}
-                  >
-                    0
-                  </span>
+                  <StatNum target={Number(s.num)} />
                   <span style={{ fontSize: 16, color: "var(--purple)", fontWeight: 600, letterSpacing: "-0.01em" }}>{s.unit}</span>
                 </div>
                 <p style={{ fontSize: 13, color: "var(--muted)", margin: "12px 0 0", lineHeight: 1.4, maxWidth: 200 }}>{s.label}</p>

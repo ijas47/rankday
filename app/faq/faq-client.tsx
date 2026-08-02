@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Icon } from "@/components/icons";
 import { faqs } from "./faq-data";
+import { easeOut } from "@/lib/motion";
 
 export function FAQClient() {
   const [open, setOpen] = useState<number>(0);
@@ -23,11 +24,28 @@ export function FAQClient() {
           <div className="r-faq">
             <div className="sticky-aside">
               <div data-reveal className="card card-lilac" style={{ padding: 28 }}>
-                <p style={{ fontSize: 17, color: "var(--ink)", margin: 0, lineHeight: 1.45, fontWeight: 600, letterSpacing: "-0.005em" }}>
-                  Got a different one? <span className="serif" style={{ color: "var(--purple)" }}>Send us a WhatsApp.</span>
+                <p
+                  style={{
+                    fontSize: 17,
+                    color: "var(--ink)",
+                    margin: 0,
+                    lineHeight: 1.45,
+                    fontWeight: 600,
+                    letterSpacing: "-0.005em",
+                  }}
+                >
+                  Got a different one?{" "}
+                  <span className="serif" style={{ color: "var(--purple)" }}>
+                    Send us a WhatsApp.
+                  </span>
                 </p>
                 <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap" }}>
-                  <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
+                  <a
+                    href="https://wa.me/971565981209"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-whatsapp btn-sm"
+                  >
                     <Icon.WhatsApp /> WhatsApp
                   </a>
                 </div>
@@ -57,18 +75,29 @@ export function FAQClient() {
             <h2 className="h1">
               How do I get <span className="it">started?</span>
             </h2>
-            <p className="body lg" style={{ marginTop: 20, maxWidth: 600, marginLeft: "auto", marginRight: "auto", color: "var(--ink-2)" }}>
+            <p
+              className="body lg"
+              style={{
+                marginTop: 20,
+                maxWidth: 600,
+                marginLeft: "auto",
+                marginRight: "auto",
+                color: "var(--ink-2)",
+              }}
+            >
               WhatsApp or email. Whichever is easiest. We respond within a few hours during business days.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 32, flexWrap: "wrap" }}>
-              <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+              <a
+                href="https://wa.me/971565981209"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+              >
                 WhatsApp{" "}
                 <span className="btn-icon">
                   <Icon.WhatsApp />
                 </span>
-              </a>
-              <a className="btn btn-light" href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer">
-                <Icon.WhatsApp /> WhatsApp
               </a>
             </div>
           </div>
@@ -93,34 +122,13 @@ function FAQItem({
   onToggle: () => void;
   last: boolean;
 }) {
-  const bodyRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!bodyRef.current) return;
-    const el = bodyRef.current;
-    if (isOpen) {
-      gsap.fromTo(
-        el,
-        { height: 0, opacity: 0 },
-        {
-          height: "auto",
-          opacity: 1,
-          duration: 0.32,
-          ease: "power2.out",
-          onComplete: () => {
-            el.style.height = "auto";
-          },
-        }
-      );
-    } else {
-      gsap.to(el, { height: 0, opacity: 0, duration: 0.22, ease: "power2.in" });
-    }
-  }, [isOpen]);
+  const reduce = useReducedMotion();
 
   return (
     <div style={{ borderBottom: last ? "none" : "1px solid var(--hairline)", padding: "20px 24px" }}>
       <button
         onClick={onToggle}
+        aria-expanded={isOpen}
         style={{
           all: "unset",
           display: "flex",
@@ -157,7 +165,9 @@ function FAQItem({
             {q}
           </h3>
         </div>
-        <span
+        <motion.span
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.2, ease: easeOut }}
           style={{
             width: 36,
             height: 36,
@@ -169,17 +179,39 @@ function FAQItem({
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all .18s var(--ease)",
+            fontSize: 22,
+            lineHeight: 1,
+            fontWeight: 400,
           }}
         >
-          {isOpen ? <Icon.Minus /> : <Icon.Plus />}
-        </span>
+          +
+        </motion.span>
       </button>
-      <div ref={bodyRef} style={{ height: 0, opacity: 0, overflow: "hidden" }}>
-        <div style={{ marginTop: 16, marginLeft: 48, maxWidth: 800, paddingBottom: 4 }}>
-          <p className="body lg" style={{ color: "var(--ink-2)" }}>{a}</p>
-        </div>
-      </div>
+
+      <AnimatePresence initial={false}>
+        {isOpen ? (
+          <motion.div
+            key="body"
+            initial={reduce ? false : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={reduce ? undefined : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: easeOut }}
+            style={{ overflow: "hidden" }}
+          >
+            <p
+              style={{
+                margin: "14px 0 4px 54px",
+                fontSize: 15,
+                color: "var(--ink-2)",
+                lineHeight: 1.6,
+                maxWidth: 640,
+              }}
+            >
+              {a}
+            </p>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }
