@@ -90,51 +90,49 @@ export default function HomePage() {
         speed={36}
       />
 
-      {/* PROOF - keep claims defensible; no inflated aggregate stats */}
+      {/* THE OFFER — editorial ledger, no repeated stat-card template */}
       <section className="section">
         <div className="container">
-          <div data-reveal className="r-header">
-            <h2 className="h1">Built around a finish line.</h2>
-            <p className="body lg" style={{ maxWidth: 560 }}>
-              One fixed price. Ninety days. Keywords agreed in writing. Top-3 on 90% of that list, or we keep working free.
-            </p>
-          </div>
-          <div data-reveal-stagger className="r-cards-4">
-            {[
-              { num: "90", label: "days per engagement, not an open retainer" },
-              { num: "1", label: "fixed price for website + SEO + AEO setup" },
-              { num: "Top 3", label: "guarantee on 90% of keywords locked before day 1" },
-              { num: "16 yrs", label: "founder experience in growth & SEO (Ijas Abdulla)" },
-            ].map((s, i) => (
-              <div key={i} className="card" style={{ padding: 28 }}>
-                <p style={{ fontSize: 42, fontWeight: 800, letterSpacing: "-0.04em", margin: 0 }}>{s.num}</p>
-                <p className="body" style={{ marginTop: 8 }}>{s.label}</p>
+          <div className="offer-split">
+            <div data-reveal className="offer-lead">
+              <h2 className="h1">
+                Built around a <span className="it">finish line</span>, not a retainer.
+              </h2>
+              <p className="body lg" style={{ marginTop: 20 }}>
+                Most agencies bill you monthly and hope. We agree the keywords in writing, fix one price,
+                and work to a date. Top&nbsp;3 on 90% of that list by day&nbsp;90, or we keep going free.
+              </p>
+              <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 10 }}>
+                <Link href="/results" className="btn btn-ghost btn-sm">
+                  See case studies<span className="btn-icon"><Icon.Arrow /></span>
+                </Link>
+                <Link href="/pricing" className="btn btn-primary btn-sm">
+                  View pricing<span className="btn-icon"><Icon.Arrow /></span>
+                </Link>
               </div>
-            ))}
+            </div>
+
+            <ol data-reveal-stagger className="offer-ledger">
+              {[
+                { k: "01", t: "A website that can actually rank", d: "A new 5–12 page site, rebuilt for Core Web Vitals, schema, and clean structure — not a patch on the old one." },
+                { k: "02", t: "Top-3 on the keywords you name", d: "Scope agreed and locked before day one. Tracked on a written scoreboard you can check any day." },
+                { k: "03", t: "Cited by the AI engines buyers use", d: "Structured so ChatGPT, Perplexity, Claude and Google AI can understand and recommend your business." },
+                { k: "04", t: "One price. No retainer trap.", d: "Fixed for the full 90-day build. When the finish line is met, you own the result — no monthly leash." },
+              ].map((r) => (
+                <li key={r.k} className="offer-item">
+                  <span className="offer-item-k">{r.k}</span>
+                  <div>
+                    <h3 className="offer-item-t">{r.t}</h3>
+                    <p className="offer-item-d">{r.d}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-          <div className="card" style={{ marginTop: 20, padding: 28, display: "grid", gap: 12 }}>
-            <p className="kicker" style={{ margin: 0 }}>What clients hire us for</p>
-            <p style={{ margin: 0, fontSize: 17, color: "var(--ink)", fontWeight: 600, lineHeight: 1.45, maxWidth: 720 }}>
-              A new site that can rank, a written keyword scoreboard, and structure so AI systems can understand and cite the business, without a 12-month retainer trap.
-            </p>
-            <p style={{ margin: 0, fontSize: 14, color: "var(--muted)", lineHeight: 1.5 }}>
-              Individual results vary by competition, domain history, and how fast approvals move. See example engagements on the results page.
-            </p>
-          </div>
-          <div style={{ marginTop: 20, display: "flex", flexWrap: "wrap", gap: 10 }}>
-            <Link href="/results" className="btn btn-ghost btn-sm">
-              See case studies
-              <span className="btn-icon">
-                <Icon.Arrow />
-              </span>
-            </Link>
-            <Link href="/pricing" className="btn btn-primary btn-sm">
-              View pricing
-              <span className="btn-icon">
-                <Icon.Arrow />
-              </span>
-            </Link>
-          </div>
+          <p style={{ marginTop: 28, fontSize: 13, color: "var(--muted)", maxWidth: 640 }}>
+            Individual results vary by competition, domain history, and how fast approvals move.
+            See example engagements on the results page.
+          </p>
         </div>
       </section>
 
@@ -143,20 +141,21 @@ export default function HomePage() {
         <div className="container">
           <div data-reveal className="r-header">
             <h2 className="h1">Built for businesses that need leads now.</h2>
+            <p className="body lg">High-ticket, high-intent categories where one more top-3 keyword pays for the whole engagement.</p>
           </div>
           <div data-reveal-stagger className="r-2">
             <div className="card" style={{ padding: 32 }}>
-              <p className="kicker">Who it’s for</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16 }}>
+              <p className="eyebrow" style={{ marginBottom: 18 }}>Who it&rsquo;s for</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {audience.map((a, i) => <span key={i} className="pill">{a}</span>)}
               </div>
             </div>
             <div className="card" style={{ padding: 32 }}>
-              <p className="kicker">Markets</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16 }}>
+              <p className="eyebrow" style={{ marginBottom: 18 }}>Markets</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {markets.map(([m, c], i) => <span key={i} className={`pill card-${c}`}>{m}</span>)}
               </div>
-              <p style={{ marginTop: 12, fontSize: 13, color: "var(--muted)" }}>English-primary + Arabic in UAE/GCC at no extra cost.</p>
+              <p style={{ marginTop: 16, fontSize: 13, color: "var(--muted)" }}>English-primary, with Arabic in UAE/GCC and Malayalam across Kerala at no extra cost.</p>
             </div>
           </div>
         </div>

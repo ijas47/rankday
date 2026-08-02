@@ -55,33 +55,25 @@ export function ToolsClient() {
 
   return (
     <div className="page-enter">
-      <section style={{ padding: "28px 0 40px", textAlign: "center" }}>
+      <section style={{ padding: "56px 0 44px", textAlign: "center" }}>
         <div className="container">
-          <motion.span
-            className="eyebrow"
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: easeOut }}
-          >
-            Free tools
-          </motion.span>
           <motion.h1
             className="h-display"
-            style={{ maxWidth: 880, margin: "18px auto 0" }}
-            initial={reduce ? false : { opacity: 0, y: 22, scale: 0.98, filter: "blur(4px)" }}
+            style={{ maxWidth: 900, margin: "0 auto" }}
+            initial={reduce ? false : { opacity: 0, y: 22, scale: 0.98, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.7, ease: easeOut, delay: 0.05 }}
+            transition={{ duration: 0.75, ease: easeOut, delay: 0.05 }}
           >
-            Free tools from <span className="it">rankday</span>
+            See what Google and <span className="it">AI</span> see.
           </motion.h1>
           <motion.p
             className="lede"
-            style={{ marginTop: 20, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}
+            style={{ marginTop: 22, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: easeOut, delay: 0.14 }}
+            transition={{ duration: 0.45, ease: easeOut, delay: 0.16 }}
           >
-            See how findable you are to Google and AI search, then fix what matters. No signup.
+            Six free tools that score how findable you are, then hand you the fixes that matter. No signup.
           </motion.p>
         </div>
       </section>
@@ -112,12 +104,12 @@ export function ToolsClient() {
                 >
                   <h2
                     style={{
-                      fontSize: "clamp(22px, 2.4vw, 28px)",
-                      fontWeight: 800,
+                      fontSize: "clamp(21px, 2.2vw, 26px)",
+                      fontWeight: 650,
                       color: "var(--ink)",
-                      letterSpacing: "-0.025em",
+                      letterSpacing: "-0.02em",
                       margin: 0,
-                      fontFamily: "var(--display)",
+                      fontFamily: "var(--sans)",
                     }}
                   >
                     {t.name}

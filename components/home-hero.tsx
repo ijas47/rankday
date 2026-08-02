@@ -1,273 +1,169 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, animate, useInView } from "framer-motion";
 import { Icon } from "./icons";
 import { easeOut } from "@/lib/motion";
+
+const engines = ["ChatGPT", "Perplexity", "Claude", "Google AI", "Gemini"];
+
+/** Counts a rank down to 1 — the one authored motion moment of the page. */
+function RankClimb() {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const [rank, setRank] = useState(reduce ? 1 : 9);
+
+  useEffect(() => {
+    if (reduce || !inView) return;
+    const controls = animate(9, 1, {
+      duration: 1.7,
+      ease: [0.22, 1, 0.36, 1],
+      delay: 0.5,
+      onUpdate: (v) => setRank(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [inView, reduce]);
+
+  const atTop = rank <= 3;
+
+  return (
+    <div className="rankboard" ref={ref}>
+      <div className="rankboard-head">
+        <span className="rankboard-q">
+          <Icon.Search />
+          plumber near me — Dubai
+        </span>
+        <span className="rankboard-live">
+          <span className="rankboard-dot" /> live
+        </span>
+      </div>
+
+      <div className="rankboard-rows">
+        <div className={`rankrow you ${atTop ? "won" : ""}`}>
+          <span className="rankrow-pos">{rank}</span>
+          <div className="rankrow-body">
+            <span className="rankrow-name">
+              Your business
+              {atTop && (
+                <motion.span
+                  className="rankrow-badge"
+                  initial={reduce ? false : { opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.35, ease: easeOut }}
+                >
+                  Top 3
+                </motion.span>
+              )}
+            </span>
+            <span className="rankrow-meta">4.9 · 287 reviews · rank-day.com</span>
+          </div>
+          <span className="rankrow-trend">{atTop ? "▲ #1" : `▲ ${9 - rank}`}</span>
+        </div>
+
+        {[
+          { pos: 2, name: "Riverside Plumbing", meta: "4.6 · 142 reviews" },
+          { pos: 3, name: "Quick Fix Co.", meta: "4.5 · 96 reviews" },
+        ].map((r) => (
+          <div key={r.pos} className="rankrow ghost">
+            <span className="rankrow-pos">{r.pos}</span>
+            <div className="rankrow-body">
+              <span className="rankrow-name">{r.name}</span>
+              <span className="rankrow-meta">{r.meta}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="rankboard-cite">
+        <span className="rankboard-cite-label">Cited in AI answers</span>
+        <div className="rankboard-cite-engines">
+          {engines.map((e) => (
+            <span key={e} className="cite-chip">{e}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function HomeHero() {
   const reduce = useReducedMotion();
 
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  };
+  const item = {
+    hidden: reduce ? {} : { opacity: 0, y: 18, filter: "blur(6px)" },
+    show: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.7, ease: easeOut },
+    },
+  };
+
   return (
     <section className="home-hero">
       <div className="container">
-        <div className="r-hero">
-          <div>
-            <motion.span
-              className="eyebrow"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: easeOut }}
-            >
-              Top 3 or we keep working free
-            </motion.span>
-
-            <motion.h1
-              className="h-display"
-              style={{ maxWidth: 680, marginTop: 18 }}
-              initial={reduce ? false : { opacity: 0, y: 28, scale: 0.97, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, ease: easeOut, delay: 0.05 }}
-            >
-              A new website. Ranked on Google. Cited by <span className="it">AI</span>. In 90 days.
+        <div className="hero-grid">
+          <motion.div variants={container} initial="hidden" animate="show" className="hero-copy">
+            <motion.h1 variants={item} className="h-display hero-head">
+              Rank top&nbsp;3.
+              <br />
+              Get cited by <span className="it">AI</span>.
+              <br />
+              In ninety&nbsp;days.
             </motion.h1>
 
-            <motion.p
-              className="lede"
-              style={{ marginTop: 20, maxWidth: 520 }}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: easeOut, delay: 0.18 }}
-            >
-              Website or Shopify store, Google top-3 on agreed keywords, and AI citations. One fixed price.
-              No retainer.
+            <motion.p variants={item} className="lede hero-lede">
+              We rebuild your website, rank it in Google&rsquo;s top three for the keywords you name,
+              and get your business cited by ChatGPT, Perplexity and Claude. One fixed price. No retainer.
             </motion.p>
 
-            <motion.div
-              style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: easeOut, delay: 0.28 }}
-            >
+            <motion.div variants={item} className="hero-actions">
               <a
                 href="https://wa.me/971565981209"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
               >
-                Start your 90 days{" "}
-                <span className="btn-icon">
-                  <Icon.Arrow />
-                </span>
+                Start your 90 days
+                <span className="btn-icon"><Icon.Arrow /></span>
               </a>
               <Link className="btn btn-light" href="/how-it-works">
-                How it works{" "}
-                <span className="btn-icon">
-                  <Icon.Arrow />
-                </span>
+                How it works
+                <span className="btn-icon"><Icon.Arrow /></span>
               </Link>
             </motion.div>
-          </div>
+
+            <motion.dl variants={item} className="hero-proofbar">
+              <div>
+                <dt>Top&nbsp;3</dt>
+                <dd>guaranteed on 90% of agreed keywords, or we keep working free</dd>
+              </div>
+              <div>
+                <dt>1 price</dt>
+                <dd>fixed for the full 90-day build — no monthly retainer</dd>
+              </div>
+              <div>
+                <dt>16 yrs</dt>
+                <dd>founder experience across SEO &amp; B2B growth</dd>
+              </div>
+            </motion.dl>
+          </motion.div>
 
           <motion.div
-            className="hero-visual"
-            initial={reduce ? false : { opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: easeOut, delay: 0.12 }}
+            className="hero-artifact"
+            initial={reduce ? false : { opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.85, ease: easeOut, delay: 0.15 }}
           >
-            <div className="hv-blob" />
-            <div className="hv-arch">
-              <div className="hv-serp-card">
-                <div className="serp-search">
-                  <Icon.Search />
-                  <span>plumber near me</span>
-                </div>
-                <div className="serp-list">
-                  <div className="serp-row top">
-                    <span className="serp-rank">1</span>
-                    <div className="serp-body">
-                      <div className="serp-name">
-                        Your business <span className="serp-badge">Top 3</span>
-                      </div>
-                      <div className="serp-meta">
-                        <span className="serp-stars">4.9</span>
-                        <span>·</span>
-                        <span>287 reviews</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="serp-row">
-                    <span className="serp-rank">2</span>
-                    <div className="serp-body">
-                      <div className="serp-name">Riverside Plumbing</div>
-                      <div className="serp-meta">
-                        <span className="serp-stars">4.6</span>
-                        <span>·</span>
-                        <span>142 reviews</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="serp-row">
-                    <span className="serp-rank">3</span>
-                    <div className="serp-body">
-                      <div className="serp-name">Quick Fix Co.</div>
-                      <div className="serp-meta">
-                        <span className="serp-stars">4.5</span>
-                        <span>·</span>
-                        <span>96 reviews</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <motion.div
-              className="float-badge hv-loc"
-              style={{ top: "8%", right: -10 }}
-              data-float
-              data-float-amp="6"
-              animate={reduce ? undefined : { y: [0, 6, 0] }}
-              transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <div
-                  style={{
-                    width: 38,
-                    height: 38,
-                    borderRadius: 10,
-                    background: "linear-gradient(135deg, #d8c4ff, #e8d4f0)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "var(--purple)",
-                  }}
-                >
-                  <Icon.Map />
-                </div>
-                <div>
-                  <div style={{ fontSize: 11, color: "var(--muted)", fontWeight: 500 }}>Dubai, UAE</div>
-                  <div style={{ fontSize: 14, color: "var(--ink)", fontWeight: 700, letterSpacing: "-0.01em" }}>
-                    Ranked #1
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="float-badge hv-stats"
-              style={{ bottom: "12%", left: -16 }}
-              animate={reduce ? undefined : { y: [0, -7, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            >
-              <div
-                style={{
-                  fontSize: 10,
-                  color: "var(--muted)",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                  fontFamily: "var(--mono)",
-                }}
-              >
-                Calls this month
-              </div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginTop: 4 }}>
-                <span style={{ fontSize: 22, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>
-                  287
-                </span>
-                <span style={{ fontSize: 12, fontWeight: 600, color: "#1a9d4b" }}>+42%</span>
-              </div>
-              <svg width="120" height="28" viewBox="0 0 120 28" style={{ marginTop: 6, display: "block" }}>
-                <path
-                  d="M0 22 L20 18 L40 20 L60 14 L80 10 L100 6 L120 4"
-                  stroke="var(--purple)"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M0 22 L20 18 L40 20 L60 14 L80 10 L100 6 L120 4 L120 28 L0 28 Z"
-                  fill="var(--purple)"
-                  opacity="0.08"
-                />
-              </svg>
-            </motion.div>
-
-            <span className="sparkle pink" style={{ top: "5%", right: "28%", fontSize: 22 }}>
-              ✦
-            </span>
-            <span className="sparkle" style={{ top: "48%", right: "4%", fontSize: 16 }}>
-              ✦
-            </span>
-            <span className="sparkle peach" style={{ bottom: "10%", right: "18%", fontSize: 24 }}>
-              ✦
-            </span>
+            <RankClimb />
           </motion.div>
         </div>
-
-        <motion.div
-          className="ai-row"
-          style={{
-            marginTop: 64,
-            padding: 22,
-            background: "rgba(255,255,255,0.65)",
-            border: "1px solid var(--hairline)",
-            borderRadius: 20,
-            boxShadow: "var(--shadow-sm)",
-          }}
-          initial={reduce ? false : { opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5, ease: easeOut }}
-        >
-          <p
-            style={{
-              fontSize: 13,
-              color: "var(--muted)",
-              margin: 0,
-              lineHeight: 1.35,
-              fontWeight: 600,
-              letterSpacing: "-0.005em",
-            }}
-          >
-            Cited by the AI engines
-            <br />
-            <strong style={{ color: "var(--ink)", fontWeight: 700 }}>buyers already use.</strong>
-          </p>
-          <div className="r-cards-5" style={{ alignItems: "center" }}>
-            {[
-              { name: "ChatGPT", color: "#10a37f" },
-              { name: "Perplexity", color: "#20808d" },
-              { name: "Claude", color: "#c96442" },
-              { name: "Google AI", color: "#4285f4" },
-              { name: "Gemini", color: "#1a73e8" },
-            ].map((e, i) => (
-              <motion.div
-                key={e.name}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  padding: "10px 14px",
-                  background: "#fff",
-                  borderRadius: 12,
-                  border: "1px solid var(--hairline)",
-                }}
-                initial={reduce ? false : { opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.05 * i, duration: 0.35, ease: easeOut }}
-              >
-                <span style={{ width: 10, height: 10, borderRadius: 99, background: e.color }} />
-                <span style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.01em" }}>
-                  {e.name}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

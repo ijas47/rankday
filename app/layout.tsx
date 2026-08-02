@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Instrument_Serif, JetBrains_Mono, Outfit } from "next/font/google";
+import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -10,28 +10,21 @@ import { ReferralAttribution } from "@/components/referral-attribution";
 import { MetaPixel } from "@/components/meta-pixel";
 import { Analytics } from "@vercel/analytics/next";
 
-const outfit = Outfit({
+/** Editorial display + accent italic. Variable: wght + optical size + soft. */
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-fraunces",
+});
+
+/** Clean grotesk for body / UI. */
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-outfit",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-dm-sans",
-});
-
-/** Brand accent italic only (logo + .it). Not body copy. */
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-instrument-serif",
+  variable: "--font-hanken",
 });
 
 const mono = JetBrains_Mono({
@@ -267,7 +260,7 @@ const howToSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${dmSans.variable} ${instrumentSerif.variable} ${mono.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${hanken.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -313,6 +306,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}
       </Script>
       <body>
+        {/*
+          DIRECTION CONTRACT — rankday redesign (seed: editorial-ledger-01)
+          THESIS: A 90-day ranking agency proven like a scoreboard, not sold like a SaaS. Refuses the pastel-gradient hero-metric card template.
+          OWN-WORLD: Warm paper ground (#f6f2ea), warm ink, ONE purple accent (#4a2bf0). Fraunces editorial serif display + italic accents, Hanken Grotesk body, JetBrains Mono for data/labels. 1px warm hairlines, real offset+blur shadows, no glass halos. Generous air, print-grade rhythm.
+          STORY: Visitor sees rankday climb a live SERP to #1 and get cited by the AI engines buyers use, understands the fixed-price 90-day guarantee, and starts.
+          FIRST VIEWPORT: Fraunces headline left with purple italic accent + single primary CTA; a real, restrained ranking/citation artifact right; no eyebrow chip.
+          FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md.
+        */}
         <ScrollProgress />
         <ReferralAttribution />
         <div className="shell">

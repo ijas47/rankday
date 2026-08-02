@@ -61,58 +61,41 @@ function StatNum({ target }: { target: number }) {
 export function AboutClient() {
   return (
     <div className="page-enter">
-      <section style={{ padding: "32px 0 40px", textAlign: "center" }}>
-        <div className="container">
-          <h1 className="h-display" data-reveal-text style={{ maxWidth: 1100, margin: "0 auto" }}>
-            About <span className="it">rankday.</span>
-          </h1>
-        </div>
-      </section>
-
-      <section style={{ padding: "32px 0 64px" }}>
+      <section style={{ padding: "56px 0 72px" }}>
         <div className="container">
           <div className="r-about">
-            <div data-reveal style={{ height: 520 }}>
-              <div style={{ height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, background: "#1a2a26" }}>
-                <Image
-                  src="/ijas.jpg"
-                  alt="Ijas Abdulla - Founder of rankday"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 40vw"
-                  style={{ objectFit: "cover", objectPosition: "center top" }}
-                  priority
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 20,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    textAlign: "center",
-                    padding: "10px 16px",
-                    background: "rgba(255,255,255,0.95)",
-                    backdropFilter: "blur(10px)",
-                    borderRadius: 12,
-                    whiteSpace: "nowrap",
-                    zIndex: 1,
-                  }}
-                >
-                  <p style={{ fontSize: 10, color: "var(--muted)", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>Founder</p>
-                  <p style={{ fontSize: 14, color: "var(--ink)", margin: "3px 0 0", fontWeight: 700, letterSpacing: "-0.005em" }}>Ijas Abdulla</p>
-                </div>
-              </div>
+            <div data-reveal>
+              <h1 className="h-display" style={{ fontSize: "clamp(40px, 5vw, 78px)" }}>
+                The website is the <span className="it">easy</span> part.
+              </h1>
+              <p className="lede" style={{ marginTop: 26, color: "var(--ink-2)" }}>
+                rankday was started by <strong>Ijas Abdulla</strong> after 16 years building go-to-market
+                machines for B2B companies across adtech, proptech, SaaS and AI.
+              </p>
+              <p className="body lg" style={{ marginTop: 18 }}>
+                The pattern never changed: strong businesses with a weak online presence, paying agencies
+                that took six months to deliver what should take three.
+              </p>
+              <p style={{ marginTop: 26, fontSize: "clamp(19px, 2.1vw, 26px)", lineHeight: 1.4, color: "var(--ink)", letterSpacing: "-0.015em", fontWeight: 600, maxWidth: "36ch" }}>
+                The game has changed. Buyers don&apos;t just Google anymore. They ask{" "}
+                <span className="serif" style={{ color: "var(--purple)" }}>ChatGPT, Perplexity and Claude.</span>{" "}
+                rankday exists to get your business cited by both.
+              </p>
             </div>
 
-            <div data-reveal data-reveal-delay="0.1">
-              <p className="body lg" style={{ color: "var(--ink-2)" }}>
-                rankday was started by <strong>Ijas Abdulla</strong> after 16 years of building go-to-market machines for B2B companies across adtech, proptech, SaaS, and AI.
-              </p>
-              <p className="body lg" style={{ marginTop: 22, color: "var(--ink-2)" }}>
-                The pattern was always the same: great businesses with terrible online presence, paying agencies that took six months to deliver what should take three.
-              </p>
-              <p style={{ marginTop: 28, fontSize: "clamp(20px, 2.2vw, 28px)", lineHeight: 1.35, color: "var(--ink)", letterSpacing: "-0.015em", fontWeight: 700 }}>
-                The game has changed. Buyers don&apos;t just Google anymore. They ask <span className="serif" style={{ color: "var(--purple)" }}>ChatGPT, Perplexity, and Claude.</span> rankday exists to make sure your business gets cited by both.
-              </p>
+            <div data-reveal data-reveal-delay="0.1" className="about-portrait">
+              <Image
+                src="/ijas.jpg"
+                alt="Ijas Abdulla, founder of rankday"
+                fill
+                sizes="(max-width: 900px) 100vw, 40vw"
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+                priority
+              />
+              <div className="about-portrait-tag">
+                <span>Founder</span>
+                Ijas Abdulla
+              </div>
             </div>
           </div>
         </div>
@@ -163,20 +146,14 @@ export function AboutClient() {
             <h2 className="h1">What we believe.</h2>
           </div>
 
-          <div data-reveal-stagger className="r-cards-5">
-            {beliefs.map(([b, tone], i) => (
-              <div
-                key={b}
-                className={`card card-${tone}`}
-                style={{ padding: 28, minHeight: 200, display: "flex", flexDirection: "column", justifyContent: "space-between" }}
-              >
-                <span style={{ fontFamily: "var(--mono)", fontSize: 12, color: "var(--ink)", opacity: 0.5 }}>
-                  / {String(i + 1).padStart(2, "0")}
-                </span>
-                <p style={{ fontSize: 16, fontWeight: 700, color: "var(--ink)", margin: 0, lineHeight: 1.35, letterSpacing: "-0.005em" }}>{b}</p>
-              </div>
+          <ol data-reveal-stagger className="belief-list">
+            {beliefs.map(([b], i) => (
+              <li key={b} className="belief-item">
+                <span className="belief-k">{String(i + 1).padStart(2, "0")}</span>
+                <p className="belief-text">{b}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
