@@ -2,132 +2,117 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { animate } from "framer-motion";
+import { easeOut } from "@/lib/motion";
 
 /**
- * Mounts once. On every route change it re-scans the DOM for elements with:
- *   data-reveal             fade + rise once when entering viewport
- *   data-reveal-stagger     same, but staggers direct children
- *   data-reveal-text        splits text into words and staggers them in
- *   data-reveal-y="40"      override rise distance
- *   data-reveal-delay="0.1" override start delay (seconds)
- *   data-float              gentle perpetual y-float (used on hero badges/sparkles)
- *   data-parallax="0.4"     subtle scroll-based parallax
+ * Site-wide motion layer (Framer Motion).
+ * data-reveal | data-reveal-stagger | data-reveal-text | data-float
  */
-
 export function ScrollReveal() {
   const pathname = usePathname();
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cleanups: Array<() => void> = [];
+
     if (reduce) {
-      gsap.set("[data-reveal], [data-reveal-stagger] > *, [data-reveal-text]", {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: "blur(0px)",
-        clearProps: "all",
-      });
+      document
+        .querySelectorAll("[data-reveal], [data-reveal-stagger] > *, [data-reveal-text]")
+        .forEach((el) => {
+          const node = el as HTMLElement;
+          node.style.opacity = "1";
+          node.style.transform = "none";
+          node.style.filter = "none";
+        });
       return;
     }
 
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        const y = Number(el.dataset.revealY ?? 28);
-        const delay = Number(el.dataset.revealDelay ?? 0);
-        gsap.fromTo(
-          el,
-          { opacity: 0, y },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay,
-            ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          observer.unobserve(el);
+
+          if (el.hasAttribute("data-reveal-stagger")) {
+            const kids = Array.from(el.children) as HTMLElement[];
+            const y = Number(el.dataset.revealY ?? 18);
+            kids.forEach((kid, i) => {
+              kid.style.opacity = "0";
+              kid.style.transform = `translateY(${y}px) scale(0.98)`;
+              const controls = animate(
+                kid,
+                { opacity: 1, y: 0, scale: 1 },
+                { duration: 0.48, ease: easeOut, delay: i * 0.055 }
+              );
+              cleanups.push(() => controls.stop());
+            });
+            return;
           }
-        );
-      });
 
-      gsap.utils.toArray<HTMLElement>("[data-reveal-stagger]").forEach((wrap) => {
-        const kids = Array.from(wrap.children) as HTMLElement[];
-        const y = Number(wrap.dataset.revealY ?? 22);
-        gsap.fromTo(
-          kids,
-          { opacity: 0, y },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            stagger: 0.07,
-            scrollTrigger: { trigger: wrap, start: "top 85%", once: true },
+          if (el.hasAttribute("data-reveal-text")) {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(28px) scale(0.97)";
+            el.style.filter = "blur(4px)";
+            const controls = animate(
+              el,
+              { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+              { duration: 0.85, ease: easeOut, delay: 0.06 }
+            );
+            cleanups.push(() => controls.stop());
+            return;
           }
-        );
-      });
 
-      // Headline reveal. Single-element entrance with a slight scale + blur clear.
-      gsap.utils.toArray<HTMLElement>("[data-reveal-text]").forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * 0.95;
+          if (el.hasAttribute("data-reveal")) {
+            const y = Number(el.dataset.revealY ?? 22);
+            const delay = Number(el.dataset.revealDelay ?? 0);
+            el.style.opacity = "0";
+            el.style.transform = `translateY(${y}px) scale(0.98)`;
+            const controls = animate(
+              el,
+              { opacity: 1, y: 0, scale: 1 },
+              { duration: 0.55, ease: easeOut, delay }
+            );
+            cleanups.push(() => controls.stop());
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
 
-        const from = { y: 40, opacity: 0, scale: 0.96, filter: "blur(6px)" };
-        const to = {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          filter: "blur(0px)",
-          duration: 1.1,
-          ease: "power3.out",
-        };
-
-        if (inView) {
-          gsap.fromTo(el, from, { ...to, delay: 0.1 });
-        } else {
-          gsap.fromTo(el, from, {
-            ...to,
-            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+    document
+      .querySelectorAll("[data-reveal], [data-reveal-stagger], [data-reveal-text]")
+      .forEach((el) => {
+        const node = el as HTMLElement;
+        if (node.hasAttribute("data-reveal-stagger")) {
+          Array.from(node.children).forEach((kid) => {
+            (kid as HTMLElement).style.opacity = "0";
           });
+        } else {
+          node.style.opacity = "0";
         }
+        observer.observe(node);
       });
 
-      gsap.utils.toArray<HTMLElement>("[data-float]").forEach((el, i) => {
-        const amp = Number(el.dataset.floatAmp ?? 8);
-        const dur = Number(el.dataset.floatDur ?? 3.6);
-        gsap.to(el, {
-          y: `+=${amp}`,
+    document.querySelectorAll<HTMLElement>("[data-float]").forEach((el, i) => {
+      const amp = Number(el.dataset.floatAmp ?? 8);
+      const dur = Number(el.dataset.floatDur ?? 3.4);
+      const controls = animate(
+        el,
+        { y: [0, amp, 0] },
+        {
           duration: dur,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay: i * 0.25,
-        });
-      });
-
-      gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
-        const speed = Number(el.dataset.parallax ?? 0.2);
-        gsap.to(el, {
-          yPercent: -10 * speed,
-          ease: "none",
-          scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 0.5 },
-        });
-      });
+          ease: "easeInOut",
+          repeat: Infinity,
+          delay: i * 0.2,
+        }
+      );
+      cleanups.push(() => controls.stop());
     });
 
-    const refresh = () => ScrollTrigger.refresh();
-    const t = window.setTimeout(refresh, 200);
-    window.addEventListener("load", refresh);
-
-    return () => {
-      window.clearTimeout(t);
-      window.removeEventListener("load", refresh);
-      ctx.revert();
-    };
+    cleanups.push(() => observer.disconnect());
+    return () => cleanups.forEach((fn) => fn());
   }, [pathname]);
 
   return null;

@@ -107,9 +107,9 @@ const guaranteePoints = [
 
 const vsRows: Array<[string, string, string]> = [
   ["Price model", "One fixed price for 90 days", "Monthly retainer, often 6-12 months minimum"],
-  ["Website / store", "New custom site or Shopify store included", "Usually "optimise your existing site""],
+  ["Website / store", "New custom site or Shopify store included", 'Usually "optimise your existing site"'],
   ["Finish line", "Day 90: done or free extension on guarantee", "Open-ended; hard to know when you're finished"],
-  ["Guarantee", "Top 3 on 90% of agreed keywords or we keep working free", "Rarely contractual; "we will do our best""],
+  ["Guarantee", "Top 3 on 90% of agreed keywords or we keep working free", 'Rarely contractual; "we will do our best"'],
   ["AI / AEO", "Built in: schema, answer content, citation readiness", "Often missing or sold as a separate upsell"],
   ["Reporting", "Weekly Looms + clear keyword scoreboard", "Dashboards full of vanity metrics"],
 ];
@@ -123,7 +123,7 @@ const processSteps = [
   {
     step: "02",
     title: "Keyword scope locked",
-    body: "You get a written list of target keywords and what "top 3" means for each. No surprise topics later.",
+    body: 'You get a written list of target keywords and what "top 3" means for each. No surprise topics later.',
   },
   {
     step: "03",
@@ -346,7 +346,7 @@ export default function PricingPage() {
           <p style={{ marginTop: 28, textAlign: "center", fontSize: 15, color: "var(--muted)" }}>
             All plans paid in two installments:{" "}
             <strong style={{ color: "var(--ink)" }}>50% to start, 50% on day 45.</strong> No third invoice for
-            "extra hours."
+            'extra hours.'
           </p>
         </div>
       </section>
@@ -536,7 +536,7 @@ export default function PricingPage() {
           <div data-reveal className="r-header">
             <h2 className="h1">The top-3 guarantee, in plain language.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
-              Not "we will try." A written keyword list, a 90-day scoreboard, and free continuation if we miss the bar.
+              Not 'we will try.' A written keyword list, a 90-day scoreboard, and free continuation if we miss the bar.
             </p>
           </div>
           <div data-reveal-stagger className="r-2">
@@ -841,7 +841,7 @@ export default function PricingPage() {
               <p className="kicker">Choose Growth if</p>
               <ul style={{ margin: "14px 0 0", paddingLeft: 18, color: "var(--ink-2)", lineHeight: 1.6, fontSize: 15 }}>
                 <li>You are B2B, SaaS, or professional services</li>
-                <li>Buyers compare alternatives and need "vs" / category pages</li>
+                <li>Buyers compare alternatives and need 'vs' / category pages</li>
                 <li>You care about AI shortlists as well as Google top-3</li>
                 <li>You want a wider keyword set and third-party placement work</li>
               </ul>

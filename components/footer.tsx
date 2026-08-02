@@ -18,7 +18,7 @@ export function Footer() {
                 fontFamily: "var(--sans)",
               }}
             >
-              Start your <span className="serif" style={{ color: "#fff" }}>90 days.</span>
+              Start your <span className="it" style={{ color: "#fff", fontStyle: "italic" }}>90 days.</span>
             </h2>
           </div>
 

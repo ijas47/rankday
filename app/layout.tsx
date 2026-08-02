@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Plus_Jakarta_Sans, Roboto_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -10,22 +10,22 @@ import { ReferralAttribution } from "@/components/referral-attribution";
 import { MetaPixel } from "@/components/meta-pixel";
 import { Analytics } from "@vercel/analytics/next";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-plus-jakarta",
+  variable: "--font-outfit",
 });
 
-const instrumentSerif = Instrument_Serif({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-instrument-serif",
+  variable: "--font-dm-sans",
 });
 
-const mono = Roboto_Mono({
+const mono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -258,7 +258,7 @@ const howToSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${instrumentSerif.variable} ${mono.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${dmSans.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"
