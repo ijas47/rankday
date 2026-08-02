@@ -193,6 +193,16 @@ export function HomeHero() {
                 />
               </svg>
             </motion.div>
+
+            <span className="sparkle pink" style={{ top: "5%", right: "28%", fontSize: 22 }}>
+              ✦
+            </span>
+            <span className="sparkle" style={{ top: "48%", right: "4%", fontSize: 16 }}>
+              ✦
+            </span>
+            <span className="sparkle peach" style={{ bottom: "10%", right: "18%", fontSize: 24 }}>
+              ✦
+            </span>
           </motion.div>
         </div>
 

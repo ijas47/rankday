@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono, Outfit } from "next/font/google";
+import { DM_Sans, Instrument_Serif, JetBrains_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -23,6 +23,15 @@ const dmSans = DM_Sans({
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-dm-sans",
+});
+
+/** Brand accent italic only (logo + .it). Not body copy. */
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-instrument-serif",
 });
 
 const mono = JetBrains_Mono({
@@ -258,7 +267,7 @@ const howToSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${dmSans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${dmSans.variable} ${instrumentSerif.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"

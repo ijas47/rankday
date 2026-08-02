@@ -7,8 +7,8 @@
 ## Type
 - **Display / UI headings:** Outfit (`--font-outfit` → `--display`)
 - **Body / UI:** DM Sans (`--font-dm-sans` → `--sans`)
+- **Brand italic only:** Instrument Serif for logo `day` and `.it` / `.serif` accents
 - **Labels / stats:** JetBrains Mono (`--font-mono`)
-- Emphasis: italic of the same family (no Instrument Serif mix)
 
 ## Color
 - Brand accent: `#4a2bf0` (locked site-wide)

@@ -56,6 +56,7 @@ export function Footer() {
             <Link className="footer-link" href="/how-it-works">How it works</Link>
             <Link className="footer-link" href="/results">Results</Link>
             <Link className="footer-link" href="/pricing">Pricing</Link>
+            <Link className="footer-link" href="/ecommerce" style={{ fontWeight: 700 }}>Ecommerce / Shopify</Link>
             <Link className="footer-link" href="/partners">Partners</Link>
             <Link className="footer-link" href="/tools/website-seo-audit" style={{ fontWeight: 700 }}>
               Website SEO Audit

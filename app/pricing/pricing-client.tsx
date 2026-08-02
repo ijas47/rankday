@@ -371,7 +371,7 @@ export function PricingClient() {
       </section>
 
       {/* Commerce plans: Shopify / ecommerce */}
-      <section className="section" style={{ paddingTop: 8 }}>
+      <section className="section" id="commerce" style={{ paddingTop: 8, scrollMarginTop: 100 }}>
         <div className="container">
           <div data-reveal className="r-header">
             <h2 className="h1">Shopify &amp; ecommerce stores.</h2>

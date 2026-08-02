@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 export const metadata: Metadata = pageMeta({
   title: "Industries We Serve. SEO for Every Category.",
   description:
-    "rankday delivers SEO and AEO for SaaS, law firms, clinics, contractors, interior designers, fit out companies, facilities management, and home services. Pick your industry.",
+    "rankday delivers SEO and AEO for ecommerce/Shopify, SaaS, law firms, clinics, contractors, interior designers, fit out, facilities management, and home services.",
   path: "/industries",
 });
 
@@ -46,6 +46,35 @@ export default function IndustriesPage() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
+          <Link href="/ecommerce" data-reveal className="card card-purple industry-feature">
+            <div>
+              <span className="industry-feature-badge">Featured · Shopify &amp; ecommerce</span>
+              <h2>Ecommerce stores that rank and convert.</h2>
+              <p>
+                Custom Shopify builds, product SEO, and AEO for catalogs from ~150 SKUs to 1,000+ products.
+                Fixed price Commerce plans from $9,900.
+              </p>
+              <span className="industry-feature-cta">
+                Open ecommerce service
+                <Icon.Arrow />
+              </span>
+            </div>
+            <div className="industry-feature-stats">
+              <div className="industry-feature-stat">
+                <strong>$9,900</strong>
+                <span>Commerce · up to ~150 products</span>
+              </div>
+              <div className="industry-feature-stat">
+                <strong>$14,900</strong>
+                <span>Commerce Scale · large catalogs</span>
+              </div>
+              <div className="industry-feature-stat">
+                <strong>90 days</strong>
+                <span>Store + SEO + AEO, one fixed price</span>
+              </div>
+            </div>
+          </Link>
+
           <div data-reveal-stagger className="r-2">
             {industries.map((ind) => (
               <Link key={ind.slug} href={`/${ind.slug}`} className={`card card-${ind.tone}`} style={{ padding: 32, minHeight: 200, display: "flex", flexDirection: "column", justifyContent: "space-between", textDecoration: "none", gap: 20 }}>
