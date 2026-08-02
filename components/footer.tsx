@@ -43,7 +43,7 @@ export function Footer() {
               <span className="logo-dot">.</span>
             </div>
             <p style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 360, color: "rgba(255,255,255,0.78)", margin: 0 }}>
-              Websites, SEO, and AEO for businesses that need to be found.
+              Websites, Shopify stores, SEO, and AEO for businesses that need to be found.
             </p>
             <p style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 360, color: "#fff", margin: "10px 0 0", fontWeight: 500 }}>
               90 days. One price. Done.

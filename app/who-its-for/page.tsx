@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = pageMeta({
-  title: "Who rankday Works For. SEO for Local Business and B2B.",
+  title: "Who rankday Works For. SEO for Local Business, B2B, and Ecommerce.",
   description:
-    "rankday works for local service businesses, B2B SaaS, agencies, and professional services. Serving UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand.",
+    "rankday works for local service businesses, B2B SaaS, agencies, professional services, and Shopify/ecommerce stores. Serving UAE, UK, US, Canada, Australia, Singapore, Ireland, and New Zealand.",
   path: "/who-its-for",
 });
 import {
@@ -33,6 +33,12 @@ const goodFit = [
     body: "Hotels, holiday rentals, tour operators, event venues. Anyone selling something a buyer researches before they spend.",
     tone: "mint",
     illust: <HospIllust />,
+  },
+  {
+    title: "Shopify and ecommerce brands",
+    body: "Product brands and online stores that need a Shopify (or ecommerce) build plus SEO, GEO, and AEO, from mid-size catalogs to large product and image sets. See Commerce plans on pricing.",
+    tone: "peach",
+    illust: <B2BIllust />,
   },
 ];
 

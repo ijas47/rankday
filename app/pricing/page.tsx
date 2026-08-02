@@ -8,7 +8,7 @@ import { Icon } from "@/components/icons";
 export const metadata: Metadata = pageMeta({
   title: "SEO Pricing. Flat Rate, No Contracts.",
   description:
-    "Standard from $4,900 USD. Growth from $7,900 USD. One price covers website rebuild, Google top-3 rankings, and AI citations. 90 days, paid in two installments. Top-3 guarantee on 90% of agreed keywords.",
+    "Standard from $4,900. Growth from $7,900. Commerce (Shopify/ecom) from $9,900. Commerce Scale from $14,900. Website or store, Google top-3, and AI citations in 90 days. One fixed price.",
   path: "/pricing",
 });
 
@@ -37,6 +37,31 @@ const growthExtras = [
   "Custom dashboard for ranking and AI citation tracking",
 ];
 
+const commerceIncludes = [
+  "Shopify store setup or rebuild (WooCommerce on request)",
+  "Custom theme design + branding alignment",
+  "Product and collection structure",
+  "Product import assistance up to ~150 products",
+  "Payments and shipping basics (your accounts)",
+  "Technical + on-page ecommerce SEO",
+  "AEO / GEO: product, FAQ, and category schema",
+  "Answer-ready category and buying-guide content",
+  "Up to 20 commercial keywords agreed in writing",
+  "Top 3 on 90% of agreed commercial keywords (categories, money pages, brand terms; not every SKU)",
+  "Weekly Loom updates",
+];
+
+const commerceScaleExtras = [
+  "Large catalog support up to ~1,500 products",
+  "Bulk product and image SEO (filenames, alt, structured data at scale)",
+  "Collection architecture for multi-category stores",
+  "Deeper technical ecom SEO (crawl, canonicals, faceted nav hygiene)",
+  "Up to 40 commercial keywords agreed in writing",
+  "Bi-weekly AI visibility audits on product and category prompts",
+  "Custom dashboard for rankings and AI citation tracking",
+  "Third-party placement for store and category authority",
+];
+
 const localPricing: Array<[string, string, string]> = [
   ["India", "₹3,99,000", "₹6,49,000"],
   ["UAE", "AED 18,000", "AED 29,000"],
@@ -44,9 +69,19 @@ const localPricing: Array<[string, string, string]> = [
   ["US", "$4,900", "$7,900"],
 ];
 
+const localCommercePricing: Array<[string, string, string]> = [
+  ["India", "₹8,05,000", "₹12,15,000"],
+  ["UAE", "AED 36,000", "AED 55,000"],
+  ["UK", "£7,900", "£11,900"],
+  ["US", "$9,900", "$14,900"],
+];
+
 const notIncluded = [
   "Paid advertising (Google Ads, Meta, etc.)",
   "Social media management or content calendars",
+  "Shopify / platform subscription fees and paid apps",
+  "Product photography, inventory ops, or order fulfillment",
+  "Custom Shopify apps or headless builds (quoted separately)",
   "Ongoing retainers unless you opt into maintenance after day 90",
   "Anything outside the written 90-day scope and keyword list",
 ];
@@ -54,15 +89,15 @@ const notIncluded = [
 const guaranteePoints = [
   {
     title: "Keywords are fixed in writing",
-    body: "Before work starts we agree a keyword list (up to 15 on Standard, up to 30 on Growth). That list is the guarantee. We do not move the goalposts mid-project.",
+    body: "Before work starts we agree a keyword list (up to 15 on Standard, 30 on Growth, 20 on Commerce, 40 on Commerce Scale). That list is the guarantee. We do not move the goalposts mid-project.",
   },
   {
     title: "Top 3 on 90% of agreed keywords",
-    body: "By day 90, if you are not in the Google top 3 for at least 90% of that list, we keep working at no extra cost until you are — on those keywords.",
+    body: "By day 90, if you are not in the Google top 3 for at least 90% of that list, we keep working at no extra cost until you are, on those keywords. For Commerce plans, the list is commercial keywords (categories, money pages, brand terms), not every product SKU.",
   },
   {
     title: "What can slow results",
-    body: "Approvals, content access, legal review, and extreme competition on brand-new domains all affect pace. We flag risk before you pay the second installment.",
+    body: "Approvals, content access, legal review, product data quality, and extreme competition on brand-new domains all affect pace. We flag risk before you pay the second installment.",
   },
   {
     title: "AI citations are included as work, not a second guarantee",
@@ -71,10 +106,10 @@ const guaranteePoints = [
 ];
 
 const vsRows: Array<[string, string, string]> = [
-  ["Price model", "One fixed price for 90 days", "Monthly retainer, often 6–12 months minimum"],
-  ["Website", "New custom site included", "Usually “optimise your existing site”"],
-  ["Finish line", "Day 90 — done or free extension on guarantee", "Open-ended; hard to know when you’re finished"],
-  ["Guarantee", "Top 3 on 90% of agreed keywords or we keep working free", "Rarely contractual; “we’ll do our best”"],
+  ["Price model", "One fixed price for 90 days", "Monthly retainer, often 6-12 months minimum"],
+  ["Website / store", "New custom site or Shopify store included", "Usually "optimise your existing site""],
+  ["Finish line", "Day 90: done or free extension on guarantee", "Open-ended; hard to know when you're finished"],
+  ["Guarantee", "Top 3 on 90% of agreed keywords or we keep working free", "Rarely contractual; "we will do our best""],
   ["AI / AEO", "Built in: schema, answer content, citation readiness", "Often missing or sold as a separate upsell"],
   ["Reporting", "Weekly Looms + clear keyword scoreboard", "Dashboards full of vanity metrics"],
 ];
@@ -82,13 +117,13 @@ const vsRows: Array<[string, string, string]> = [
 const processSteps = [
   {
     step: "01",
-    title: "Fit call (15–20 min)",
+    title: "Fit call (15-20 min)",
     body: "WhatsApp or call. We check market, competition, and whether a 90-day sprint can work. If not, we say so.",
   },
   {
     step: "02",
     title: "Keyword scope locked",
-    body: "You get a written list of target keywords and what “top 3” means for each. No surprise topics later.",
+    body: "You get a written list of target keywords and what "top 3" means for each. No surprise topics later.",
   },
   {
     step: "03",
@@ -110,23 +145,27 @@ const processSteps = [
 const faqs: FaqItem[] = [
   {
     q: "What do I actually pay for?",
-    a: "A fixed 90-day engagement: custom website (or rebuild), on-page and off-page SEO, and AEO setup so you are easier to cite in AI answers. Standard is $4,900 USD; Growth is $7,900 USD, with local pricing in India, UAE, and UK.",
+    a: "A fixed 90-day engagement: custom website or Shopify/ecommerce store, on-page and off-page SEO, and AEO setup so you are easier to cite in AI answers. Standard is $4,900; Growth is $7,900; Commerce is $9,900; Commerce Scale is $14,900 (USD), with local pricing in India, UAE, and UK.",
+  },
+  {
+    q: "What is Commerce vs Standard / Growth?",
+    a: "Standard and Growth are for service and brochure sites (5-12 pages). Commerce is for Shopify or ecommerce stores: product import, collections, payments/shipping setup, and ecommerce SEO/AEO. Commerce Scale is for large catalogs (hundreds to ~1,500 products) with bulk product and image SEO.",
   },
   {
     q: "How does the top-3 guarantee work?",
-    a: "Keywords are agreed in writing before day 1. If by day 90 you are not in the Google top 3 for at least 90% of that list, we continue working at no extra cost until you are — on those keywords.",
+    a: "Keywords are agreed in writing before day 1. If by day 90 you are not in the Google top 3 for at least 90% of that list, we continue working at no extra cost until you are, on those keywords. On Commerce plans the list is commercial keywords (categories, money pages, brand), not every product URL.",
   },
   {
     q: "Why two installments?",
-    a: "50% starts the build. 50% is due on day 45 so you have seen real work before the second payment. There is no surprise third invoice for “extra hours.”",
+    a: "50% starts the build. 50% is due on day 45 so you have seen real work before the second payment. There is no surprise third invoice for extra hours.",
   },
   {
     q: "Is this cheaper than a normal SEO retainer?",
-    a: "A $1,500–$3,000/month retainer over 6–12 months often costs more than a full rankday engagement — without a website rebuild or a contractual finish line. Compare total cost and what is included, not the monthly number alone.",
+    a: "A $1,500 to $3,000/month retainer over 6 to 12 months often costs more than a full rankday engagement, and usually without a website or store rebuild or a contractual finish line. Compare total cost and what is included, not the monthly number alone.",
   },
   {
-    q: "What if I only need SEO, not a new website?",
-    a: "Most clients who need rankings also need a site that can rank. If your current site is already strong, tell us on the fit call — we will say if a lighter scope makes sense or if you are better with another partner.",
+    q: "What if I only need SEO, not a new website or store?",
+    a: "Most clients who need rankings also need a site that can rank. If your current site is already strong, tell us on the fit call. We will say if a lighter scope makes sense or if you are better with another partner.",
   },
   {
     q: "Do I have to pay after day 90?",
@@ -150,7 +189,7 @@ export default function PricingPage() {
             data-reveal
             style={{ marginTop: 20, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}
           >
-            Website, Google top-3 on agreed keywords, and AI-ready structure — in 90 days.
+            Website or Shopify store, Google top-3 on agreed keywords, and AI-ready structure. All in 90 days.
             Paid in two installments. Top-3 guarantee on 90% of the keyword list we lock before day 1.
           </p>
         </div>
@@ -207,7 +246,7 @@ export default function PricingPage() {
               </div>
 
               <a
-                href="https://wa.me/971565981209?text=I%20want%20Standard%20%244%2C900%20%E2%80%94%2090%20days"
+                href="https://wa.me/971565981209?text=I%20want%20Standard%20%244%2C900%20%20-%20%2090%20days"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
@@ -293,7 +332,7 @@ export default function PricingPage() {
               </div>
 
               <a
-                href="https://wa.me/971565981209?text=I%20want%20Growth%20%247%2C900%20%E2%80%94%2090%20days"
+                href="https://wa.me/971565981209?text=I%20want%20Growth%20%247%2C900%20%20-%20%2090%20days"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-light"
@@ -305,9 +344,159 @@ export default function PricingPage() {
           </div>
 
           <p style={{ marginTop: 28, textAlign: "center", fontSize: 15, color: "var(--muted)" }}>
-            Both paid in two installments:{" "}
+            All plans paid in two installments:{" "}
             <strong style={{ color: "var(--ink)" }}>50% to start, 50% on day 45.</strong> No third invoice for
-            “extra hours.”
+            "extra hours."
+          </p>
+        </div>
+      </section>
+
+      {/* Commerce plans: Shopify / ecommerce */}
+      <section className="section" style={{ paddingTop: 8 }}>
+        <div className="container">
+          <div data-reveal className="r-header">
+            <h2 className="h1">Shopify &amp; ecommerce stores.</h2>
+            <p className="body lg" style={{ maxWidth: 560 }}>
+              Same fixed-price model. Built for product catalogs, not brochure sites. Includes store build,
+              ecommerce SEO, and AEO / GEO.
+            </p>
+          </div>
+
+          <div data-reveal-stagger className="r-2">
+            <div className="card card-peach" style={{ padding: 48, display: "flex", flexDirection: "column", gap: 28 }}>
+              <div>
+                <span className="tag light">Commerce</span>
+                <div style={{ marginTop: 22, display: "flex", alignItems: "baseline", gap: 12 }}>
+                  <p
+                    style={{
+                      fontSize: "clamp(54px, 7vw, 96px)",
+                      fontWeight: 700,
+                      color: "var(--ink)",
+                      lineHeight: 0.95,
+                      letterSpacing: "-0.035em",
+                      margin: 0,
+                    }}
+                  >
+                    $9,900
+                  </p>
+                  <span style={{ fontSize: 16, color: "var(--muted)", fontWeight: 600 }}>USD</span>
+                </div>
+                <p
+                  style={{
+                    margin: "10px 0 0",
+                    fontSize: 14,
+                    color: "var(--purple)",
+                    fontWeight: 700,
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  For 90 days of work. One price.
+                </p>
+                <p className="body" style={{ marginTop: 18, color: "var(--ink-2)" }}>
+                  For Shopify and ecommerce launches. Custom theme, up to ~150 products, collections, payments
+                  and shipping basics, ecommerce SEO and AEO.
+                </p>
+              </div>
+
+              <div>
+                {commerceIncludes.map((t) => (
+                  <div className="check" key={t} style={{ padding: "10px 0", fontSize: 14 }}>
+                    <span className="check-mark" style={{ width: 18, height: 18 }}>
+                      <Icon.Check />
+                    </span>
+                    <span>{t}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href="https://wa.me/971565981209?text=I%20want%20Commerce%20%249%2C900%20%20-%20%20Shopify%20%2B%20SEO"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ alignSelf: "flex-start" }}
+              >
+                Start Commerce <span className="btn-icon"><Icon.Arrow /></span>
+              </a>
+            </div>
+
+            <div className="card card-pink" style={{ padding: 48, display: "flex", flexDirection: "column", gap: 28 }}>
+              <div>
+                <span className="tag light">Commerce Scale · large catalogs</span>
+                <div style={{ marginTop: 22, display: "flex", alignItems: "baseline", gap: 12 }}>
+                  <p
+                    style={{
+                      fontSize: "clamp(54px, 7vw, 96px)",
+                      fontWeight: 700,
+                      color: "var(--ink)",
+                      lineHeight: 0.95,
+                      letterSpacing: "-0.035em",
+                      margin: 0,
+                    }}
+                  >
+                    $14,900
+                  </p>
+                  <span style={{ fontSize: 16, color: "var(--muted)", fontWeight: 600 }}>USD</span>
+                </div>
+                <p
+                  style={{
+                    margin: "10px 0 0",
+                    fontSize: 14,
+                    color: "var(--purple)",
+                    fontWeight: 700,
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  For 90 days of work. One price.
+                </p>
+                <p className="body" style={{ marginTop: 18, color: "var(--ink-2)" }}>
+                  For large catalogs: hundreds to ~1,500 products and heavy image sets. Bulk product and image
+                  SEO, collection architecture, deeper technical ecom SEO, and AEO.
+                </p>
+              </div>
+
+              <div>
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: "var(--muted)",
+                    margin: 0,
+                    fontWeight: 600,
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Everything in Commerce, plus
+                </p>
+                <div style={{ marginTop: 12 }}>
+                  {commerceScaleExtras.map((t) => (
+                    <div className="check" key={t} style={{ padding: "10px 0", fontSize: 14 }}>
+                      <span className="check-mark" style={{ width: 18, height: 18 }}>
+                        <Icon.Check />
+                      </span>
+                      <span>{t}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href="https://wa.me/971565981209?text=I%20want%20Commerce%20Scale%20%2414%2C900%20%20-%20%20large%20catalog"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ alignSelf: "flex-start" }}
+              >
+                Start Commerce Scale <span className="btn-icon"><Icon.Arrow /></span>
+              </a>
+            </div>
+          </div>
+
+          <p style={{ marginTop: 28, textAlign: "center", fontSize: 15, color: "var(--muted)" }}>
+            Platform fees (Shopify plan, apps) and product photography are not included.{" "}
+            <strong style={{ color: "var(--ink)" }}>Same 50% / 50% payment split.</strong>
           </p>
         </div>
       </section>
@@ -347,7 +536,7 @@ export default function PricingPage() {
           <div data-reveal className="r-header">
             <h2 className="h1">The top-3 guarantee, in plain language.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
-              Not “we’ll try.” A written keyword list, a 90-day scoreboard, and free continuation if we miss the bar.
+              Not "we will try." A written keyword list, a 90-day scoreboard, and free continuation if we miss the bar.
             </p>
           </div>
           <div data-reveal-stagger className="r-2">
@@ -378,7 +567,7 @@ export default function PricingPage() {
           <div data-reveal className="r-header">
             <h2 className="h1">rankday vs a typical SEO retainer.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
-              Compare total cost and finish line — not just the monthly number.
+              Compare total cost and finish line, not only the monthly number.
             </p>
           </div>
           <div data-reveal className="card" style={{ padding: 0, overflow: "hidden" }}>
@@ -410,7 +599,7 @@ export default function PricingPage() {
             </div>
           </div>
           <p style={{ marginTop: 14, fontSize: 14, color: "var(--muted)" }}>
-            Example: six months at $2,000/mo is $12,000 — often without a new site or a contractual top-3 finish line.
+            Example: six months at $2,000/mo is $12,000, often without a new site or a contractual top-3 finish line.
           </p>
         </div>
       </section>
@@ -425,6 +614,20 @@ export default function PricingPage() {
             </p>
           </div>
 
+          <p
+            data-reveal
+            style={{
+              marginBottom: 12,
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--muted)",
+              textAlign: "center",
+            }}
+          >
+            Website plans
+          </p>
           <div data-reveal className="card" style={{ padding: 0, overflow: "hidden", maxWidth: 880, margin: "0 auto" }}>
             <div className="r-pricing-table" style={{ background: "var(--ink)", color: "#fff", padding: "16px 28px" }}>
               <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>
@@ -451,6 +654,51 @@ export default function PricingPage() {
                 <div style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.005em" }}>{market}</div>
                 <div style={{ fontSize: 17, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.005em" }}>{std}</div>
                 <div style={{ fontSize: 17, fontWeight: 700, color: "var(--purple)", letterSpacing: "-0.005em" }}>{gro}</div>
+              </div>
+            ))}
+          </div>
+
+          <p
+            data-reveal
+            style={{
+              marginTop: 32,
+              marginBottom: 12,
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--muted)",
+              textAlign: "center",
+            }}
+          >
+            Shopify &amp; ecommerce plans
+          </p>
+          <div data-reveal className="card" style={{ padding: 0, overflow: "hidden", maxWidth: 880, margin: "0 auto" }}>
+            <div className="r-pricing-table" style={{ background: "var(--ink)", color: "#fff", padding: "16px 28px" }}>
+              <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>
+                Market
+              </div>
+              <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>
+                Commerce
+              </div>
+              <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.7 }}>
+                Commerce Scale
+              </div>
+            </div>
+
+            {localCommercePricing.map(([market, com, scale], i) => (
+              <div
+                key={market}
+                className="r-pricing-table"
+                style={{
+                  padding: "22px 28px",
+                  borderTop: i === 0 ? "none" : "1px solid var(--hairline)",
+                  alignItems: "center",
+                }}
+              >
+                <div style={{ fontSize: 17, fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.005em" }}>{market}</div>
+                <div style={{ fontSize: 17, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.005em" }}>{com}</div>
+                <div style={{ fontSize: 17, fontWeight: 700, color: "var(--purple)", letterSpacing: "-0.005em" }}>{scale}</div>
               </div>
             ))}
           </div>
@@ -516,6 +764,36 @@ export default function PricingPage() {
                     $1,200<span style={{ fontSize: 13, color: "var(--purple)", opacity: 0.7, fontWeight: 500 }}>/mo</span>
                   </p>
                 </div>
+                <div
+                  style={{
+                    padding: "16px 18px",
+                    background: "var(--paper)",
+                    borderRadius: 14,
+                    border: "1px solid var(--hairline)",
+                  }}
+                >
+                  <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", margin: 0, fontWeight: 600 }}>
+                    Commerce
+                  </p>
+                  <p style={{ fontSize: 22, fontWeight: 700, color: "var(--ink)", margin: "8px 0 0", letterSpacing: "-0.02em" }}>
+                    $900<span style={{ fontSize: 13, color: "var(--muted)", fontWeight: 500 }}>/mo</span>
+                  </p>
+                </div>
+                <div
+                  style={{
+                    padding: "16px 18px",
+                    background: "var(--purple-tint)",
+                    borderRadius: 14,
+                    border: "1px solid rgba(74,43,240,0.15)",
+                  }}
+                >
+                  <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--purple)", margin: 0, fontWeight: 600 }}>
+                    Commerce Scale
+                  </p>
+                  <p style={{ fontSize: 22, fontWeight: 700, color: "var(--purple)", margin: "8px 0 0", letterSpacing: "-0.02em" }}>
+                    $1,500<span style={{ fontSize: 13, color: "var(--purple)", opacity: 0.7, fontWeight: 500 }}>/mo</span>
+                  </p>
+                </div>
               </div>
 
               <p className="body" style={{ marginTop: 22, fontStyle: "italic", color: "var(--muted-2)" }}>
@@ -536,7 +814,7 @@ export default function PricingPage() {
                 ))}
               </div>
               <p style={{ marginTop: 22, fontSize: 15, color: "var(--ink-2)", fontWeight: 500 }}>
-                If you need ads or social, we will point you to someone good — we will not pad the 90-day scope.
+                If you need ads or social, we will point you to someone good. We will not pad the 90-day scope.
               </p>
             </div>
           </div>
@@ -554,7 +832,7 @@ export default function PricingPage() {
               <p className="kicker">Choose Standard if</p>
               <ul style={{ margin: "14px 0 0", paddingLeft: 18, color: "var(--ink-2)", lineHeight: 1.6, fontSize: 15 }}>
                 <li>You are a local service or small operator</li>
-                <li>You need a clean 5–7 page site and a focused keyword set</li>
+                <li>You need a clean 5-7 page site and a focused keyword set</li>
                 <li>Competition is local or regional, not national brand wars</li>
                 <li>You want a fixed finish line without enterprise content volume</li>
               </ul>
@@ -563,9 +841,27 @@ export default function PricingPage() {
               <p className="kicker">Choose Growth if</p>
               <ul style={{ margin: "14px 0 0", paddingLeft: 18, color: "var(--ink-2)", lineHeight: 1.6, fontSize: 15 }}>
                 <li>You are B2B, SaaS, or professional services</li>
-                <li>Buyers compare alternatives and need “vs” / category pages</li>
+                <li>Buyers compare alternatives and need "vs" / category pages</li>
                 <li>You care about AI shortlists as well as Google top-3</li>
                 <li>You want a wider keyword set and third-party placement work</li>
+              </ul>
+            </div>
+            <div className="card" style={{ padding: 32 }}>
+              <p className="kicker">Choose Commerce if</p>
+              <ul style={{ margin: "14px 0 0", paddingLeft: 18, color: "var(--ink-2)", lineHeight: 1.6, fontSize: 15 }}>
+                <li>You need a Shopify or ecommerce store, not a brochure site</li>
+                <li>You have up to ~150 products and clear collections</li>
+                <li>You want store build + ecommerce SEO + AEO in one fixed price</li>
+                <li>You are launching or rebuilding a mid-size catalog</li>
+              </ul>
+            </div>
+            <div className="card" style={{ padding: 32 }}>
+              <p className="kicker">Choose Commerce Scale if</p>
+              <ul style={{ margin: "14px 0 0", paddingLeft: 18, color: "var(--ink-2)", lineHeight: 1.6, fontSize: 15 }}>
+                <li>You have hundreds to ~1,500 products (and large image sets)</li>
+                <li>You need bulk product and image SEO, not only theme polish</li>
+                <li>Category architecture and technical crawl health matter</li>
+                <li>You want a wider commercial keyword set and AI visibility work</li>
               </ul>
             </div>
           </div>
@@ -574,7 +870,7 @@ export default function PricingPage() {
             <Link href="/who-its-for" style={{ color: "var(--purple)", fontWeight: 700 }}>
               Who it is for
             </Link>{" "}
-            or message us — we will recommend Standard or Growth on a 15-minute fit call.
+            or message us. We will recommend the right plan on a 15-minute fit call.
           </p>
         </div>
       </section>
@@ -592,7 +888,7 @@ export default function PricingPage() {
               <span className="serif">Start</span> your 90 days.
             </h2>
             <p style={{ color: "rgba(255,255,255,0.82)", maxWidth: 480, margin: "8px 0 0" }}>
-              Tell us Standard or Growth. We lock keywords in writing, then build.
+              Tell us Standard, Growth, Commerce, or Commerce Scale. We lock keywords in writing, then build.
             </p>
             <a href="https://wa.me/971565981209" target="_blank" rel="noopener noreferrer" className="btn btn-light" style={{ marginTop: 8 }}>
               WhatsApp to start <span className="btn-icon"><Icon.Arrow /></span>

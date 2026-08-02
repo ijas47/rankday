@@ -33,7 +33,11 @@ export const faqs = [
   },
   {
     q: "What CMS do you use?",
-    a: "Next.js for the site, Sanity for the content. You get a clean editor login if you ever want to update anything. Hosted on Vercel for speed.",
+    a: "For Standard and Growth websites: Next.js for the site, with a clean editor setup and fast hosting. For Commerce plans: Shopify by default (WooCommerce on request) for the store, plus SEO and AEO work on top.",
+  },
+  {
+    q: "Do you build Shopify / ecommerce stores?",
+    a: "Yes. Commerce ($9,900) covers Shopify or ecommerce store setup with SEO and AEO for catalogs up to about 150 products. Commerce Scale ($14,900) is for large catalogs (up to ~1,500 products) with bulk product and image SEO. Full details and local pricing are on the pricing page.",
   },
   {
     q: "Can you guarantee number 1 on Google?",

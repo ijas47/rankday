@@ -60,7 +60,7 @@ const homeFaqs: FaqItem[] = [
   },
   {
     q: "How much does it cost?",
-    a: "One fixed price per 90-day engagement: Standard is $4,900 USD and Growth is $7,900 USD (with local pricing in AED and GBP). No retainers and no long contracts.",
+    a: "One fixed price per 90-day engagement: Standard $4,900, Growth $7,900, Commerce (Shopify/ecom) $9,900, Commerce Scale $14,900 (USD, with local pricing in AED, GBP, and INR). No retainers and no long contracts.",
   },
   {
     q: "What's the guarantee?",
@@ -173,18 +173,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROOF — keep claims defensible; no inflated aggregate stats */}
+      {/* PROOF - keep claims defensible; no inflated aggregate stats */}
       <section className="section">
         <div className="container">
           <div data-reveal className="r-header">
             <h2 className="h1">Built around a finish line.</h2>
             <p className="body lg" style={{ maxWidth: 560 }}>
-              One fixed price. Ninety days. Keywords agreed in writing. Top-3 on 90% of that list — or we keep working free.
+              One fixed price. Ninety days. Keywords agreed in writing. Top-3 on 90% of that list, or we keep working free.
             </p>
           </div>
           <div data-reveal-stagger className="r-cards-4">
             {[
-              { num: "90", label: "days per engagement — not an open retainer" },
+              { num: "90", label: "days per engagement, not an open retainer" },
               { num: "1", label: "fixed price for website + SEO + AEO setup" },
               { num: "Top 3", label: "guarantee on 90% of keywords locked before day 1" },
               { num: "16 yrs", label: "founder experience in growth & SEO (Ijas Abdulla)" },
@@ -198,7 +198,7 @@ export default function HomePage() {
           <div className="card" style={{ marginTop: 20, padding: 28, display: "grid", gap: 12 }}>
             <p className="kicker" style={{ margin: 0 }}>What clients hire us for</p>
             <p style={{ margin: 0, fontSize: 17, color: "var(--ink)", fontWeight: 600, lineHeight: 1.45, maxWidth: 720 }}>
-              A new site that can rank, a written keyword scoreboard, and structure so AI systems can understand and cite the business — without a 12-month retainer trap.
+              A new site that can rank, a written keyword scoreboard, and structure so AI systems can understand and cite the business, without a 12-month retainer trap.
             </p>
             <p style={{ margin: 0, fontSize: 14, color: "var(--muted)", lineHeight: 1.5 }}>
               Individual results vary by competition, domain history, and how fast approvals move. See example engagements on the results page.

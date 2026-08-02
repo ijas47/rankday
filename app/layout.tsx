@@ -121,22 +121,42 @@ const orgSchema = {
     itemListElement: [
       {
         "@type": "Offer",
-        name: "Standard Plan — $4,900 USD",
+        name: "Standard Plan: $4,900 USD",
         price: "4900",
         priceCurrency: "USD",
         itemOffered: {
           "@type": "Service",
-          name: "Website Rebuild + SEO + AEO — Standard (up to 7 pages, 15 keywords)",
+          name: "Website Rebuild + SEO + AEO, Standard (up to 7 pages, 15 keywords)",
         },
       },
       {
         "@type": "Offer",
-        name: "Growth Plan — $7,900 USD",
+        name: "Growth Plan: $7,900 USD",
         price: "7900",
         priceCurrency: "USD",
         itemOffered: {
           "@type": "Service",
-          name: "Website Rebuild + SEO + AEO — Growth (up to 12 pages, 30 keywords)",
+          name: "Website Rebuild + SEO + AEO, Growth (up to 12 pages, 30 keywords)",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Commerce Plan: $9,900 USD",
+        price: "9900",
+        priceCurrency: "USD",
+        itemOffered: {
+          "@type": "Service",
+          name: "Shopify / ecommerce store + SEO + AEO, Commerce (up to ~150 products)",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Commerce Scale Plan: $14,900 USD",
+        price: "14900",
+        priceCurrency: "USD",
+        itemOffered: {
+          "@type": "Service",
+          name: "Shopify / ecommerce store + SEO + AEO, Commerce Scale (up to ~1,500 products)",
         },
       },
     ],
